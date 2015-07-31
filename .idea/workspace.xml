@@ -2,127 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03f898b8-ec7a-488d-b7ec-b68ba0959bcb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_12.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/entity/Admin.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/entity/Admin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Admin.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Admin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/encoder/BASE64Decoder.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/encoder/BASE64Decoder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/encoder/BASE64Decoder.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/encoder/BASE64Decoder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/encoder/BASE64Encoder.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/encoder/BASE64Encoder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/encoder/BASE64Encoder.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/encoder/BASE64Encoder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/CCPRestSmsSDK$BodyType.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/CCPRestSmsSDK$BodyType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/CCPRestSmsSDK$BodyType.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/CCPRestSmsSDK$BodyType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/CCPRestSmsSDK.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/CCPRestSmsSDK.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/CCPRestSmsSDK.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/CCPRestSmsSDK.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/encoder/CEFormatException.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/encoder/CEFormatException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/encoder/CEFormatException.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/encoder/CEFormatException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/encoder/CEStreamExhausted.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/encoder/CEStreamExhausted.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/encoder/CEStreamExhausted.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/encoder/CEStreamExhausted.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/CcopHttpClient$1.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/CcopHttpClient$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/CcopHttpClient$1.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/CcopHttpClient$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/CcopHttpClient.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/CcopHttpClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/CcopHttpClient.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/CcopHttpClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/encoder/CharacterDecoder.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/encoder/CharacterDecoder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/encoder/CharacterDecoder.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/encoder/CharacterDecoder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/encoder/CharacterEncoder.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/encoder/CharacterEncoder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/encoder/CharacterEncoder.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/encoder/CharacterEncoder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/entity/Company.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/entity/Company.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Company.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Company.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/entity/Contract.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/entity/Contract.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Contract.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Contract.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/DateUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/DateUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/DateUtil.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/DateUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/entity/Elder.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/entity/Elder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Elder.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Elder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/entity/ElderCondition.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/entity/ElderCondition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/ElderCondition.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/ElderCondition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/controller/ElderConditionController.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/controller/ElderConditionController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/controller/ElderConditionController.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/controller/ElderConditionController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/ElderConditionDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/ElderConditionDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/ElderConditionDAO.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/ElderConditionDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/ElderConditionDAOImp.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/ElderConditionDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/ElderConditionDAOImp.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/ElderConditionDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/service/ElderConditionService.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/service/ElderConditionService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/ElderConditionService.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/ElderConditionService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/service/ElderConditionServiceIMp.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/service/ElderConditionServiceIMp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/ElderConditionServiceIMp.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/ElderConditionServiceIMp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/test/service/ElderConditionServiceIMpTest.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/test/service/ElderConditionServiceIMpTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/test/service/ElderConditionServiceIMpTest.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/test/service/ElderConditionServiceIMpTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/ElderDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/ElderDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/ElderDAO.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/ElderDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/ElderDAOImp.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/ElderDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/ElderDAOImp.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/ElderDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/entity/ElderMonitor.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/entity/ElderMonitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/ElderMonitor.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/ElderMonitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/ElderMonitorDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/ElderMonitorDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/ElderMonitorDAO.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/ElderMonitorDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/ElderMonitorDAOImp.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/ElderMonitorDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/ElderMonitorDAOImp.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/ElderMonitorDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/test/dao/ElderMonitorDAOImpTest.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/test/dao/ElderMonitorDAOImpTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/test/dao/ElderMonitorDAOImpTest.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/test/dao/ElderMonitorDAOImpTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/entity/Employee.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/entity/Employee.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Employee.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Employee.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/EmployeeDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/EmployeeDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/EmployeeDAO.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/EmployeeDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/EmployeeDAOImp.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/EmployeeDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/EmployeeDAOImp.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/EmployeeDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/EncryptUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/EncryptUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/EncryptUtil.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/EncryptUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/IGeneralDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/IGeneralDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/IGeneralDAO.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/IGeneralDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/IGeneralDAOImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/IGeneralDAOImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/IGeneralDAOImpl.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/IGeneralDAOImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/controller/Interface.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/controller/Interface.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/controller/Interface.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/controller/Interface.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/entity/LegalPerson.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/entity/LegalPerson.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/LegalPerson.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/LegalPerson.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/LegalPersonDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/LegalPersonDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/LegalPersonDAO.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/LegalPersonDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/LegalPersonDAOImp.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/LegalPersonDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/LegalPersonDAOImp.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/LegalPersonDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/LoggerUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/LoggerUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/LoggerUtil.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/LoggerUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/controller/MainController.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/controller/MainController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/controller/MainController.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/controller/MainController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/PropertiesUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/cloopen/rest/sdk/utils/PropertiesUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/PropertiesUtil.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/cloopen/rest/sdk/utils/PropertiesUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/service/RegisterService.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/service/RegisterService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/RegisterService.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/RegisterService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/service/RegisterServiceImp.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/service/RegisterServiceImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/RegisterServiceImp.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/RegisterServiceImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/test/service/RegisterServiceImpTest.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/test/service/RegisterServiceImpTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/test/service/RegisterServiceImpTest.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/test/service/RegisterServiceImpTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/entity/Relative.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/entity/Relative.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Relative.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Relative.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/RelativeDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/RelativeDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/RelativeDAO.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/RelativeDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/RelativeDAOImp.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/RelativeDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/RelativeDAOImp.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/RelativeDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/service/SMSSerivceImp.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/service/SMSSerivceImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/SMSSerivceImp.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/SMSSerivceImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/test/service/SMSSerivceImpTest.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/test/service/SMSSerivceImpTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/test/service/SMSSerivceImpTest.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/test/service/SMSSerivceImpTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/service/SMSService.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/service/SMSService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/SMSService.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/SMSService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/entity/Task.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/entity/Task.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Task.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Task.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/controller/TestSMS.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/controller/TestSMS.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/controller/TestSMS.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/controller/TestSMS.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/service/VerifyService.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/service/VerifyService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/VerifyService.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/VerifyService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/service/VerifyServiceImp.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/service/VerifyServiceImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/VerifyServiceImp.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/service/VerifyServiceImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/test/service/VerifyServiceImpTest.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/test/service/VerifyServiceImpTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/test/service/VerifyServiceImpTest.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/test/service/VerifyServiceImpTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/entity/Volunteer.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/entity/Volunteer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Volunteer.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/entity/Volunteer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/VolunteerDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/VolunteerDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/VolunteerDAO.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/VolunteerDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/OCare/dao/VolunteerDAOImp.class" afterPath="$PROJECT_DIR$/target/classes/com/OCare/dao/VolunteerDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/VolunteerDAOImp.class" afterPath="$PROJECT_DIR$/target/ocare/WEB-INF/classes/com/OCare/dao/VolunteerDAOImp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/OCare.iml" afterPath="$PROJECT_DIR$/.idea/OCare.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/OCare_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/OCare_war.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/OCare_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/OCare_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="OCare.iws" />
@@ -158,11 +38,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CCPRestSmsSDK.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CCPRestSmsSDK.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cloopen/rest/sdk/CCPRestSmsSDK.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.522541">
+            <state vertical-scroll-proportion="0.0">
               <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.10050251">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -959,15 +849,17 @@
       <workItem from="1438334223568" duration="55000" />
       <workItem from="1438335712013" duration="39000" />
       <workItem from="1438336532474" duration="93000" />
+      <workItem from="1438337244691" duration="28000" />
+      <workItem from="1438337295546" duration="27000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16885000" />
+    <option name="totallyTimeSpent" value="16940000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -979,11 +871,9 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.005722461" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21618743" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847682" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -995,6 +885,8 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21618743" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847682" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1422,8 +1314,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cloopen/rest/sdk/CCPRestSmsSDK.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.522541">
+        <state vertical-scroll-proportion="0.0">
           <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10050251">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
