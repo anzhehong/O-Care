@@ -2,21 +2,14 @@ package com.OCare.controller;
 
 import com.OCare.entity.ElderCondition;
 import com.OCare.service.ElderConditionService;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.ServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -30,44 +23,24 @@ public class ElderConditionController {
     private ElderConditionService elderConditionService;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String ShowElders(ModelMap map) {
-//        Configuration cfg = new Configuration().configure();
-//        StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
-//        ServiceRegistry service = ssrb.build();
-//        SessionFactory factory = cfg.buildSessionFactory(service);
-//        Session session = factory.openSession();
-//        Transaction tx = session.beginTransaction();
-
-//        List<ElderCondition> list = session.createCriteria(ElderCondition.class).list();
-//        tx.commit();
+    public String ShowElders(ModelMap map,ServletRequest request,HttpSession session1) {
+        // request.removeAttribute("Elders");
         List<ElderCondition> list = elderConditionService.allElderConditions();
+        System.out.println(list.size());
+        System.out.println("shagnmianshisize");
         map.addAttribute("Elders",list);
 //        session.close();
         return "Map";
     }
 
     @RequestMapping(value = "/Refresh", method = RequestMethod.GET)
-    public void RefreshCondition(ModelMap map,ServletResponse response) throws IOException {
-        Configuration cfg = new Configuration().configure();
-        StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
-        ServiceRegistry service = ssrb.build();
-        SessionFactory factory = cfg.buildSessionFactory(service);
-        Session session = factory.openSession();
-        Transaction tx = session.beginTransaction();
+    public void RefreshCondition(ModelMap map,ServletRequest request)  {
 
-        List<ElderCondition> list = session.createCriteria(ElderCondition.class).list();
-        tx.commit();
-        System.out.println("------------------------------------");
-        for(int i = 0;i<list.size();i++) {
-            System.out.println(i+1+":"+list.get(i).getLatitude());
-        }
-        map.addAttribute("RefreshElders", list);
-        session.close();
+        List<ElderCondition> list = elderConditionService.allElderConditions();
 
-        int flag =1;
-        PrintWriter pw = response.getWriter();
-        pw.print(flag);
-        pw.close();
+        map.addAttribute("Elders",list);
+        request.setAttribute("RefreshElders", list);
+
 
     }
 
