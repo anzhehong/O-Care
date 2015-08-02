@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="530976770">
+  <component name="DataSourceManagerImpl" format="xml" hash="1187955214">
     <data-source source="LOCAL" name="MySQL - OCare@202.120.163.167" uuid="97da4116-74bd-446f-a96b-8eac8cc3504d">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -13,7 +13,11 @@
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
       </driver-properties>
-      <libraries />
+      <libraries>
+        <library>
+          <url>file://$PROJECT_DIR$/../../EnterpriseJavaEE/apache-tomcat-8.0.21/lib/mysql-connector-java-5.1.29-bin.jar</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>

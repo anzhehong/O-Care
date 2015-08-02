@@ -4,10 +4,7 @@ import com.OCare.dao.ElderDAO;
 import com.OCare.dao.LegalPersonDAO;
 import com.OCare.dao.RelativeDAO;
 import com.OCare.dao.VolunteerDAO;
-import com.OCare.entity.Elder;
-import com.OCare.entity.LegalPerson;
-import com.OCare.entity.Relative;
-import com.OCare.entity.Volunteer;
+import com.OCare.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,17 +31,13 @@ public class RegisterServiceImp implements RegisterService {
         Elder newElder = new Elder();
         newElder.setAddress(elderAddress);
         newElder.setCompany_id(companyId);
-        //紧急联系人暂时不设置
-//        newElder.setEmergent_people_id();
         newElder.setId(elderId);
         newElder.setName(elderName);
         newElder.setPhone(elderPhone);
-        newElder.setPassword(elderPassword);
+        newElder.setPassword(JavaMD5Util.MD5(elderPassword));
         newElder.setImage(elderImage);
-
         //插入到数据库中
         elderDAO.insert(newElder);
-
         return newElder;
     }
 
@@ -55,11 +48,8 @@ public class RegisterServiceImp implements RegisterService {
         newRelative.setName(relativeName);
         newRelative.setPhone(relativePhone);
         newRelative.setAddress(relativeAddress);
-        newRelative.setPassword(relativePassword);
+        newRelative.setPassword(JavaMD5Util.MD5(relativePassword));
         newRelative.setImamge(relativeImage);
-
-        //老人Id暂不设置
-//        newRelative.setElder_id();
 
         //插入数据库中
         relativeDAO.insert(newRelative);
@@ -76,10 +66,8 @@ public class RegisterServiceImp implements RegisterService {
         newVolunteer.setAddress(volunteerAddress);
         newVolunteer.setEmail(volunteerEmail);
         newVolunteer.setCompany_id(volunteerCompanyId);
-        newVolunteer.setPassword(volunteerPassword);
+        newVolunteer.setPassword(JavaMD5Util.MD5(volunteerPassword));
         newVolunteer.setImage(volunteerImage);
-        //服务老人先不设置
-//        newVolunteer.setElder_id();
 
         //存到数据库
         volunteerDAO.insert(newVolunteer);
@@ -94,7 +82,7 @@ public class RegisterServiceImp implements RegisterService {
         newLP.setName(lpName);
         newLP.setPhone(lpPhone);
         newLP.setEmail(lpEmail);
-        newLP.setPassword(lpPassword);
+        newLP.setPassword(JavaMD5Util.MD5(lpPassword));
         newLP.setImage(lpImage);
 
         //插入到数据库

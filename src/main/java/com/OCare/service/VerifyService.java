@@ -30,4 +30,6 @@ public interface VerifyService {
         返回值：所有type为3，即未处理的请求。
      */
     public List<ElderMonitor> getAllUntreatedRequests();
+
+    public List<ElderMonitor> monitorStatus(String relativeId);
 }

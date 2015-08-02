@@ -1,4 +1,4 @@
-package com.OCare.test.service;
+package service;
 
 import org.junit.Test;
 

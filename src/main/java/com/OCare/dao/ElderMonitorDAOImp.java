@@ -20,6 +20,14 @@ public class ElderMonitorDAOImp extends IGeneralDAOImpl<ElderMonitor> implements
         return query.list();
     }
 
+    @Override
+    public List<ElderMonitor> queryByRelativeId(String relativeId) {
+        String hql = "from ElderMonitor where relative_id = :m";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("m", relativeId);
+        return query.list();
+    }
+
     public ElderMonitorDAOImp()
     {
         super(ElderMonitor.class);

@@ -1,4 +1,4 @@
-package com.OCare.test.dao;
+package dao;
 
 import org.junit.Test;
 

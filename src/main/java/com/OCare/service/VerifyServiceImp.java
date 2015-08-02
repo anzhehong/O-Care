@@ -1,6 +1,7 @@
 package com.OCare.service;
 
 import com.OCare.dao.ElderMonitorDAO;
+import com.OCare.dao.ElderMonitorDAOImp;
 import com.OCare.entity.ElderMonitor;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,6 @@ import java.util.List;
 
 @Service
 @Transactional
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="/META-INF/applicationContext.xml")
 public class VerifyServiceImp implements VerifyService {
 
     @Autowired
@@ -51,5 +50,10 @@ public class VerifyServiceImp implements VerifyService {
     @Override
     public List<ElderMonitor> getAllUntreatedRequests() {
         return elderMonitorDAO.getAllUntreatedRequests();
+    }
+
+    @Override
+    public List<ElderMonitor> monitorStatus(String relativeId) {
+        return elderMonitorDAO.queryByRelativeId(relativeId);
     }
 }

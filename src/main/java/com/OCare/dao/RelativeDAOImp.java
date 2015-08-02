@@ -1,7 +1,10 @@
 package com.OCare.dao;
 
 import com.OCare.entity.Relative;
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Created by fowafolo on 15/7/28.
@@ -12,5 +15,18 @@ public class RelativeDAOImp extends IGeneralDAOImpl<Relative> implements Relativ
     public RelativeDAOImp()
     {
         super(Relative.class);
+    }
+
+    @Override
+    public Relative queryByPhoneNum(String phoneNum) {
+        String hql = "from Relative where phone = :m";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("m", phoneNum);
+        List<Relative> list = query.list();
+        if (list.size() == 0){
+            return null;
+        }else{
+            return list.get(0);
+        }
     }
 }

@@ -17,11 +17,8 @@ public class ElderConditionServiceIMp implements ElderConditionService {
     @Autowired
     private ElderConditionDAO elderConditionDAO;
 
-
     @Override
     public List<ElderCondition> allElderConditions() {
-        System.out.println("kanzheli");
-        System.out.println(elderConditionDAO.queryAll().size());
         return elderConditionDAO.queryAll();
     }
 }
