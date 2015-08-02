@@ -3,6 +3,7 @@ package com.OCare.service;
 import com.OCare.dao.ElderMonitorDAO;
 import com.OCare.dao.ElderMonitorDAOImp;
 import com.OCare.entity.ElderMonitor;
+import org.hamcrest.collection.IsArray;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,14 +38,16 @@ public class VerifyServiceImp implements VerifyService {
     @Override
     public void checkMonitorApply(int elderMonitorId, boolean isApproval) {
         //首先根据id拿到数据库中的elderMonitor
-        ElderMonitor monitorToUpdate = elderMonitorDAO.queryById(Integer.toString(elderMonitorId));
-        System.out.println(monitorToUpdate.getId());
+        ElderMonitor monitorToUpdate = elderMonitorDAO.getById(elderMonitorId);
         //审批不同意，ElderMonitor里的type应为4
-        monitorToUpdate.setType(4);
-        elderMonitorDAO.update(monitorToUpdate);
-        //审批同意，ElderMonitor里的type应为1，意味监护人
-        monitorToUpdate.setType(3);
-        elderMonitorDAO.update(monitorToUpdate);
+        if (isApproval == false){
+            monitorToUpdate.setType(4);
+            elderMonitorDAO.update(monitorToUpdate);
+        }else{
+            //审批同意，ElderMonitor里的type应为1，意味监护人
+            monitorToUpdate.setType(1);
+            elderMonitorDAO.update(monitorToUpdate);
+        }
     }
 
     @Override

@@ -28,6 +28,11 @@ public class ElderMonitorDAOImp extends IGeneralDAOImpl<ElderMonitor> implements
         return query.list();
     }
 
+    @Override
+    public ElderMonitor getById(int id) {
+        return (ElderMonitor) sessionFactory.getCurrentSession().get(ElderMonitor.class, id);
+    }
+
     public ElderMonitorDAOImp()
     {
         super(ElderMonitor.class);

@@ -14,4 +14,5 @@ public interface ElderMonitorDAO extends IGeneralDAO<ElderMonitor> {
      */
     public List<ElderMonitor> getAllUntreatedRequests();
     public List<ElderMonitor> queryByRelativeId(String relativeId);
+    public ElderMonitor getById(int id);
 }

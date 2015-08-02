@@ -17,7 +17,7 @@ public class Relative {
     private String phone;
     private String address;
     private String password;
-    private String imamge;
+    private String image;
 
     public String getId() {
         return id;
@@ -59,11 +59,11 @@ public class Relative {
         this.password = password;
     }
 
-    public String getImamge() {
-        return imamge;
+    public String getImage() {
+        return image;
     }
 
-    public void setImamge(String imamge) {
-        this.imamge = imamge;
+    public void setImage(String image) {
+        this.image = image;
     }
 }

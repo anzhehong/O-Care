@@ -1,6 +1,6 @@
 package com.OCare.controller;
 
-import com.OCare.entity.ElderMonitor;
+import com.OCare.entity.*;
 import com.OCare.service.AccountService;
 import com.OCare.service.RegisterService;
 import com.OCare.service.SMSService;
@@ -29,6 +29,13 @@ public class InterfaceController {
     @Autowired
     private SMSService smsService;
 
+    /**
+     * @param phoneNum：Phone number
+     * @param password：Password
+     * @return
+     * Error: true, ErrorMsg
+     * Error: false, Account type, Account detail
+     */
     @RequestMapping("/logon")
     @ResponseBody
     public Map<String, Object> logon(String phoneNum, String password){
@@ -39,7 +46,7 @@ public class InterfaceController {
             result.put("errorMsg", "PhoneNum or password is empty");
             return result;
         }else{
-            String status = accountService.logon(phoneNum, password);
+            String status = accountService.logon(phoneNum, password).getKey();
             if(status == "Invalid Account"){
                 result.put("error", true);
                 result.put("errorMsg", "Invalid Account");
@@ -51,55 +58,109 @@ public class InterfaceController {
             }else{
                 result.put("error", false);
                 result.put("accountType", status);
+                result.put("account", accountService.logon(phoneNum, password).getValue());
                 return result;
             }
         }
     }
 
+    /**
+     * @param elderId: Elder CitizenId
+     * @param companyId: Company Id
+     * @param elderName: Elder Name
+     * @param elderPhone: Elder Phone number
+     * @param elderAddress: Elder address
+     * @param elderPassword: Elder Password
+     * @param elderImage: Elder Image
+     * @return
+     * Error: false, account detail
+     */
     @RequestMapping("/register/elder")
     @ResponseBody
     public Map<String, Object> elderRegister(String elderId, int companyId, String elderName,
                                              String elderPhone, String elderAddress,
                                              String elderPassword, String elderImage){
         Map<String, Object> result = new HashMap<String, Object>();
-        registerService.registerForAnElder(elderId, companyId, elderName, elderPhone, elderAddress, elderPassword, elderImage);
+        Elder elder = registerService.registerForAnElder(elderId, companyId, elderName, elderPhone, elderAddress, elderPassword, elderImage);
         result.put("error", false);
+        result.put("account", elder);
         return result;
     }
 
+    /**
+     * @param relativeId: relative citizen_id
+     * @param relativeName: relative name
+     * @param relativePhone: relative phone number
+     * @param relativeAddress: relative address
+     * @param relativePassword: relative password
+     * @param relativeImage: relative image
+     * @return
+     * Error: false, account detail
+     */
     @RequestMapping("/register/relative")
     @ResponseBody
     public Map<String, Object> relativeRegister(String relativeId, String relativeName,
                                                 String relativePhone, String relativeAddress,
                                                 String relativePassword, String relativeImage){
-
         Map<String, Object> result = new HashMap<String, Object>();
-        registerService.registerForARelative(relativeId, relativeName, relativePhone, relativeAddress, relativePassword, relativeImage);
+        Relative relative = registerService.registerForARelative(relativeId, relativeName, relativePhone, relativeAddress, relativePassword, relativeImage);
         result.put("error", false);
+        result.put("account", relative);
         return result;
     }
 
+    /**
+     * @param volunteerId: volunteer citizenId
+     * @param volunteerName: volunteer name
+     * @param volunteerPhone: volunteer phone number
+     * @param volunteerAddress: volunteer address
+     * @param volunteerEmail: volunteer email
+     * @param volunteerCompanyId: volunteer's companyId
+     * @param volunteerPassword: volunteer password
+     * @param volunteerImage: volunteer image
+     * @return
+     * Error: false, account detail
+     */
     @RequestMapping("/register/volunteer")
     @ResponseBody
     public Map<String, Object> volunteerRegister(String volunteerId, String volunteerName, String volunteerPhone,
                                                  String volunteerAddress, String volunteerEmail,
                                                  int volunteerCompanyId, String volunteerPassword, String volunteerImage){
         Map<String, Object> result = new HashMap<String, Object>();
-        registerService.registerForAVolunteer(volunteerId, volunteerName, volunteerPhone, volunteerAddress, volunteerEmail, volunteerCompanyId, volunteerPassword, volunteerImage);
+        Volunteer volunteer = registerService.registerForAVolunteer(volunteerId, volunteerName, volunteerPhone, volunteerAddress, volunteerEmail, volunteerCompanyId, volunteerPassword, volunteerImage);
         result.put("error", false);
+        result.put("account", volunteer);
         return result;
     }
 
+    /**
+     * @param lpId: legal person citizenId
+     * @param lpName: legal person name
+     * @param lpPhone: legal person phone number
+     * @param lpEmail: legal person email
+     * @param lpPassword: legal person password
+     * @param lpImage: lega person image
+     * @return
+     * Error: false, account detail
+     */
     @RequestMapping("/register/legalperson")
     @ResponseBody
     public Map<String, Object> legalPersonRegister(String lpId, String lpName, String lpPhone,
                                                    String lpEmail, String lpPassword, String lpImage){
         Map<String, Object> result = new HashMap<String, Object>();
-        registerService.registerForALegalPerson(lpId, lpName, lpPhone, lpEmail, lpPassword, lpImage);
+        LegalPerson legalPerson = registerService.registerForALegalPerson(lpId, lpName, lpPhone, lpEmail, lpPassword, lpImage);
         result.put("error", false);
+        result.put("account", legalPerson);
         return result;
     }
 
+    /**
+     * @param relativeId: relative citizenId
+     * @param elderId: elder citizenId
+     * @param togetherImg: together image
+     * @return
+     * Error: false,
+     */
     @RequestMapping("/apply/monitor")
     @ResponseBody
     public Map<String, Object> applyMonitor(String relativeId, String elderId, String togetherImg){
@@ -109,6 +170,12 @@ public class InterfaceController {
         return result;
     }
 
+    /**
+     * @param relativeId: relativeId
+     * @return
+     * Error: true, ErrorMsg
+     * Error:false, monitor detail
+     */
     @RequestMapping("/status/monitor")
     @ResponseBody
     public Map<String, Object> checkMonitor(String relativeId){
@@ -124,6 +191,11 @@ public class InterfaceController {
         return result;
     }
 
+    /**
+     * @param phoneNum: phone number
+     * @return
+     * Error: false, code
+     */
     @RequestMapping("/code")
     @ResponseBody
     public Map<String, Object> createCode(String phoneNum){
@@ -134,6 +206,13 @@ public class InterfaceController {
         return result;
     }
 
+    /**
+     * @param id: citizenId
+     * @param phoneNum: phone number
+     * @return
+     * Error: true, ErrorMsg
+     * Error:false, account type
+     */
     @RequestMapping("/verify/phone")
     @ResponseBody
     public Map<String, Object> verifyPhoneNum(String id, String phoneNum){
@@ -154,6 +233,13 @@ public class InterfaceController {
         }
     }
 
+    /**
+     * @param id: citizenId
+     * @param password: new password
+     * @return
+     * Error: true, ErrorMsg
+     * Error: false
+     */
     @RequestMapping("/changepassword")
     @ResponseBody
     public Map<String, Object> changePassword(String id, String password){

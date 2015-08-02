@@ -49,7 +49,7 @@ public class RegisterServiceImp implements RegisterService {
         newRelative.setPhone(relativePhone);
         newRelative.setAddress(relativeAddress);
         newRelative.setPassword(JavaMD5Util.MD5(relativePassword));
-        newRelative.setImamge(relativeImage);
+        newRelative.setImage(relativeImage);
 
         //插入数据库中
         relativeDAO.insert(newRelative);
@@ -66,8 +66,10 @@ public class RegisterServiceImp implements RegisterService {
         newVolunteer.setAddress(volunteerAddress);
         newVolunteer.setEmail(volunteerEmail);
         newVolunteer.setCompany_id(volunteerCompanyId);
+        newVolunteer.setElder_id("elder000");
         newVolunteer.setPassword(JavaMD5Util.MD5(volunteerPassword));
         newVolunteer.setImage(volunteerImage);
+        newVolunteer.setStatus(00);
 
         //存到数据库
         volunteerDAO.insert(newVolunteer);

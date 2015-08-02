@@ -8,7 +8,7 @@
 <%@include file="templates/header.jsp"%>
 <%@include file="templates/sidebar.jsp"%>
 
-
+<h1><a href="monitor/list">Verify Apply</a></h1>
 
 
 <%@include file="templates/footer.jsp"%>

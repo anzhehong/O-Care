@@ -5,6 +5,7 @@ import com.OCare.dao.LegalPersonDAO;
 import com.OCare.dao.RelativeDAO;
 import com.OCare.dao.VolunteerDAO;
 import com.OCare.entity.*;
+import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,38 +27,47 @@ public class AccountServiceImp implements AccountService {
     private LegalPersonDAO legalPersonDAO;
 
     @Override
-    public String logon(String phoneNum, String password) {
+    public Pair<String, Object> logon(String phoneNum, String password) {
         String md5Password = JavaMD5Util.MD5(password);
         Elder elder = elderDAO.queryByPhoneNum(phoneNum);
         Relative relative = relativeDAO.queryByPhoneNum(phoneNum);
         Volunteer volunteer = volunteerDAO.queryByPhoneNum(phoneNum);
         LegalPerson legalPerson = legalPersonDAO.queryByPhoneNum(phoneNum);
         if(elder != null){
-            if (elder.getPassword() == md5Password){
-                return "Elder";
+            if (elder.getPassword().equals(md5Password)){
+                Pair<String, Object> pair = new Pair<String, Object>("Elder", elder);
+                return pair;
             }else{
-                return "Incorrect password";
+                Pair<String, Object> pair = new Pair<String, Object>("Incorrect password", null);
+                return pair;
             }
         }else if(relative != null){
-            if(relative.getPassword() == md5Password){
-                return "Relative";
+            if(relative.getPassword().equals(md5Password)){
+                Pair<String, Object> pair = new Pair<String, Object>("Relative", relative);
+                return pair;
             }else{
-                return "Incorrect password";
+                Pair<String, Object> pair = new Pair<String, Object>("Incorrect password", null);
+                return pair;
             }
         }else if (volunteer != null){
-            if (volunteer.getPassword() == md5Password){
-                return "Volunteer";
+            if (volunteer.getPassword().equals(md5Password)){
+                Pair<String, Object> pair = new Pair<String, Object>("Volunteer", volunteer);
+                return pair;
             }else{
-                return "Incorrect password";
+                Pair<String, Object> pair = new Pair<String, Object>("Incorrect password", null);
+                return pair;
             }
         }else if (legalPerson != null){
-            if (legalPerson.getPassword() == md5Password){
-                return "LegalPerson";
+            if (legalPerson.getPassword().equals(md5Password)){
+                Pair<String, Object> pair = new Pair<String, Object>("LegalPerson", legalPerson);
+                return pair;
             }else{
-                return "Incorrect password";
+                Pair<String, Object> pair = new Pair<String, Object>("Incorrect password", null);
+                return pair;
             }
         }else{
-            return "Invalid Account";
+            Pair<String, Object> pair = new Pair<String, Object>("Invalid Account", null);
+            return pair;
         }
     }
 
@@ -68,25 +78,25 @@ public class AccountServiceImp implements AccountService {
         Volunteer volunteer = volunteerDAO.queryById(id);
         LegalPerson legalPerson = legalPersonDAO.queryById(id);
         if(elder != null){
-            if (elder.getPhone() == phoneNum){
+            if (elder.getPhone().equals(phoneNum)){
                 return "Elder";
             }else{
                 return "Incorrect phone number";
             }
         }else if(relative != null){
-            if(relative.getPhone() == phoneNum){
+            if(relative.getPhone().equals(phoneNum)){
                 return "Relative";
             }else{
                 return "Incorrect phone number";
             }
         }else if (volunteer != null){
-            if (volunteer.getPhone() == phoneNum){
+            if (volunteer.getPhone().equals(phoneNum)){
                 return "Volunteer";
             }else{
                 return "Incorrect phone number";
             }
         }else if (legalPerson != null){
-            if (legalPerson.getPhone() == phoneNum){
+            if (legalPerson.getPhone().equals(phoneNum)){
                 return "LegalPerson";
             }else{
                 return "Incorrect phone number";
