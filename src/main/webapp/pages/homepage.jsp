@@ -11,65 +11,65 @@
 <%@include file="templates/sidebar.jsp"%>
 <link rel="stylesheet" href="/OCare/Assets/CSS/homepage.css">
 <div class="content">
-   <table class="ui table segment">
-      <thead>
+    <table class="ui table segment">
+        <thead>
         <tr>
-          <th>������</th>
-          <th>״̬</th>
-          <th>��ϸ��Ϣ</th>
-          <th>��ע</th>
+            <th>申请人</th>
+            <th>状态</th>
+            <th>详细信息</th>
+            <th>备注</th>
         </tr>
-      </thead>
+        </thead>
         <tr>
-          <td>����������</td>
-          <td><i class="question icon"></i>�����</td>
-          <td><i class="icon search"></i>�鿴</td>
-          <td>��</td>
+            <td>无特殊名字</td>
+            <td><i class="question icon"></i>待审核</td>
+            <td><i class="icon search"></i>查看</td>
+            <td>无</td>
         </tr>
         <tr class="positive">
-          <td>����</td>
-          <td><i class="icon checkmark"></i> ��ͨ��</td>
-          <td><i class="icon search"></i>�鿴</td>
-          <td>��</td>
+            <td>张三</td>
+            <td><i class="icon checkmark"></i> 已通过</td>
+            <td><i class="icon search"></i>查看</td>
+            <td>无</td>
         </tr>
         <tr>
-          <td>����</td>
-          <td><i class="question icon"></i>�����</td>
-          <td><i class="icon search"></i>�鿴</td>
-          <td>��绰��ϵ</td>
+            <td>李四</td>
+            <td><i class="question icon"></i>待审核</td>
+            <td><i class="icon search"></i>查看</td>
+            <td>需电话联系</td>
         </tr>
         <tr class="negative">
-          <td>����</td>
-          <td><i class="icon Ban Circle"></i>�Ѿܾ�</td>
-          <td><i class="icon search"></i>�鿴</td>
-          <td>ͼƬ���ϸ�</td>
+            <td>王五</td>
+            <td><i class="icon Ban Circle"></i>已拒绝</td>
+            <td><i class="icon search"></i>查看</td>
+            <td>图片不合格</td>
         </tr>
 
-     <c:forEach items="${list}" var="var">
-          <c:if test="${var.type}=1||${var.type}=2"/>
-          <tr class="positive">
-            <td>${var.id}</td>
-            <td><i class="icon checkmark"></i>��ͨ��</td>
-            <td><a href="/OCare/monitor/agree/${var.id}"><i class="icon search"></i>�鿴</a></td>
-            <td>��</td>
-          </tr>
-          <c:if test="${var.type}=4"/>
-          <tr class="negative">
-            <td>${var.id}</td>
-            <td><i class="icon Ban Circle"></i>�Ѿܾ�</td>
-            <td><a href="/OCare/monitor/agree/${var.id}"><i class="icon search"></i>�鿴</a></td>
-            <td>��</td>
-          </tr>
-          <c:if test="${var.type}=3"/>
-          <tr>
-            <td>${var.id}</td>
-            <td><i class="icon Ban Circle"></i>�����</td>
-            <td><a href="/OCare/monitor/agree/${var.id}"><i class="icon search"></i>�鿴</a></td>
-            <td>��</td>
-          </tr>
+        <c:forEach items="${list}" var="var">
+            <c:if test="${var.type}=1||${var.type}=2"/>
+            <tr class="positive">
+                <td>${var.id}</td>
+                <td><i class="icon checkmark"></i>已通过</td>
+                <td><a href="/OCare/monitor/agree/${var.id}"><i class="icon search"></i>查看</a></td>
+                <td>无</td>
+            </tr>
+            <c:if test="${var.type}=4"/>
+            <tr class="negative">
+                <td>${var.id}</td>
+                <td><i class="icon Ban Circle"></i>已拒绝</td>
+                <td><a href="/OCare/monitor/agree/${var.id}"><i class="icon search"></i>查看</a></td>
+                <td>无</td>
+            </tr>
+            <c:if test="${var.type}=3"/>
+            <tr>
+                <td>${var.id}</td>
+                <td><i class="icon Ban Circle"></i>待审核</td>
+                <td><a href="/OCare/monitor/agree/${var.id}"><i class="icon search"></i>查看</a></td>
+                <td>无</td>
+            </tr>
         </c:forEach>
-      </tbody>
-   </table>
+        </tbody>
+    </table>
 </div>
 
 <%@include file="templates/footer.jsp"%>
