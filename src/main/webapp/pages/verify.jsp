@@ -33,6 +33,18 @@
     </a>
   </div>
   <img class="ui rounded huge image" src="/OCare/Assets/Images/old-couple.jpg" pagespeed_url_hash="481064615" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+  <div class="elderID-relativeID">
+    <a class="ui red label">
+      <i class="icon remove circle"></i>拒绝
+    </a>
+    <a class="ui teal label">
+      <i class="icon add sign"></i>通过
+    </a>
+    <a class="ui label">
+      <i class="icon adjust"></i>暂定
+    </a>
+  </div>
+
 </div>
 </body>
 </html>
