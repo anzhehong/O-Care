@@ -17,7 +17,7 @@
 
 </head>
 <body>
-<div class="header">
+<div class="header-globle">
   <div class="container">
     <img src="/OCare/Assets/Images/Ocare-logo.png">
     <div class="greeting">

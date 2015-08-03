@@ -5,6 +5,10 @@
       &nbsp;&nbsp;&nbsp;&nbsp;实时地图
       <i class="map icon"></i>
     </a>
+    <a class="item" href="monitor/list">
+      &nbsp;&nbsp;&nbsp;&nbsp;监护人申请审核
+      <i class="checkmark icon"></i>
+    </a>
     <div class="header item">
       <i class="male icon"></i>
       职员管理

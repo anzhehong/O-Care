@@ -7,9 +7,10 @@
     font-family: Hiragino-Sans-GB-W3;
     width: 352px;
     min-height: 810px;
-    margin-left: -5px;
+    margin-left: -0px;
     background-color: #d7eeec;
     border-radius: 0px;
+    position: absolute;
 }
 
 .sidebar.item a{
