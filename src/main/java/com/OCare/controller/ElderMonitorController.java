@@ -20,7 +20,7 @@ public class ElderMonitorController {
     @RequestMapping("/list")
     public String listAllRequest(Model model){
         model.addAttribute("list",verifyService.getAllUntreatedRequests());
-        return "monitorRequest";
+        return "homepage";
     }
 
     @RequestMapping(value="/agree/{id}", method = RequestMethod.GET)

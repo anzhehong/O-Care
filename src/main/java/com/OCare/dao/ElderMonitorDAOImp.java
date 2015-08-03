@@ -15,7 +15,7 @@ public class ElderMonitorDAOImp extends IGeneralDAOImpl<ElderMonitor> implements
 
     @Override
     public List<ElderMonitor> getAllUntreatedRequests() {
-        String hql = "from ElderMonitor where type = 3";
+        String hql = "from ElderMonitor";
         Query query = super.sessionFactory.getCurrentSession().createQuery(hql);
         return query.list();
     }
