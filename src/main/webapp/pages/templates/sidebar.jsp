@@ -5,7 +5,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;实时地图
       <i class="map icon"></i>
     </a>
-    <a class="item" href="monitor/list">
+    <a class="item" href="/OCare/monitor/list">
       &nbsp;&nbsp;&nbsp;&nbsp;监护人申请审核
       <i class="checkmark icon"></i>
     </a>

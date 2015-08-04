@@ -47,30 +47,31 @@
         </tr>
 
         <c:forEach items="${list}" var="var">
-            <c:if test="${var.type}==1||${var.type}==2">
+            <c:if test="${var.type==1||var.type==2}">
                 <tr class="positive">
-                    <td><c:out value="${var.id}"/></td>
+                    <td>${var.id}</td>
                     <td><i class="icon checkmark"></i>已通过</td>
                     <td><a href="/OCare/monitor/agree/${var.id}"><i class="icon search"></i>查看</a></td>
                     <td>无</td>
                 </tr>
             </c:if>
-            <c:if test="${var.type}==4">
+            <c:if test="${var.type==3}">
+                <tr>
+                    <td>${var.id}</td>
+                    <td><i class="question icon"></i>待审核</td>
+                    <td><a href="/OCare/monitor/undesided/${var.id}"><i class="icon search"></i>查看</a></td>
+                    <td>无</td>
+                </tr>
+            </c:if>
+            <c:if test="${var.type==4}">
                 <tr class="negative">
-                    <td><c:out value="${var.id}"/></td>
+                    <td>${var.id}</td>
                     <td><i class="icon Ban Circle"></i>已拒绝</td>
                     <td><a href="/OCare/monitor/reject/${var.id}"><i class="icon search"></i>查看</a></td>
                     <td>无</td>
                 </tr>
             </c:if>
-            <c:if test="${var.type}==3">
-                <tr>
-                    <td><c:out value="${var.id}"/></td>
-                    <td><i class="question icon"></i>待审核</td>
-                    <td><a href="/OCare/monitor/agree/${var.id}"><i class="icon search"></i>查看</a></td>
-                    <td>无</td>
-                </tr>
-            </c:if>
+
         </c:forEach>
         </tbody>
     </table>

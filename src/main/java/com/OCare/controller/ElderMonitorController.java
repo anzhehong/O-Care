@@ -25,17 +25,23 @@ public class ElderMonitorController {
 
     @RequestMapping(value="/agree/{id}", method = RequestMethod.GET)
     public String agreeRequest(@PathVariable String id, Model model){
-        verifyService.checkMonitorApply(Integer.parseInt(id), true);
+        verifyService.checkMonitorApply(Integer.parseInt(id), 1);
         model.addAttribute("list", verifyService.getAllUntreatedRequests());
         model.addAttribute("request",verifyService.getRequestByID(Integer.parseInt(id)));
         return "verify";
     }
 
-
-
     @RequestMapping(value="/reject/{id}", method = RequestMethod.GET)
-    public String rejectRequest(@PathVariable String id, Model model){
-        verifyService.checkMonitorApply(Integer.parseInt(id), false);
+    public String rejectRequest(@PathVariable String id, Model model) {
+        verifyService.checkMonitorApply(Integer.parseInt(id), 4);
+        model.addAttribute("list", verifyService.getAllUntreatedRequests());
+        model.addAttribute("request", verifyService.getRequestByID(Integer.parseInt(id)));
+        return "verify";
+    }
+
+    @RequestMapping(value="/undesided/{id}", method = RequestMethod.GET)
+    public String AllRequest(@PathVariable String id, Model model){
+        verifyService.checkMonitorApply(Integer.parseInt(id), 3);
         model.addAttribute("list", verifyService.getAllUntreatedRequests());
         model.addAttribute("request",verifyService.getRequestByID(Integer.parseInt(id)));
         return "verify";

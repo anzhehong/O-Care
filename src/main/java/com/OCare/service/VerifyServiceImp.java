@@ -36,16 +36,20 @@ public class VerifyServiceImp implements VerifyService {
     }
 
     @Override
-    public void checkMonitorApply(int elderMonitorId, boolean isApproval) {
+    public void checkMonitorApply(int elderMonitorId, int isApproval) {
         //首先根据id拿到数据库中的elderMonitor
         ElderMonitor monitorToUpdate = elderMonitorDAO.getById(elderMonitorId);
         //审批不同意，ElderMonitor里的type应为4
-        if (isApproval == false){
+        if (isApproval == 4){
             monitorToUpdate.setType(4);
             elderMonitorDAO.update(monitorToUpdate);
-        }else{
+        }
+        else if( isApproval==1||isApproval==2){
             //审批同意，ElderMonitor里的type应为1，意味监护人
             monitorToUpdate.setType(1);
+            elderMonitorDAO.update(monitorToUpdate);
+        }else {
+            monitorToUpdate.setType(3);
             elderMonitorDAO.update(monitorToUpdate);
         }
     }

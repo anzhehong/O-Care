@@ -1,10 +1,8 @@
-
+<%@page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
     <title>HomePage</title>
     <link rel="stylesheet" href="web/WEB-INF/css/index.css">
-
     <link rel="stylesheet" href="web/WEB-INF/libs/semantic.css" media="screen">
     <link rel="stylesheet" href="web/WEB-INF/libs/fonts/icon.css" media="screen">
 

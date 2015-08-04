@@ -22,7 +22,7 @@ public interface VerifyService {
         参数：申请Id,是否同意，false为不同意，true为同意，这个值由管理员传入
         返回值：无
      */
-    public void checkMonitorApply(int elderMonitorId, boolean isApproval);
+    public void checkMonitorApply(int elderMonitorId, int isApproval);
 
     /*
         功能：列出所有未处理的监护人请求，即type为3的ElderMonitor的集合
