@@ -3204,7 +3204,7 @@ body > .ui.grid {
 }
 
 .ui.menu .item {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   background-color: #78d6cc;
 }
 
@@ -12805,6 +12805,7 @@ a.ui.teal.label:hover:before {
 
 .ui.segment > .ui.dimmer {
   border-radius: 5px;
+  font-size:1.2rem;
 }
 
 .ui.horizontal.segment > .ui.dimmer,
