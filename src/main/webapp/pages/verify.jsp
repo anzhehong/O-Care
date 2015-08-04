@@ -17,22 +17,23 @@
 </head>
 <body>
 <div class="content">
+
   <div class="ui teal ribbon label">申请审核:</div>
   <div class="ui divided selection list">
     <a class="item">
-      <div class="ui red horizontal label">申请ID:</div>
+      <div class="ui red horizontal label">申请ID:  <c:out value="${id}"/></div>
+    </a>
+    <a class="item">
+      <div class="ui horizontal label">老人ID:<c:out value="${request.elder_id}"/> </div>
       bulabula
     </a>
     <a class="item">
-      <div class="ui horizontal label">老人ID:</div>
-      bulabula
-    </a>
-    <a class="item">
-      <div class="ui horizontal label">申请人ID:</div>
+      <div class="ui horizontal label">申请人ID:<c:out value="${request.relative_id}"/></div>
       bulabula
     </a>
   </div>
-  <img class="ui rounded huge image" src="/OCare/Assets/Images/old-couple.jpg" pagespeed_url_hash="481064615" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+  <c:out value="${request.togetherImg}"/>
+  <img class="ui rounded huge image" src="/OCare/Assets/Images/relative.jpg" pagespeed_url_hash="481064615" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
   <div class="elderID-relativeID">
     <a class="ui red label">
       <i class="icon remove circle"></i>拒绝
@@ -44,7 +45,6 @@
       <i class="icon adjust"></i>暂定
     </a>
   </div>
-
 </div>
 </body>
 </html>

@@ -27,13 +27,17 @@ public class ElderMonitorController {
     public String agreeRequest(@PathVariable String id, Model model){
         verifyService.checkMonitorApply(Integer.parseInt(id), true);
         model.addAttribute("list", verifyService.getAllUntreatedRequests());
-        return "monitorRequest";
+        model.addAttribute("request",verifyService.getRequestByID(Integer.parseInt(id)));
+        return "verify";
     }
+
+
 
     @RequestMapping(value="/reject/{id}", method = RequestMethod.GET)
     public String rejectRequest(@PathVariable String id, Model model){
         verifyService.checkMonitorApply(Integer.parseInt(id), false);
         model.addAttribute("list", verifyService.getAllUntreatedRequests());
-        return "monitorRequest";
+        model.addAttribute("request",verifyService.getRequestByID(Integer.parseInt(id)));
+        return "verify";
     }
 }

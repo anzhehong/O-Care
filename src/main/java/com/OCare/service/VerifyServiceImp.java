@@ -56,6 +56,9 @@ public class VerifyServiceImp implements VerifyService {
     }
 
     @Override
+    public ElderMonitor getRequestByID(int requestid) {return elderMonitorDAO.getById(requestid); }
+
+    @Override
     public List<ElderMonitor> monitorStatus(String relativeId) {
         return elderMonitorDAO.queryByRelativeId(relativeId);
     }

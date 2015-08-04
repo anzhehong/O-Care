@@ -7,3 +7,9 @@
     background-color: #ffffff;
     min-height: 800px;
 }
+
+a{
+    color: #333333;
+    font-family: "Helvetica Neue", "Helvetica", Arial;
+    text-decoration: none;
+}

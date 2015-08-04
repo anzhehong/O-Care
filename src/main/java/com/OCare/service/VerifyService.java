@@ -31,5 +31,7 @@ public interface VerifyService {
      */
     public List<ElderMonitor> getAllUntreatedRequests();
 
+    public ElderMonitor getRequestByID(int requestid);
+
     public List<ElderMonitor> monitorStatus(String relativeId);
 }

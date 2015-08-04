@@ -14,14 +14,15 @@
     <table class="ui table segment">
         <thead>
         <tr>
-            <th>申请人</th>
+            <th>申请人ID</th>
             <th>状态</th>
             <th>详细信息</th>
             <th>备注</th>
         </tr>
         </thead>
+        <tbody>
         <tr>
-            <td>无特殊名字</td>
+            <td>小明</td>
             <td><i class="question icon"></i>待审核</td>
             <td><i class="icon search"></i>查看</td>
             <td>无</td>
@@ -46,27 +47,30 @@
         </tr>
 
         <c:forEach items="${list}" var="var">
-            <c:if test="${var.type}=1||${var.type}=2"/>
-            <tr class="positive">
-                <td>${var.id}</td>
-                <td><i class="icon checkmark"></i>已通过</td>
-                <td><a href="/OCare/monitor/agree/${var.id}"><i class="icon search"></i>查看</a></td>
-                <td>无</td>
-            </tr>
-            <c:if test="${var.type}=4"/>
-            <tr class="negative">
-                <td>${var.id}</td>
-                <td><i class="icon Ban Circle"></i>已拒绝</td>
-                <td><a href="/OCare/monitor/agree/${var.id}"><i class="icon search"></i>查看</a></td>
-                <td>无</td>
-            </tr>
-            <c:if test="${var.type}=3"/>
-            <tr>
-                <td>${var.id}</td>
-                <td><i class="icon Ban Circle"></i>待审核</td>
-                <td><a href="/OCare/monitor/agree/${var.id}"><i class="icon search"></i>查看</a></td>
-                <td>无</td>
-            </tr>
+            <c:if test="${var.type}==1||${var.type}==2">
+                <tr class="positive">
+                    <td><c:out value="${var.id}"/></td>
+                    <td><i class="icon checkmark"></i>已通过</td>
+                    <td><a href="/OCare/monitor/agree/${var.id}"><i class="icon search"></i>查看</a></td>
+                    <td>无</td>
+                </tr>
+            </c:if>
+            <c:if test="${var.type}==4">
+                <tr class="negative">
+                    <td><c:out value="${var.id}"/></td>
+                    <td><i class="icon Ban Circle"></i>已拒绝</td>
+                    <td><a href="/OCare/monitor/reject/${var.id}"><i class="icon search"></i>查看</a></td>
+                    <td>无</td>
+                </tr>
+            </c:if>
+            <c:if test="${var.type}==3">
+                <tr>
+                    <td><c:out value="${var.id}"/></td>
+                    <td><i class="question icon"></i>待审核</td>
+                    <td><a href="/OCare/monitor/agree/${var.id}"><i class="icon search"></i>查看</a></td>
+                    <td>无</td>
+                </tr>
+            </c:if>
         </c:forEach>
         </tbody>
     </table>

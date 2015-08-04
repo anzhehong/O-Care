@@ -26,7 +26,7 @@
     <div class="nav" >
       <ul>
         <li>
-          <a class="active item"><i class="home icon"></i> 首页</a>
+          <a class="active item" href="index.jsp"><i class="home icon"></i> 首页</a>
         </li>
         <li>
           <a class="item"><i class="gift icon"></i> 关于我们</a>
