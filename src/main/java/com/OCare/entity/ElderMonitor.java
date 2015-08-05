@@ -16,7 +16,9 @@ public class ElderMonitor {
     private int id;
     private String elder_id;
     private String relative_id;
-    //2表示监护类型为普通亲戚；1表示监护类型为监护人；3表示在申请监护人;4表示申请监护人被拒绝
+    //2表示监护类型为普通亲戚；1表示监护类型为监护人；3表示在申请监护人;
+    //4表示申请监护人被拒绝;5表示亲属关系;6代表邻居关系;
+    //7.代表
     private int type;
     private String togetherImg;
 

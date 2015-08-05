@@ -152,6 +152,6 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>ocare</finalName>
+    <finalName>OCare</finalName>
   </build>
 </project>

@@ -8,7 +8,6 @@ import com.OCare.service.VerifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
@@ -35,7 +34,7 @@ public class InterfaceController {
      * Error: true, ErrorMsg
      * Error: false, Account type, Account detail
      */
-    @RequestMapping(value = "/logon" , method = RequestMethod.GET)
+    @RequestMapping(value = "/logon")
     @ResponseBody
     public Map<String, Object> logon(String phoneNum, String password){
         Map<String, Object> result = new HashMap<String, Object>();
@@ -74,7 +73,7 @@ public class InterfaceController {
      * @return
      * Error: false, account detail
      */
-    @RequestMapping(value = "/register/elder", method = RequestMethod.GET)
+    @RequestMapping(value = "/register/elder")
     @ResponseBody
     public Map<String, Object> elderRegister(String elderId, int companyId, String elderName,
                                              String elderPhone, String elderAddress,
@@ -106,7 +105,7 @@ public class InterfaceController {
      * @return
      * Error: false, account detail
      */
-    @RequestMapping(value = "/register/relative" , method = RequestMethod.GET)
+    @RequestMapping(value = "/register/relative")
     @ResponseBody
     public Map<String, Object> relativeRegister(String relativeId, String relativeName,
                                                 String relativePhone, String relativeAddress,
@@ -138,7 +137,7 @@ public class InterfaceController {
      * @return
      * Error: false, account detail
      */
-    @RequestMapping(value = "/register/volunteer" , method = RequestMethod.GET)
+    @RequestMapping(value = "/register/volunteer")
     @ResponseBody
     public Map<String, Object> volunteerRegister(String volunteerId, String volunteerName, String volunteerPhone,
                                                  String volunteerAddress, String volunteerEmail,
@@ -169,7 +168,7 @@ public class InterfaceController {
      * @return
      * Error: false, account detail
      */
-    @RequestMapping(value = "/register/legalperson", method = RequestMethod.GET)
+    @RequestMapping(value = "/register/legalperson")
     @ResponseBody
     public Map<String, Object> legalPersonRegister(String lpId, String lpName, String lpPhone,
                                                    String lpEmail, String lpPassword, String lpImage){
@@ -195,7 +194,7 @@ public class InterfaceController {
      * @return
      * Error: false,
      */
-    @RequestMapping(value = "/apply/monitor", method = RequestMethod.GET)
+    @RequestMapping(value = "/apply/monitor")
     @ResponseBody
     public Map<String, Object> applyMonitor(String relativeId, String elderId, String togetherImg){
         Map<String, Object> result = new HashMap<String, Object>();
@@ -210,7 +209,7 @@ public class InterfaceController {
      * Error: true, ErrorMsg
      * Error:false, monitor detail
      */
-    @RequestMapping(value = "/status/monitor", method = RequestMethod.GET)
+    @RequestMapping(value = "/status/monitor")
     @ResponseBody
     public Map<String, Object> checkMonitor(String relativeId){
         Map<String, Object> result = new HashMap<String, Object>();
@@ -230,7 +229,7 @@ public class InterfaceController {
      * @return
      * Error: false, code
      */
-    @RequestMapping(value = "/code",method = RequestMethod.GET)
+    @RequestMapping(value = "/code")
     @ResponseBody
     public Map<String, Object> createCode(String phoneNum){
         Map<String, Object> result = new HashMap<String, Object>();
@@ -247,7 +246,7 @@ public class InterfaceController {
      * Error: true, ErrorMsg
      * Error:false, account type
      */
-    @RequestMapping(value = "/verify/phone", method = RequestMethod.GET)
+    @RequestMapping(value = "/verify/phone")
     @ResponseBody
     public Map<String, Object> verifyPhoneNum(String id, String phoneNum){
         Map<String, Object> result = new HashMap<String, Object>();
@@ -274,7 +273,7 @@ public class InterfaceController {
      * Error: true, ErrorMsg
      * Error: false
      */
-    @RequestMapping(value = "/changepassword",method = RequestMethod.GET)
+    @RequestMapping(value = "/changepassword")
     @ResponseBody
     public Map<String, Object> changePassword(String id, String password){
         Map<String, Object> result = new HashMap<String, Object>();
