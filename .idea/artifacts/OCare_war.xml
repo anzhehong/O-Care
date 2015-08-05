@@ -3,12 +3,6 @@
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="ocare.war">
       <element id="artifact" artifact-name="OCare:war exploded" />
-      <element id="directory" name="WEB-INF">
-        <element id="directory" name="lib">
-          <element id="library" level="module" name="JUnit4" module-name="OCare" />
-          <element id="library" level="project" name="android-logging-log4j-1.0.3" />
-        </element>
-      </element>
     </root>
   </artifact>
 </component>

@@ -107,6 +107,49 @@
       <artifactId>jackson-mapper-asl</artifactId>
       <version>1.9.13</version>
     </dependency>
+
+    <dependency>
+      <groupId>android-loggin-log4j</groupId>
+      <artifactId>android-loggin-log4j</artifactId>
+      <version>1.0.3</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/resources/META-INF/lib/android-logging-log4j-1.0.3.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>ccp</groupId>
+      <artifactId>ccp</artifactId>
+      <version>2.6.3r</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/resources/META-INF/lib/CCP_REST_SMS_SDK_JAVA_v2.6.3r.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>dom4j</groupId>
+      <artifactId>dom4j</artifactId>
+      <version>1.6.1</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/resources/META-INF/lib/dom4j-1.6.1.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.2.4</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/resources/META-INF/lib/gson-2.2.4.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>httpclient</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/resources/META-INF/lib/httpclient.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/resources/META-INF/lib/log4j-1.2.17.jar</systemPath>
+    </dependency>
   </dependencies>
   <build>
     <finalName>ocare</finalName>

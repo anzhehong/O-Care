@@ -42,15 +42,15 @@
     </a>
   </div>
   <%--<c:out value="${request.togetherImg}"/>  数据库里没有图片 只能显示以下样图--%>
-  <img class="ui rounded huge image" src="/OCare/Assets/Images/together -image.jpg" pagespeed_url_hash="481064615" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+  <img class="ui rounded large image" src="/OCare/Assets/Images/together -image.jpg" pagespeed_url_hash="481064615" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
   <div class="elderID-relativeID">
     <a class="ui huge red label" id="reject">
       <i class="icon remove circle"></i>拒绝
     </a>
-    <a class="ui huge label" href="/OCare/monitor/list" id="undesided" style="margin: 30px">
+    <a class="ui huge label" href="/OCare/monitor/list" id="undesided">
       <i class="icon adjust"></i>暂定
     </a>
-    <a class="ui huge teal label" id="agree" style="margin: 30px">
+    <a class="ui huge teal label" id="agree">
       <i class="icon add sign"></i>通过
     </a>
   </div>

@@ -1,14 +1,9 @@
 package com.OCare.service;
 
 import com.OCare.dao.ElderMonitorDAO;
-import com.OCare.dao.ElderMonitorDAOImp;
 import com.OCare.entity.ElderMonitor;
-import org.hamcrest.collection.IsArray;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -26,6 +21,7 @@ public class VerifyServiceImp implements VerifyService {
 
     public void submitMonitorApply(String relativeId, String elderId, String togetherImg) {
         ElderMonitor newRelation = new ElderMonitor();
+        System.out.println("elderID:"+elderId);
         newRelation.setElder_id(elderId);
         newRelation.setRelative_id(relativeId);
         newRelation.setTogetherImg(togetherImg);
