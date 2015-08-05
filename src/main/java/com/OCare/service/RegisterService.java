@@ -5,6 +5,8 @@ import com.OCare.entity.LegalPerson;
 import com.OCare.entity.Relative;
 import com.OCare.entity.Volunteer;
 
+import java.util.ArrayList;
+
 /**
  * Created by fowafolo on 15/7/28.
  */
@@ -37,4 +39,16 @@ public interface RegisterService {
         返回值：法人实例LegalPerson
      */
     public LegalPerson registerForALegalPerson(String lpId,String lpName, String lpPhone, String lpEmail,String lpPassword,String lpImage);
+
+    /*
+        功能：检测身份证号和手机号是否已经被注册过了
+        参数：注册的身份证号，注册的手机号
+        返回值：布尔值，true表示身份证号和手机号可以注册，false表示其中一项已经注册过了
+     */
+//    public boolean isIdOrPhoneNumExist(String id, String phoneNum);
+
+    public ArrayList<Elder> getAllElders();
+    public ArrayList<Relative> getAllRelatives();
+    public ArrayList<Volunteer> getAllVolunteers();
+    public ArrayList<LegalPerson> getAllLegalPerson();
 }

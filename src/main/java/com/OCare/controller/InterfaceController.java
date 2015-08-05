@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by mark on 8/2/15.
@@ -83,7 +81,16 @@ public class InterfaceController {
                                              String elderPassword, String elderImage){
         Map<String, Object> result = new HashMap<String, Object>();
 
+        //身份证或者手机号已经注册
+        if (!isIdOrPhoneNumExist(elderId,elderPhone))
+        {
+            result.put("error",true);
+            result.put("errorMsg","Id or phoneNum exists");
+            return result;
+        }
+        //身份证或者手机号未被注册
         Elder elder = registerService.registerForAnElder(elderId, companyId, elderName, elderPhone, elderAddress, elderPassword, elderImage);
+        System.out.println(isIdOrPhoneNumExist(elderId,elderPhone));
         result.put("error", false);
         result.put("account", elder);
         return result;
@@ -105,6 +112,14 @@ public class InterfaceController {
                                                 String relativePhone, String relativeAddress,
                                                 String relativePassword, String relativeImage){
         Map<String, Object> result = new HashMap<String, Object>();
+        //身份证或者手机号已经注册
+        if (!isIdOrPhoneNumExist(relativeId,relativePhone))
+        {
+            result.put("error",true);
+            result.put("errorMsg","Id or phoneNum exists");
+            return result;
+        }
+        //身份证或者手机号未被注册
         Relative relative = registerService.registerForARelative(relativeId, relativeName, relativePhone, relativeAddress, relativePassword, relativeImage);
         result.put("error", false);
         result.put("account", relative);
@@ -129,6 +144,15 @@ public class InterfaceController {
                                                  String volunteerAddress, String volunteerEmail,
                                                  int volunteerCompanyId, String volunteerPassword, String volunteerImage){
         Map<String, Object> result = new HashMap<String, Object>();
+
+        //身份证或者手机号已经注册
+        if (!isIdOrPhoneNumExist(volunteerId,volunteerPhone))
+        {
+            result.put("error",true);
+            result.put("errorMsg","Id or phoneNum exists");
+            return result;
+        }
+        //身份证或者手机号未被注册
         Volunteer volunteer = registerService.registerForAVolunteer(volunteerId, volunteerName, volunteerPhone, volunteerAddress, volunteerEmail, volunteerCompanyId, volunteerPassword, volunteerImage);
         result.put("error", false);
         result.put("account", volunteer);
@@ -150,6 +174,14 @@ public class InterfaceController {
     public Map<String, Object> legalPersonRegister(String lpId, String lpName, String lpPhone,
                                                    String lpEmail, String lpPassword, String lpImage){
         Map<String, Object> result = new HashMap<String, Object>();
+        //身份证或者手机号已经注册
+        if (!isIdOrPhoneNumExist(lpId,lpPhone))
+        {
+            result.put("error",true);
+            result.put("errorMsg","Id or phoneNum exists");
+            return result;
+        }
+        //身份证或者手机号未被注册
         LegalPerson legalPerson = registerService.registerForALegalPerson(lpId, lpName, lpPhone, lpEmail, lpPassword, lpImage);
         result.put("error", false);
         result.put("account", legalPerson);
@@ -256,5 +288,53 @@ public class InterfaceController {
             return result;
         }
 
+    }
+
+    public boolean isIdOrPhoneNumExist(String id, String phoneNum) {
+        boolean flag = true;
+        ArrayList<Elder> elders = registerService.getAllElders();
+        ArrayList<Relative> relatives = registerService.getAllRelatives();
+        ArrayList<Volunteer> volunteers = registerService.getAllVolunteers();
+        ArrayList<LegalPerson> legalPersons = registerService.getAllLegalPerson();
+
+        Iterator<Elder> elderIterator = elders.iterator();
+        Iterator<Relative> relativeIterator = relatives.iterator();
+        Iterator<Volunteer> volunteerIterator = volunteers.iterator();
+        Iterator<LegalPerson> legalPersonIterator = legalPersons.iterator();
+
+        while (elderIterator.hasNext())
+        {
+            Elder elder = elderIterator.next();
+            if (elder.getId().equals(id)||elder.getPhone().equals(phoneNum))
+            {
+                flag = false;
+            }
+        }
+        while (relativeIterator.hasNext())
+        {
+            Relative relative = relativeIterator.next();
+            if (relative.getId().equals(id) || relative.getPhone().equals(phoneNum))
+            {
+                flag = false;
+            }
+        }
+        while (volunteerIterator.hasNext())
+        {
+            Volunteer volunteer = volunteerIterator.next();
+            if (volunteer.getId().equals(id) || volunteer.getPhone().equals(phoneNum))
+            {
+                flag = false;
+            }
+        }
+        while (legalPersonIterator.hasNext())
+        {
+            LegalPerson legalPerson  = legalPersonIterator.next();
+            if (legalPerson.getId().equals(id) || legalPerson.getPhone().equals(phoneNum))
+            {
+                flag = false;
+            }
+        }
+
+        return flag;
     }
 }

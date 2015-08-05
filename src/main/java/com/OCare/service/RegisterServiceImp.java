@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 
 /**
  * Created by fowafolo on 15/7/28.
@@ -36,6 +37,7 @@ public class RegisterServiceImp implements RegisterService {
         newElder.setPhone(elderPhone);
         newElder.setPassword(JavaMD5Util.MD5(elderPassword));
         newElder.setImage(elderImage);
+
         //插入到数据库中
         elderDAO.insert(newElder);
         return newElder;
@@ -91,5 +93,27 @@ public class RegisterServiceImp implements RegisterService {
         legalPersonDAO.insert(newLP);
 
         return newLP;
+    }
+
+
+
+    @Override
+    public ArrayList<Elder> getAllElders() {
+        return (ArrayList<Elder>) elderDAO.queryAll();
+    }
+
+    @Override
+    public ArrayList<Relative> getAllRelatives() {
+        return (ArrayList<Relative>) relativeDAO.queryAll();
+    }
+
+    @Override
+    public ArrayList<LegalPerson> getAllLegalPerson() {
+        return (ArrayList<LegalPerson>) legalPersonDAO.queryAll();
+    }
+
+    @Override
+    public ArrayList<Volunteer> getAllVolunteers() {
+        return (ArrayList<Volunteer>) volunteerDAO.queryAll();
     }
 }
