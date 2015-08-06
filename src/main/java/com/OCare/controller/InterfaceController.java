@@ -14,7 +14,7 @@ import java.util.*;
  */
 @Controller
 @RequestMapping("/app")
-public class AccountInterfaceController {
+public class InterfaceController {
     @Autowired
     private AccountService accountService;
     @Autowired

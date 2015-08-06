@@ -12,5 +12,4 @@ public interface EmployeeDAO extends IGeneralDAO<Employee> {
     public List<Employee> findEmployeeByName(String name);
     public List<Employee> findEmployeeByPosition(String position);
     public List<Employee> findEmployeeByDepartment(String department);
-    public List<Employee> findEmployeeByPhoneNum(String phoneNum);
 }

@@ -26,9 +26,6 @@ public class Employee {
     private int status;
     private String password;
     private String image;
-    private String superior;
-    private String workExperience;
-    private String workDetail;
 
     public String getId() {
         return id;
@@ -124,29 +121,5 @@ public class Employee {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public String getSuperior() {
-        return superior;
-    }
-
-    public void setSuperior(String superior) {
-        this.superior = superior;
-    }
-
-    public String getWorkDetail() {
-        return workDetail;
-    }
-
-    public void setWorkDetail(String workDetail) {
-        this.workDetail = workDetail;
-    }
-
-    public String getWorkExperience() {
-        return workExperience;
-    }
-
-    public void setWorkExperience(String workExperience) {
-        this.workExperience = workExperience;
     }
 }

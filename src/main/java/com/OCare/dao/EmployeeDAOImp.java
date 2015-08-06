@@ -53,12 +53,4 @@ public class EmployeeDAOImp extends IGeneralDAOImpl<Employee> implements Employe
         query.setString("m", department);
         return query.list();
     }
-
-    @Override
-    public List<Employee> findEmployeeByPhoneNum(String phoneNum) {
-        String hql = "from Employee where phone = :m";
-        Query query = sessionFactory.getCurrentSession().createQuery(hql);
-        query.setString("m", phoneNum);
-        return query.list();
-    }
 }

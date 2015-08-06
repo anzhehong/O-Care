@@ -49,9 +49,4 @@ public class CompanyServiceImp implements CompanyService {
     public List<Company> getByLegalPerson(String legalPerson) {
         return companyDAO.getByLegalPerson(legalPerson);
     }
-
-    @Override
-    public Company getCompanyById(int id) {
-        return companyDAO.getById(id);
-    }
 }
