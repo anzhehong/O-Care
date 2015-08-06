@@ -360,7 +360,7 @@ public class InterfaceController {
             }else if (status == "PhoneNum does not match to any account!")
             {
                 result.put("error",true);
-                result.put("error","PhoneNum does not match to any account!");
+                result.put("errorMsg","PhoneNum does not match to any account!");
             }
         }
         return result;
@@ -387,7 +387,7 @@ public class InterfaceController {
             }else
             {
                 result.put("error",true);
-                result.put("errorMsg","Change Image Successfully!");
+                result.put("errorMsg","Change Image not Successfully!");
             }
         }
         return result;
@@ -458,8 +458,14 @@ public class InterfaceController {
             result.put("errorMsg","Elder Id Input Error!");
         }else {
             Elder elder = elderService.getElderById(elderId);
-            result.put("error",false);
-            result.put("elderEntity",elder);
+            if (elder == null)
+            {
+                result.put("error",true);
+                result.put("errorMsg","Get Entity Error!");
+            } else {
+                result.put("error",false);
+                result.put("elderEntity",elder);
+            }
         }
         return result;
     }
@@ -478,8 +484,14 @@ public class InterfaceController {
             result.put("errorMsg","Relative Id Input Error!");
         }else {
             Relative relative = relativeService.getRelativeById(relativeId);
-            result.put("error",false);
-            result.put("elderEntity",relative);
+            if (relative == null)
+            {
+                result.put("error",true);
+                result.put("errorMsg","Get Entity Error!");
+            }else {
+                result.put("error",false);
+                result.put("relativeEntity",relative);
+            }
         }
         return result;
     }
@@ -498,8 +510,14 @@ public class InterfaceController {
             result.put("errorMsg","Elder Id Input Error!");
         }else {
             ArrayList<Relative> relatives = elderService.getAllMonitorsByElderId(elderId);
-            result.put("error",false);
-            result.put("MonitorList",relatives);
+            if (relatives == null)
+            {
+                result.put("error",true);
+                result.put("errorMsg","Get List Error!");
+            }else {
+                result.put("error",false);
+                result.put("MonitorList",relatives);
+            }
         }
         return result;
     }

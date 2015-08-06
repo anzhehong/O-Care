@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by fowafolo on 15/8/7.
@@ -24,13 +25,30 @@ public class ElderServiceImp implements ElderService {
 
     @Override
     public Elder getElderById(String elderId) {
+        if (!isElderExist(elderId))
+            return null;
         Elder elder = elderDAO.queryById(elderId);
         return elder;
     }
 
     @Override
     public ArrayList<Relative> getAllMonitorsByElderId(String elderId) {
+        if (!isElderExist(elderId))
+            return null;
         ArrayList<Relative> list = elderMonitorDAO.getAllMonitorsByElderId(elderId);
         return list;
+    }
+
+    public boolean isElderExist(String elderId){
+        boolean flag = false;
+        ArrayList<Elder> list = (ArrayList<Elder>) elderDAO.queryAll();
+        Iterator<Elder> iterator = list.iterator();
+        while (iterator.hasNext())
+        {
+            Elder tmp = iterator.next();
+            if (tmp.getId().equals(elderId))
+                flag = true;
+        }
+        return flag;
     }
 }

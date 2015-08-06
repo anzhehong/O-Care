@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by fowafolo on 15/8/7.
@@ -20,7 +22,22 @@ public class RelativeServiceImp implements RelativeService {
 
     @Override
     public Relative getRelativeById(String id) {
+        if (!isElderExist(id))
+            return null;
         Relative relative = relativeDAO.queryById(id);
         return relative;
+    }
+
+    public boolean isElderExist(String relativeId){
+        boolean flag = false;
+        ArrayList<Relative> list = (ArrayList<Relative>) relativeDAO.queryAll();
+        Iterator<Relative> iterator = list.iterator();
+        while (iterator.hasNext())
+        {
+            Relative tmp = iterator.next();
+            if (tmp.getId().equals(relativeId))
+                flag = true;
+        }
+        return flag;
     }
 }
