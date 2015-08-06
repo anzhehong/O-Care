@@ -92,11 +92,22 @@
       <column name="status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="password" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
       <column name="image" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="superior" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="workExperience" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="workDetail" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="EmployeeToCompany" columns="company_id" ref-table="Company" ref-schema="" ref-catalog="OCare" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fromEmployee" table="Task" schema="" catalog="OCare" columns="from"/>
       <exported-key name="toEmployee" table="Task" schema="" catalog="OCare" columns="to"/>
       <index name="Company_idx" unique="false" columns="company_id"/>
+    </table>
+    <table name="EmployeeCondition" schema="" catalog="OCare" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="employee_id" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="time" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="EmployeeConditionToEmployee_idx" unique="false" columns="employee_id"/>
     </table>
     <table name="LegalPerson" schema="" catalog="OCare" type="TABLE">
       <column name="id" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>

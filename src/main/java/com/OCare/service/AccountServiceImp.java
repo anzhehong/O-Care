@@ -133,4 +133,60 @@ public class AccountServiceImp implements AccountService {
             return "Invalid Account";
         }
     }
+
+    @Override
+    public Pair<String, Object> getImageByPhoneNum(String phoneNum) {
+        Elder elder = elderDAO.queryByPhoneNum(phoneNum);
+        Relative relative = relativeDAO.queryByPhoneNum(phoneNum);
+        Volunteer volunteer = volunteerDAO.queryByPhoneNum(phoneNum);
+        LegalPerson legalPerson = legalPersonDAO.queryByPhoneNum(phoneNum);
+
+        if (elder!=null)
+        {
+            Pair<String, Object> pair = new Pair<String, Object>("get image successfully.",elder.getImage());
+            return pair;
+        }else if(relative != null){
+            Pair<String, Object> pair = new Pair<String, Object>("get image successfully.",relative.getImage());
+            return pair;
+        }else if (volunteer != null){
+            Pair<String, Object> pair = new Pair<String, Object>("get image successfully.",volunteer.getImage());
+            return pair;
+        }else if (legalPerson != null){
+            Pair<String, Object> pair = new Pair<String, Object>("get image successfully.",legalPerson.getImage());
+            return pair;
+        }else{
+            Pair<String, Object> pair = new Pair<String, Object>("PhoneNum does not match to any account!",null);
+            return pair;
+        }
+    }
+
+    @Override
+    public boolean isChangeImageSucc(String phoneNum,String newImg) {
+        Elder elder = elderDAO.queryByPhoneNum(phoneNum);
+        Relative relative = relativeDAO.queryByPhoneNum(phoneNum);
+        Volunteer volunteer = volunteerDAO.queryByPhoneNum(phoneNum);
+        LegalPerson legalPerson = legalPersonDAO.queryByPhoneNum(phoneNum);
+        boolean flag ;
+        if (elder!=null)
+        {
+            elder.setImage(newImg);
+            elderDAO.update(elder);
+            flag = true;
+        }else if(relative != null){
+            relative.setImage(newImg);
+            relativeDAO.update(relative);
+            flag = true;
+        }else if (volunteer != null){
+            volunteer.setImage(newImg);
+            volunteerDAO.update(volunteer);
+            flag = true;
+        }else if (legalPerson != null){
+            legalPerson.setImage(newImg);
+            legalPersonDAO.update(legalPerson);
+            flag = true;
+        }else{
+            flag = false;
+        }
+        return flag;
+    }
 }

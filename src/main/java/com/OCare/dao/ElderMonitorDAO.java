@@ -1,7 +1,9 @@
 package com.OCare.dao;
 
 import com.OCare.entity.ElderMonitor;
+import com.OCare.entity.Relative;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,4 +17,14 @@ public interface ElderMonitorDAO extends IGeneralDAO<ElderMonitor> {
     public List<ElderMonitor> getAllUntreatedRequests();
     public List<ElderMonitor> queryByRelativeId(String relativeId);
     public ElderMonitor getById(int id);
+
+    /*
+        通过elder和某人的id拿到关系
+     */
+    public ArrayList<ElderMonitor> getMonitorByElderIdAndSbId(String elderId, String sbId);
+
+    /*
+        通过老人Id拿到所有监护人（type=1）
+     */
+    public ArrayList<Relative> getAllMonitorsByElderId(String elderId);
 }

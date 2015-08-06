@@ -1,9 +1,11 @@
 package com.OCare.dao;
 
 import com.OCare.entity.ElderMonitor;
+import com.OCare.entity.Relative;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +33,26 @@ public class ElderMonitorDAOImp extends IGeneralDAOImpl<ElderMonitor> implements
     @Override
     public ElderMonitor getById(int id) {
         return (ElderMonitor) sessionFactory.getCurrentSession().get(ElderMonitor.class, id);
+    }
+
+    @Override
+    public ArrayList<ElderMonitor> getMonitorByElderIdAndSbId(String elderId, String sbId) {
+        ArrayList<ElderMonitor> list = new ArrayList<ElderMonitor>();
+        String hql = "from ElderMonitor where relative_id = :m and elder_id = :n";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("m",sbId);
+        query.setString("n",elderId);
+        return (ArrayList<ElderMonitor>) query.list();
+    }
+
+    @Override
+    public ArrayList<Relative> getAllMonitorsByElderId(String elderId) {
+        ArrayList<Relative> list = new ArrayList<Relative>();
+        String hql = "from ElderMonitor where elder_id = :n";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("n",elderId);
+        list = (ArrayList<Relative>) query.list();
+        return list;
     }
 
     public ElderMonitorDAOImp()

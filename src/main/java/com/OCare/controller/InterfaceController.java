@@ -1,10 +1,7 @@
 package com.OCare.controller;
 
 import com.OCare.entity.*;
-import com.OCare.service.AccountService;
-import com.OCare.service.RegisterService;
-import com.OCare.service.SMSService;
-import com.OCare.service.VerifyService;
+import com.OCare.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +23,10 @@ public class InterfaceController {
     private VerifyService verifyService;
     @Autowired
     private SMSService smsService;
+    @Autowired
+    private ElderService elderService;
+    @Autowired
+    private RelativeService relativeService;
 
     /**
      * @param phoneNum：Phone number
@@ -335,5 +336,171 @@ public class InterfaceController {
         }
 
         return flag;
+    }
+
+    /*
+        功能：根据phoneNum拿到头像
+     */
+    @RequestMapping(value = "/getImageByPhoneNum")
+    @ResponseBody
+    public Map<String,Object> getImageByPhoneNum(String phoneNum)
+    {
+        Map<String , Object>result = new HashMap<String, Object>();
+        //传参错误
+        if (phoneNum == null || phoneNum == "null")
+        {
+            result.put("error",true);
+            result.put("errorMsg","Phone Number is valid!");
+        }else {
+            String status = accountService.getImageByPhoneNum(phoneNum).getKey();
+            if (status == "get image successfully.")
+            {
+                result.put("error",false);
+                result.put("image",accountService.getImageByPhoneNum(phoneNum).getValue());
+            }else if (status == "PhoneNum does not match to any account!")
+            {
+                result.put("error",true);
+                result.put("error","PhoneNum does not match to any account!");
+            }
+        }
+        return result;
+    }
+
+    /*
+        功能：根据phoneNum修改头像为newImage
+     */
+    @RequestMapping("/setNewImageByPhoneNum")
+    @ResponseBody
+    public Map<String,Object>setNewImageByPhoneNum(String phoneNum, String newImage)
+    {
+        Map<String, Object>result = new HashMap<String, Object>();
+        //传参数错误
+        if (phoneNum == null || phoneNum == "" || newImage == null || newImage == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","Phone Number is valid Or new Image is valid!");
+        }else {
+            boolean flag = accountService.isChangeImageSucc(phoneNum, newImage);
+            if (flag == true)
+            {
+                result.put("error",false);
+            }else
+            {
+                result.put("error",true);
+                result.put("errorMsg","Change Image Successfully!");
+            }
+        }
+        return result;
+    }
+
+    /*
+        功能：修改某个人和老人的关系为新的type
+     */
+    @RequestMapping("/changeRelation")
+    @ResponseBody
+    public Map<String,Object> changeRelationBetweenElderAndSomebody(String elderId,String sbPhoneNum,int newRelationType)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        if (sbPhoneNum == null || sbPhoneNum == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","Phone Number is valid Or new Image is valid!");
+        }else {
+            boolean flag = verifyService.changeRelationBetweenElderAndSomebody(elderId, sbPhoneNum, newRelationType);
+            if (flag == false)
+            {
+                result.put("error",true);
+                result.put("errorMsg","Change Relation Failed.");
+            }else {
+                result.put("error",false);
+            }
+
+        }
+        return result;
+    }
+
+    /*
+        功能：监护人负责删除某个人和老人的关系（设type为7）
+     */
+    @RequestMapping("/deleteRelation")
+    @ResponseBody
+    public Map<String,Object> deleteRelationBetweenElderAndSomebody(String elderId, String sbPhoneNum)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        if (sbPhoneNum == null || sbPhoneNum == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","Delete Relation Failed.");
+        }else {
+            boolean flag = verifyService.deleteRelationBetweenElderAndSomebody(elderId, sbPhoneNum);
+            if (flag == false)
+            {
+                result.put("error",true);
+                result.put("errorMsg","Delete Relation Failed.");
+            }else {
+                result.put("error",false);
+            }
+        }
+        return result;
+    }
+
+    /*
+        功能：通过身份证拿到某个老人的全部信息，即实体集
+     */
+    @RequestMapping("/getElderInfo")
+    @ResponseBody
+    public Map<String,Object> getElderInfoById(String elderId)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        if (elderId == null || elderId == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","Elder Id Input Error!");
+        }else {
+            Elder elder = elderService.getElderById(elderId);
+            result.put("error",false);
+            result.put("elderEntity",elder);
+        }
+        return result;
+    }
+
+    /*
+        功能：通过身份证拿到某个relative的全部信息，即实体集
+     */
+    @RequestMapping("/getRelativeInfo")
+    @ResponseBody
+    public Map<String,Object> getRelativeInfoById(String relativeId)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        if (relativeId == null || relativeId == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","Relative Id Input Error!");
+        }else {
+            Relative relative = relativeService.getRelativeById(relativeId);
+            result.put("error",false);
+            result.put("elderEntity",relative);
+        }
+        return result;
+    }
+
+    /*
+        功能：通过老人Id拿到所有的监护人的list
+     */
+    @RequestMapping("/getMonitorsByElderId")
+    @ResponseBody
+    public Map<String ,Object> getMonitorsByElderId(String elderId)
+    {
+        Map<String ,Object> result = new HashMap<String, Object>();
+        if (elderId == null || elderId == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","Elder Id Input Error!");
+        }else {
+            ArrayList<Relative> relatives = elderService.getAllMonitorsByElderId(elderId);
+            result.put("error",false);
+            result.put("MonitorList",relatives);
+        }
+        return result;
     }
 }

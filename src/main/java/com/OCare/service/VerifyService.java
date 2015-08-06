@@ -34,4 +34,18 @@ public interface VerifyService {
     public ElderMonitor getRequestByID(int requestid);
 
     public List<ElderMonitor> monitorStatus(String relativeId);
+
+    /*
+        功能：监护人修改某人和老人之间的关系
+        参数：老人Id，某人电话，新的关系类型
+        返回值：是否成功，true为成功，false为失败
+     */
+    public boolean changeRelationBetweenElderAndSomebody(String elderId,String sbPhoneNum,int newRelationType);
+
+    /*
+        功能：监护人删除老人和某人的关系（最好不要删，改掉type好了）
+        参数：老人Id，某人电话
+        返回值：是否成功，成功为true ,false为失败
+     */
+    public boolean deleteRelationBetweenElderAndSomebody(String elderId, String sbPhoneNum);
 }
