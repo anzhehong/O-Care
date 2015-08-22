@@ -12,4 +12,5 @@ public interface EmployeeConditionDAO extends IGeneralDAO<EmployeeCondition> {
 
     public List<EmployeeCondition> findEmployeeConditionBetween(String employeeId, String start, String end);
     public List<EmployeeCondition> findEmployeeConditionByEmployeeId(String employeeId);
+    public EmployeeCondition findEmployeeConditionByEmployeeIdAndDate(String employeeId, String date);
 }

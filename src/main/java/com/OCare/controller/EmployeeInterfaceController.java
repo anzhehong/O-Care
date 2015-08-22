@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by mark on 8/6/15.
@@ -25,6 +27,23 @@ public class EmployeeInterfaceController {
 
     @Autowired
     private CompanyDAO companyDAO;
+
+    @RequestMapping("/employee/all")
+    @ResponseBody
+    public Map<String, Object> getAllEmployees(){
+        Map<String, Object> result = new HashMap<String, Object>();
+        List<Employee> employees = employeeService.getAllEmployees();
+
+        if(employees.isEmpty()){
+            result.put("error", true);
+            result.put("errorMsg", "No employee find");
+            return result;
+        }
+
+        result.put("error", false);
+        result.put("employee", employees);
+        return result;
+    }
 
     @RequestMapping("/employee/id")
     @ResponseBody
@@ -206,6 +225,29 @@ public class EmployeeInterfaceController {
         result.put("error", true);
         result.put("employeeCondition", list);
         return result;
+    }
+
+    @RequestMapping("/employee/status")
+    @ResponseBody
+    public Map<String, Object> setEmployeeStatus(final String employeeId,final String time, final String status){
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        if (employeeId == null || time == null || status == null ||employeeId.isEmpty() || time.isEmpty() || status.isEmpty()){
+            result.put("error", false);
+            result.put("errorMsg", "Input is null");
+            return result;
+        }
+
+        EmployeeCondition condition = employeeService.setEmployeeConditionStatus(employeeId, time, status);
+        if (condition != null){
+            result.put("error", false);
+            result.put("condition", condition);
+            return result;
+        }else{
+            result.put("error", true);
+            result.put("errorMsg", "employee not exist");
+            return result;
+        }
     }
 
     @ResponseBody

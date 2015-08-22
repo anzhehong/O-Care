@@ -32,5 +32,18 @@ public class EmployeeConditionDAOImp extends IGeneralDAOImpl<EmployeeCondition> 
         return query.list();
     }
 
+    @Override
+    public EmployeeCondition findEmployeeConditionByEmployeeIdAndDate(String employeeId, String date) {
+        String hql = "from EmployeeCondition where employee_id = :e AND time = :t";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("e", employeeId);
+        query.setString("t", date);
+        if (query.list().isEmpty()){
+            return null;
+        }else{
+            return (EmployeeCondition) query.list().get(0);
+        }
+    }
+
 
 }

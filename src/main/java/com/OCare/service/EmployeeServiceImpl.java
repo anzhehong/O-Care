@@ -133,6 +133,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public List<Employee> getAllEmployees() {
+        return employeeDAO.queryAll();
+    }
+
+    @Override
     public boolean changeEmployeePassword(String employeeId, String newPassword) {
         Employee employee = employeeDAO.queryById(employeeId);
         if(employee == null){
@@ -179,4 +184,34 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<EmployeeCondition> getEmployeeConditionBetween(String start, String end, String employeeId) {
         return employeeConditionDAO.findEmployeeConditionBetween(employeeId, start, end);
     }
+
+    @Override
+    public EmployeeCondition setEmployeeConditionStatus(String employeeId, String time, String status) {
+
+        Employee employee = employeeDAO.queryById(employeeId);
+        if(employee == null){
+            return null;
+        }
+
+        EmployeeCondition employeeCondition = employeeConditionDAO.findEmployeeConditionByEmployeeIdAndDate(employeeId, time);
+
+        if (employeeCondition == null){
+            EmployeeCondition temp = new EmployeeCondition();
+            temp.setEmployee_id(employeeId);
+            temp.setStatus(Integer.parseInt(status));
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                temp.setTime(format.parse(time));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            employeeConditionDAO.insert(temp);
+            return temp;
+        }else{
+            employeeCondition.setStatus(Integer.parseInt(status));
+            employeeConditionDAO.update(employeeCondition);
+            return employeeCondition;
+        }
+    }
+
 }

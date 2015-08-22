@@ -23,10 +23,12 @@ public interface EmployeeService {
     public List<Employee> getEmployeesByDepartment(String department);
     public List<Employee> getEmployeesByPosition(String position);
     public List<Employee> getEmployeesByPhoneNum(String phoneNum);
+    public List<Employee> getAllEmployees();
     public boolean changeEmployeePassword(String employeeId, String newPassword);
     public boolean changeEmployeeStatus(String employeeId, int status);
     public boolean isPasswordMatchEmployeeId(String employeeId, String password);
 
     public List<EmployeeCondition> getEmployeeConditionByEmployeeId(String employeeId);
     public List<EmployeeCondition> getEmployeeConditionBetween(String start, String end, String employeeId);
+    public EmployeeCondition setEmployeeConditionStatus(String employeeId, String time, String status);
 }
