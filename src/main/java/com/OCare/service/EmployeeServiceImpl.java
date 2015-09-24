@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -99,6 +100,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setWorkDetail(workDetail);
         employee.setWorkExperience(workExperience);
         employee.setStatus(101);//正常
+        employee.setLastUpdateTime(new Date());
 
         employeeDAO.insert(employee);
         return employee;
@@ -231,7 +233,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     {
         boolean flag;
         Employee theEmployee =  employeeDAO.queryById(id);
-        if (id == null || newName == null || newPhone == null
+        if (theEmployee == null || id == null || newName == null || newPhone == null
                 || newAddress ==null || newDepartment == null
                 || newPosition == null || newPassword == null
                 || newImage == null || newSuperiot == null
@@ -252,7 +254,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             theEmployee.setSuperior(newSuperiot);
             theEmployee.setWorkDetail(newWorkDetail);
             theEmployee.setWorkExperience(newWorkExperience);
-
+            theEmployee.setLastUpdateTime(new Date());
             employeeDAO.update(theEmployee);
             flag = true;
         }

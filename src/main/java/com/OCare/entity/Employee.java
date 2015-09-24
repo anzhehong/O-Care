@@ -29,6 +29,7 @@ public class Employee {
     private String superior;
     private String workExperience;
     private String workDetail;
+    private Date lastUpdateTime;
 
     public String getId() {
         return id;
@@ -148,5 +149,13 @@ public class Employee {
 
     public void setWorkExperience(String workExperience) {
         this.workExperience = workExperience;
+    }
+
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
+    }
+
+    public void setLastUpdateTime(Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
     }
 }
