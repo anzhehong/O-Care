@@ -268,7 +268,7 @@ public class EmployeeInterfaceController {
             return result;
         }
 
-        result.put("error", true);
+        result.put("error", false);
         result.put("employeeCondition", list);
         return result;
     }
