@@ -18,6 +18,11 @@ public class Contract {
     private String elder_id;
     private Date start_time;
     private Date end_time;
+
+    /*
+        status = 101 代表 合同正在进行中
+        status = 102 代表 合同已过期作废
+     */
     private int status;
 
     public int getId() {

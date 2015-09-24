@@ -1,6 +1,7 @@
 package com.OCare.dao;
 
 import com.OCare.entity.Contract;
+import com.OCare.entity.Elder;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -26,5 +27,13 @@ public class ContractDAOImp extends IGeneralDAOImpl<Contract> implements Contrac
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setString("m", elderId);
         return query.list();
+    }
+
+    @Override
+    public Contract getContractByElderId(String elderId) {
+        String hql = "from Contract where elder_id = :m and status = 101";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("m",elderId);
+        return (Contract) query.list();
     }
 }

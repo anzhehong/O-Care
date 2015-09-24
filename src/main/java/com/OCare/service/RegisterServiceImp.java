@@ -1,9 +1,6 @@
 package com.OCare.service;
 
-import com.OCare.dao.ElderDAO;
-import com.OCare.dao.LegalPersonDAO;
-import com.OCare.dao.RelativeDAO;
-import com.OCare.dao.VolunteerDAO;
+import com.OCare.dao.*;
 import com.OCare.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +24,8 @@ public class RegisterServiceImp implements RegisterService {
     private VolunteerDAO volunteerDAO;
     @Autowired
     private LegalPersonDAO legalPersonDAO;
+    @Autowired
+    private CompanyDAO companyDAO;
 
     public Elder registerForAnElder(String elderId, int companyId, String elderName, String elderPhone, String elderAddress, String elderPassword, String elderImage) {
         Elder newElder = new Elder();
@@ -95,7 +94,24 @@ public class RegisterServiceImp implements RegisterService {
         return newLP;
     }
 
+    @Override
+    public Company registerForCompany(String comName, String comLegalPersonId, String comPhone, String comAddress) {
 
+        Company newCompany = new Company();
+        newCompany.setName(comName);
+        newCompany.setLegal_person_id(comLegalPersonId);
+        newCompany.setPhone(comPhone);
+        newCompany.setAddress(comAddress);
+
+        /*
+        status = 101 代表未审核
+        status = 102 代表审核通过
+        status = 103 代表审核通过
+     */
+        newCompany.setStatus(101);
+        companyDAO.insert(newCompany);
+        return newCompany;
+    }
 
     @Override
     public ArrayList<Elder> getAllElders() {

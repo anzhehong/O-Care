@@ -16,4 +16,11 @@ public interface ContractService {
 
     //ElderCondition
     public List<ElderCondition> getElderConditionByElderId(String elderId);
+
+    /*
+        功能：显示老人的有效合同（默认同时只有一个）
+        参数：身份证
+        返回值：Contract实例
+     */
+    public Contract getElderContractInfoByElderId(String id);
 }

@@ -31,4 +31,20 @@ public interface EmployeeService {
     public List<EmployeeCondition> getEmployeeConditionByEmployeeId(String employeeId);
     public List<EmployeeCondition> getEmployeeConditionBetween(String start, String end, String employeeId);
     public EmployeeCondition setEmployeeConditionStatus(String employeeId, String time, String status);
+
+    /*
+        功能：删除员工
+        参数：身份证号码
+        返回值：String成功或者失败原因
+     */
+    public String deleteEmployeeById(String id);
+
+    /*
+        功能：更新员工信息
+        返回值：boolean
+     */
+    public boolean changeEmployeeInfoById(String id, String newName, String newPhone, String newAddress,
+                                          String newDepartment, String newPosition, int newStatus,
+                                          String newPassword, String newImage, String newSuperiot,
+                                          String newWorkExperience, String newWorkDetail);
 }

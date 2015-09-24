@@ -43,4 +43,9 @@ public class ContractServiceImp implements ContractService {
     public List<ElderCondition> getElderConditionByElderId(String elderId) {
         return elderConditionDAO.findElderCondition(elderId);
     }
+
+    @Override
+    public Contract getElderContractInfoByElderId(String id) {
+        return contractDAO.getContractByElderId(id);
+    }
 }

@@ -10,5 +10,6 @@ import java.util.List;
 public interface ContractDAO extends IGeneralDAO<Contract>{
     public Contract findContractById(int id);
     public List<Contract> findContractsByElderId(String elderId);
+    public Contract getContractByElderId(String elderId);
 
 }

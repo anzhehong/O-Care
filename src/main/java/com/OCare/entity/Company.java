@@ -17,6 +17,12 @@ public class Company {
     private String legal_person_id;
     private String phone;
     private String address;
+
+    /*
+        status = 101 代表未审核
+        status = 102 代表审核通过
+        status = 103 代表审核通过
+     */
     private int status;
 
     public int getId() {

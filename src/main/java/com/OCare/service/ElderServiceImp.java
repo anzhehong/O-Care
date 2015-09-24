@@ -39,6 +39,11 @@ public class ElderServiceImp implements ElderService {
         return list;
     }
 
+    @Override
+    public ArrayList<Elder> getAllElders() {
+        return (ArrayList<Elder>) elderDAO.queryAll();
+    }
+
     public boolean isElderExist(String elderId){
         boolean flag = false;
         ArrayList<Elder> list = (ArrayList<Elder>) elderDAO.queryAll();

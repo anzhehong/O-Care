@@ -27,6 +27,10 @@ public class InterfaceController {
     private ElderService elderService;
     @Autowired
     private RelativeService relativeService;
+    @Autowired
+    private EmployeeService employeeService;
+    @Autowired
+    private ContractService contractService;
 
     /**
      * @param phoneNum：Phone number
@@ -519,6 +523,117 @@ public class InterfaceController {
                 result.put("MonitorList",relatives);
             }
         }
+        return result;
+    }
+
+    @RequestMapping("/getAllElders")
+    @ResponseBody
+    public Map<String, Object> getAllElders()
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        ArrayList<Elder> allElders = elderService.getAllElders();
+        if (allElders.size() == 0)
+        {
+            result.put("error",true);
+            result.put("errorMsg","没有老人的数据");
+        }else {
+            result.put("error",false);
+            result.put("result",result);
+        }
+        return result;
+    }
+
+
+    /*
+        功能：注册公司机构
+     */
+    @RequestMapping("/company/register")
+    @ResponseBody
+    public Map<String, Object> companyRegister(String companyName, String companyLegalPersonId,
+                                               String companyPhone, String companyAddress)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        if (companyName == null || companyAddress == null || companyPhone == null || companyLegalPersonId == null)
+        {
+            result.put("error",true);
+            result.put("errorMsg","Something is empty!");
+        }else {
+            Company companyToRegister =  registerService.registerForCompany(companyName, companyLegalPersonId, companyPhone, companyAddress);
+            result.put("error",false);
+            result.put("account",companyToRegister);
+        }
+
+
+        return result;
+    }
+
+    /*
+        功能：通过身份证号删除员工
+        参数：身份证
+     */
+    @RequestMapping("/employee/delete")
+    @ResponseBody
+    public Map<String, Object> deleteEmployeeById(String id)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        if (id == null || id == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","Input phoneNum is null");
+        }else {
+            String flag = employeeService.deleteEmployeeById(id);
+            if (flag == "success")
+                result.put("error",false);
+            else {
+                result.put("error",true);
+                result.put("errorMsg","Can not find such employee!");
+            }
+        }
+        return result;
+    }
+
+    /*
+        功能：更新员工信息
+     */
+    @RequestMapping("/employee/updateById")
+    @ResponseBody
+    public Map<String, Object> updateEmployeeInfoById(String id, String newName, String newPhone, String newAddress,
+                                                      String newDepartment, String newPosition, int newStatus,
+                                                      String newPassword, String newImage, String newSuperiot,
+                                                      String newWorkExperience, String newWorkDetail)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        boolean flag = employeeService.changeEmployeeInfoById(id,newName,newPhone,newAddress,newDepartment,newPosition,
+                newStatus,newPassword,newImage,newSuperiot,newWorkExperience,newWorkDetail);
+        if (flag == false)
+        {
+            result.put("error",true);
+            result.put("errorMsg","failed to update the employee's info!");
+        }else {
+            result.put("error",false);
+        }
+        return result;
+    }
+
+    /*
+        功能：显示老人有效合同的状况
+        返回：Contract实例
+     */
+    @RequestMapping("/contract/showContractInServiceByElderId")
+    @ResponseBody
+    public Map<String, Object> showContractInServiceByElderId(String elderId)
+    {
+        Map<String ,Object> result = new HashMap<String, Object>();
+        if (elderId == null || elderId == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","input elder id is invalid");
+        }else {
+            result.put("error",false);
+            result.put("contract",contractService.getElderContractInfoByElderId(elderId));
+            result.put("contractStatus",contractService.getElderContractInfoByElderId(elderId).getStatus());
+        }
+
         return result;
     }
 }

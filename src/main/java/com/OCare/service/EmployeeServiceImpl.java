@@ -6,14 +6,11 @@ import com.OCare.entity.Employee;
 import com.OCare.entity.EmployeeCondition;
 import com.OCare.entity.JavaMD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.plaf.TreeUI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -214,4 +211,53 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
     }
 
+    @Override
+    public String deleteEmployeeById(String id) {
+        Employee newEmployee = employeeDAO.queryByPhoneNum(id);
+        if (newEmployee != null)
+        {
+            employeeDAO.delete(newEmployee);
+            return "success";
+        }else {
+            return "not exists";
+        }
+    }
+
+    @Override
+    public boolean changeEmployeeInfoById(String id, String newName, String newPhone, String newAddress,
+                                          String newDepartment, String newPosition, int newStatus,
+                                          String newPassword, String newImage, String newSuperiot,
+                                          String newWorkExperience, String newWorkDetail)
+    {
+        boolean flag;
+        Employee theEmployee =  employeeDAO.queryById(id);
+        if (id == null || newName == null || newPhone == null
+                || newAddress ==null || newDepartment == null
+                || newPosition == null || newPassword == null
+                || newImage == null || newSuperiot == null
+                || newWorkExperience == null || newWorkDetail == null)
+        {
+            flag = false;
+        }else {
+            theEmployee.setName(newName);
+            theEmployee.setPhone(newPhone);
+            theEmployee.setAddress(newAddress);
+            theEmployee.setDepartment(newDepartment);
+            theEmployee.setPosition(newPosition);
+
+            theEmployee.setStatus(newStatus);
+
+            theEmployee.setPassword(newPassword);
+            theEmployee.setImage(newImage);
+            theEmployee.setSuperior(newSuperiot);
+            theEmployee.setWorkDetail(newWorkDetail);
+            theEmployee.setWorkExperience(newWorkExperience);
+
+            employeeDAO.update(theEmployee);
+            flag = true;
+        }
+
+
+        return flag;
+    }
 }

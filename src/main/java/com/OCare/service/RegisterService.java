@@ -1,9 +1,6 @@
 package com.OCare.service;
 
-import com.OCare.entity.Elder;
-import com.OCare.entity.LegalPerson;
-import com.OCare.entity.Relative;
-import com.OCare.entity.Volunteer;
+import com.OCare.entity.*;
 
 import java.util.ArrayList;
 
@@ -46,6 +43,13 @@ public interface RegisterService {
         返回值：布尔值，true表示身份证号和手机号可以注册，false表示其中一项已经注册过了
      */
 //    public boolean isIdOrPhoneNumExist(String id, String phoneNum);
+
+    /*
+        功能：注册公司
+        参数：
+        返回值：实例
+     */
+    public Company registerForCompany(String comName, String comLegalPersonId, String comPhone, String comAddress);
 
     public ArrayList<Elder> getAllElders();
     public ArrayList<Relative> getAllRelatives();
