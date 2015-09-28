@@ -520,7 +520,7 @@ public class InterfaceController {
                 result.put("errorMsg","Get List Error!");
             }else {
                 result.put("error",false);
-                result.put("MonitorList",relatives);
+                result.put("monitorList",relatives);
             }
         }
         return result;
@@ -538,7 +538,7 @@ public class InterfaceController {
             result.put("errorMsg","没有老人的数据");
         }else {
             result.put("error",false);
-            result.put("result",result);
+            result.put("result",allElders);
         }
         return result;
     }

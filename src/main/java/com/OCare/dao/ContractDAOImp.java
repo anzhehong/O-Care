@@ -34,6 +34,6 @@ public class ContractDAOImp extends IGeneralDAOImpl<Contract> implements Contrac
         String hql = "from Contract where elder_id = :m and status = 101";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setString("m",elderId);
-        return (Contract) query.list();
+        return (Contract) query.list().get(0);
     }
 }
