@@ -1,18 +1,18 @@
 @font-face {
     font-family: Hiragino-Sans-GB-W3;
-    src:url('../libs/fonts/Hiragino-Sans-GB-W3.otf');
+    src:url('/OCare/Assets/Fonts/Hiragino-Sans-GB-W3.otf');
 }
 
 @font-face {
     font-family: fashion;
-    src: url('../libs/fonts/fashion.ttf')
+    src: url('/OCare/Assets/Fonts/fashion.ttf')
 }
 
 .home{
     font-family: Hiragino-Sans-GB-W3;
     padding: 0;
     margin: 0;
-    background-image: url("../images/homepage-bg.png");
+    background-image: url("/OCare/Assets/Images/homepage-bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #ebefef;

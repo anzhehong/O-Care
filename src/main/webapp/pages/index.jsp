@@ -2,15 +2,15 @@
 <html>
 <head lang="en">
     <title>HomePage</title>
-    <link rel="stylesheet" href="web/WEB-INF/css/index.css">
-    <link rel="stylesheet" href="web/WEB-INF/libs/semantic.css" media="screen">
-    <link rel="stylesheet" href="web/WEB-INF/libs/fonts/icon.css" media="screen">
+    <link rel="stylesheet" href="/OCare/Assets/CSS/index.css">
+    <link rel="stylesheet" href="/OCare/Assets/CSS/semantic.css" media="screen">
+    <link rel="stylesheet" href="/OCare/Assets/CSS/icon.css" media="screen">
 
 </head>
 <body class="home">
 <div class="header" >
     <div class="header-container">
-        <img src="web/WEB-INF/images/Ocare-logo.png">
+        <img src="/OCare/Assets/Images/Ocare-logo.png">
         <div class="greeting">
             您好! <strong>admin</strong><a>注销</a><a>切换</a>
         </div>
@@ -41,24 +41,24 @@
         <h4>更权威  更全面  更放心  的老人关爱平台</h4>
     </div>
     <div class="bg-image">
-        <img src="web/WEB-INF/images/old-couple.jpg">
+        <img src="/OCare/Assets/Images/old-couple.jpg">
     </div>
     <div class="pic-left">
-        <img src="web/WEB-INF/images/work.jpg">
+        <img src="/OCare/Assets/Images/work.jpg">
         <div class="right-block">
             <h3>我们如何工作</h3>
             <p>fewedafsdfnewfnnefainwfieonafieundhpfiansdfba</p>
         </div>
     </div>
     <div class="pic-right">
-        <img src="web/WEB-INF/images/old.jpg">
+        <img src="/OCare/Assets/Images/old.jpg">
         <div class="left-block">
             <h3>我们的成果</h3>
             <p>fewedafsdfnewfnnefainwfieonafieundhpfiansdfba</p>
         </div>
     </div>
     <div class="pic-left">
-        <img src="web/WEB-INF/images/co.jpg">
+        <img src="/OCare/Assets/Images/co.jpg">
         <div class="right-block">
             <h3>我们与谁合作</h3>
             <p>fewedafsdfnewfnnefainwfieonafieundhpfiansdfba</p>
@@ -72,17 +72,17 @@
     <div class="whole">
         <h3>加入我们</h3>
         <div class="one-third">
-            <img src="web/WEB-INF/images/company.jpg">
+            <img src="/OCare/Assets/Images/company.jpg">
             <h4>机构</h4>
             <p>afefopaepufa[odfjasdojfa;dfjia;oiejfaefsdf</p>
         </div>
         <div class="one-third">
-            <img src="web/WEB-INF/images/relative.jpg">
+            <img src="/OCare/Assets/Images/relative.jpg">
             <h4>家属</h4>
             <p>afefopaepufa[odfjasdojfa;dfjia;oiejfaefsdf</p>
         </div>
         <div class="one-third">
-            <img src="web/WEB-INF/images/volunteer.jpg">
+            <img src="/OCare/Assets/Images/volunteer.jpg">
             <h4>志愿者</h4>
             <p>afefopaepufa[odfjasdojfa;dfjia;oiejfaefsdf</p>
         </div>

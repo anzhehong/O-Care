@@ -1,17 +1,19 @@
 <%@ page import="java.util.List" %>
 <%@page pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; UTF-8"/>
-    <title>Ocare实时地图</title>
-    <%--<script src="http://api.map.baidu.com/api?v=1.5&ak=ZFra3LYWoS5BRU11s8DFw1GG" type="text/javascript"></script>--%>
-</head>
-<body>
-<div style="width:1000px;height:650px;border:1px solid gray" id="container"></div>
-</body>
-</html>
+<%@include file="templates/header.jsp"%>
+<%@include file="templates/sidebar.jsp"%>
+<link rel="stylesheet" href="/OCare/Assets/CSS/homepage.css">
+<div class="content">
+    <div class="search">
+        <div class="ui input" style="display: inline-block;">
+            <input placeholder="查找老人..." type="text" style="width:500px">
+        </div>
+        <button class="ui teal button" style="display: inline-block;"><i class="search icon"></i></button>
+    </div>
+
+    <div class="monitor" id="container"></div>
+</div>
 
 <script src="/OCare/Assets/JS/jquery-2.1.4.js"></script>
 <script type="text/javascript">
@@ -134,3 +136,4 @@
         })
     }
 </script>
+<%@include file="templates/footer.jsp"%>

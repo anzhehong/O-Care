@@ -1,11 +1,11 @@
 <%@page contentType="text/html; charset=utf-8" language="java" pageEncoding="UTF-8" %>
 <div class="sidebar">
   <div class="ui vertical menu">
-    <a class="item">
+    <a class="item" href="/OCare/map/home">
       &nbsp;&nbsp;&nbsp;&nbsp;实时地图
       <i class="map icon"></i>
     </a>
-    <a class="item" href="/OCare/monitor/list">
+    <a class="item" href="/OCare/monitor/list" style="width: 20rem;">
       &nbsp;&nbsp;&nbsp;&nbsp;监护人申请审核
       <i class="checkmark icon"></i>
     </a>
@@ -45,6 +45,17 @@
     </a>
     <a class="item">
       &nbsp;&nbsp;&nbsp;&nbsp;申请审核
+    </a>
+
+    <div class="header item">
+      <i class="child icon "></i>
+      监护人管理
+    </div>
+    <a class="item">
+      &nbsp;&nbsp;&nbsp;&nbsp;监护人
+    </a>
+    <a class="item">
+      &nbsp;&nbsp;&nbsp;&nbsp;志愿者
     </a>
   </div>
 </div>
