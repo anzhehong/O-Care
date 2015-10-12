@@ -21,4 +21,11 @@ public class ElderConditionServiceIMp implements ElderConditionService {
     public List<ElderCondition> allElderConditions() {
         return elderConditionDAO.queryAll();
     }
+
+    @Override
+    public ElderCondition getElderPresentConditionById(String elderId) {
+        return elderConditionDAO.findElderCondition(elderId).get(0);
+    }
+
+
 }

@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface ElderConditionService {
     public List<ElderCondition> allElderConditions();
+
+    public ElderCondition getElderPresentConditionById(String elderId);
 }

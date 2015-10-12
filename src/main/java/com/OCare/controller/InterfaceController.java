@@ -31,6 +31,8 @@ public class InterfaceController {
     private EmployeeService employeeService;
     @Autowired
     private ContractService contractService;
+    @Autowired
+    private ElderConditionService elderConditionService;
 
     /**
      * @param phoneNum：Phone number
@@ -632,6 +634,32 @@ public class InterfaceController {
             result.put("error",false);
             result.put("contract",contractService.getElderContractInfoByElderId(elderId));
             result.put("contractStatus",contractService.getElderContractInfoByElderId(elderId).getStatus());
+        }
+
+        return result;
+    }
+
+    /*------------------2015.10.12------------------*/
+
+    /*
+        功能：通过老人身份证拿到老人最近一次的位置信息
+        返回：经纬度坐标数组
+     */
+    @RequestMapping("/map/getElderPresentLocationById")
+    @ResponseBody
+    public Map<String, Object> getElderPresentLocationById(String elderId)
+    {
+        Map<String ,Object> result = new HashMap<String, Object>();
+        if (elderId == null || elderId == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","input elder id is invalid");
+        }else  {
+            ElderCondition presentElderCondition = elderConditionService.getElderPresentConditionById(elderId);
+            double latitude = presentElderCondition.getLatitude(),longtitude = presentElderCondition.getLongtitude();
+            result.put("error",false);
+            result.put("latitude",latitude);
+            result.put("longtitude",longtitude);
         }
 
         return result;
