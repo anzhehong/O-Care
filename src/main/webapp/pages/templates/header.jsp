@@ -14,14 +14,15 @@
   <link rel="stylesheet" href="/OCare/Assets/CSS/sidebar.css">
   <link rel="stylesheet" href="/OCare/Assets/CSS/semantic.css" media="screen">
   <link rel="stylesheet" href="/OCare/Assets/CSS/icon.css" media="screen">
-
+  <script src="/OCare/Assets/JS/jquery-2.1.4.js"></script>
+  <script src="/OCare/Assets/JS/semantic.min.js"></script>
 </head>
 <body>
 <div class="header-globle">
   <div class="container">
     <img src="/OCare/Assets/Images/Ocare-logo.png">
     <div class="greeting">
-      您好! <strong>admin</strong><a>注销</a><a>切换</a>
+      您好! <strong>admin</strong><a class="login">登陆</a><a>注销</a>
     </div>
     <div class="nav" >
       <ul>
@@ -44,4 +45,38 @@
     </div>
   </div>
 </div>
+<div class="ui small modal" style="width:30%; margin-left: -15%">
+  <i class="close icon"></i>
+  <div class="header" style="background-color: #78D6CC;padding:1.1rem 2rem">
+    <i class="user icon"></i>用户登陆
+  </div>
+  <div class="content" style="line-height: 40px;padding:2em 0rem;display: inline-block;">
+    <div style="padding:0rem 1rem">
+  <label>用户名/手机号/邮箱:</label></br>
+    <div class="ui input">
+      <input id="user" type="text" style="width: 400px">
+    </div></br>
+    <label>密码</label></br>
+    <div class="ui input">
+      <input id="password" type="password" style="width: 400px">
+    </div>
+    </div>
+    </div>
 
+  <div class="actions">
+    <div class="ui black button" style="float: left;background-color: #FF7770;margin-left: -10px;">
+      注册
+    </div>
+    忘记密码?
+    <div class="ui positive right labeled icon button" style="background-color: #78D6CC">
+      登陆
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('.login').click(function () {
+    $('.modal').modal('show');
+  });
+</script>

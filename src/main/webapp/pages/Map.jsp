@@ -4,7 +4,7 @@
 <%@include file="templates/header.jsp"%>
 <%@include file="templates/sidebar.jsp"%>
 <link rel="stylesheet" href="/OCare/Assets/CSS/homepage.css">
-<div class="content">
+<div class="main_content">
     <div class="search">
         <div class="ui input" style="display: inline-block;">
             <input placeholder="查找老人..." type="text" style="width:500px">
