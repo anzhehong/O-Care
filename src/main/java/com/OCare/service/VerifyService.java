@@ -79,4 +79,6 @@ public interface VerifyService {
         功能：通过老人Id可以拿到所有老人，监护人（type=1）的arraylist
      */
     public ArrayList<Map<Elder,Relative>> getAllMonitorByElderId(String elderId);
+
+    public ArrayList<Relative> getMonitorsByElderId(String elderid);
 }
