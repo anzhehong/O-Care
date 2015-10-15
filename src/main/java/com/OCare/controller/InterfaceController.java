@@ -664,4 +664,35 @@ public class InterfaceController {
 
         return result;
     }
+
+    /*
+        功能：返回所有老人的手机号和姓名
+        返回值：
+        注意：可以调用/getAllElders接口获取所有老人即可。
+     */
+
+
+
+    /*
+        功能：返回所有监护人的手机号码等信息
+        返回值
+        注意：可以调用/getMonitorsByElderId来获取所有某个老人的监护人列表即可。
+     */
+
+
+    /*
+        功能：返回所有老人的当前（最后一次）位置信息
+        返回值
+     */
+    @RequestMapping("map/allEldersPresentLocationInfo")
+    @ResponseBody
+    public Map<String, Object> allEldersPresentLocationInfo() {
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("error",false);
+        ArrayList<ElderCondition> allEldersPresentLocationInfo = elderConditionService.getAllEldersPresentCondition();
+        result.put("result",allEldersPresentLocationInfo);
+        return result;
+    }
+
+
 }

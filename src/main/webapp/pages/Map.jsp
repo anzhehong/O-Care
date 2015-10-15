@@ -7,9 +7,9 @@
 <div class="content">
     <div class="search">
         <div class="ui input" style="display: inline-block;">
-            <input placeholder="查找老人..." type="text" style="width:500px">
+            <input placeholder="查找老人..." type="text" style="width:500px" id="input_name">
         </div>
-        <button class="ui teal button" style="display: inline-block;"><i class="search icon"></i></button>
+        <button class="ui teal button" onclick="FindOlder()" style="display: inline-block;"><i class="search icon"></i></button>
     </div>
 
     <div class="monitor" id="container"></div>
@@ -73,6 +73,23 @@
     var new_points = [];
     //var new_markers = [];
     //var new_infoWindows = [];
+
+
+    //根据老人身份证号查找老人并且显示zai地图中心
+    function FindOlder(){
+        //alert($("#input_name").val());
+        $.ajax({
+            url:"/OCare/app/map/getElderPresentLocationById",
+            data:{elderId:$("#input_name").val()},
+            dataType:"json",
+            success:function(data){
+                // alert(data.latitude);//测试pass
+                var result_point = new BMap.Point(data.latitude, data.longtitude);
+                map.centerAndZoom(result_point, 15);
+
+            }
+        })
+    }
 
     setInterval("RefreshCondition()", 3000);
 

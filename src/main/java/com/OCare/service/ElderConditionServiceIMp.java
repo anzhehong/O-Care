@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +25,22 @@ public class ElderConditionServiceIMp implements ElderConditionService {
 
     @Override
     public ElderCondition getElderPresentConditionById(String elderId) {
-        return elderConditionDAO.findElderCondition(elderId).get(0);
+        ArrayList<ElderCondition> elders = (ArrayList<ElderCondition>) elderConditionDAO.findElderCondition(elderId);
+        int count = elders.size();
+        System.out.println("get count -1");
+        System.out.println(elderConditionDAO.findElderCondition(elderId).get(count-1).getElder_id());
+        return elderConditionDAO.findElderCondition(elderId).get(count-1);
+    }
+
+    @Override
+    public ArrayList<ElderCondition> getAllEldersPresentCondition() {
+        ArrayList<ElderCondition> result = new ArrayList<ElderCondition>();
+        ArrayList<String> elderList = elderConditionDAO.getAllEldersInThisTable();
+        for (int i = 0; i < elderList.size(); i++) {
+            result.add(getElderPresentConditionById(elderList.get(i)));
+        }
+
+        return result;
     }
 
 

@@ -2,6 +2,7 @@ package com.OCare.dao;
 
 import com.OCare.entity.ElderCondition;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,4 +10,6 @@ import java.util.List;
  */
 public interface ElderConditionDAO extends IGeneralDAO<ElderCondition> {
     public List<ElderCondition> findElderCondition(String elderId);
+
+    public ArrayList<String> getAllEldersInThisTable();
 }
