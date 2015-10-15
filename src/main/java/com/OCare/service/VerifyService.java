@@ -1,9 +1,13 @@
 package com.OCare.service;
 
 
+import com.OCare.entity.Elder;
 import com.OCare.entity.ElderMonitor;
+import com.OCare.entity.Relative;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by fowafolo on 15/7/29.
@@ -69,4 +73,10 @@ public interface VerifyService {
         返回值：是否成功Boolean值
      */
     public boolean makeAMonitorRequestDisAgreed(int monitorId);
+
+
+    /*
+        功能：通过老人Id可以拿到所有老人，监护人（type=1）的arraylist
+     */
+    public ArrayList<Map<Elder,Relative>> getAllMonitorByElderId(String elderId);
 }

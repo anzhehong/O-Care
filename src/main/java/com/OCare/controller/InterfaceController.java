@@ -679,6 +679,28 @@ public class InterfaceController {
         注意：可以调用/getMonitorsByElderId来获取所有某个老人的监护人列表即可。
      */
 
+    @RequestMapping("/getAllElderRelatedInfo")
+    @ResponseBody
+    public Map<String, Object> getAllElderRelatedInfo() {
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("error",false);
+        ArrayList<Elder> elders  = elderService.getAllElders();
+        Iterator<Elder> elderIterator = elders.iterator();
+        ArrayList<Map<Elder, Relative>> elderInfo = new ArrayList<Map<Elder, Relative>>();
+        while (elderIterator.hasNext()) {
+            Elder tmpElder = elderIterator.next();
+            for (int i = 0; i < elders.size() ; i ++) {
+                ArrayList<Map<Elder, Relative>> tmpElderWithInfo = verifyService.getAllMonitorByElderId(tmpElder.getId());
+                for (int j = 0; j < tmpElderWithInfo.size(); j ++) {
+                    elderInfo.add(tmpElderWithInfo.get(j));
+                }
+            }
+        }
+        System.out.println("lalalallalaSize:" + elderInfo.size());
+
+
+        return result;
+    }
 
     /*
         功能：返回所有老人的当前（最后一次）位置信息
@@ -691,6 +713,7 @@ public class InterfaceController {
         result.put("error",false);
         ArrayList<ElderCondition> allEldersPresentLocationInfo = elderConditionService.getAllEldersPresentCondition();
         result.put("result",allEldersPresentLocationInfo);
+        result.put("resultNum",allEldersPresentLocationInfo.size());
         return result;
     }
 

@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by fowafolo on 15/7/29.
@@ -155,6 +153,27 @@ public class VerifyServiceImp implements VerifyService {
         elderMonitorDAO.update(elderMonitor);
         flag = true;
         return flag;
+    }
+
+    @Override
+    public ArrayList<Map<Elder, Relative>> getAllMonitorByElderId(String elderId) {
+        ArrayList <Map<Elder,Relative>> result = new ArrayList<Map<Elder, Relative>>();
+        ArrayList <Relative> relatives = elderMonitorDAO.getAllMonitorsByElderId(elderId);
+//        ArrayList<Relative> relatives = new ArrayList<Relative>();
+//        for (int i = 0; i< relativeInfo.size(); i++) {
+//            relatives.add(relativeDAO.queryById(relativeInfo.get(i).))
+//        }
+        System.out.println("relative size:" + relatives.size());
+        Iterator <Relative> relativeIterator = relatives.iterator();
+        Elder theElder = elderDAO.queryById(elderId);
+        while (relativeIterator.hasNext()) {
+            System.out.println(relativeIterator.next());
+//            Relative tmpRelative = relativeIterator.next();
+//            Map<Elder,Relative> tmpMap = new HashMap<Elder, Relative>();
+//            tmpMap.put(theElder,tmpRelative);
+//            result.add(tmpMap);
+        }
+        return result;
     }
 
     public String getIdByPhoneNum(String phoneNum)
