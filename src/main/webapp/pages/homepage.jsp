@@ -14,40 +14,43 @@
     <table class="ui table segment">
         <thead>
         <tr>
-            <th>申请人ID</th>
+            <th>申请ID</th>
             <th>状态</th>
             <th>详细信息</th>
             <th>备注</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>小明</td>
-            <td><i class="question icon"></i>待审核</td>
-            <td><i class="icon search"></i>查看</td>
-            <td>无</td>
-        </tr>
-        <tr class="positive">
-            <td>张三</td>
-            <td><i class="icon checkmark"></i> 已通过</td>
-            <td><i class="icon search"></i>查看</td>
-            <td>无</td>
-        </tr>
-        <tr>
-            <td>李四</td>
-            <td><i class="question icon"></i>待审核</td>
-            <td><i class="icon search"></i>查看</td>
-            <td>需电话联系</td>
-        </tr>
-        <tr class="negative">
-            <td>王五</td>
-            <td><i class="icon Ban Circle"></i>已拒绝</td>
-            <td><i class="icon search"></i>查看</td>
-            <td>图片不合格</td>
-        </tr>
+        <%--<tr>--%>
+            <%--<td>小明</td>--%>
+            <%--<td><i class="question icon"></i>待审核</td>--%>
+            <%--<td><i class="icon search"></i>查看</td>--%>
+            <%--<td>无</td>--%>
+        <%--</tr>--%>
+        <%--<tr class="positive">--%>
+            <%--<td>张三</td>--%>
+            <%--<td><i class="icon checkmark"></i> 已通过</td>--%>
+            <%--<td><i class="icon search"></i>查看</td>--%>
+            <%--<td>无</td>--%>
+        <%--</tr>--%>
+        <%--<tr>--%>
+            <%--<td>李四</td>--%>
+            <%--<td><i class="question icon"></i>待审核</td>--%>
+            <%--<td><i class="icon search"></i>查看</td>--%>
+            <%--<td>需电话联系</td>--%>
+        <%--</tr>--%>
+        <%--<tr class="negative">--%>
+            <%--<td>王五</td>--%>
+            <%--<td><i class="icon Ban Circle"></i>已拒绝</td>--%>
+            <%--<td><i class="icon search"></i>查看</td>--%>
+            <%--<td>图片不合格</td>--%>
+        <%--</tr>--%>
 
         <c:forEach items="${list}" var="var">
-            <c:if test="${var.type==1||var.type==2}">
+            <%--//2表示监护类型为普通亲戚；1表示监护类型为监护人；3表示在申请监护人;--%>
+            <%--//4表示申请监护人被拒绝;5代表邻居关系;--%>
+            <%--//7.代表原来有关系现在没关系了--%>
+            <c:if test="${var.type==1}">
                 <tr class="positive">
                     <td>${var.id}</td>
                     <td><i class="icon checkmark"></i>已通过</td>

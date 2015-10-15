@@ -46,4 +46,22 @@ public class ElderMonitorController {
         model.addAttribute("request",verifyService.getRequestByID(Integer.parseInt(id)));
         return "verify";
     }
+    @RequestMapping(value = "/makeUndesigned/{id}",method = RequestMethod.GET)
+    public String makeAMonitorUndesigned(@PathVariable int id,Model model) {
+        boolean flag = verifyService.makeAMonitorRequestUndesigned(id);
+        model.addAttribute("list",verifyService.getAllUntreatedRequests());
+        return "homepage";
+    }
+    @RequestMapping(value = "/makeAgreed/{id}",method = RequestMethod.GET)
+    public String makeAMonitorAgreed(@PathVariable int id,Model model) {
+        boolean flag = verifyService.makeAMonitorRequestAgreed(id);
+        model.addAttribute("list",verifyService.getAllUntreatedRequests());
+        return "homepage";
+    }
+    @RequestMapping(value = "/makeReject/{id}",method = RequestMethod.GET)
+    public String makeAMonitorReject(@PathVariable int id,Model model) {
+        boolean flag = verifyService.makeAMonitorRequestDisAgreed(id);
+        model.addAttribute("list",verifyService.getAllUntreatedRequests());
+        return "homepage";
+    }
 }

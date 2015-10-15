@@ -79,8 +79,7 @@ public class VerifyServiceImp implements VerifyService {
         2表示监护类型为普通亲戚；
         3表示在申请监护人;
         4表示申请监护人被拒绝;
-        5表示亲属关系;
-        6代表邻居关系;
+        5代表邻居关系;
         7.代表原来有关系现在没关系了
      */
     @Override
@@ -122,6 +121,39 @@ public class VerifyServiceImp implements VerifyService {
             }
         }
 
+        return flag;
+    }
+
+    @Override
+    public boolean makeAMonitorRequestUndesigned(int monitorId) {
+        boolean flag = false;
+        ElderMonitor elderMonitor = elderMonitorDAO.queryByIntId(monitorId);
+        //变为未审核状态
+        elderMonitor.setType(3);
+        elderMonitorDAO.update(elderMonitor);
+        flag = true;
+        return flag;
+    }
+
+    @Override
+    public boolean makeAMonitorRequestAgreed(int monitorId) {
+        boolean flag = false;
+        ElderMonitor elderMonitor = elderMonitorDAO.queryByIntId(monitorId);
+        //变为同意为监护人状态
+        elderMonitor.setType(1);
+        elderMonitorDAO.update(elderMonitor);
+        flag = true;
+        return flag;
+    }
+
+    @Override
+    public boolean makeAMonitorRequestDisAgreed(int monitorId) {
+        boolean flag = false;
+        ElderMonitor elderMonitor = elderMonitorDAO.queryByIntId(monitorId);
+        //变为同意为监护人状态
+        elderMonitor.setType(4);
+        elderMonitorDAO.update(elderMonitor);
+        flag = true;
         return flag;
     }
 

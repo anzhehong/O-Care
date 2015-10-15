@@ -48,4 +48,25 @@ public interface VerifyService {
         返回值：是否成功，成功为true ,false为失败
      */
     public boolean deleteRelationBetweenElderAndSomebody(String elderId, String sbPhoneNum);
+
+    /*
+        功能：使一个申请变为未审核状态
+        参数：申请id
+        返回值：是否成功Boolean值
+     */
+    public boolean makeAMonitorRequestUndesigned(int monitorId);
+
+    /*
+        功能：使一个申请变为拒绝状态
+        参数：申请id
+        返回值：是否成功Boolean值
+     */
+    public boolean makeAMonitorRequestAgreed(int monitorId);
+
+    /*
+        功能：使一个申请变为拒绝状态
+        参数：申请id
+        返回值：是否成功Boolean值
+     */
+    public boolean makeAMonitorRequestDisAgreed(int monitorId);
 }

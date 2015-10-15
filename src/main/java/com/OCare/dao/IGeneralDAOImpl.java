@@ -41,6 +41,11 @@ public abstract class IGeneralDAOImpl<T> implements IGeneralDAO<T> {
     }
 
     @Override
+    public T queryByIntId(int id) {
+        return (T) sessionFactory.getCurrentSession().get(entityClass,id);
+    }
+
+    @Override
     public List<T> queryAll() {
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(entityClass);
         return criteria.list();
