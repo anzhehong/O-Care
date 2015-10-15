@@ -666,17 +666,8 @@ public class InterfaceController {
     }
 
     /*
-        功能：返回所有老人的手机号和姓名
+        功能：返回数据库所有老人和对应的所有监护人的集合
         返回值：
-        注意：可以调用/getAllElders接口获取所有老人即可。
-     */
-
-
-
-    /*
-        功能：返回所有监护人的手机号码等信息
-        返回值
-        注意：可以调用/getMonitorsByElderId来获取所有某个老人的监护人列表即可。
      */
 
     @RequestMapping("/getAllElderRelatedInfo")
@@ -685,18 +676,6 @@ public class InterfaceController {
         Map<String, Object> result = new HashMap<String, Object>();
         //get all elder entites
         ArrayList<Elder> elders  = elderService.getAllElders();
-//        Iterator<Elder> elderIterator = elders.iterator();
-//        ArrayList<Map<Elder, Relative>> elderInfo = new ArrayList<Map<Elder, Relative>>();
-//        while (elderIterator.hasNext()) {
-//            Elder tmpElder = elderIterator.next();
-//            for (int i = 0; i < elders.size() ; i ++) {
-//                ArrayList<Map<Elder, Relative>> tmpElderWithInfo = verifyService.getAllMonitorByElderId(tmpElder.getId());
-//                for (int j = 0; j < tmpElderWithInfo.size(); j ++) {
-//                    elderInfo.add(tmpElderWithInfo.get(j));
-//                }
-//            }
-//        }
-//        System.out.println("lalalallalaSize:" + elderInfo.size());
 
         //the list of result information together
         ArrayList<HashMap<String, Object>> elderInfo = new ArrayList<HashMap<String, Object>>();
