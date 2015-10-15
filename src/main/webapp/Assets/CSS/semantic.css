@@ -12908,7 +12908,7 @@ a.ui.teal.label:hover:before {
             Content
 *******************************/
 
-/*--------------
+/*--------------q
      Menu
 ---------------*/
 
@@ -13437,10 +13437,11 @@ a.ui.teal.label:hover:before {
 
 .ui.modal > .header {
   margin: 0em;
-  padding: 1.5rem 2rem;
+  padding: 1.1rem 2rem;
   font-size: 1.6em;
   font-weight: bold;
   border-radius: 0.325em 0.325em 0px 0px;
+  background:#78D6CC;
 }
 
 /*--------------
@@ -13553,8 +13554,8 @@ a.ui.teal.label:hover:before {
 
 @media only screen and (min-width: 1500px) {
   .ui.modal {
-    width: 56%;
-    margin-left: -28%;
+    width: 36%;
+    margin-left: -18%;
   }
 }
 
@@ -13571,7 +13572,6 @@ a.ui.teal.label:hover:before {
     margin-left: -18%;
   }
 }
-
 /*******************************
              Types
 *******************************/

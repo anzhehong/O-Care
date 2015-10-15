@@ -16,7 +16,7 @@
     <title>监护人申请审核</title>
 </head>
 <body>
-<div class="content">
+<div class="main_content">
   <div class="ui teal ribbon label">申请审核:</div>
   <div class="ui divided selection list">
     <a class="item">

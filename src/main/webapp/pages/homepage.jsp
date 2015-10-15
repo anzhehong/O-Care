@@ -10,7 +10,7 @@
 <%@include file="templates/header.jsp"%>
 <%@include file="templates/sidebar.jsp"%>
 <link rel="stylesheet" href="/OCare/Assets/CSS/homepage.css">
-<div class="content">
+<div class="main_content">
     <table class="ui table segment">
         <thead>
         <tr>
