@@ -683,21 +683,43 @@ public class InterfaceController {
     @ResponseBody
     public Map<String, Object> getAllElderRelatedInfo() {
         Map<String, Object> result = new HashMap<String, Object>();
-        result.put("error",false);
+        //get all elder entites
         ArrayList<Elder> elders  = elderService.getAllElders();
-        Iterator<Elder> elderIterator = elders.iterator();
-        ArrayList<Map<Elder, Relative>> elderInfo = new ArrayList<Map<Elder, Relative>>();
-        while (elderIterator.hasNext()) {
-            Elder tmpElder = elderIterator.next();
-            for (int i = 0; i < elders.size() ; i ++) {
-                ArrayList<Map<Elder, Relative>> tmpElderWithInfo = verifyService.getAllMonitorByElderId(tmpElder.getId());
-                for (int j = 0; j < tmpElderWithInfo.size(); j ++) {
-                    elderInfo.add(tmpElderWithInfo.get(j));
-                }
-            }
-        }
-        System.out.println("lalalallalaSize:" + elderInfo.size());
+//        Iterator<Elder> elderIterator = elders.iterator();
+//        ArrayList<Map<Elder, Relative>> elderInfo = new ArrayList<Map<Elder, Relative>>();
+//        while (elderIterator.hasNext()) {
+//            Elder tmpElder = elderIterator.next();
+//            for (int i = 0; i < elders.size() ; i ++) {
+//                ArrayList<Map<Elder, Relative>> tmpElderWithInfo = verifyService.getAllMonitorByElderId(tmpElder.getId());
+//                for (int j = 0; j < tmpElderWithInfo.size(); j ++) {
+//                    elderInfo.add(tmpElderWithInfo.get(j));
+//                }
+//            }
+//        }
+//        System.out.println("lalalallalaSize:" + elderInfo.size());
 
+        //the list of result information together
+        ArrayList<HashMap<String, Object>> elderInfo = new ArrayList<HashMap<String, Object>>();
+
+        if (elders.size() == 0){
+            result.put("error", true);
+            result.put("errorMsg", "There is no elders in database");
+            return result;
+        }
+
+        for (Elder elder : elders){
+            //the current elder information
+            HashMap<String, Object> tempElderInfo = new HashMap<String, Object>();
+            //elder info
+            tempElderInfo.put("elder", elder);
+            //relative info
+            tempElderInfo.put("relatives", verifyService.getMonitorsByElderId(elder.getId()));
+            //add to list
+            elderInfo.add(tempElderInfo);
+        }
+
+        result.put("error", false);
+        result.put("info", elderInfo);
 
         return result;
     }
