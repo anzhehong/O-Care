@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=utf-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="OCare">
@@ -15,14 +15,14 @@
   <link rel="stylesheet" href="/OCare/Assets/CSS/semantic.css" media="screen">
   <link rel="stylesheet" href="/OCare/Assets/CSS/icon.css" media="screen">
   <script src="/OCare/Assets/JS/jquery-2.1.4.js"></script>
-  <script src="/OCare/Assets/JS/semantic.min.js"></script>
+  <script src="/OCare/Assets/JS/semantic.js"></script>
 </head>
 <body>
 <div class="header-globle">
   <div class="container">
     <img src="/OCare/Assets/Images/Ocare-logo.png">
     <div class="greeting">
-      您好! <strong>admin</strong><a class="login">登陆</a><a>注销</a>
+      您好! <strong>admin</strong><a class="login">登陆</a><a href="/Ocare/pages/Register.jsp">注册</a>
     </div>
     <div class="nav" >
       <ul>
@@ -65,7 +65,7 @@
 
   <div class="actions">
     <div class="ui black button" style="float: left;background-color: #FF7770;margin-left: -10px;">
-      注册
+      <a href="/OCare/pages/Register.jsp">注册</a>
     </div>
     忘记密码?
     <div class="ui positive right labeled icon button" style="background-color: #78D6CC">
