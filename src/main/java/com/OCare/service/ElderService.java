@@ -4,6 +4,7 @@ import com.OCare.entity.Elder;
 import com.OCare.entity.Relative;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by fowafolo on 15/8/7.
@@ -30,4 +31,7 @@ public interface ElderService {
         返回值：Arraylist<Elder>
      */
     public ArrayList<Elder> getAllElders();
+
+    public List<Elder> getEldersByPhoneNum(String phone);
+
 }

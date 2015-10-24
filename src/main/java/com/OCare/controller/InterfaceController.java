@@ -4,6 +4,7 @@ import com.OCare.entity.*;
 import com.OCare.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -718,5 +719,25 @@ public class InterfaceController {
         return result;
     }
 
+    /*
+        功能：根据手机号找老人（所有老人，可能多个）mark
+        返回值
+     */
 
+    @RequestMapping("/elder/phone/{phoneNum}")
+    @ResponseBody
+    public Map<String, Object> getEldersByPhoneNum(@PathVariable String phoneNum){
+        Map<String, Object> result = new HashMap<String, Object>();
+        List<Elder> elders = elderService.getEldersByPhoneNum(phoneNum);
+
+        if(elders == null || elders.size() == 0){
+            result.put("error", true);
+            result.put("errorMsg", "ELDER_NOT_EXIST");
+            return result;
+        }
+
+        result.put("error", false);
+        result.put("elder", elders);
+        return result;
+    }
 }

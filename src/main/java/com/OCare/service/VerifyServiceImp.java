@@ -176,9 +176,21 @@ public class VerifyServiceImp implements VerifyService {
         return result;
     }
 
+    //mark
     @Override
     public ArrayList<Relative> getMonitorsByElderId(String elderid) {
-        return elderMonitorDAO.getAllMonitorsByElderId(elderid);
+        List<ElderMonitor> elderMonitors = elderMonitorDAO.getMonitorsByElderId(elderid);
+
+        //no monitor
+        if(elderMonitors == null || elderMonitors.size() == 0){
+            return null;
+        }else{
+            ArrayList<Relative> relatives = new ArrayList<Relative>();
+            for (ElderMonitor monitor : elderMonitors){
+                relatives.add(relativeDAO.queryById(monitor.getRelative_id()));
+            }
+            return relatives;
+        }
     }
 
     public String getIdByPhoneNum(String phoneNum)
