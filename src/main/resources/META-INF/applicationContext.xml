@@ -12,6 +12,9 @@
     <context:component-scan base-package="com.OCare.dao"/>
     <context:component-scan base-package="com.OCare.service"/>
     <context:component-scan base-package="com.OCare.entity"/>
+    <context:component-scan base-package="com.OCare.openfireEntity"/>
+    <context:component-scan base-package="com.OCare.openfireDAO"/>
+    <context:component-scan base-package="com.OCare.openfireService"/>
 
 
 </beans>

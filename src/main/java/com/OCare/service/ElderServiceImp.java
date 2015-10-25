@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by fowafolo on 15/8/7.
@@ -55,5 +56,10 @@ public class ElderServiceImp implements ElderService {
                 flag = true;
         }
         return flag;
+    }
+
+    @Override
+    public List<Elder> getEldersByPhoneNum(String phone){
+        return elderDAO.getEldersByPhoneNum(phone);
     }
 }

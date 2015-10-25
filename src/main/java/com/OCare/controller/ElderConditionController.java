@@ -55,10 +55,10 @@ public class ElderConditionController {
             else location_item.setElder_status("情况良好");
             location_list.add(location_item);
         }
-        System.out.println("test....................");
-        for (int i = 0; i < list.size() ; i++) {
-            System.out.println(location_list.get(i).getElder_status());
-        }
+//        System.out.println("test....................");
+//        for (int i = 0; i < list.size() ; i++) {
+//            System.out.println(location_list.get(i).getElder_status());
+//        }
         return location_list;
 
     }

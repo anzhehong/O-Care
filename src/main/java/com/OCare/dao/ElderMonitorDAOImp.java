@@ -51,9 +51,19 @@ public class ElderMonitorDAOImp extends IGeneralDAOImpl<ElderMonitor> implements
         String hql = "from ElderMonitor where elder_id = :n and type = :m";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setString("n",elderId);
-        query.setInteger("m",1);
+        query.setInteger("m", 1);
         list = (ArrayList<Relative>) query.list();
         return list;
+    }
+
+    //或得该老人的所有监护人的ID
+    @Override
+    public List<ElderMonitor> getMonitorsByElderId(String elderId) {
+        String hql = "from ElderMonitor where elder_id = :n and type = :m";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("n",elderId);
+        query.setInteger("m", 1);
+        return query.list();
     }
 
     public ElderMonitorDAOImp()

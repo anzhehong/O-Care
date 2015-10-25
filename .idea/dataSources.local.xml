@@ -7,5 +7,11 @@
       <schema-pattern>OCare.*</schema-pattern>
       <default-schemas>OCare.*</default-schemas>
     </data-source>
+    <data-source name="openfire" uuid="dc2e0995-209e-4f0d-a947-522d69ac0176">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>openfire.*</schema-pattern>
+      <default-schemas>openfire.*</default-schemas>
+    </data-source>
   </component>
 </project>
