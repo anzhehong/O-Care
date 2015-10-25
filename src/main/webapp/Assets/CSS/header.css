@@ -45,11 +45,13 @@ body{
     font-size: 18px;
     padding: 0 10px;
     color: #fff;
+    text-decoration: none;
 }
 .greeting a:hover{
     font-size: 18px;
     color: #ff7770;
     padding: 0 10px;
+    text-decoration: none;
 }
 
 
@@ -92,4 +94,5 @@ body{
 
 .nav ul > li > a {
     color: #fff;
+    text-decoration: none;
 }

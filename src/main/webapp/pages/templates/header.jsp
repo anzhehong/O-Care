@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/OCare/Assets/CSS/semantic.css" media="screen">
   <link rel="stylesheet" href="/OCare/Assets/CSS/icon.css" media="screen">
   <script src="/OCare/Assets/JS/jquery-2.1.4.js"></script>
+  <script src="/OCare/Assets/JS/jquery.address.js"></script>
   <script src="/OCare/Assets/JS/semantic.js"></script>
 </head>
 <body>
@@ -22,7 +23,7 @@
   <div class="container">
     <img src="/OCare/Assets/Images/Ocare-logo.png">
     <div class="greeting">
-      您好! <strong>admin</strong><a class="login">登陆</a><a href="/Ocare/pages/Register.jsp">注册</a>
+      您好! <strong>admin</strong><a class="login">登陆</a><a>注销</a>
     </div>
     <div class="nav" >
       <ul>
@@ -53,20 +54,22 @@
   <div class="content" style="line-height: 40px;padding:2em 0rem;display: inline-block;">
     <div style="padding:0rem 1rem">
   <label>用户名/手机号/邮箱:</label></br>
-    <div class="ui input">
-      <input id="user" type="text" style="width: 400px">
+    <div class="ui input" style="display: initial;">
+      <input id="user" type="text" >
     </div></br>
     <label>密码</label></br>
-    <div class="ui input">
-      <input id="password" type="password" style="width: 400px">
+    <div class="ui input" style="display: initial;">
+      <input id="password" type="password" >
     </div>
     </div>
     </div>
 
   <div class="actions">
+    <a href="/OCare/pages/Register.jsp" style="color: white;">
     <div class="ui black button" style="float: left;background-color: #FF7770;margin-left: -10px;">
-      <a href="/OCare/pages/Register.jsp">注册</a>
+      注册
     </div>
+    </a>
     忘记密码?
     <div class="ui positive right labeled icon button" style="background-color: #78D6CC">
       登陆
