@@ -41,6 +41,12 @@ public class ElderServiceImp implements ElderService {
     }
 
     @Override
+    public ArrayList<Elder> getAllEldersByElderName(String elderName) {
+        ArrayList<Elder> elders = (ArrayList<Elder>) elderDAO.getAllEldersByName(elderName);
+        return elders;
+    }
+
+    @Override
     public ArrayList<Elder> getAllElders() {
         return (ArrayList<Elder>) elderDAO.queryAll();
     }

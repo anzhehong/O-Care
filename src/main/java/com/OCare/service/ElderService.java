@@ -30,6 +30,13 @@ public interface ElderService {
         参数：无
         返回值：Arraylist<Elder>
      */
+
+    /*
+        功能：根据老人姓名拿到所有老人
+        返回值：所有老人
+     */
+    public ArrayList<Elder> getAllEldersByElderName(String elderName);
+    
     public ArrayList<Elder> getAllElders();
 
     public List<Elder> getEldersByPhoneNum(String phone);

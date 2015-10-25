@@ -29,4 +29,9 @@ public interface ElderMonitorDAO extends IGeneralDAO<ElderMonitor> {
     public ArrayList<Relative> getAllMonitorsByElderId(String elderId);
 
     public List<ElderMonitor> getMonitorsByElderId(String elderId);
+
+     /*
+        功能；通过监护人Id拿到所有老人
+     */
+    public List<ElderMonitor> getAllEldersByMonitorId(String monitorId);
 }

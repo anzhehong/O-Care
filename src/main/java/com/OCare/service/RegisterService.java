@@ -51,6 +51,13 @@ public interface RegisterService {
      */
     public Company registerForCompany(String comName, String comLegalPersonId, String comPhone, String comAddress);
 
+    /*
+        功能：判断法人代表是否存在
+        参数：法人代表Id
+        返回：值布尔值
+     */
+    public boolean isLegalPersonIdExist(String legalPersonId);
+
     public ArrayList<Elder> getAllElders();
     public ArrayList<Relative> getAllRelatives();
     public ArrayList<Volunteer> getAllVolunteers();

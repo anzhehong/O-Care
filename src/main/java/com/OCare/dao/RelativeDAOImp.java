@@ -29,4 +29,16 @@ public class RelativeDAOImp extends IGeneralDAOImpl<Relative> implements Relativ
             return list.get(0);
         }
     }
+
+    @Override
+    public List<Relative> getAllMonitorsByName(String name) {
+        String hql = "from Relative where name = :m";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("m",name);
+        List<Relative> list = query.list();
+        if (list.size() != 0)
+            return list;
+        else
+            return null;
+    }
 }

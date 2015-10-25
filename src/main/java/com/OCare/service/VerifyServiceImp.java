@@ -193,6 +193,22 @@ public class VerifyServiceImp implements VerifyService {
         }
     }
 
+    @Override
+    public ArrayList<Elder> getAllEldersByMonitorId(String monitorId) {
+        List<ElderMonitor> elderMonitors = elderMonitorDAO.getAllEldersByMonitorId(monitorId);
+        ArrayList<Elder> elders = new ArrayList<Elder>();
+        for (ElderMonitor elderMonitor:elderMonitors){
+            elders.add(elderDAO.queryById(elderMonitor.getElder_id()));
+        }
+        return elders;
+    }
+
+    @Override
+    public ArrayList<Relative> getAllMonitorsByName(String monitorName) {
+        List<Relative> relatives = relativeDAO.getAllMonitorsByName(monitorName);
+        return (ArrayList<Relative>) relatives;
+    }
+
     public String getIdByPhoneNum(String phoneNum)
     {
         String idToGet = "";

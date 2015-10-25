@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by fowafolo on 15/7/28.
@@ -111,6 +112,17 @@ public class RegisterServiceImp implements RegisterService {
         newCompany.setStatus(101);
         companyDAO.insert(newCompany);
         return newCompany;
+    }
+
+    @Override
+    public boolean isLegalPersonIdExist(String legalPersonId) {
+        List<LegalPerson> allLeagalPerson = legalPersonDAO.queryAll();
+        boolean flag = false;
+        for (LegalPerson legalPerson : allLeagalPerson){
+            if (legalPerson.getId().equals(legalPersonId))
+                flag = true;
+        }
+        return flag;
     }
 
     @Override
