@@ -8,6 +8,28 @@
     min-height: 800px;
 }
 
+
+.HR{
+    width:76%;
+    display: inline-block;
+    margin-left:320px;
+    padding: 0px;
+    position: relative;
+    background-color: #ffffff;
+    min-height: 800px;
+}
+
+.Entry{
+    width:70%;
+    display: inline-block;
+    margin-left:320px;
+
+    position: relative;
+    background-color: #ffffff;
+    min-height: 800px;
+    padding: 40px;
+}
+
 a{
     color: #333333;
     font-family: "Helvetica Neue", "Helvetica", Arial;
