@@ -784,6 +784,53 @@ public class InterfaceController {
     }
 
     /*
+        功能：同上
+        注意：返回给于子涵
+     */
+    @RequestMapping("/contract/listAllEldersContractAndMonitorsYu")
+    @ResponseBody
+    public ArrayList<HashMap<String, Object>> listAllEldersContractAndMonitorsYu() {
+        ArrayList<HashMap<String, Object>> relatives = new ArrayList<HashMap<String, Object>>();
+        //get all elder contract from contract entity
+        ArrayList<Contract> contracts  = (ArrayList<Contract>) contractService.getAllContracts();
+
+        //the list of result information together
+        ArrayList<HashMap<String, Object>> contractInfo = new ArrayList<HashMap<String, Object>>();
+
+
+        for (Contract contract : contracts){
+            //the current elder information
+            HashMap<String, Object> tempElderInfo = new HashMap<String, Object>();
+
+            Elder tempElder = elderService.getElderById(contract.getElder_id());
+            tempElderInfo.put("contract_id",contract.getId());
+            tempElderInfo.put("old_name",tempElder.getName());
+            tempElderInfo.put("old_id",contract.getElder_id());
+            tempElderInfo.put("execution",contract.getStatus());
+            tempElderInfo.put("date",contract.getStart_time());
+            tempElderInfo.put("service","special service");
+            tempElderInfo.put("payment","payed");
+
+            ArrayList<Relative> tempMonitos = verifyService.getMonitorsByElderId(contract.getElder_id());
+
+            for (int i=0; i<2; i++){
+                if (tempMonitos.size()!=0 && tempMonitos.size() > i){
+                    String tempStr1 = "keeper" + Integer.toString(i+1) +"_name";
+                    tempElderInfo.put(tempStr1,tempMonitos.get(i).getName());
+                    String tempStr2 = "keeper" + Integer.toString(i+1) +"_id";
+                    tempElderInfo.put(tempStr2,verifyService.getMonitorsByElderId(contract.getElder_id()).get(i).getId());
+                }
+            }
+            //add to list
+            System.out.println(tempElderInfo.toString());
+            contractInfo.add(tempElderInfo);
+        }
+        System.out.println(contractInfo.toString());
+        relatives = contractInfo;
+        return relatives;
+    }
+
+    /*
         功能：列出某个老人的合同情况和监护人
         参数：身份证号码
         返回：这个老人的合同和所有监护人
