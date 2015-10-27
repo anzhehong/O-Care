@@ -13,4 +13,5 @@ public interface RelativeService {
         返回值：实体Relative
      */
     public Relative getRelativeById(String id);
+    public Relative getRelativeByPhoneNum(String phoneNum);
 }

@@ -3,6 +3,7 @@ package com.OCare.service;
 import com.OCare.dao.ElderDAO;
 import com.OCare.dao.ElderMonitorDAO;
 import com.OCare.entity.Elder;
+import com.OCare.entity.ElderMonitor;
 import com.OCare.entity.Relative;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,5 +68,10 @@ public class ElderServiceImp implements ElderService {
     @Override
     public List<Elder> getEldersByPhoneNum(String phone){
         return elderDAO.getEldersByPhoneNum(phone);
+    }
+
+    @Override
+    public List<ElderMonitor> findAllElderMonitorsByRelativeId(String relativeId) {
+        return elderMonitorDAO.queryByRelativeId(relativeId);
     }
 }

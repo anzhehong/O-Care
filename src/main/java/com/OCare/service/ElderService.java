@@ -1,6 +1,7 @@
 package com.OCare.service;
 
 import com.OCare.entity.Elder;
+import com.OCare.entity.ElderMonitor;
 import com.OCare.entity.Relative;
 
 import java.util.ArrayList;
@@ -41,4 +42,5 @@ public interface ElderService {
 
     public List<Elder> getEldersByPhoneNum(String phone);
 
+    public List<ElderMonitor> findAllElderMonitorsByRelativeId(String relativeId);
 }
