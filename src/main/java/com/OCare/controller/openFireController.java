@@ -34,6 +34,11 @@ public class openFireController {
     @Autowired
     private ElderService elderService;
 
+    /*
+        功能：房间管理员查到所有成员的所有信息。
+        参数：房间号，想查询信息的人的电话
+        返回值：members
+     */
     @RequestMapping("/admin/members")
     @ResponseBody
     public Map<String, Object> getMembers(String phoneNum, String roomId){
@@ -79,6 +84,11 @@ public class openFireController {
         return result;
     }
 
+    /*
+        功能：房间成员输入房间ID与成员电话,可查询到任一成员的昵称、 图像、
+        在该房间中的地位(是不是管理员,被踢的,publisher, none)、与老人的关系(如果该房间是养老房间)。
+        参数：房间号，想查询信息的人的电话
+     */
 
     @RequestMapping("/user/member")
     @ResponseBody
@@ -159,4 +169,54 @@ public class openFireController {
         result.put("relative", relativeInfoList);
         return result;
     }
+    /*
+        功能：房间管理员或者房间成员查看所有房间内成员的电话
+        参数：房间号，想查询信息的人的电话号码
+     */
+    @RequestMapping("/getRoomMembersPhone")
+    @ResponseBody
+    public Map<String,Object> getRoomMembersPhone(String roomId, String phoneNum)
+    {
+        Map<String,Object> result = new HashMap<String, Object>();
+        if(phoneNum == null || roomId == null || phoneNum.equals("") || roomId.equals("")){
+            result.put("error", true);
+            result.put("errorMsg", INPUT_CANNOT_NULL);
+            return result;
+        }
+        Object oResult = openFireService.getPeopleByPhoneNumAndRoomId(phoneNum, roomId);
+
+        if (oResult instanceof Integer){
+            if ((Integer) oResult == openFireServiceImpl.ROOM_ID_INVALID){
+                result.put("error", true);
+                result.put("errorMsg", "ROOM_ID_INVALID");
+                return result;
+            }
+
+            if ((Integer) oResult == openFireServiceImpl.ROOM_NOT_EXIST){
+                result.put("error", true);
+                result.put("errorMsg", "ROOM_NOT_EXIST");
+                return result;
+            }
+
+            if ((Integer) oResult == openFireServiceImpl.MEMBER_NOT_EXIST){
+                result.put("error",true);
+                result.put("errorMsg","MEMBER_NOT_EXIST");
+                return result;
+            }
+
+        }
+        List<ofMucMember> members = (List<ofMucMember>) oResult;
+        ArrayList<String> phones = new ArrayList<String>();
+        for (ofMucMember member:members){
+            String split[] = member.getJid().split("@");
+            phones.add(split[0]);
+        }
+        result.put("error", false);
+        result.put("phones", phones);
+
+        return result;
+    }
 }
+
+
+

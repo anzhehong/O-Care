@@ -9,4 +9,9 @@ public interface openFireService {
     public Object findRoomsById(String roomId);
     //某人查看某房间中的某一成员
     public Object findMemberByPhoneNumAndRoomId(String phoneNum, String roomId);
+
+    /*
+        功能：拿到成员或者管理员所在房间内的所有成员的电话号码
+     */
+    public Object getPeopleByPhoneNumAndRoomId(String phoneNum, String roomId);
 }

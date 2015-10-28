@@ -102,4 +102,33 @@ public class openFireServiceImpl implements openFireService {
         //只返回第一条记录！！！！
         return members.get(0);
     }
+
+    @Override
+    public Object getPeopleByPhoneNumAndRoomId(String phoneNum, String roomId) {
+
+        Pattern pattern = Pattern.compile("^[0-9]*$");
+        Matcher matcher = pattern.matcher(roomId);
+
+        if(!matcher.matches()){
+            return ROOM_ID_INVALID;
+        }
+
+        //TODO: 判断是否是这个房间的人。先在移动端调用接口时注意下。
+
+        List<ofMucMember> ofMucMembers = memberDAO.getAllMembersByRoomId(Integer.parseInt(roomId));
+
+        if(ofMucMembers == null){
+            return ROOM_NOT_EXIST;
+        }
+
+        List<ofMucAffiliation> ofMucAffiliations = affiliationDAO.getAffiliationByPhoneNum(phoneNum);
+        List<ofMucMember> tempMembers = memberDAO.getMemberByRoomIdAndPhoneNum(Integer.parseInt(roomId),phoneNum);
+        if((ofMucAffiliations == null || ofMucAffiliations.size() == 0)
+                &&(tempMembers == null || tempMembers.size() == 0)){
+            return MEMBER_NOT_EXIST;
+        }
+
+
+        return ofMucMembers;
+    }
 }

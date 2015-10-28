@@ -7,8 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03f898b8-ec7a-488d-b7ec-b68ba0959bcb" name="Default" comment="add interface to app">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/OCare/controller/InterfaceController.java" afterPath="$PROJECT_DIR$/src/main/java/com/OCare/controller/InterfaceController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/OCare/controller/openFireController.java" afterPath="$PROJECT_DIR$/src/main/java/com/OCare/controller/openFireController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/OCare/service/openFireService.java" afterPath="$PROJECT_DIR$/src/main/java/com/OCare/service/openFireService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/OCare/service/openFireServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/OCare/service/openFireServiceImpl.java" />
     </list>
     <ignored path="OCare.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,29 +44,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="InterfaceController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/InterfaceController.java">
+      <file leaf-file-name="openFireController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/openFireController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.737288">
-              <caret line="805" column="21" selection-start-line="805" selection-start-column="21" selection-end-line="805" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.44067797">
+              <caret line="175" column="41" selection-start-line="175" selection-start-column="22" selection-end-line="175" selection-end-column="41" />
               <folding>
-                <element signature="e#12878#12894#0" expanded="true" />
-                <element signature="e#18102#18118#0" expanded="true" />
-                <element signature="e#22369#22385#0" expanded="true" />
-                <element signature="e#23168#23184#0" expanded="true" />
-                <element signature="e#27853#27878#0" expanded="true" />
-                <element signature="e#28156#28181#0" expanded="true" />
-                <element signature="e#28339#28355#0" expanded="true" />
+                <element signature="e#5945#5961#0" expanded="true" />
+                <element signature="e#7109#7117#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InvocableHandlerMethod.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.4.RELEASE/spring-web-4.0.4.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <file leaf-file-name="openFireService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/openFireService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.5185184">
-              <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="openFireServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/openFireServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="119" column="33" selection-start-line="119" selection-start-column="33" selection-end-line="119" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ofMucMemberDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/ofMucMemberDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -96,9 +112,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/RelativeService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/RelativeServiceImp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/OCare/entity/Company.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/EmployeeService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/EmployeeServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/entity/Contract.java" />
@@ -147,6 +160,9 @@
         <option value="$PROJECT_DIR$/src/main/webapp/Assets/CSS/homepage.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/controller/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/controller/InterfaceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/openFireService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/openFireServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/controller/openFireController.java" />
       </list>
     </option>
   </component>
@@ -259,6 +275,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -649,9 +667,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1272,6 +1288,7 @@
       <workItem from="1445770458708" duration="5000" />
       <workItem from="1445870540469" duration="565000" />
       <workItem from="1445957837482" duration="3644000" />
+      <workItem from="1445994066059" duration="2749000" />
     </task>
     <task id="LOCAL-00001" summary="Add lib to project">
       <created>1438488890717</created>
@@ -1289,7 +1306,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130551000" />
+    <option name="totallyTimeSpent" value="133300000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1302,7 +1319,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-568" y="-1057" width="1920" height="1057" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980132" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1318,10 +1335,10 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980132" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23695421" sideWeight="0.36585367" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23056443" sideWeight="0.63414633" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21086262" sideWeight="0.63414633" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1368477" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10170394" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1385,7 +1402,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="45" />
+      <option name="time" value="47" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1394,41 +1411,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/EmployeeInterfaceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38297874">
-          <caret line="31" column="17" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/CompanyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19148937">
-          <caret line="15" column="15" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/EmployeeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14893617">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/EmployeeDAOImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34042552">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/IGeneralDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14893617">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/EmployeeServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23404256">
@@ -1475,13 +1457,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.0.4.RELEASE/spring-aop-4.0.4.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1706,7 +1681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13528748">
           <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1714,7 +1688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37870473">
           <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1722,17 +1695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5927552">
           <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
-          <folding>
-            <element signature="e#389#390#0" expanded="true" />
-            <element signature="e#416#417#0" expanded="true" />
-            <element signature="e#480#481#0" expanded="true" />
-            <element signature="e#510#511#0" expanded="true" />
-            <element signature="e#576#577#0" expanded="true" />
-            <element signature="e#607#608#0" expanded="true" />
-            <element signature="e#671#672#0" expanded="true" />
-            <element signature="e#701#702#0" expanded="true" />
-            <element signature="e#795#796#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1740,7 +1702,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5883644">
           <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1748,7 +1709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42810097">
           <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1756,7 +1716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34906697">
           <caret line="181" column="73" selection-start-line="181" selection-start-column="73" selection-end-line="181" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1764,15 +1723,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5320197">
           <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/ofMucMemberDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19715224">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.4.RELEASE/spring-web-4.0.4.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5185184">
+        <state vertical-scroll-proportion="0.22121896">
           <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
           <folding />
         </state>
@@ -1780,16 +1744,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/InterfaceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.737288">
+        <state vertical-scroll-proportion="-3.3537788">
           <caret line="805" column="21" selection-start-line="805" selection-start-column="21" selection-end-line="805" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/ofMucMemberDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/openFireServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="119" column="33" selection-start-line="119" selection-start-column="33" selection-end-line="119" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/openFireService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.0.4.RELEASE/spring-aop-4.0.4.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36056837">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/openFireController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44067797">
+          <caret line="175" column="41" selection-start-line="175" selection-start-column="22" selection-end-line="175" selection-end-column="41" />
           <folding>
-            <element signature="e#12878#12894#0" expanded="true" />
-            <element signature="e#18102#18118#0" expanded="true" />
-            <element signature="e#22369#22385#0" expanded="true" />
-            <element signature="e#23168#23184#0" expanded="true" />
-            <element signature="e#27853#27878#0" expanded="true" />
-            <element signature="e#28156#28181#0" expanded="true" />
-            <element signature="e#28339#28355#0" expanded="true" />
+            <element signature="e#5945#5961#0" expanded="true" />
+            <element signature="e#7109#7117#0" expanded="true" />
           </folding>
         </state>
       </provider>
