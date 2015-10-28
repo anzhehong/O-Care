@@ -730,6 +730,13 @@ public class InterfaceController {
     @ResponseBody
     public Map<String, Object> getEldersByPhoneNum(@PathVariable String phoneNum){
         Map<String, Object> result = new HashMap<String, Object>();
+
+        if(phoneNum == null || phoneNum.equals("")){
+            result.put("error", true);
+            result.put("errorMsg", "INPUT_CANNOT_NULL");
+            return result;
+        }
+
         List<Elder> elders = elderService.getEldersByPhoneNum(phoneNum);
 
         if(elders == null || elders.size() == 0){
@@ -740,6 +747,59 @@ public class InterfaceController {
 
         result.put("error", false);
         result.put("elder", elders);
+        return result;
+    }
+
+    @RequestMapping("/getElderInfoByPhone/{relativePhoneNum}/{elderPhoneNum}")
+    @ResponseBody
+    public Map<String, Object> findElderWithRelativePhoneNumAndElderPhoneNum(@PathVariable String relativePhoneNum, @PathVariable String elderPhoneNum){
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        if(relativePhoneNum == null || elderPhoneNum == null || relativePhoneNum.equals("") || elderPhoneNum.equals("")){
+            System.out.println(relativePhoneNum+" "+elderPhoneNum);
+            result.put("error", true);
+            result.put("errorMsg", "INPUT_CANNOT_NULL");
+            return result;
+        }
+
+        Relative relative = relativeService.getRelativeByPhoneNum(relativePhoneNum);
+        //没有SQL注入直接利用其他接口返回值获取
+        List<Elder> elders = elderService.getEldersByPhoneNum(elderPhoneNum);
+
+        if(relative == null){
+            result.put("error", true);
+            result.put("errorMsg","RELATIVE_NOT_EXIST");
+            return result;
+        }
+
+        if(elders == null || elders.size() == 0){
+            result.put("error", true);
+            result.put("errorMsg","ELDER_NOT_EXIST");
+            return result;
+        }
+
+        Elder elder = elders.get(0);
+
+        String relativeId = relative.getId();
+        ArrayList<Elder> listElders = verifyService.getAllEldersByMonitorId(relativeId);
+
+        int iFlag = 0;
+
+        for (Elder tempElder: listElders){
+            if (tempElder.getId() == elder.getId()){
+                iFlag = 1;
+                break;
+            }
+        }
+
+        if(iFlag == 0){
+            result.put("error", true);
+            result.put("errorMsg", "RELATIVE_AND_ELDER_NOT_MATCH");
+            return result;
+        }
+
+        result.put("error", false);
+        result.put("elder", elder);
         return result;
     }
 
@@ -1061,4 +1121,7 @@ public class InterfaceController {
         }
         return result;
     }
+
+
+
 }
