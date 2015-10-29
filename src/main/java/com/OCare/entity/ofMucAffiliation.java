@@ -12,6 +12,9 @@ import javax.persistence.Table;
 public class ofMucAffiliation {
 
     @Id
+    private int id;
+
+
     private int roomID;
     private String jid;
     private int affiliation;
@@ -47,5 +50,14 @@ public class ofMucAffiliation {
 
     public void setRoomID(int roomID) {
         this.roomID = roomID;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

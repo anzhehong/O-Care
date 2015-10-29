@@ -549,6 +549,7 @@ public class InterfaceController {
 
     /*
         功能：注册公司机构
+        注意：注册机构分为两个步骤，先有法人代表才能注册公司
      */
     @RequestMapping("/company/register")
     @ResponseBody
@@ -560,13 +561,14 @@ public class InterfaceController {
         {
             result.put("error",true);
             result.put("errorMsg","Something is empty!");
+        }else if(!registerService.isLegalPersonIdExist(companyLegalPersonId)) {
+            result.put("error",true);
+            result.put("errorMsg","Legal Person not exsits");
         }else {
             Company companyToRegister =  registerService.registerForCompany(companyName, companyLegalPersonId, companyPhone, companyAddress);
             result.put("error",false);
             result.put("account",companyToRegister);
         }
-
-
         return result;
     }
 
@@ -728,6 +730,13 @@ public class InterfaceController {
     @ResponseBody
     public Map<String, Object> getEldersByPhoneNum(@PathVariable String phoneNum){
         Map<String, Object> result = new HashMap<String, Object>();
+
+        if(phoneNum == null || phoneNum.equals("")){
+            result.put("error", true);
+            result.put("errorMsg", "INPUT_CANNOT_NULL");
+            return result;
+        }
+
         List<Elder> elders = elderService.getEldersByPhoneNum(phoneNum);
 
         if(elders == null || elders.size() == 0){
@@ -740,4 +749,379 @@ public class InterfaceController {
         result.put("elder", elders);
         return result;
     }
+
+    @RequestMapping("/getElderInfoByPhone/{relativePhoneNum}/{elderPhoneNum}")
+    @ResponseBody
+    public Map<String, Object> findElderWithRelativePhoneNumAndElderPhoneNum(@PathVariable String relativePhoneNum, @PathVariable String elderPhoneNum){
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        if(relativePhoneNum == null || elderPhoneNum == null || relativePhoneNum.equals("") || elderPhoneNum.equals("")){
+            System.out.println(relativePhoneNum+" "+elderPhoneNum);
+            result.put("error", true);
+            result.put("errorMsg", "INPUT_CANNOT_NULL");
+            return result;
+        }
+
+        Relative relative = relativeService.getRelativeByPhoneNum(relativePhoneNum);
+        //没有SQL注入直接利用其他接口返回值获取
+        List<Elder> elders = elderService.getEldersByPhoneNum(elderPhoneNum);
+
+        if(relative == null){
+            result.put("error", true);
+            result.put("errorMsg","RELATIVE_NOT_EXIST");
+            return result;
+        }
+
+        if(elders == null || elders.size() == 0){
+            result.put("error", true);
+            result.put("errorMsg","ELDER_NOT_EXIST");
+            return result;
+        }
+
+        Elder elder = elders.get(0);
+
+        String relativeId = relative.getId();
+        ArrayList<Elder> listElders = verifyService.getAllEldersByMonitorId(relativeId);
+
+        int iFlag = 0;
+
+        for (Elder tempElder: listElders){
+            if (tempElder.getId() == elder.getId()){
+                iFlag = 1;
+                break;
+            }
+        }
+
+        if(iFlag == 0){
+            result.put("error", true);
+            result.put("errorMsg", "RELATIVE_AND_ELDER_NOT_MATCH");
+            return result;
+        }
+
+        result.put("error", false);
+        result.put("elder", elder);
+        return result;
+    }
+
+    /*
+        功能：列出所有老人的合同情况和监护人
+        参数：无
+        返回：每个老人的合同和所有监护人
+     */
+    @RequestMapping("/contract/listAllEldersContractAndMonitors")
+    @ResponseBody
+    public Map<String,Object> listAllEldersContractAndMonitors() {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+
+        //get all elder contract from contract entity
+        ArrayList<Contract> contracts  = (ArrayList<Contract>) contractService.getAllContracts();
+
+        //the list of result information together
+        ArrayList<HashMap<String, Object>> contractInfo = new ArrayList<HashMap<String, Object>>();
+
+        if (contracts.size() == 0){
+            result.put("error", true);
+            result.put("errorMsg", "There is no contract available");
+            return result;
+        }
+
+        for (Contract contract : contracts){
+            //the current elder information
+            HashMap<String, Object> tempElderInfo = new HashMap<String, Object>();
+            //elder info
+            tempElderInfo.put("elderContract", contract);
+            //relative info
+            tempElderInfo.put("monitors", verifyService.getMonitorsByElderId(contract.getElder_id()));
+            //add to list
+            contractInfo.add(tempElderInfo);
+        }
+
+        result.put("error", false);
+        result.put("info", contractInfo);
+
+        return result;
+    }
+
+    /*
+        功能：同上
+        注意：返回给于子涵
+     */
+    @RequestMapping("/contract/listAllEldersContractAndMonitorsYu")
+    @ResponseBody
+    public ArrayList<HashMap<String, Object>> listAllEldersContractAndMonitorsYu() {
+        ArrayList<HashMap<String, Object>> relatives = new ArrayList<HashMap<String, Object>>();
+        //get all elder contract from contract entity
+        ArrayList<Contract> contracts  = (ArrayList<Contract>) contractService.getAllContracts();
+
+        //the list of result information together
+        ArrayList<HashMap<String, Object>> contractInfo = new ArrayList<HashMap<String, Object>>();
+
+
+        for (Contract contract : contracts){
+            //the current elder information
+            HashMap<String, Object> tempElderInfo = new HashMap<String, Object>();
+
+            Elder tempElder = elderService.getElderById(contract.getElder_id());
+            tempElderInfo.put("contract_id",contract.getId());
+            tempElderInfo.put("old_name",tempElder.getName());
+            tempElderInfo.put("old_id",contract.getElder_id());
+            tempElderInfo.put("execution",contract.getStatus());
+            tempElderInfo.put("date",contract.getStart_time());
+            tempElderInfo.put("service","special service");
+            tempElderInfo.put("payment","payed");
+
+            ArrayList<Relative> tempMonitos = verifyService.getMonitorsByElderId(contract.getElder_id());
+
+            for (int i=0; i<2; i++){
+                if (tempMonitos.size()!=0 && tempMonitos.size() > i){
+                    String tempStr1 = "keeper" + Integer.toString(i+1) +"_name";
+                    tempElderInfo.put(tempStr1,tempMonitos.get(i).getName());
+                    String tempStr2 = "keeper" + Integer.toString(i+1) +"_id";
+                    tempElderInfo.put(tempStr2,verifyService.getMonitorsByElderId(contract.getElder_id()).get(i).getId());
+                }
+            }
+            //add to list
+            System.out.println(tempElderInfo.toString());
+            contractInfo.add(tempElderInfo);
+        }
+        System.out.println(contractInfo.toString());
+        relatives = contractInfo;
+        return relatives;
+    }
+
+    /*
+        功能：列出某个老人的合同情况和监护人
+        参数：身份证号码
+        返回：这个老人的合同和所有监护人
+     */
+    @RequestMapping("/contract/listOneElderContractAndMonitors")
+    @ResponseBody
+    public Map<String,Object> listOneElderContractAndMonitors(String elderId) {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+
+        //get the elder contract from contract entity
+        ArrayList<Contract> contracts  = (ArrayList<Contract>) contractService.getContractsByElderId(elderId);
+
+        //the list of result information together
+        ArrayList<HashMap<String, Object>> contractInfo = new ArrayList<HashMap<String, Object>>();
+
+        if (contracts.size() == 0){
+            result.put("error", true);
+            result.put("errorMsg", "There is no contract available");
+            return result;
+        }
+
+        for (Contract contract : contracts){
+            //the current elder information
+            HashMap<String, Object> tempElderInfo = new HashMap<String, Object>();
+            //elder info
+            tempElderInfo.put("elderContract", contract);
+            //relative info
+            tempElderInfo.put("monitors", verifyService.getMonitorsByElderId(contract.getElder_id()));
+            //add to list
+            contractInfo.add(tempElderInfo);
+        }
+
+        result.put("error", false);
+        result.put("info", contractInfo);
+
+        return result;
+    }
+
+    /*
+       功能：列出某个老人的合同情况和监护人
+       参数：身份证号码
+       返回：这个老人的合同和所有监护人
+    */
+    @RequestMapping("contract/listOneContractAndMonitorsByContractId")
+    @ResponseBody
+    public Map<String,Object> listOneContractAndMonitorsByContractId(int contractId) {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+
+        //get the elder contract from contract entity
+        Contract contract = contractService.getContractsById(contractId);
+        //the list of result information together
+        ArrayList<HashMap<String, Object>> contractInfo = new ArrayList<HashMap<String, Object>>();
+
+        if (contract == null){
+            result.put("error", true);
+            result.put("errorMsg", "There is no contract available");
+            return result;
+        }
+
+        //the current elder information
+        HashMap<String, Object> tempElderInfo = new HashMap<String, Object>();
+        //elder info
+        tempElderInfo.put("elderContract", contract);
+        //relative info
+        tempElderInfo.put("monitors", verifyService.getMonitorsByElderId(contract.getElder_id()));
+        //add to list
+        contractInfo.add(tempElderInfo);
+
+        result.put("error", false);
+        result.put("info", contractInfo);
+
+        return result;
+    }
+
+    /*
+       功能：列出某个老人的合同情况和监护人
+       参数：身份证号码
+       返回：这个老人的合同和所有监护人
+    */
+    @RequestMapping("contract/listOneContractAndMonitorsByMonitorId")
+    @ResponseBody
+    public Map<String,Object> listOneContractAndMonitorsByMonitorId(String monitorId) {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        //get the elder by monitor Id
+        ArrayList<Elder> elders = verifyService.getAllEldersByMonitorId(monitorId);
+
+
+        ArrayList<HashMap<String, Object>> allContractInfo = new ArrayList<HashMap<String, Object>>();
+
+        if (elders.size() == 0){
+            result.put("error", true);
+            result.put("errorMsg", "There is no related elder of this monitor available");
+            return result;
+        }
+        for (Elder elder: elders){
+            //get the elder contract from contract entity
+            ArrayList<Contract> contracts  = (ArrayList<Contract>) contractService.getContractsByElderId(elder.getId());
+
+            if (contracts.size() != 0){
+                for (Contract contract : contracts){
+                    //the current elder information
+                    HashMap<String, Object> tempElderInfo = new HashMap<String, Object>();
+                    //elder info
+                    tempElderInfo.put("elderContract", contract);
+                    //relative info
+                    tempElderInfo.put("monitors", verifyService.getMonitorsByElderId(contract.getElder_id()));
+                    //add to list
+                    allContractInfo.add(tempElderInfo);
+                }
+            }
+        }
+        if (allContractInfo.size()==0) {
+            result.put("error", true);
+            result.put("errorMsg", "There is no contract available");
+        }else {
+            result.put("error", false);
+            result.put("info", allContractInfo);
+        }
+        return result;
+    }
+
+    /*
+       功能：根据老人姓名列出所有符合条件的老人的合同信息和监护人
+       参数：老人姓名
+       返回：这个老人的合同和所有监护人
+    */
+    @RequestMapping("contract/listOneContractAndMonitorsByElderName")
+    @ResponseBody
+    public Map<String,Object> listOneContractAndMonitorsByElderName(String elderName) {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        //the list of result information together
+        ArrayList<HashMap<String, Object>> contractInfo = new ArrayList<HashMap<String, Object>>();
+
+        //get the elders with the given name
+        ArrayList<Elder> elders = elderService.getAllEldersByElderName(elderName);
+
+        for (Elder elder : elders) {
+            //get the elder contract from contract entity
+            ArrayList<Contract> contracts  = (ArrayList<Contract>) contractService.getContractsByElderId(elder.getId());
+            if (contracts.size() != 0) {
+                for (Contract contract : contracts){
+                    //the current elder information
+                    HashMap<String, Object> tempElderInfo = new HashMap<String, Object>();
+                    //elder info
+                    tempElderInfo.put("elderContract", contract);
+                    //relative info
+                    tempElderInfo.put("monitors", verifyService.getMonitorsByElderId(contract.getElder_id()));
+                    //add to list
+                    contractInfo.add(tempElderInfo);
+                }
+            }
+        }
+        if (contractInfo.size() == 0 ){
+            result.put("error",false);
+            result.put("errorMsg","There is no related elder contract of this elder name");
+        }else {
+            result.put("error", false);
+            result.put("info", contractInfo);
+        }
+        return result;
+    }
+
+    /*
+       功能：根据老人姓名列出所有符合条件的老人的合同信息和监护人
+       参数：老人姓名
+       返回：这个老人的合同和所有监护人
+    */
+    @RequestMapping("contract/listOneContractAndMonitorsByMonitorName")
+    @ResponseBody
+    public Map<String,Object> listOneContractAndMonitorsByMonitorName(String monitorName) {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        //the list of result information together
+        ArrayList<HashMap<String, Object>> contractInfo = new ArrayList<HashMap<String, Object>>();
+
+        //get the monitors with the given name
+        ArrayList<Relative> monitors = verifyService.getAllMonitorsByName(monitorName);
+
+        if (monitors == null) {
+            result.put("error",true);
+            result.put("errorMsg","No related info about this monitor name");
+            return result;
+        }
+        //get the elders of the selected monitors
+        ArrayList<Elder> elders = new ArrayList<Elder>();
+
+        for (Relative relative: monitors) {
+            ArrayList<Elder> tempElders = verifyService.getAllEldersByMonitorId(relative.getId());
+            for (int i = 0; i<tempElders.size(); i++) {
+                elders.add(tempElders.get(i));
+            }
+        }
+
+        if (elders.size() == 0){
+            result.put("error",true);
+            result.put("errorMsg","No related info about this monitor name");
+            return result;
+        }
+
+        for (Elder elder : elders) {
+            System.out.println(elder.getName());
+            //get the elder contract from contract entity
+            ArrayList<Contract> contracts  = (ArrayList<Contract>) contractService.getContractsByElderId(elder.getId());
+            if (contracts.size() != 0) {
+                for (Contract contract : contracts){
+                    //the current elder information
+                    HashMap<String, Object> tempElderInfo = new HashMap<String, Object>();
+                    //elder info
+                    tempElderInfo.put("elderContract", contract);
+                    //relative info
+                    tempElderInfo.put("monitors", verifyService.getMonitorsByElderId(contract.getElder_id()));
+                    //add to list
+                    contractInfo.add(tempElderInfo);
+                }
+            }
+        }
+        if (contractInfo.size() == 0 ){
+            result.put("error",false);
+            result.put("errorMsg","No related info about this monitor name");
+
+        }else {
+            result.put("error", false);
+            result.put("info", contractInfo);
+        }
+        return result;
+    }
+
+
+
 }

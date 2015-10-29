@@ -1,6 +1,7 @@
 package com.OCare.service;
 
 import com.OCare.entity.Elder;
+import com.OCare.entity.ElderMonitor;
 import com.OCare.entity.Relative;
 
 import java.util.ArrayList;
@@ -30,8 +31,16 @@ public interface ElderService {
         参数：无
         返回值：Arraylist<Elder>
      */
+
+    /*
+        功能：根据老人姓名拿到所有老人
+        返回值：所有老人
+     */
+    public ArrayList<Elder> getAllEldersByElderName(String elderName);
+    
     public ArrayList<Elder> getAllElders();
 
     public List<Elder> getEldersByPhoneNum(String phone);
 
+    public List<ElderMonitor> findAllElderMonitorsByRelativeId(String relativeId);
 }

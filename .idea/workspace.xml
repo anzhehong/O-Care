@@ -6,7 +6,15 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="03f898b8-ec7a-488d-b7ec-b68ba0959bcb" name="Default" comment="add interface to app" />
+=======
+    <list default="true" id="03f898b8-ec7a-488d-b7ec-b68ba0959bcb" name="Default" comment="add interface to app">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/OCare/controller/openFireController.java" afterPath="$PROJECT_DIR$/src/main/java/com/OCare/controller/openFireController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/OCare/service/openFireService.java" afterPath="$PROJECT_DIR$/src/main/java/com/OCare/service/openFireService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/OCare/service/openFireServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/OCare/service/openFireServiceImpl.java" />
+    </list>
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
     <ignored path="OCare.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -40,31 +48,65 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< HEAD
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.19123507">
               <caret line="136" column="68" selection-start-line="136" selection-start-column="68" selection-end-line="136" selection-end-column="68" />
+=======
+      <file leaf-file-name="openFireController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/openFireController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.44067797">
+              <caret line="175" column="41" selection-start-line="175" selection-start-column="22" selection-end-line="175" selection-end-column="41" />
+              <folding>
+                <element signature="e#5945#5961#0" expanded="true" />
+                <element signature="e#7109#7117#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="openFireService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/openFireService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Register.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/Register.jsp">
+      <file leaf-file-name="openFireServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/openFireServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="-5.3030305">
               <caret line="304" column="43" selection-start-line="304" selection-start-column="43" selection-end-line="304" selection-end-column="43" />
+=======
+            <state vertical-scroll-proportion="0.0">
+              <caret line="119" column="33" selection-start-line="119" selection-start-column="33" selection-end-line="119" selection-end-column="33" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="sidebar.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/templates/sidebar.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+      <file leaf-file-name="ofMucMemberDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/ofMucMemberDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
               <folding />
             </state>
           </provider>
@@ -96,6 +138,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/AccountService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/RelativeService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/dao/ElderMonitorDAO.java" />
@@ -104,16 +147,21 @@
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/RegisterService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/RegisterServiceImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/ElderServiceImp.java" />
+=======
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/EmployeeService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/EmployeeServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/entity/Contract.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/ContractServiceImp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/ContractService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/dao/ContractDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/dao/ContractDAOImp.java" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/src/main/webapp/pages/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/Assets/CSS/index.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/pages/templates/header.jsp" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
         <option value="$PROJECT_DIR$/src/main/webapp/Assets/CSS/sidebar.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/pages/templates/sidebar.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/Assets/CSS/homepage.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/controller/ElderConditionController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/dao/EmployeeConditionDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/dao/EmployeeConditionDAOImp.java" />
@@ -127,11 +175,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/dao/IGeneralDAOImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/pages/verify.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/controller/ElderMonitorController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/ElderService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/VerifyService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/VerifyServiceImp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/OCare/controller/InterfaceController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/OCare/dao/ElderMonitorDAOImp.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/Assets/CSS/semantic.css" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/properties/hibernate.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/logging.properties" />
@@ -139,6 +182,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/openfireEntity/ofMucRoom.java" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/infrastructure.xml" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/main/webapp/Assets/CSS/wait.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/Assets/JS/register.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/OCare/controller/MainController.java" />
@@ -147,6 +191,29 @@
         <option value="$PROJECT_DIR$/src/main/webapp/pages/WaitPermition.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/pages/templates/header.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/pages/index.jsp" />
+=======
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/entity/ofMucRoom.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/ContractService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/ContractServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/dao/ElderMonitorDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/dao/ElderMonitorDAOImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/RegisterService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/RegisterServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/ElderService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/dao/ElderDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/dao/ElderDAOImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/ElderServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/VerifyService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/dao/RelativeDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/dao/RelativeDAOImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/VerifyServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/Assets/CSS/homepage.css" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/controller/InterfaceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/openFireService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/service/openFireServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/OCare/controller/openFireController.java" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
       </list>
     </option>
   </component>
@@ -187,10 +254,17 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
     <option name="x" value="-9" />
     <option name="y" value="-9" />
     <option name="width" value="1924" />
     <option name="height" value="1084" />
+=======
+    <option name="x" value="-568" />
+    <option name="y" value="-1057" />
+    <option name="width" value="1920" />
+    <option name="height" value="1057" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -259,9 +333,14 @@
       <sortByType />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
+=======
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -290,20 +369,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OCare" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="O-Care" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -327,6 +392,8 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+<<<<<<< HEAD
+=======
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -360,6 +427,210 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OCare" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="O-Care" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OCare" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="O-Care" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OCare" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="O-Care" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OCare" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="O-Care" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="properties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OCare" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="O-Care" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OCare" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OCare" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="O-Care" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+=======
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OCare" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OCare" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="O-Care" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -369,6 +640,21 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
+=======
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OCare" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -401,6 +687,10 @@
               <option name="myItemId" value="JS" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -424,7 +714,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="Assets" />
+=======
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OCare" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -448,6 +750,10 @@
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
+      <pane id="Scratches" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -463,7 +769,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FullScreen" value="false" />
     <property name="OverrideImplement.combined" value="true" />
@@ -484,11 +790,19 @@
       <recent name="junit.framework.TestCase" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+<<<<<<< HEAD
       <recent name="C:\Users\admin\Documents\O-Care\src\main\webapp\Assets\JS" />
       <recent name="C:\Users\admin\Documents\O-Care\src\main\webapp\Assets\Images" />
       <recent name="$PROJECT_DIR$/src/main" />
       <recent name="$PROJECT_DIR$/src/main/java" />
       <recent name="$PROJECT_DIR$/src/main/java/com" />
+=======
+      <recent name="$PROJECT_DIR$/src/main/webapp/pages" />
+      <recent name="$PROJECT_DIR$/src/main" />
+      <recent name="$PROJECT_DIR$/src/main/java" />
+      <recent name="$PROJECT_DIR$/src/main/java/com" />
+      <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.OCare.dao" />
@@ -1064,6 +1378,7 @@
       <workItem from="1445483117777" duration="1781000" />
       <workItem from="1445489593914" duration="29000" />
       <workItem from="1445511305480" duration="2541000" />
+<<<<<<< HEAD
       <workItem from="1445764075156" duration="11000" />
       <workItem from="1445839656253" duration="4763000" />
       <workItem from="1445853744595" duration="6505000" />
@@ -1074,6 +1389,13 @@
       <workItem from="1446077375515" duration="23000" />
       <workItem from="1446077672361" duration="13038000" />
       <workItem from="1446096893011" duration="2393000" />
+=======
+      <workItem from="1445741297368" duration="10460000" />
+      <workItem from="1445770458708" duration="5000" />
+      <workItem from="1445870540469" duration="565000" />
+      <workItem from="1445957837482" duration="3644000" />
+      <workItem from="1445994066059" duration="2749000" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
     </task>
     <task id="LOCAL-00001" summary="Add lib to project">
       <created>1438488890717</created>
@@ -1091,7 +1413,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="160043000" />
+=======
+    <option name="totallyTimeSpent" value="133300000" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1103,6 +1429,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-9" y="-9" width="1924" height="1084" extended-state="0" />
     <editor active="true" />
     <layout>
@@ -1129,6 +1456,34 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23695421" sideWeight="0.36585367" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.397351" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+=======
+    <frame x="-568" y="-1057" width="1920" height="1057" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980132" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3226837" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847682" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.09744409" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34185302" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980132" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23695421" sideWeight="0.36585367" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21086262" sideWeight="0.63414633" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10170394" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23695421" sideWeight="0.36585367" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32161874" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1188,15 +1543,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/OCare/service/VerifyServiceImp.java</url>
-          <line>165</line>
-          <properties />
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="29" />
+      <option name="time" value="47" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1205,104 +1552,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-orm/4.0.4.RELEASE/spring-orm-4.0.4.RELEASE.jar!/org/springframework/orm/hibernate4/support/OpenSessionInViewFilter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34871796">
-          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/entity/ElderMonitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8853211">
-          <caret line="61" column="34" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/verify.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6666667">
-          <caret line="61" column="73" selection-start-line="61" selection-start-column="73" selection-end-line="61" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/ElderDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/IGeneralDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/EmployeeDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/ElderMonitorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59574467">
-          <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/EmployeeInterfaceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38297874">
-          <caret line="31" column="17" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/CompanyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19148937">
-          <caret line="15" column="15" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/RegisterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14893617">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/EmployeeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14893617">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/ElderServiceImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5319149">
-          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/EmployeeDAOImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34042552">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/IGeneralDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14893617">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+=======
     <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/EmployeeServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23404256">
@@ -1338,13 +1590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/ElderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4600219">
-          <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.0.4.RELEASE/spring-aop-4.0.4.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.72911966">
@@ -1356,13 +1601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.0.4.RELEASE/spring-aop-4.0.4.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1380,35 +1618,260 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/entity/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43209878">
+          <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/properties/hibernate.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22881356">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/infrastructure.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1598579">
+          <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/Register.jsp">
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="6" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/Assets/CSS/semantic.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/templates/header.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4434629">
+          <caret line="67" column="39" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/entity/EmployeeCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22881356">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/entity/LegalPerson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2542373">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/entity/ofMucAffiliation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6864407">
+          <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/entity/ofMucMember.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22881356">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/entity/JavaMD5Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.059322033">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/DeviceInterfaceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.1355934">
+          <caret line="77" column="59" selection-start-line="77" selection-start-column="59" selection-end-line="77" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/DeviceServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.2881356">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+          <folding>
+            <element signature="e#2352#2353#0" expanded="true" />
+            <element signature="e#2404#2405#0" expanded="true" />
+            <element signature="e#3389#3390#0" expanded="true" />
+            <element signature="e#3448#3449#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/entity/Contract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25092936">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/src.zip!/java/lang/Override.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6864407">
+          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/ContractServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2881356">
+          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+          <folding>
+            <element signature="e#1243#1244#0" expanded="true" />
+            <element signature="e#1302#1303#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/ContractService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5338983">
+          <caret line="24" column="61" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3197158">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/ElderDAOImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.91525424">
+          <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/ElderDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3559322">
+          <caret line="16" column="60" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/ElderServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8898305">
+          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/ElderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7627119">
+          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/entity/ElderMonitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50508475">
+          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/RelativeDAOImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7881356">
+          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/RelativeDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30508474">
+          <caret line="12" column="60" selection-start-line="12" selection-start-column="60" selection-end-line="12" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/RegisterServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="122" column="28" selection-start-line="122" selection-start-column="28" selection-end-line="122" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/RegisterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.720339">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/entry.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13528748">
+          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/Assets/CSS/homepage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37870473">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5927552">
+          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/ElderMonitorDAOImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70247936">
-          <caret line="54" column="50" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.5883644">
+          <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/ElderMonitorDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59504133">
-          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.42810097">
+          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/VerifyServiceImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3570248">
-          <caret line="180" column="38" selection-start-line="180" selection-start-column="38" selection-end-line="180" selection-end-column="38" />
-          <folding />
+        <state vertical-scroll-proportion="0.34906697">
+          <caret line="181" column="73" selection-start-line="181" selection-start-column="73" selection-end-line="181" selection-end-column="73" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/VerifyService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8016529">
+        <state vertical-scroll-proportion="0.5320197">
           <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/webapp/Assets/CSS/semantic.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1499,10 +1962,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.039408866">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="6" selection-end-column="7" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/ofMucMemberDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19715224">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.4.RELEASE/spring-web-4.0.4.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22121896">
+          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/InterfaceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.3537788">
+          <caret line="805" column="21" selection-start-line="805" selection-start-column="21" selection-end-line="805" selection-end-column="21" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/webapp/Assets/CSS/header.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.6654205">
@@ -1535,39 +2021,77 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.625498">
           <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="150" selection-end-column="13" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/dao/ofMucMemberDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/homepage.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.2569721">
           <caret line="64" column="67" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="67" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/openFireServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="119" column="33" selection-start-line="119" selection-start-column="33" selection-end-line="119" selection-end-column="33" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/templates/sidebar.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/service/openFireService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/Register.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.3030305">
           <caret line="304" column="43" selection-start-line="304" selection-start-column="43" selection-end-line="304" selection-end-column="43" />
+=======
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.0.4.RELEASE/spring-aop-4.0.4.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36056837">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19123507">
           <caret line="136" column="68" selection-start-line="136" selection-start-column="68" selection-end-line="136" selection-end-column="68" />
           <folding />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/OCare/controller/openFireController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44067797">
+          <caret line="175" column="41" selection-start-line="175" selection-start-column="22" selection-end-line="175" selection-end-column="41" />
+          <folding>
+            <element signature="e#5945#5961#0" expanded="true" />
+            <element signature="e#7109#7117#0" expanded="true" />
+          </folding>
+>>>>>>> ad2bc2a3c25020295c282a90136a6f172b09263c
         </state>
       </provider>
     </entry>

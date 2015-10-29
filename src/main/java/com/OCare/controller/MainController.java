@@ -16,5 +16,30 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/hr")
+    public String hrHome() {
+        return "HR";
+    }
+
+    @RequestMapping("/hr/entry")
+    public String hrEntry() {
+        return "entry";
+    }
+
+    @RequestMapping("/hr/import")
+    public String hrImport() {
+        return "import";
+    }
+
+    @RequestMapping("/hr/leave")
+    public String hrLeave() {
+        return "leave";
+    }
+
+    @RequestMapping("/hr/table")
+    public String hrTable() {
+        return "table";
+    }
+
 
 }

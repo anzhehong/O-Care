@@ -28,6 +28,10 @@ public class RelativeServiceImp implements RelativeService {
         return relative;
     }
 
+    public Relative getRelativeByPhoneNum(String phoneNum) {
+        return relativeDAO.queryByPhoneNum(phoneNum);
+    }
+
     public boolean isElderExist(String relativeId){
         boolean flag = false;
         ArrayList<Relative> list = (ArrayList<Relative>) relativeDAO.queryAll();

@@ -81,4 +81,15 @@ public interface VerifyService {
     public ArrayList<Map<Elder,Relative>> getAllMonitorByElderId(String elderId);
 
     public ArrayList<Relative> getMonitorsByElderId(String elderid);
+
+    /*
+        功能；通过监护人Id拿到所有老人
+     */
+    public ArrayList<Elder> getAllEldersByMonitorId(String monitorId);
+
+    /*
+        功能：查找某一姓名的所有监护人
+        注意：type=1，只查监护人
+     */
+    public ArrayList<Relative> getAllMonitorsByName(String monitorName);
 }

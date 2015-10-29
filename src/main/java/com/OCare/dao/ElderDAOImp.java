@@ -37,4 +37,12 @@ public class ElderDAOImp extends IGeneralDAOImpl<Elder> implements ElderDAO{
         query.setString("m", phoneNum);
         return query.list();
     }
+
+    @Override
+    public List<Elder> getAllEldersByName(String elderName) {
+        String hql = "from Elder where name = :n";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("n",elderName);
+        return query.list();
+    }
 }
