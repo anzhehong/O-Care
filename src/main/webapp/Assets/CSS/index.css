@@ -34,7 +34,7 @@
     width: 1250px;
 }
 
-.header{
+.headers{
     font-family: Hiragino-Sans-GB-W3;
     display: inline-block;
     margin: auto;
@@ -42,7 +42,7 @@
     width: 100%;
 }
 
-.header img{
+.headers img{
     display: inline-block;
     margin-top: 25px;
     height: 80px;

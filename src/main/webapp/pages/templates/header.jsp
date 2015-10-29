@@ -23,7 +23,7 @@
   <div class="container">
     <img src="/OCare/Assets/Images/Ocare-logo.png">
     <div class="greeting">
-      您好! <strong>admin</strong><a class="login">登陆</a><a>注销</a>
+      您好! <strong>admin</strong><a>注销</a>
     </div>
     <div class="nav" >
       <ul>
@@ -46,40 +46,106 @@
     </div>
   </div>
 </div>
-<div class="ui small modal" style="width:30%; margin-left: -15%">
-  <i class="close icon"></i>
-  <div class="header" style="background-color: #78D6CC;padding:1.1rem 2rem">
-    <i class="user icon"></i>用户登陆
-  </div>
-  <div class="content" style="line-height: 40px;padding:2em 0rem;display: inline-block;">
-    <div style="padding:0rem 1rem">
-  <label>用户名/手机号/邮箱:</label></br>
-    <div class="ui input" style="display: initial;">
-      <input id="user" type="text" >
-    </div></br>
-    <label>密码</label></br>
-    <div class="ui input" style="display: initial;">
-      <input id="password" type="password" >
-    </div>
-    </div>
-    </div>
 
-  <div class="actions">
-    <a href="/OCare/pages/Register.jsp" style="color: white;">
-    <div class="ui black button" style="float: left;background-color: #FF7770;margin-left: -10px;">
-      注册
-    </div>
-    </a>
-    忘记密码?
-    <div class="ui positive right labeled icon button" style="background-color: #78D6CC">
-      登陆
-      <i class="checkmark icon"></i>
-    </div>
-  </div>
-</div>
+<%--<div class="ui small modal" style="width:30%; margin-left: -15%">--%>
+  <%--<i class="close icon"></i>--%>
+  <%--<div class="header" style="background-color: #78D6CC;padding:1.1rem 2rem">--%>
+    <%--<i class="user icon"></i>用户登陆--%>
+  <%--</div>--%>
+  <%--<div class="content" style="line-height: 40px;padding:2em 0rem;display: inline-block;">--%>
+    <%--<div class="ui form">--%>
+    <%--<div style="padding:0rem 1rem">--%>
+        <%--<label>用户名/手机号/邮箱:</label></br>--%>
+        <%--<div class="ui input" style="display: initial;">--%>
+          <%--<input id="username" name="username" type="text" >--%>
+        <%--</div></br>--%>
+        <%--<label>密码</label></br>--%>
+        <%--<div class="ui input" style="display: initial;">--%>
+          <%--<input id="password" name="password" type="password" >--%>
+        <%--</div>--%>
+    <%--</div>--%>
+     <%--<div class="actions">--%>
+        <%--<a href="/OCare/pages/Register.jsp" style="color: white;">--%>
+        <%--<div class="ui black button" style="float: left;background-color: #FF7770;margin-left: -10px;">--%>
+          <%--注册--%>
+        <%--</div>--%>
+        <%--</a>--%>
+        <%--忘记密码?--%>
+        <%--<div class="ui positive right labeled icon submit button" style="background-color: #78D6CC">--%>
+          <%--登陆--%>
+          <%--<i class="checkmark icon"></i>--%>
+        <%--</div>--%>
+     <%--</div>--%>
+      <%--<div class="ui error message" style="width: 90%;margin-left: 20px;"></div>--%>
+    <%--</div>--%>
+  <%--</div>--%>
+<%--</div>--%>
 
-<script>
-  $('.login').click(function () {
-    $('.modal').modal('show');
-  });
-</script>
+  <%--<script type="text/JavaScript">--%>
+  <%--var aFunction = function()--%>
+  <%--{--%>
+    <%--//modal settings--%>
+    <%--//Note that if settings is incorrect, the modal may freeze, and won't output any console error or such--%>
+    <%--$('.modal').modal({--%>
+      <%--detachable: true,--%>
+      <%--//By default, if click outside of modal, modal will close--%>
+      <%--//Set closable to false to prevent this--%>
+      <%--closable: false,--%>
+      <%--transition: 'fade up',--%>
+      <%--//Callback function for the submit button, which has the class of "ok"--%>
+      <%--onApprove : function() {--%>
+        <%--//Submits the semantic ui form--%>
+        <%--//And pass the handling responsibilities to the form handlers, e.g. on form validation success--%>
+        <%--$('.ui.form').submit();--%>
+        <%--//Return false as to not close modal dialog--%>
+        <%--return false;--%>
+      <%--},--%>
+    <%--});--%>
+    <%--$("#login").on("click", function(){--%>
+      <%--//Resets form input fields--%>
+      <%--$('.ui.form').trigger("reset");--%>
+      <%--//Resets form error messages--%>
+      <%--$('.ui.form .field.error').removeClass( "error" );--%>
+      <%--$('.ui.form.error').removeClass( "error" );--%>
+      <%--$('.modal').modal('show');--%>
+    <%--});--%>
+  <%--}--%>
+  <%--$(document).ready( aFunction );--%>
+<%--</script>--%>
+<%--<script>--%>
+  <%--var formValidationRules =--%>
+  <%--{--%>
+    <%--username: {--%>
+      <%--identifier : 'username',--%>
+      <%--rules: [--%>
+        <%--{--%>
+          <%--type   : 'empty',--%>
+          <%--prompt : '请输入用户名/手机号/邮箱'--%>
+        <%--}--%>
+      <%--]--%>
+    <%--},--%>
+    <%--password: {--%>
+      <%--identifier : 'password',--%>
+      <%--//Below line sets it so that it only validates when input is entered, and won't validate on blank input--%>
+      <%--optional   : true,--%>
+      <%--rules: [--%>
+        <%--{--%>
+          <%--type   : 'empty',--%>
+          <%--prompt : '请输入密码'--%>
+        <%--}--%>
+      <%--]--%>
+    <%--}--%>
+  <%--}--%>
+
+  <%--var formSettings =--%>
+  <%--{--%>
+    <%--onSuccess : function()--%>
+    <%--{--%>
+      <%--//Hides modal on validation success--%>
+      <%--alert("Valid Submission, modal will close.");--%>
+      <%--$('.modal').modal('hide');--%>
+    <%--}--%>
+  <%--}--%>
+
+  <%--$('.ui.form').form(formValidationRules, formSettings);--%>
+<%--</script>--%>
