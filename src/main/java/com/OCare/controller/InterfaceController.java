@@ -833,6 +833,8 @@ public class InterfaceController {
             tempElderInfo.put("elderContract", contract);
             //relative info
             tempElderInfo.put("monitors", verifyService.getMonitorsByElderId(contract.getElder_id()));
+            //elder name
+            tempElderInfo.put("elderName",elderService.getElderById(contract.getElder_id()).getName());
             //add to list
             contractInfo.add(tempElderInfo);
         }
@@ -920,6 +922,8 @@ public class InterfaceController {
             tempElderInfo.put("elderContract", contract);
             //relative info
             tempElderInfo.put("monitors", verifyService.getMonitorsByElderId(contract.getElder_id()));
+            //elder name
+            tempElderInfo.put("elderName",elderService.getElderById(contract.getElder_id()).getName());
             //add to list
             contractInfo.add(tempElderInfo);
         }
@@ -958,6 +962,8 @@ public class InterfaceController {
         tempElderInfo.put("elderContract", contract);
         //relative info
         tempElderInfo.put("monitors", verifyService.getMonitorsByElderId(contract.getElder_id()));
+        //elder name
+        tempElderInfo.put("elderName",elderService.getElderById(contract.getElder_id()).getName());
         //add to list
         contractInfo.add(tempElderInfo);
 
@@ -1000,6 +1006,8 @@ public class InterfaceController {
                     tempElderInfo.put("elderContract", contract);
                     //relative info
                     tempElderInfo.put("monitors", verifyService.getMonitorsByElderId(contract.getElder_id()));
+                    //elder name
+                    tempElderInfo.put("elderName",elderService.getElderById(contract.getElder_id()).getName());
                     //add to list
                     allContractInfo.add(tempElderInfo);
                 }
@@ -1042,6 +1050,8 @@ public class InterfaceController {
                     tempElderInfo.put("elderContract", contract);
                     //relative info
                     tempElderInfo.put("monitors", verifyService.getMonitorsByElderId(contract.getElder_id()));
+                    //elder name
+                    tempElderInfo.put("elderName",elderService.getElderById(contract.getElder_id()).getName());
                     //add to list
                     contractInfo.add(tempElderInfo);
                 }
@@ -1106,6 +1116,8 @@ public class InterfaceController {
                     tempElderInfo.put("elderContract", contract);
                     //relative info
                     tempElderInfo.put("monitors", verifyService.getMonitorsByElderId(contract.getElder_id()));
+                    //elder name
+                    tempElderInfo.put("elderName",elderService.getElderById(contract.getElder_id()).getName());
                     //add to list
                     contractInfo.add(tempElderInfo);
                 }
