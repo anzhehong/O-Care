@@ -659,6 +659,11 @@ public class InterfaceController {
             result.put("errorMsg","input elder id is invalid");
         }else  {
             ElderCondition presentElderCondition = elderConditionService.getElderPresentConditionById(elderId);
+            if (presentElderCondition == null){
+                result.put("error",true);
+                result.put("errorMsg","No related info about this elder!");
+                return result;
+            }
             double latitude = presentElderCondition.getLatitude(),longtitude = presentElderCondition.getLongtitude();
             result.put("error",false);
             result.put("latitude",latitude);

@@ -28,8 +28,12 @@ public class ElderConditionServiceIMp implements ElderConditionService {
         ArrayList<ElderCondition> elders = (ArrayList<ElderCondition>) elderConditionDAO.findElderCondition(elderId);
         int count = elders.size();
         System.out.println("get count -1");
-        System.out.println(elderConditionDAO.findElderCondition(elderId).get(count-1).getElder_id());
-        return elderConditionDAO.findElderCondition(elderId).get(count-1);
+//        System.out.println(elderConditionDAO.findElderCondition(elderId).get(count-1).getElder_id());
+        if (count == 0){
+            return null;
+        }else {
+            return elderConditionDAO.findElderCondition(elderId).get(count-1);
+        }
     }
 
     @Override
