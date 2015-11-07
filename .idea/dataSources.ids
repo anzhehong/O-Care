@@ -198,6 +198,17 @@
       <index name="ContractToCompany_idx" unique="false" columns="company_id"/>
       <index name="ContractToElder_idx" unique="false" columns="elder_id"/>
     </table>
+    <table name="Device" schema="" catalog="openfire" type="TABLE">
+      <column name="DeviceId" sqlType="VARCHAR" precision="55" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DeviceName" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CommunicationType" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Description" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Image" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ElderId" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="QRCode" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="DeviceId"/>
+      <index name="Device2Elder_idx" unique="false" columns="ElderId"/>
+    </table>
     <table name="Elder" schema="" catalog="openfire" type="TABLE">
       <column name="id" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
       <column name="company_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
@@ -316,6 +327,36 @@
       <index name="VolunteerToCompany_idx" unique="false" columns="company_id"/>
       <index name="VolunteerToElder_idx" unique="false" columns="elder_id"/>
     </table>
+    <table name="alarmHistory" schema="" catalog="openfire" type="TABLE">
+      <column name="talk_type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="talk_cate" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="picture_url" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="direction" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="who_loc_log" sqlType="DOUBLE" precision="15" scale="6" nullable="true" jdbcType="8" remarks="Pz8="/>
+      <column name="who_loc_lat" sqlType="DOUBLE" precision="15" scale="6" nullable="true" jdbcType="8" remarks="Pz8="/>
+      <column name="who_address" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="talk_at" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="talk_alarm" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="who_privateto" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="talk_time" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="audio_url" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="messageid" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="generateid" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="messagefrom" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="messageto" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="generateid,messageid"/>
+      <index name="index_generateid" unique="true" columns="generateid"/>
+      <index name="index_messageid" unique="true" columns="messageid"/>
+    </table>
+    <table name="llmap" schema="" catalog="openfire" type="TABLE">
+      <column name="message_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="loc_log" sqlType="DOUBLE" precision="15" scale="6" nullable="true" jdbcType="8" remarks="57uP5bqm"/>
+      <column name="loc_lat" sqlType="DOUBLE" precision="15" scale="6" nullable="true" jdbcType="8" remarks="57qs5bqm"/>
+      <column name="address" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="receive_time" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="receive_from" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="message_id"/>
+    </table>
     <table name="ofConParticipant" schema="" catalog="openfire" type="TABLE">
       <column name="conversationID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="joinedDate" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
@@ -382,7 +423,8 @@
       <column name="jid" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <column name="affiliation" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
       <column name="relation" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
-      <primary-key name="PRIMARY" columns="roomID,jid"/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="ofMucConversationLog" schema="" catalog="openfire" type="TABLE">
       <column name="roomID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
@@ -403,7 +445,9 @@
       <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="faqentry" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="relation" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="roomID,jid"/>
+      <column name="ofMucMembercol" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="ofMucRoom" schema="" catalog="openfire" type="TABLE">
       <column name="serviceID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
@@ -430,7 +474,8 @@
       <column name="canChangeNick" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
       <column name="canRegister" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
       <column name="isOCareRoom" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
-      <primary-key name="PRIMARY" columns="serviceID,name"/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
       <index name="ofMucRoom_roomid_idx" unique="false" columns="roomID"/>
       <index name="ofMucRoom_serviceid_idx" unique="false" columns="serviceID"/>
     </table>
@@ -670,6 +715,12 @@
       <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <column name="version" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="name"/>
+    </table>
+    <table name="test" schema="" catalog="openfire" type="TABLE">
+      <column name="receive_from" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="distance" sqlType="DOUBLE" precision="15" scale="6" nullable="true" jdbcType="8"/>
+      <column name="log" sqlType="DOUBLE" precision="15" scale="6" nullable="true" jdbcType="8"/>
+      <column name="lat" sqlType="DOUBLE" precision="15" scale="6" nullable="true" jdbcType="8"/>
     </table>
   </data-source>
 </component>

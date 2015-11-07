@@ -15,13 +15,19 @@ import java.util.List;
 @Service("elderConditionService")
 @Transactional
 public class ElderConditionServiceIMp implements ElderConditionService {
+
     @Autowired
     private ElderConditionDAO elderConditionDAO;
 
+
+
     @Override
     public List<ElderCondition> allElderConditions() {
+
         return elderConditionDAO.queryAll();
+
     }
+
 
     @Override
     public ElderCondition getElderPresentConditionById(String elderId) {

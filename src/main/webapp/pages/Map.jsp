@@ -6,17 +6,43 @@
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2&ak=ZFra3LYWoS5BRU11s8DFw1GG"></script>
 <link rel="stylesheet" href="/OCare/Assets/CSS/homepage.css">
 <div class="main_content">
-    <div class="search">
-        <div class="ui input" style="display: inline-block;">
-            <input placeholder="查找老人..." type="text" style="width:500px" id="input_name">
-        </div>
-        <button class="ui teal button" onclick="FindOlder()" style="display: inline-block;"><i class="search icon"></i></button>
-    </div>
 
-    <div class="monitor" id="container"></div>
+
+
+    <div class="ui top attached tabular menu">
+        <a class="active item" data-tab="first">地图</a>
+        <a class="item" data-tab="second">警报信息</a>
+        <a class="item" data-tab="third">Third</a>
+    </div>
+    <div class="ui bottom attached active tab segment" data-tab="first">
+
+
+        <div class="search">
+            <div class="ui input" style="display: inline-block;">
+                <input placeholder="查找老人..." type="text" style="width:500px" id="input_name">
+            </div>
+            <button class="ui teal button" onclick="FindOlder()" style="display: inline-block;"><i class="search icon"></i></button>
+        </div>
+
+        <div class="monitor" id="container"></div>
+
+
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="second">Second </div>
+    <div class="ui bottom attached tab segment" data-tab="third">Third </div>
+
+
+
+
+
 </div>
 
-<script src="/OCare/Assets/JS/jquery-2.1.4.js"></script>
+<script>
+    $('.menu .item')
+            .tab()
+    ;
+</script>
+
 <script type="text/javascript">
     //***********************地图初始化****************************
     var map, geoc, point1;
