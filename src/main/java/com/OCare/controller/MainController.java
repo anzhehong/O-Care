@@ -55,5 +55,10 @@ public class MainController {
         return "table";
     }
 
+    @RequestMapping("/ht/table")
+    public String htTable() {
+        return "htgl";
+    }
+
 
 }
