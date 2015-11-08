@@ -7,39 +7,45 @@
 --%>
 <%@page contentType="text/html; charset=utf-8" language="java" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="templates/header.jsp"%>
-<%@include file="templates/sidebar.jsp"%>
+<%@include file="templates/header.jsp" %>
+<%@include file="templates/sidebar.jsp" %>
 <link rel="stylesheet" href="/OCare/Assets/CSS/homepage.css">
 <div class="ui container Entry">
     <div class="ui form">
-    <div class="inline fields">
-        <div class="three wide field"><label>请选择查询条件：</label></div>
-        <div class="three wide field">
-           <div class="ui dropdown">
-                    <div class="text">请选择</div>
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <div class="item">列出所有在职人员</div>
-                        <div class="item">身份证号</div>
-                        <div class="item">合同编号</div>
-                        <div class="item">电话号码</div>
-                        <div class="item">联系地址</div>
-                    </div>
-                </div>
-        </div>
+        <div class="inline fields">
+            <div class="three wide field"><label>请输入查找内容：</label></div>
+            <%--<div class="three wide field">--%>
+                <%--<div class="ui dropdown">--%>
+                    <%--<div class="text">请选择</div>--%>
+                    <%--<i class="dropdown icon"></i>--%>
 
-        <div class="six wide field">
-            <div class="ui icon input">
-                <input type="text" placeholder="请输入查询内容...">
-                <i class="search icon"></i>
+                    <%--<div class="menu">--%>
+                        <%--<div class="item">列出所有在职人员</div>--%>
+                        <%--<div class="item">身份证号</div>--%>
+                        <%--<div class="item">合同编号</div>--%>
+                        <%--<div class="item">电话号码</div>--%>
+                        <%--<div class="item">联系地址</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+
+            <div class="six wide field">
+                <div class="ui icon input">
+                    <input type="text" id="input1" placeholder="请输入查询内容..."/>
+
+                </div>
             </div>
+            <div class="three wide field">
+            <div class="ui positive submit button" id ="search">
+                搜索
+            </div>
+              </div>
         </div>
-    </div>
     </div>
     <div class="inline fields">
         <table class="ui striped table">
-            <thead>
-            <tr>
+            <thead id="title">
+            <tr >
                 <th>工号</th>
                 <th>合同编号</th>
                 <th class="one wide">职员姓名</th>
@@ -56,58 +62,73 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>00001</td>
-                <td>T4827499</td>
-                <td>张三</td>
-                <td>31010101010</td>
-                <td>138888888</td>
-                <td>出口部</td>
-                <td>李四</td>
-                <td>职员</td>
-                <td>未知</td>
-                <td>9.22~9.24</td>
-                <td>啊哈黑暗灭</td>
-                <td>良好</td>
-            </tr>
-            <tr>
-                <td>00001</td>
-                <td>T4827499</td>
-                <td>张三</td>
-                <td>31010101010</td>
-                <td>138888888</td>
-                <td>出口部</td>
-                <td>李四</td>
-                <td>职员</td>
-                <td>未知</td>
-                <td>9.22~9.24</td>
-                <td>啊哈黑暗灭</td>
-                <td>良好</td>
-            </tr>
-            <tr>
-                <td>00001</td>
-                <td>T4827499</td>
-                <td>张三</td>
-                <td>31010101010</td>
-                <td>138888888</td>
-                <td>出口部</td>
-                <td>李四</td>
-                <td>职员</td>
-                <td>未知</td>
-                <td>9.22~9.24</td>
-                <td>啊哈黑暗灭</td>
-                <td>良好</td>
-            </tr>
+            <c:forEach items="${employee}" var="var">
+                <tr class="left aligned">
+                    <td>
+                            ${var.id}
+                    </td>
+                    <td>
+                            T432252
+                    </td>
+                    <td>
+                            ${var.name}
+                    </td>
+                    <td>
+                            352372387
+                    </td>
+                    <td>
+                            ${var.phone}
+                    </td>
+                    <td>
+                            ${var.department}
+                    </td>
+                    <td>${var.superior}
+                    </td>
+                    <td>
+                        ${var.position}
+                    </td>
+                    <td>
+                            ${var.status}
+                    </td>
+                    <td>
+                            ${var.contract_start}
+                        ~ ${var.contract_end}
+                    </td>
+                    <td>
+                        ${var.address}
+                    </td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
         </br>
         <button class="ui basic green button"><i class="icon cloud"></i>信息导出</button>
     </div>
 </div>
+<script type="text/javascript">
+    jQuery (function ($)
+    {
+        var title=$('#title');
+        var table = $ ('table'), text = $ ('#input1');
+        $ ('#search').click (function ()
+        {
+            if(text.val()== ""){
+                table.find('tr').show();
+            }
+            else {
+
+                table.find('tr').hide();
+                title.find('tr').show();
+                table.find('tr:contains("' + text.val() + '")').show();
+
+            }
+        });
+    });
+</script>
 
 <script type="text/javascript">
 
-$('.ui.dropdown')
+    $('.ui.dropdown')
             .dropdown()
     ;
     $('.ui.checkbox')
@@ -122,8 +143,8 @@ $('.ui.dropdown')
                         identifier: 'name',
                         rules: [
                             {
-                                type   : 'empty',
-                                prompt : 'Please enter your name'
+                                type: 'empty',
+                                prompt: 'Please enter your name'
                             }
                         ]
                     },
@@ -131,8 +152,8 @@ $('.ui.dropdown')
                         identifier: 'reason',
                         rules: [
                             {
-                                type   : 'empty',
-                                prompt : 'Please enter your reason'
+                                type: 'empty',
+                                prompt: 'Please enter your reason'
                             }
                         ]
                     },
@@ -140,8 +161,8 @@ $('.ui.dropdown')
                         identifier: 'address',
                         rules: [
                             {
-                                type   : 'empty',
-                                prompt : 'Please enter your address'
+                                type: 'empty',
+                                prompt: 'Please enter your address'
                             }
                         ]
                     },
@@ -149,8 +170,8 @@ $('.ui.dropdown')
                         identifier: 'phone',
                         rules: [
                             {
-                                type   : 'integer',
-                                prompt : 'Please enter your phone'
+                                type: 'integer',
+                                prompt: 'Please enter your phone'
                             }
                         ]
                     },
@@ -158,8 +179,8 @@ $('.ui.dropdown')
                         identifier: 'ID',
                         rules: [
                             {
-                                type   : 'integer',
-                                prompt : 'Please enter your ID'
+                                type: 'integer',
+                                prompt: 'Please enter your ID'
                             }
                         ]
                     },
@@ -167,8 +188,8 @@ $('.ui.dropdown')
                         identifier: 'skills',
                         rules: [
                             {
-                                type   : 'minCount[2]',
-                                prompt : 'Please select at least two skills'
+                                type: 'minCount[2]',
+                                prompt: 'Please select at least two skills'
                             }
                         ]
                     },
@@ -176,8 +197,8 @@ $('.ui.dropdown')
                         identifier: 'position',
                         rules: [
                             {
-                                type   : 'empty',
-                                prompt : 'Please select a position'
+                                type: 'empty',
+                                prompt: 'Please select a position'
                             }
                         ]
                     },
@@ -185,8 +206,8 @@ $('.ui.dropdown')
                         identifier: 'superior',
                         rules: [
                             {
-                                type   : 'empty',
-                                prompt : 'Please select a superior'
+                                type: 'empty',
+                                prompt: 'Please select a superior'
                             }
                         ]
                     },
@@ -194,8 +215,8 @@ $('.ui.dropdown')
                         identifier: 'department',
                         rules: [
                             {
-                                type   : 'empty',
-                                prompt : 'Please select a department'
+                                type: 'empty',
+                                prompt: 'Please select a department'
                             }
                         ]
                     },
@@ -203,8 +224,8 @@ $('.ui.dropdown')
                         identifier: 'username',
                         rules: [
                             {
-                                type   : 'empty',
-                                prompt : 'Please enter a username'
+                                type: 'empty',
+                                prompt: 'Please enter a username'
                             }
                         ]
                     },
@@ -212,12 +233,12 @@ $('.ui.dropdown')
                         identifier: 'password',
                         rules: [
                             {
-                                type   : 'empty',
-                                prompt : 'Please enter a password'
+                                type: 'empty',
+                                prompt: 'Please enter a password'
                             },
                             {
-                                type   : 'minLength[6]',
-                                prompt : 'Your password must be at least {ruleValue} characters'
+                                type: 'minLength[6]',
+                                prompt: 'Your password must be at least {ruleValue} characters'
                             }
                         ]
                     },
@@ -225,8 +246,8 @@ $('.ui.dropdown')
                         identifier: 'checked',
                         rules: [
                             {
-                                type   : 'checked',
-                                prompt : 'You must agree to the terms and conditions'
+                                type: 'checked',
+                                prompt: 'You must agree to the terms and conditions'
                             }
                         ]
                     }
@@ -234,4 +255,4 @@ $('.ui.dropdown')
             })
     ;
 </script>
-<%@include file="templates/footer.jsp"%>
+<%@include file="templates/footer.jsp" %>

@@ -1,6 +1,10 @@
 package com.OCare.controller;
 
+import com.OCare.dao.CompanyDAO;
+import com.OCare.service.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -10,6 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class MainController {
+    @Autowired
+    private EmployeeService employeeService;
+
+    @Autowired
+    private CompanyDAO companyDAO;
+
 
     @RequestMapping("")
     public String index() {
@@ -17,7 +27,9 @@ public class MainController {
     }
 
     @RequestMapping("/hr")
-    public String hrHome() {
+    public String hrHome(Model model)
+    {
+        model.addAttribute("employee",employeeService.getAllEmployees());
         return "HR";
     }
 
@@ -37,7 +49,9 @@ public class MainController {
     }
 
     @RequestMapping("/hr/table")
-    public String hrTable() {
+    public String hrTable(Model model)
+    {
+        model.addAttribute("employee",employeeService.getAllEmployees());
         return "table";
     }
 
