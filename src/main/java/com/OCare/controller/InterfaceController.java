@@ -2,6 +2,8 @@ package com.OCare.controller;
 
 import com.OCare.entity.*;
 import com.OCare.service.*;
+import it.sauronsoftware.ftp4j.FTPClient;
+import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -1153,7 +1156,19 @@ public class InterfaceController {
         // 判断文件是否为空
 
         if(file!=null)
+        {
+            CommonsMultipartFile cf= (CommonsMultipartFile)file;
+            DiskFileItem fi = (DiskFileItem)cf.getFileItem();
+            File f = fi.getStoreLocation();
+
+            ftpService.uploadFile(f);
+
+
+
             System.out.println("success");
+
+
+        }
 
         // 重定向
         return "success";
