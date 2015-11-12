@@ -138,6 +138,7 @@ public class DeviceInterfaceController {
         }
 
         Device device = deviceService.getDeviceById(deviceId);
+        device.setElderId("");
 
         if (device == null){
             result.put("error", true);

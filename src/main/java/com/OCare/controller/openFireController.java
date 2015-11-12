@@ -85,16 +85,28 @@ public class openFireController {
     }
 
     /*
-        功能：房间成员输入房间ID与成员电话,可查询到任一成员的昵称、 图像、
+        2015.11.10修改
+        功能：房间成员输入房间ID与成员电话与自己电话,可查询到任一成员的昵称、 图像、
         在该房间中的地位(是不是管理员,被踢的,publisher, none)、与老人的关系(如果该房间是养老房间)。
         参数：房间号，想查询信息的人的电话
      */
 
     @RequestMapping("/user/member")
     @ResponseBody
-    public Map<String, Object> getMembersByUser(String phoneNum, String roomId){
+    public Map<String, Object> getMembersByUser(String phoneNum, String roomId,String thisPhoneNum){
         Map<String, Object> result = new HashMap<String, Object>();
 
+
+
+        //发起查询的人必须房间的成员，服务端要做角色区别；
+        Object thisMember = openFireService.findMemberByPhoneNumAndRoomId(thisPhoneNum, roomId);
+        if(thisMember instanceof Integer) {
+            if ((Integer) thisMember == openFireServiceImpl.MEMBER_NOT_EXIST) {
+                result.put("error", true);
+                result.put("errorMsg", "YOU_NOT_MEMBER");
+                return result;
+            }
+        }
         if(phoneNum == null || roomId == null || phoneNum.equals("") || roomId.equals("")){
             result.put("error", true);
             result.put("errorMsg", INPUT_CANNOT_NULL);
@@ -138,7 +150,7 @@ public class openFireController {
         ofMucRoom room = (ofMucRoom) oRoom;
         ofMucMember member = (ofMucMember) oMember;
 
-        result.put("room", room);
+        // result.put("room", room);                   //2015.11.10 不需要房间信息
         result.put("member", member);
 
         Relative relative = relativeService.getRelativeByPhoneNum(phoneNum);
