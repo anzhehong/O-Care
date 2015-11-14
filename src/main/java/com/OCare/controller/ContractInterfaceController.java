@@ -16,6 +16,7 @@ import java.util.Map;
 /**
  * Created by mark on 8/6/15.
  */
+//test branch by shun
 @Controller
 @RequestMapping("/app")
 public class ContractInterfaceController {
