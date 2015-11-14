@@ -35,6 +35,16 @@ public class openFireServiceImpl implements openFireService {
     private ofMucRoomDAO roomDAO;
 
     @Override
+    public Object findRoomidByName(String name) {
+        ofMucRoom mucRoom=roomDAO.getRoomByName(name);
+        if(mucRoom==null)
+        {
+           return ROOM_NOT_EXIST;
+        }
+        return mucRoom;
+    }
+
+    @Override
     public Object findMembersByPhoneNum(String phoneNum, String roomId) {
 
         Pattern pattern = Pattern.compile("^[0-9]*$");
@@ -55,7 +65,7 @@ public class openFireServiceImpl implements openFireService {
             return ADMIN_NO_PERMISSION;
         }
 
-        List<ofMucMember> ofMucMembers = memberDAO.getAllMembersByRoomId(Integer.parseInt(roomId));
+        List<ofMucMember> ofMucMembers = memberDAO.getAllMembersByRoomId( Integer.parseInt(roomId));
 
         if(ofMucMembers == null){
             return ROOM_NOT_EXIST;
@@ -93,7 +103,7 @@ public class openFireServiceImpl implements openFireService {
             return ROOM_ID_INVALID;
         }
 
-        List<ofMucMember> members = memberDAO.getMemberByRoomIdAndPhoneNum(Integer.parseInt(roomId), phoneNum);
+        List<ofMucMember> members = memberDAO.getMemberByRoomIdAndPhoneNum( Integer.parseInt(roomId), phoneNum);
 
         if(members == null || members.size() == 0){
             return MEMBER_NOT_EXIST;
@@ -104,25 +114,25 @@ public class openFireServiceImpl implements openFireService {
     }
 
     @Override
-    public Object getPeopleByPhoneNumAndRoomId(String phoneNum, String roomId) {
-
-        Pattern pattern = Pattern.compile("^[0-9]*$");
+    public Object getPeopleByPhoneNumAndRoomId(String phoneNum, int roomId) {
+        //2015.11.13修改，roomID为数据库表中的jid,所以不用正则表达式验证
+        /*Pattern pattern = Pattern.compile("^[0-9]*$");
         Matcher matcher = pattern.matcher(roomId);
 
         if(!matcher.matches()){
             return ROOM_ID_INVALID;
-        }
+        }*/
 
         //TODO: 判断是否是这个房间的人。先在移动端调用接口时注意下。
 
-        List<ofMucMember> ofMucMembers = memberDAO.getAllMembersByRoomId(Integer.parseInt(roomId));
+        List<ofMucMember> ofMucMembers = memberDAO.getAllMembersByRoomId(roomId);
 
         if(ofMucMembers == null){
             return ROOM_NOT_EXIST;
         }
 
         List<ofMucAffiliation> ofMucAffiliations = affiliationDAO.getAffiliationByPhoneNum(phoneNum);
-        List<ofMucMember> tempMembers = memberDAO.getMemberByRoomIdAndPhoneNum(Integer.parseInt(roomId),phoneNum);
+        List<ofMucMember> tempMembers = memberDAO.getMemberByRoomIdAndPhoneNum(roomId,phoneNum);
         if((ofMucAffiliations == null || ofMucAffiliations.size() == 0)
                 &&(tempMembers == null || tempMembers.size() == 0)){
             return MEMBER_NOT_EXIST;

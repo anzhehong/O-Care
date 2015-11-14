@@ -48,4 +48,10 @@ public class ContractServiceImp implements ContractService {
     public Contract getElderContractInfoByElderId(String id) {
         return contractDAO.getContractByElderId(id);
     }
+
+    @Override
+    public boolean insertContract(Contract contract) {
+        contractDAO.insert(contract);
+        return true;
+    }
 }

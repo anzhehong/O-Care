@@ -183,18 +183,37 @@ public class openFireController {
     }
     /*
         功能：房间管理员或者房间成员查看所有房间内成员的电话
-        参数：房间号，想查询信息的人的电话号码
+        参数：房间号，想查询信息的人的jid
      */
     @RequestMapping("/getRoomMembersPhone")
     @ResponseBody
-    public Map<String,Object> getRoomMembersPhone(String roomId, String phoneNum)
+    public Map<String,Object> getRoomMembersPhone(String roomName, String phoneNum)
     {
         Map<String,Object> result = new HashMap<String, Object>();
-        if(phoneNum == null || roomId == null || phoneNum.equals("") || roomId.equals("")){
+        if(phoneNum == null || roomName == null || phoneNum.equals("") || roomName.equals("")){
             result.put("error", true);
-            result.put("errorMsg", INPUT_CANNOT_NULL);
+            result.put("errorMsg", "INPUT_CANNOT_NULL");
             return result;
         }
+
+
+        Object oRoom=openFireService.findRoomidByName(roomName);
+
+        if (oRoom instanceof Integer) {
+            if ((Integer)oRoom == openFireServiceImpl.ROOM_NOT_EXIST) {
+                result.put("error", true);
+                result.put("errorMsg", "ROOM_NOT_EXIST");
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+oRoom);
+                return result;
+            }
+        }
+
+        ofMucRoom mucroom=(ofMucRoom)oRoom;
+        int roomId=mucroom.getRoomID();
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+roomId);
+
+
+
         Object oResult = openFireService.getPeopleByPhoneNumAndRoomId(phoneNum, roomId);
 
         if (oResult instanceof Integer){

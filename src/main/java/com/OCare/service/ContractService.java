@@ -23,4 +23,6 @@ public interface ContractService {
         返回值：Contract实例
      */
     public Contract getElderContractInfoByElderId(String id);
+
+    public boolean insertContract(Contract contract);
 }
