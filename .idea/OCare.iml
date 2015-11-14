@@ -151,6 +151,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="ftp4j-1.7.2" level="project" />
+    <orderEntry type="library" name="ftp4j-1.7.21" level="project" />
   </component>
 </module>

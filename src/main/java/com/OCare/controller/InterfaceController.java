@@ -15,6 +15,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -1157,11 +1159,18 @@ public class InterfaceController {
 
         if(file!=null)
         {
-            CommonsMultipartFile cf= (CommonsMultipartFile)file;
-            DiskFileItem fi = (DiskFileItem)cf.getFileItem();
-            File f = fi.getStoreLocation();
+            File convFile = new File(file.getOriginalFilename());
+            try {
+                convFile.createNewFile();
+                FileOutputStream fos = new FileOutputStream(convFile);
+                fos.write(file.getBytes());
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-            ftpService.uploadFile(f);
+
+            ftpService.uploadFile(convFile);
 
 
 
