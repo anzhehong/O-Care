@@ -6,8 +6,11 @@ import com.OCare.entity.ofMucRoom;
  * Created by mark on 10/27/15.
  */
 public interface openFireService {
-    //先通过jid取到roomId
+    //先通过name取到roomId
     public Object findRoomidByName(String name);
+    //通过jid取到affiliation
+    public Object findAffByPhoneNum(String phoneNumber);
+
     //传说中的管理员查看某房间中的所有成员
     public Object findMembersByPhoneNum(String phoneNum, String roomId);
     public Object findRoomsById(String roomId);

@@ -1,9 +1,6 @@
 package com.OCare.controller;
 
-import com.OCare.entity.ElderMonitor;
-import com.OCare.entity.Relative;
-import com.OCare.entity.ofMucMember;
-import com.OCare.entity.ofMucRoom;
+import com.OCare.entity.*;
 import com.OCare.service.ElderService;
 import com.OCare.service.RelativeService;
 import com.OCare.service.openFireService;
@@ -89,16 +86,39 @@ public class openFireController {
         功能：房间成员输入房间ID与成员电话与自己电话,可查询到任一成员的昵称、 图像、
         在该房间中的地位(是不是管理员,被踢的,publisher, none)、与老人的关系(如果该房间是养老房间)。
         参数：房间号，想查询信息的人的电话
-     */
+*/
 
     @RequestMapping("/user/member")
     @ResponseBody
-    public Map<String, Object> getMembersByUser(String phoneNum, String roomId,String thisPhoneNum){
+    public Map<String, Object> getMembersByUser(String roomName,String phoneNum,String thisPhoneNum){
         Map<String, Object> result = new HashMap<String, Object>();
 
 
+        if(phoneNum == null || roomName == null || phoneNum.equals("") || roomName.equals("")|| thisPhoneNum == null || thisPhoneNum.equals("")){
+            result.put("error", true);
+            result.put("errorMsg", INPUT_CANNOT_NULL);
+            return result;
+        }
 
-        //发起查询的人必须房间的成员，服务端要做角色区别；
+        /*****************************根据roomName找到roomId***********************/
+        Object oroom=openFireService.findRoomidByName(roomName);
+
+        if (oroom instanceof Integer) {
+            if ((Integer)oroom == openFireServiceImpl.ROOM_NOT_EXIST) {
+                result.put("error", true);
+                result.put("errorMsg", "ROOM_NOT_EXIST");
+                //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+oRoom);
+                return result;
+            }
+        }
+
+        ofMucRoom mucroom=(ofMucRoom)oroom;
+        String roomId=String.valueOf(mucroom.getRoomID());
+        //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+roomId);
+        /*************************根据roomName找到roomId*********************************/
+
+
+        //********************发起查询的人必须房间的成员，服务端要做角色区别*************************
         Object thisMember = openFireService.findMemberByPhoneNumAndRoomId(thisPhoneNum, roomId);
         if(thisMember instanceof Integer) {
             if ((Integer) thisMember == openFireServiceImpl.MEMBER_NOT_EXIST) {
@@ -107,14 +127,14 @@ public class openFireController {
                 return result;
             }
         }
-        if(phoneNum == null || roomId == null || phoneNum.equals("") || roomId.equals("")){
-            result.put("error", true);
-            result.put("errorMsg", INPUT_CANNOT_NULL);
-            return result;
-        }
+        //************************发起查询的人必须房间的成员，服务端要做角色区别；*************************
 
+
+
+        //************************************得到member和ofMucAffiliation信息**********************************************
         Object oRoom = openFireService.findRoomsById(roomId);
         Object oMember = openFireService.findMemberByPhoneNumAndRoomId(phoneNum, roomId);
+        Object oAff=openFireService.findAffByPhoneNum(phoneNum);
 
         if(oRoom instanceof Integer){
 
@@ -145,14 +165,29 @@ public class openFireController {
             }
         }
 
+        if(oAff instanceof Integer) {
+            if ((Integer) oAff == openFireServiceImpl.AFFILIATION_NOT_EXIST) {
+                result.put("error", true);
+                result.put("errorMsg", "AFFILIATION_NOT_EXIST");
+                return result;
+            }
+        }
+
         result.put("error", false);
 
         ofMucRoom room = (ofMucRoom) oRoom;
         ofMucMember member = (ofMucMember) oMember;
+        ofMucAffiliation affiliation=(ofMucAffiliation)oAff;
+        int aff=affiliation.getAffiliation();
+
 
         // result.put("room", room);                   //2015.11.10 不需要房间信息
         result.put("member", member);
+        result.put("ofMucAffiliation",aff);
+        //************************************得到member和ofMucAffiliation信息**********************************************
 
+
+        //************************************得到relative信息**********************************************
         Relative relative = relativeService.getRelativeByPhoneNum(phoneNum);
 
         if(relative == null){
@@ -179,8 +214,12 @@ public class openFireController {
         }
 
         result.put("relative", relativeInfoList);
+        //************************************得到relative信息**********************************************
         return result;
     }
+
+
+
     /*
         功能：房间管理员或者房间成员查看所有房间内成员的电话
         参数：房间号，想查询信息的人的jid
@@ -203,14 +242,14 @@ public class openFireController {
             if ((Integer)oRoom == openFireServiceImpl.ROOM_NOT_EXIST) {
                 result.put("error", true);
                 result.put("errorMsg", "ROOM_NOT_EXIST");
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+oRoom);
+                //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+oRoom);
                 return result;
             }
         }
 
         ofMucRoom mucroom=(ofMucRoom)oRoom;
         int roomId=mucroom.getRoomID();
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+roomId);
+        //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+roomId);
 
 
 

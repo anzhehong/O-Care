@@ -26,6 +26,7 @@ public class openFireServiceImpl implements openFireService {
     public static final int ADMIN_NO_PERMISSION = 3;
     public static final int ROOM_NOT_EXIST = 4;
     public static final int MEMBER_NOT_EXIST = 5;
+    public static final int AFFILIATION_NOT_EXIST = 6;
 
     @Autowired
     private ofMucAffiliationDAO affiliationDAO;
@@ -36,12 +37,23 @@ public class openFireServiceImpl implements openFireService {
 
     @Override
     public Object findRoomidByName(String name) {
-        ofMucRoom mucRoom=roomDAO.getRoomByName(name);
-        if(mucRoom==null)
+        List<ofMucRoom> list=roomDAO.getRoomByName(name);
+        if(list.isEmpty())
         {
            return ROOM_NOT_EXIST;
         }
-        return mucRoom;
+        return list.get(0);
+    }
+
+    @Override
+    public Object findAffByPhoneNum(String phoneNum) {
+
+        List<ofMucAffiliation> list=affiliationDAO.getAffiliationByPhoneNum(phoneNum);
+        if(list.isEmpty())
+        {
+            return AFFILIATION_NOT_EXIST;
+        }
+        return list.get(0);
     }
 
     @Override

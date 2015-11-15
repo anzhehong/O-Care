@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +24,40 @@ public class ContractInterfaceController {
 
     @Autowired
     private ContractService contractService;
+
+
+    @RequestMapping("/contract/insert")
+    @ResponseBody
+    public Map<String, Object> insertContract(int id,int company_id,String elder_id,String startTime,String endTime,int status,String folder_name) throws ParseException {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+
+        if (elder_id == null || elder_id.equals("")||startTime == null || startTime.equals("")||endTime == null || endTime.equals("")||folder_name == null || folder_name.equals("")){
+            result.put("error", true);
+            result.put("errorMsg", "Input is null");
+            return result;
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd ");
+        Date start_time= sdf.parse(startTime);
+        Date end_time= sdf.parse(endTime);
+
+        Contract contract=new Contract();
+        contract.setId(id);
+        contract.setCompany_id(company_id);
+        contract.setElder_id(elder_id);
+        contract.setStart_time(start_time);
+        contract.setEnd_time(end_time);
+        contract.setStatus(status);
+        contract.setFolder_name(folder_name);
+        System.out.println(">>>>>>>>>>>test"+folder_name);
+        boolean b=contractService.insertContract(contract);
+
+
+        result.put("error", false);
+        result.put("insert","insert succeed" );
+        return result;
+    }
 
     @ResponseBody
     @RequestMapping("/contract/all")
@@ -114,31 +150,6 @@ public class ContractInterfaceController {
     }
 
 
-    @ResponseBody
-    @RequestMapping("/contract/insert")
-    public Map<String, Object> insertContract(int id,int company_id,String elder_id,Date start_time,Date end_time,int status,String folder_name) {
-        Map<String, Object> result = new HashMap<String, Object>();
 
-        if (elder_id == null || elder_id.equals("")||start_time == null || start_time.equals("")||end_time == null || end_time.equals("")||folder_name == null || folder_name.equals("")){
-            result.put("error", true);
-            result.put("errorMsg", "Input is null");
-            return result;
-        }
-
-        Contract contract=new Contract();
-        contract.setId(id);
-        contract.setCompany_id(company_id);
-        contract.setElder_id(elder_id);
-        contract.setStart_time(start_time);
-        contract.setEnd_time(end_time);
-        contract.setStatus(status);
-        contract.setFolder_name(folder_name);
-        boolean b=contractService.insertContract(contract);
-
-
-        result.put("error", false);
-        result.put("insert","insert succeed" );
-        return result;
-    }
 
 }
