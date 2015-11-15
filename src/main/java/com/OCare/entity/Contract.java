@@ -24,6 +24,8 @@ public class Contract {
         status = 102 代表 合同已过期作废
      */
     private int status;
+    private String folder_name;
+
 
     public int getId() {
         return id;
@@ -71,5 +73,11 @@ public class Contract {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getFolder_name() { return folder_name; }
+
+    public void setFolder_name(String folder_name) {
+        this.folder_name = folder_name;
     }
 }

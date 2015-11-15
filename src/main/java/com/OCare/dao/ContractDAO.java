@@ -12,4 +12,6 @@ public interface ContractDAO extends IGeneralDAO<Contract>{
     public List<Contract> findContractsByElderId(String elderId);
     public Contract getContractByElderId(String elderId);
 
+
+
 }
