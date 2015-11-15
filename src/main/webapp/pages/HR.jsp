@@ -7,11 +7,11 @@
 --%>
 <%@page contentType="text/html; charset=utf-8" language="java" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="templates/header.jsp"%>
-<%@include file="templates/sidebar.jsp"%>
+<%@include file="templates/header.jsp" %>
+<%@include file="templates/sidebar.jsp" %>
 <link rel="stylesheet" href="/OCare/Assets/CSS/homepage.css">
-<div class="ui container HR">
-    <table class="ui blue striped celled table">
+<div class="ui container HR" data-ng-app="app">
+    <table class="ui blue striped celled table" data-ng-controller="appController">
         <thead>
         <tr>
             <th class="one wide">职位</th>
@@ -51,148 +51,178 @@
         <%--<td>图片不合格</td>--%>
         <%--</tr>--%>
 
+        <c:forEach items="${employee}" var="var">
+            <tr class="left aligned">
+                <td>
+                    ${var.position}
+                </td>
+                <td>
+                    ${var.id}
+                </td>
+                <td>
+                   ${var.name}
+                </td>
+                <td>
+                    female
+                </td>
+                <td>
+                    ${var.phone}
+                </td>
+                <td>
+                    12345
+                </td>
+                <td>${var.address}
+                </td>
+                <td>
+                    <img src="/OCare/Assets/Images/testIcon.jpg"/>
+                </td>
+                <td>
 
-        <tr class="left aligned">
-            <td>
-                职位A
-            </td>
-            <td>
-                123456
-            </td>
-            <td>
-                yuzihan
-            </td>
-            <td >
-                female
-            </td>
-            <td>
-                1234567890
-            </td>
-            <td>
-                1234567890
-            </td>
-            <td>非的决赛发烧呢附件四
-            </td>
-            <td>
-                <img src="/OCare/Assets/Images/testIcon.jpg"/>
-            </td>
-            <td>
+                    <div class="ui toggle checkbox">
+                        <input type="checkbox" name="public">
+                        <label>权限1</label>
+                    </div>
+                    <div class="ui toggle checkbox">
+                        <input type="checkbox" name="public">
+                        <label>权限2</label>
+                    </div>
+                    <div class="ui toggle checkbox">
+                        <input type="checkbox" name="public">
+                        <label>权限3</label>
+                    </div>
 
-                <div class="ui toggle checkbox">
-                    <input type="checkbox" name="public">
-                    <label>权限1</label>
-                </div>
-                <div class="ui toggle checkbox">
-                    <input type="checkbox" name="public">
-                    <label>权限2</label>
-                </div>
-                <div class="ui toggle checkbox">
-                    <input type="checkbox" name="public">
-                    <label>权限3</label>
-                </div>
+                </td>
+            </tr>
+        </c:forEach>
 
-            </td>
-        </tr>
-        <tr class="left aligned">
-            <td>
-                职位B
-            </td>
-            <td>
-                123456
-            </td>
-            <td>
-                yuzi
-            </td>
-            <td >
-                female
-            </td>
-            <td>
-                1234567890
-            </td>
-            <td>
-                1234567890
-            </td>
-            <td>
-                上海内面覅是免费
-            </td>
-            <td>
-                <img src="/OCare/Assets/Images/testIcon.jpg"/>
-            </td>
-            <td>
-                <div class="ui toggle checkbox">
-                    <input type="checkbox" name="public">
-                    <label>权限1</label>
-                </div>
-                <div class="ui toggle checkbox">
-                    <input type="checkbox" name="public">
-                    <label>权限2</label>
-                </div>
-                <div class="ui toggle checkbox">
-                    <input type="checkbox" name="public">
-                    <label>权限3</label>
-                </div>
 
-            </td>
-        </tr>
-        <tr class="left aligned">
-            <td>
-                职位C
-            </td>
-            <td>
-                123456
-            </td>
-            <td>
-                zihan
-            </td>
-            <td >
-                male
-            </td>
-            <td>
-                1234567890
-            </td>
-            <td>
-                1234567890
-            </td>
-            <td>
-                房内面我发的神马呢
-            </td>
-            <td>
-                <img src="/OCare/Assets/Images/testIcon.jpg"/>
-            </td>
-            <td>
-                <div class="ui toggle checkbox">
-                    <input type="checkbox" name="public">
-                    <label>权限1</label>
-                </div>
-                <div class="ui toggle checkbox">
-                    <input type="checkbox" name="public">
-                    <label>权限2</label>
-                </div>
-                <div class="ui toggle checkbox">
-                    <input type="checkbox" name="public">
-                    <label>权限3</label>
-                </div>
-
-            </td>
-        </tr>
         </tbody>
         <tfoot>
-        <tr><th colspan="9">
-            <div class="ui right floated pagination menu">
-                <a class="icon item">
-                    <i class="left chevron icon"></i>
-                </a>
-                <a class="item">1</a>
-                <a class="item">2</a>
-                <a class="item">3</a>
-                <a class="item">4</a>
-                <a class="icon item">
-                    <i class="right chevron icon"></i>
-                </a>
-            </div>
-        </th>
-        </tr></tfoot>
+        <tr>
+            <th colspan="9">
+                <div class="ui pagination menu" data-ng-controller="PaginationController" data-ng-init="init(10)">
+                    <a class="icon item" data-ng-show="currentPage != 0" data-ng-click="prevPage()">
+                        <i class="icon left arrow"></i>
+                    </a>
+                    <a class="item" data-ng-repeat="n in items track by $index"
+                       data-ng-class="{'active': n == currentPage, 'disabled' : n == -1}"
+                       data-ng-bind="n == -1 ? '...' : n + 1"
+                       data-ng-click="setPage(n)">
+                    </a>
+                    <a class="icon item" data-ng-show="currentPage != pageCount - 1" data-ng-click="nextPage()">
+                        <i class="icon right arrow"></i>
+                    </a>
+                </div>
+            </th>
+        </tr>
+        </tfoot>
     </table>
+    <script>
+        var app = angular.module("app", []);
+        app.controller("appController", function ($scope, $window) {
+            $scope.items = [];
+            //$scope.items = $window.data;
+        });
+
+        app.controller("PaginationController", function ($scope) {
+            //当前页索引
+            $scope.currentPage = 0;
+            //总页数
+            $scope.pageCount = 20;
+            //每页显示条数
+            $scope.items_per_page = 3;
+
+            //连续分页主体部分分页条目数
+            $scope.num_display_entries = 6;
+            //两侧首尾分页条目数
+            $scope.num_edge_entries = 2;
+
+            $scope.items = [];
+
+            $scope.init = function (pageCount) {
+                $scope.currentPage = 0;
+                $scope.pageCount = pageCount;
+                $scope.items = $scope.getRange($scope.currentPage, $scope.pageCount);
+            }
+
+            $scope.prevPage = function () {
+                if ($scope.currentPage > 0) {
+                    $scope.currentPage--;
+                }
+            };
+
+            $scope.nextPage = function () {
+                if ($scope.currentPage < $scope.pageCount - 1) {
+                    $scope.currentPage++;
+                }
+            };
+
+            $scope.setPage = function (n) {
+                if (n >= 0) {
+                    $scope.currentPage = n;
+                }
+            };
+
+            $scope.$watch('pageCount', function () {
+                if ($scope.currentPage == 0) {
+                    $scope.items = $scope.getRange($scope.currentPage, $scope.pageCount);
+                }
+                else {
+                    $scope.currentPage = 0;
+                }
+            });
+
+            $scope.$watch('currentPage', function () {
+                $scope.items = $scope.getRange($scope.currentPage, $scope.pageCount);
+            });
+
+            $scope.getRange = function (currentPage, pageCount) {
+                var ret = [];
+                var np = pageCount;
+                var interval = $scope.getInterval(currentPage, pageCount);
+
+                // Generate starting points
+                if (interval[0] > 0 && $scope.num_edge_entries > 0) {
+                    var end = Math.min($scope.num_edge_entries, interval[0]);
+                    for (var i = 0; i < end; i++) {
+                        ret.push(i);
+                    }
+                    if ($scope.num_edge_entries < interval[0]) {
+                        ret.push(-1);
+                    }
+                }
+                // Generate interval links
+                for (var i = interval[0]; i < interval[1]; i++) {
+                    ret.push(i);
+                }
+                // Generate ending points
+                if (interval[1] < np && $scope.num_edge_entries > 0) {
+                    if (np - $scope.num_edge_entries > interval[1]) {
+                        ret.push(-1);
+                    }
+                    var begin = Math.max(np - $scope.num_edge_entries, interval[1]);
+                    for (var i = begin; i < np; i++) {
+                        ret.push(i);
+                    }
+                }
+                return ret;
+            };
+
+            /**
+             * Calculate start and end point of pagination links depending on
+             * currentPage and num_display_entries.
+             * @return {Array}
+             */
+            $scope.getInterval = function (currentPage, pageCount) {
+                var ne_half = Math.ceil($scope.num_display_entries / 2);
+                var np = pageCount;
+                var upper_limit = np - $scope.num_display_entries;
+                var start = currentPage > ne_half ? Math.max(Math.min(currentPage - ne_half, upper_limit), 0) : 0;
+                var end = currentPage > ne_half ? Math.min(currentPage + ne_half, np) : Math.min($scope.num_display_entries, np);
+                return [start, end];
+            }
+        });
+    </script>
 </div>
 
 <script type="text/javascript">
@@ -207,4 +237,4 @@
 </script>
 
 
-<%@include file="templates/footer.jsp"%>
+<%@include file="templates/footer.jsp" %>

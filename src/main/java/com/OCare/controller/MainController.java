@@ -1,7 +1,16 @@
 package com.OCare.controller;
 
+import com.OCare.dao.CompanyDAO;
+import com.OCare.entity.Employee;
+import com.OCare.service.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -10,6 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class MainController {
+    @Autowired
+    private EmployeeService employeeService;
+
+    @Autowired
+    private CompanyDAO companyDAO;
+
 
     @RequestMapping("")
     public String index() {
@@ -17,8 +32,20 @@ public class MainController {
     }
 
     @RequestMapping("/hr")
-    public String hrHome() {
+    public String hrHome(Model model)
+    {
+        model.addAttribute("employee",employeeService.getAllEmployees());
         return "HR";
+    }
+
+    @RequestMapping("/hr/insert")
+    @ResponseBody
+    public Map<String,Object> hrInsert(String name,String address,String phone,String identity,String position,String department,String superior,String start_time,String finish_time) {
+        double x=Math.random()*10000;
+        Employee employee = employeeService.createEmployee(x+"",2,name,phone,address,start_time,finish_time,"xxx","xxx",position,department,superior,"xxx","xxx");
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("created_name",employee.getName());
+        return result;
     }
 
     @RequestMapping("/hr/entry")
@@ -37,9 +64,28 @@ public class MainController {
     }
 
     @RequestMapping("/hr/table")
-    public String hrTable() {
+    public String hrTable(Model model)
+    {
+        model.addAttribute("employee",employeeService.getAllEmployees());
         return "table";
     }
+    @RequestMapping("/hr/confirm")
+    @ResponseBody
+    public Map<String, Object> getemployeeById(String employeeid) {
+        Employee employee=employeeService.getEmployeeById(employeeid);
+        Map<String, Object> result = new HashMap<String, Object>();
 
+        String xxx= employee.getPhone();
+        String xxx1= employee.getDepartment();
+        result.put("employee_id", employee.getId());
+        result.put("employee_name",employee.getName());
+        result.put("employee_phone",employee.getPhone());
+        result.put("employee_position",employee.getPosition());
+        result.put("employee_department",employee.getDepartment());
+        result.put("employee_superior",employee.getSuperior());
+        return result;
+
+
+    }
 
 }

@@ -22,6 +22,26 @@
     <a class="item">
       &nbsp;&nbsp;&nbsp;&nbsp;职员管理
     </a>
+
+      <div class="header item">
+          <i class="legal icon"></i>
+          人事管理
+      </div>
+      <a class="item" href="/OCare/hr">
+          &nbsp;&nbsp;&nbsp;&nbsp;职员信息
+      </a>
+      <a class="item" href="/OCare/hr/entry">
+          &nbsp;&nbsp;&nbsp;&nbsp;入职管理
+      </a>
+      <a class="item" href="/OCare/hr/leave">
+          &nbsp;&nbsp;&nbsp;&nbsp;离职管理
+      </a>
+      <a class="item" href="/OCare/hr/table">
+          &nbsp;&nbsp;&nbsp;&nbsp;查询
+      </a>
+      <a class="item" href="/OCare/hr/import">
+          &nbsp;&nbsp;&nbsp;&nbsp;导入
+      </a>
     <div class="header item">
       <i class="legal icon"></i>
       合同管理
