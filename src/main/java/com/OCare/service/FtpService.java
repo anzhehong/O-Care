@@ -7,5 +7,7 @@ import java.io.File;
  */
 public interface FtpService {
     String uploadFile(File file);
+    String downloadFile(String fileName);
+    String uploadDocFile(String fileName);
     File getFileById(String id);
 }

@@ -36,6 +36,48 @@ public class FtpServiceImp implements FtpService {
     }
 
     @Override
+    public String downloadFile(String fileName) {
+        try {
+            FTPClient client = new FTPClient();
+            client.connect("202.120.163.167", 21);
+            client.login("ocare", "ocare");
+            client.changeDirectory("Contracts");
+            client.changeDirectory(fileName);
+            System.out.println(client);
+
+
+            File file = new File("xmlTodoc/"+ fileName + ".xml");
+            System.out.print("path:>>>>>>>>>>>>>"+file.getPath());
+            if (!file.exists())
+                file.createNewFile();
+            client.download(fileName + ".xml",file);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "success";
+    }
+
+    @Override
+    public String uploadDocFile(String fileName) {
+        try {
+            FTPClient client = new FTPClient();
+            client.connect("202.120.163.167", 21);
+            client.login("ocare", "ocare");
+            client.changeDirectory("Contracts");
+            client.changeDirectory(fileName);
+            System.out.println(client);
+            File file = new File("xmlTodoc/" + fileName + ".doc");
+            client.upload(file);
+            file.delete();
+            client.disconnect(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "success";
+    }
+
+    @Override
     public File getFileById(String id) {
         return null;
     }
