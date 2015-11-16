@@ -2,6 +2,7 @@ package com.OCare.service;
 
 import com.OCare.dao.EmployeeConditionDAO;
 import com.OCare.dao.EmployeeDAO;
+import com.OCare.dao.IGeneralDAO;
 import com.OCare.entity.Employee;
 import com.OCare.entity.EmployeeCondition;
 import com.OCare.entity.JavaMD5Util;
@@ -20,6 +21,8 @@ import java.util.List;
 @Service("EmployeeService")
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
+    @Autowired
+    private IGeneralDAO<Employee>  iGeneralDAO;
 
     @Autowired
     private EmployeeDAO employeeDAO;
@@ -105,7 +108,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeDAO.insert(employee);
         return employee;
     }
-
+    @Override
+    public String deleteEmployeeById(String id){
+        Employee employee=employeeDAO.queryById(id);
+        iGeneralDAO.delete(employee);
+        return "xx";
+    }
     @Override
     public Employee getEmployeeById(String id) {
         return employeeDAO.queryById(id);
@@ -213,17 +221,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
     }
 
-    @Override
-    public String deleteEmployeeById(String id) {
-        Employee newEmployee = employeeDAO.queryByPhoneNum(id);
-        if (newEmployee != null)
-        {
-            employeeDAO.delete(newEmployee);
-            return "success";
-        }else {
-            return "not exists";
-        }
-    }
 
     @Override
     public boolean changeEmployeeInfoById(String id, String newName, String newPhone, String newAddress,

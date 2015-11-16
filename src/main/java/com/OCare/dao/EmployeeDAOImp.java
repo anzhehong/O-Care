@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 public class EmployeeDAOImp extends IGeneralDAOImpl<Employee> implements EmployeeDAO {
 
+    private Employee entityClass;
     public EmployeeDAOImp()
     {
         super(Employee.class);
@@ -29,7 +30,18 @@ public class EmployeeDAOImp extends IGeneralDAOImpl<Employee> implements Employe
             return list.get(0);
         }
     }
-
+    @Override
+    public Employee queryById(String identity){
+        String hql = "from Employee where id = :m";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("m", identity);
+        List<Employee> list = query.list();
+        if (list.size() == 0){
+            return null;
+        }else{
+            return list.get(0);
+        }
+    }
     @Override
     public List<Employee> findEmployeeByName(String name) {
         String hql = "from Employee where name = :m";

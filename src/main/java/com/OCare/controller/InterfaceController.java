@@ -7,7 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -34,6 +39,8 @@ public class InterfaceController {
     private ContractService contractService;
     @Autowired
     private ElderConditionService elderConditionService;
+    @Autowired
+    private FtpService ftpService;
 
     /**
      * @param phoneNum：Phone number
@@ -588,7 +595,7 @@ public class InterfaceController {
         }else {
             String flag = employeeService.deleteEmployeeById(id);
             if (flag == "success")
-                result.put("error",false);
+                result.put("error","注销成功");
             else {
                 result.put("error",true);
                 result.put("errorMsg","Can not find such employee!");
@@ -1137,6 +1144,66 @@ public class InterfaceController {
             result.put("info", contractInfo);
         }
         return result;
+    }
+    @RequestMapping("contract/upload")
+      @ResponseBody
+      public String fileUpload(HttpServletRequest request, MultipartFile file) {
+        // 判断文件是否为空
+
+        if(file!=null)
+        {
+            File convFile = new File(file.getOriginalFilename());
+            try {
+                convFile.createNewFile();
+                FileOutputStream fos = new FileOutputStream(convFile);
+                fos.write(file.getBytes());
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            ftpService.uploadFile(convFile);
+
+
+
+            System.out.println("success");
+
+
+        }
+
+        // 重定向
+        return "success";
+    }
+    @RequestMapping("hr/upload")
+    @ResponseBody
+    public String fileUpload(HttpServletRequest request, MultipartFile file,String id) {
+        // 判断文件是否为空
+
+        if(file!=null)
+        {
+            File convFile = new File(file.getOriginalFilename());
+            try {
+                convFile.createNewFile();
+                FileOutputStream fos = new FileOutputStream(convFile);
+                fos.write(file.getBytes());
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            ftpService.uploadFileById(convFile,id);
+
+
+
+            System.out.println("success");
+
+
+        }
+
+        // 重定向
+        return "success";
     }
 
 

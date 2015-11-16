@@ -27,11 +27,13 @@
         <datasource-map>
           <unit-entry name="sessionFactory" value="dc2e0995-209e-4f0d-a947-522d69ac0176" />
         </datasource-map>
-        <naming-strategy-map />
+        <naming-strategy-map>
+          <unit-entry name="sessionFactory" />
+        </naming-strategy-map>
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -149,6 +151,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="bootstrap-table-zh-CN" level="application" />
+    <orderEntry type="library" name="ftp4j-1.7.2" level="project" />
   </component>
 </module>

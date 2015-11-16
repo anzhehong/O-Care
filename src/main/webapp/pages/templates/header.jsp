@@ -18,6 +18,7 @@
   <script src="/OCare/Assets/JS/jquery.address.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
   <script src="/OCare/Assets/JS/semantic.js"></script>
+    <script src="/OCare/Assets/JS/uploadPreview.js" type="text/javascript"></script>
     <script src="http://cdn.bootcss.com/angular.js/1.3.0-beta.8/angular.min.js"></script>
     <script>
         window.data = [];
