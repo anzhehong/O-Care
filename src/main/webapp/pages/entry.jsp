@@ -170,8 +170,9 @@
 
 
         </script>
-        <div class="eight wide column" id="pic_info" style="display:none">
-            <form class="ui form">
+        <div class="eight wide column" id="pic_info" >
+            <form class="ui form" action="/OCare/app/hr/upload" id="my-awesome-dropzone"
+                  enctype="multipart/form-data">
                 <label>身份证正反面</label>
 
                 <div id="warp" class="two fields">
@@ -205,7 +206,7 @@
 
                 </div>
                 <button class="ui fluid button" style="background-color: transparent;border: 0px;" >
-                    <a class="ui huge fluid teal label" >提交图片资料</a>
+                    <a class="ui huge fluid teal label" onclick="processQueue()"  id="agree">提交图片资料</a>
                 </button>
             </form>
 
@@ -250,7 +251,32 @@
     <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
     <script src="/OCare/Assets/JS/jquery.validate.js"></script>
     <script>
-         function save(){
+        function processQueue()
+        {
+            myDropzone.processQueue();
+        }
+
+        Dropzone.options.myAwesomeDropzone = {
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 2, // MB
+            dictRemoveFile:true,
+            autoProcessQueue:false,
+            accept: function(file, done) {
+                if (file.name == "justinbieber.jpg") {
+                    done("Naha, you don't.");
+                }
+                else { done(); }
+            }
+        };
+
+        var myDropzone = new Dropzone("#my-awesome-dropzone");
+
+        myDropzone.on("success", function(file,finished) {
+            //TODO
+            swal("上传成功", "success")
+        });
+
+        function save(){
             //jquery.validate
             $("#jsForm").validate({
                 submitHandler: function() {
