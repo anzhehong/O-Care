@@ -584,10 +584,36 @@ public class InterfaceController {
     }
 
     /*
-        功能：通过身份证号删除员工
+        功能：通过phoneNum删除员工
         参数：身份证
      */
     @RequestMapping("/employee/delete")
+    @ResponseBody
+    public Map<String, Object> deleteEmployeeByphoneNum(String id)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        if (id == null || id == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","Input phoneNum is null");
+        }else {
+            String flag = employeeService.deleteEmployeeByphoneNum(id);
+            if (flag == "success")
+                result.put("error",false);
+            else {
+                result.put("error",true);
+                result.put("errorMsg","Can not find such employee!");
+            }
+        }
+        return result;
+    }
+
+
+    /*
+        功能：通过id删除员工
+        参数：id
+     */
+    @RequestMapping("/employee/deleteByID")
     @ResponseBody
     public Map<String, Object> deleteEmployeeById(String id)
     {
@@ -595,7 +621,7 @@ public class InterfaceController {
         if (id == null || id == "")
         {
             result.put("error",true);
-            result.put("errorMsg","Input phoneNum is null");
+            result.put("errorMsg","Input ID is null");
         }else {
             String flag = employeeService.deleteEmployeeById(id);
             if (flag == "success")
@@ -630,6 +656,33 @@ public class InterfaceController {
         }
         return result;
     }
+
+    /*
+       功能：更新员工信息2
+    */
+    @RequestMapping("/employee/updateById2")
+    @ResponseBody
+    public Map<String, Object> updateEmployeeInfoById2(String id,String newDepartment, String newPosition,String newSuperiot,String newWorkDetail)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        if (id == null || newDepartment == null || newPosition == null ||  newSuperiot == null || newWorkDetail == null||id == "" || newDepartment == "" || newPosition == "" ||  newSuperiot == "" || newWorkDetail == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","Input is null!");
+        }
+        boolean flag = employeeService.changeEmployeeInfoById(id,newDepartment,newPosition,newSuperiot,newWorkDetail);
+        if (flag == false)
+        {
+            result.put("error",true);
+            result.put("errorMsg","Can not find such employee!");
+        }else {
+            result.put("error",false);
+        }
+        return result;
+    }
+
+
+
 
     /*
         功能：显示老人有效合同的状况

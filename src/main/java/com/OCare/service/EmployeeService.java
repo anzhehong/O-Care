@@ -34,10 +34,17 @@ public interface EmployeeService {
 
     /*
         功能：删除员工
-        参数：身份证号码
+        参数：id
         返回值：String成功或者失败原因
      */
     public String deleteEmployeeById(String id);
+
+    /*
+       功能：删除员工
+       参数：phoneNum
+       返回值：String成功或者失败原因
+    */
+    public String deleteEmployeeByphoneNum(String phoneNum);
 
     /*
         功能：更新员工信息
@@ -47,4 +54,8 @@ public interface EmployeeService {
                                           String newDepartment, String newPosition, int newStatus,
                                           String newPassword, String newImage, String newSuperiot,
                                           String newWorkExperience, String newWorkDetail);
+
+
+    public boolean changeEmployeeInfoById(String id,String newDepartment, String newPosition,String newSuperiot,
+                                          String newWorkDetail);
 }

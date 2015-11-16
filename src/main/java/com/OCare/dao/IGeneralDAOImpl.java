@@ -17,7 +17,7 @@ public abstract class IGeneralDAOImpl<T> implements IGeneralDAO<T> {
     }
 
     @Autowired
-    protected SessionFactory sessionFactory;
+    protected    SessionFactory sessionFactory;
 
     @Override
     public void insert(T t) {
