@@ -170,7 +170,7 @@
 
 
         </script>
-        <div class="eight wide column" id="pic_info" >
+        <div class="eight wide column" id="pic_info" style="display:none">
             <form class="ui form" action="/OCare/app/hr/upload" id="my-awesome-dropzone"
                   enctype="multipart/form-data">
                 <label>身份证正反面</label>
