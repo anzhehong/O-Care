@@ -588,7 +588,7 @@ public class InterfaceController {
         }else {
             String flag = employeeService.deleteEmployeeById(id);
             if (flag == "success")
-                result.put("error",false);
+                result.put("error","注销成功");
             else {
                 result.put("error",true);
                 result.put("errorMsg","Can not find such employee!");

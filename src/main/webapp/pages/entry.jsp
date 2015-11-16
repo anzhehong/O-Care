@@ -120,13 +120,13 @@
                 <%--</br>--%>
                 <div class="field">
                     <div class="ui checkbox">
-                        <input type="checkbox" name="checked" tabindex="0"  >
+                        <input type="checkbox" name="checked" tabindex="0"   required data-msg-required="请勾选">
                         <label>I agree to the Terms and Conditions</label>
                     </div>
                 </div>
                 <%--</br>--%>
                 <%--</br>--%>
-                <div class="field">
+                <div class="field" style="display: none">
 
                     <div class="three ui fluid buttons">
                         <div class="ui button">人事合同预览</div>
@@ -161,14 +161,12 @@
             </form>
         </div>
         <script type="text/javascript">
-            $(document).ready(function () {
                 $('.ui.dropdown')
                         .dropdown()
                 ;
                 $('.ui.checkbox')
                         .checkbox()
                 ;
-            });
 
 
         </script>
@@ -206,9 +204,9 @@
                     </div>
 
                 </div>
-                <div class="ui fluid positive large submit button" style="margin-top: 19px">
-                    提交图片资料
-                </div>
+                <button class="ui fluid button" style="background-color: transparent;border: 0px;" >
+                    <a class="ui huge fluid teal label" >提交图片资料</a>
+                </button>
             </form>
 
         </div>
