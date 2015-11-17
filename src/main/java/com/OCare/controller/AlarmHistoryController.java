@@ -29,6 +29,7 @@ public class AlarmHistoryController {
     @RequestMapping("/get/set")
     @ResponseBody
     public List<AlarmHistory> listAlarmHistoryBySet(int limit,int offset) {
+        offset=offset+1;
         List<AlarmHistory> result= (List<AlarmHistory>) alarmHistoryService.getAlarmHistory(limit,offset);
 
         return result;

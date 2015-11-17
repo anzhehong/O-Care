@@ -1,8 +1,7 @@
 package com.OCare.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by fowafolo on 15/7/26.
@@ -18,6 +17,17 @@ public class Relative {
     private String address;
     private String password;
     private String image;
+
+//    public List<ElderMonitor> getElderMonitors() {
+//        return elderMonitors;
+//    }
+//
+//    public void setElderMonitors(List<ElderMonitor> elderMonitors) {
+//        this.elderMonitors = elderMonitors;
+//    }
+
+//    @OneToMany(mappedBy = "relative")
+//    private List<ElderMonitor> elderMonitors;
 
     public String getId() {
         return id;

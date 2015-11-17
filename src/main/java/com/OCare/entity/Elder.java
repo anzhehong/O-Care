@@ -1,8 +1,10 @@
 package com.OCare.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by fowafolo on 15/7/26.
@@ -20,6 +22,18 @@ public class Elder {
     private String address;
     private String password;
     private String image;
+
+    @OneToMany(mappedBy = "elder")
+    private List<ElderMonitor> elderMonitors;
+
+
+    public List<ElderMonitor> getElderMonitors() {
+        return elderMonitors;
+    }
+
+    public void setElderMonitors(List<ElderMonitor> elderMonitors) {
+        this.elderMonitors = elderMonitors;
+    }
 
     public String getId() {
         return id;

@@ -3,6 +3,7 @@ package com.OCare.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * Created by Ma on 2015/11/10.
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 @Table
 @Entity
 public class AlarmHistory {
+
 
     private int talk_type;
     private int talk_cate;
@@ -29,6 +31,16 @@ public class AlarmHistory {
     private int generateid;
     private String messagefrom;
     private String messageto;
+
+    private java.sql.Date time;
+
+    public java.sql.Date getTime() {
+        return time;
+    }
+
+    public void setTime(java.sql.Date time) {
+        this.time = time;
+    }
 
     public void setTalk_type(int talk_type) {
         this.talk_type = talk_type;

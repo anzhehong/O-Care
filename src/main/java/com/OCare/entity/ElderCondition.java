@@ -1,8 +1,6 @@
 package com.OCare.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -14,11 +12,26 @@ public class ElderCondition {
     @Id
     private int id;
 
-    private String elder_id;
+
     private int status;
     private double latitude;
     private double longtitude;
     private Date time;
+
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "elder_id", referencedColumnName = "id")
+    private Elder elder;
+
+
+
+
+    public Elder getElder() {
+        return elder;
+    }
+
+    public void setElder(Elder elder) {
+        this.elder = elder;
+    }
 
     public int getId() {
         return id;
@@ -29,12 +42,11 @@ public class ElderCondition {
     }
 
     public String getElder_id() {
-        return elder_id;
+        return elder.getId();
     }
 
-    public void setElder_id(String elder_id) {
-        this.elder_id = elder_id;
-    }
+    public void setElder_id(String elder_id){ this.elder.setId(elder_id);}
+
 
     public int getStatus() {
         return status;
@@ -67,4 +79,5 @@ public class ElderCondition {
     public void setTime(Date time) {
         this.time = time;
     }
+
 }

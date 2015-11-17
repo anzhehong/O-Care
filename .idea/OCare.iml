@@ -27,7 +27,9 @@
         <datasource-map>
           <unit-entry name="sessionFactory" value="dc2e0995-209e-4f0d-a947-522d69ac0176" />
         </datasource-map>
-        <naming-strategy-map />
+        <naming-strategy-map>
+          <unit-entry name="sessionFactory" />
+        </naming-strategy-map>
       </configuration>
     </facet>
   </component>

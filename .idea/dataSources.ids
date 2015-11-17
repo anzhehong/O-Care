@@ -13,5 +13,1653 @@
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.2">
+      <schema id="1" name="openfire"/>
+      <table id="2" parent="1" name="Admin"/>
+      <table id="3" parent="1" name="AlarmHistory"/>
+      <table id="4" parent="1" name="Company"/>
+      <table id="5" parent="1" name="Contract"/>
+      <table id="6" parent="1" name="Device"/>
+      <table id="7" parent="1" name="Elder"/>
+      <table id="8" parent="1" name="ElderCondition"/>
+      <table id="9" parent="1" name="ElderMonitor"/>
+      <table id="10" parent="1" name="Employee"/>
+      <table id="11" parent="1" name="EmployeeCondition"/>
+      <table id="12" parent="1" name="LegalPerson"/>
+      <table id="13" parent="1" name="Relative"/>
+      <table id="14" parent="1" name="Task"/>
+      <table id="15" parent="1" name="Volunteer"/>
+      <table id="16" parent="1" name="llmap"/>
+      <table id="17" parent="1" name="ofConParticipant"/>
+      <table id="18" parent="1" name="ofConversation"/>
+      <table id="19" parent="1" name="ofExtComponentConf"/>
+      <table id="20" parent="1" name="ofGroup"/>
+      <table id="21" parent="1" name="ofGroupProp"/>
+      <table id="22" parent="1" name="ofGroupUser"/>
+      <table id="23" parent="1" name="ofID"/>
+      <table id="24" parent="1" name="ofMessageArchive"/>
+      <table id="25" parent="1" name="ofMucAffiliation"/>
+      <table id="26" parent="1" name="ofMucConversationLog"/>
+      <table id="27" parent="1" name="ofMucMember"/>
+      <table id="28" parent="1" name="ofMucRoom"/>
+      <table id="29" parent="1" name="ofMucRoomProp"/>
+      <table id="30" parent="1" name="ofMucService"/>
+      <table id="31" parent="1" name="ofMucServiceProp"/>
+      <table id="32" parent="1" name="ofOffline"/>
+      <table id="33" parent="1" name="ofPresence"/>
+      <table id="34" parent="1" name="ofPrivacyList"/>
+      <table id="35" parent="1" name="ofPrivate"/>
+      <table id="36" parent="1" name="ofProperty"/>
+      <table id="37" parent="1" name="ofPubsubAffiliation"/>
+      <table id="38" parent="1" name="ofPubsubDefaultConf"/>
+      <table id="39" parent="1" name="ofPubsubItem"/>
+      <table id="40" parent="1" name="ofPubsubNode"/>
+      <table id="41" parent="1" name="ofPubsubNodeGroups"/>
+      <table id="42" parent="1" name="ofPubsubNodeJIDs"/>
+      <table id="43" parent="1" name="ofPubsubSubscription"/>
+      <table id="44" parent="1" name="ofRRDs"/>
+      <table id="45" parent="1" name="ofRemoteServerConf"/>
+      <table id="46" parent="1" name="ofRoster"/>
+      <table id="47" parent="1" name="ofRosterGroups"/>
+      <table id="48" parent="1" name="ofSASLAuthorized"/>
+      <table id="49" parent="1" name="ofSecurityAuditLog"/>
+      <table id="50" parent="1" name="ofUser"/>
+      <table id="51" parent="1" name="ofUserFlag"/>
+      <table id="52" parent="1" name="ofUserProp"/>
+      <table id="53" parent="1" name="ofVCard"/>
+      <table id="54" parent="1" name="ofVersion"/>
+      <table id="55" parent="1" name="test"/>
+      <column id="56" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="57" parent="2" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="58" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="59" parent="3" name="talk_type">
+        <data-type>int(1)</data-type>
+      </column>
+      <column id="60" parent="3" name="talk_cate">
+        <data-type>int(1) unsigned</data-type>
+      </column>
+      <column id="61" parent="3" name="picture_url">
+        <data-type>text</data-type>
+      </column>
+      <column id="62" parent="3" name="direction">
+        <data-type>int(1) unsigned</data-type>
+      </column>
+      <column id="63" parent="3" name="who_loc_log">
+        <comment>??</comment>
+        <data-type>double(15,6)</data-type>
+      </column>
+      <column id="64" parent="3" name="who_loc_lat">
+        <comment>??</comment>
+        <data-type>double(15,6)</data-type>
+      </column>
+      <column id="65" parent="3" name="who_address">
+        <data-type>mediumtext</data-type>
+      </column>
+      <column id="66" parent="3" name="talk_at">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="67" parent="3" name="talk_alarm">
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="68" parent="3" name="who_privateto">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="69" parent="3" name="talk_time">
+        <data-type>int(64) unsigned</data-type>
+      </column>
+      <column id="70" parent="3" name="audio_url">
+        <data-type>text</data-type>
+      </column>
+      <column id="71" parent="3" name="messageid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(32)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="72" parent="3" name="generateid">
+        <mandatory>1</mandatory>
+        <data-type>bigint(32) unsigned</data-type>
+      </column>
+      <column id="73" parent="3" name="messagefrom">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="74" parent="3" name="messageto">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <index id="75" parent="3" name="index_generateid">
+        <columns>generateid</columns>
+        <unique>1</unique>
+      </index>
+      <index id="76" parent="3" name="index_messageid">
+        <columns>messageid</columns>
+        <unique>1</unique>
+      </index>
+      <key id="77" parent="3" name="index_generateid">
+        <columns>generateid</columns>
+        <underlying-index>index_generateid</underlying-index>
+      </key>
+      <key id="78" parent="3" name="index_messageid">
+        <columns>messageid</columns>
+        <underlying-index>index_messageid</underlying-index>
+      </key>
+      <key id="79" parent="3" name="PRIMARY">
+        <columns>generateid</columns>
+        <primary>1</primary>
+      </key>
+      <column id="80" parent="4" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="81" parent="4" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="82" parent="4" name="legal_person_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="83" parent="4" name="phone">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="84" parent="4" name="address">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="85" parent="4" name="status">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="86" parent="4" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="87" parent="4" name="CompanyToLegalPerson">
+        <columns>legal_person_id</columns>
+        <ref-key>LegalPerson.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="88" parent="5" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="89" parent="5" name="company_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="90" parent="5" name="elder_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="91" parent="5" name="start_time">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="92" parent="5" name="end_time">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="93" parent="5" name="status">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="94" parent="5" name="folder_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="95" parent="5" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="96" parent="5" name="ContractToCompany">
+        <columns>company_id</columns>
+        <ref-key>Company.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="97" parent="5" name="ContractToElder">
+        <columns>elder_id</columns>
+        <ref-key>Elder.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="98" parent="6" name="DeviceId">
+        <mandatory>1</mandatory>
+        <data-type>varchar(55)</data-type>
+      </column>
+      <column id="99" parent="6" name="DeviceName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="100" parent="6" name="CommunicationType">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="101" parent="6" name="Description">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="102" parent="6" name="Image">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="103" parent="6" name="ElderId">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="104" parent="6" name="QRCode">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="105" parent="6" name="PRIMARY">
+        <columns>DeviceId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="106" parent="7" name="id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="107" parent="7" name="company_id">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="108" parent="7" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="109" parent="7" name="phone">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="110" parent="7" name="address">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="111" parent="7" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="112" parent="7" name="image">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="113" parent="7" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="114" parent="7" name="ElderToComany">
+        <columns>company_id</columns>
+        <ref-key>Company.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="115" parent="8" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="116" parent="8" name="elder_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="117" parent="8" name="status">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="118" parent="8" name="latitude">
+        <mandatory>1</mandatory>
+        <data-type>double</data-type>
+      </column>
+      <column id="119" parent="8" name="longtitude">
+        <mandatory>1</mandatory>
+        <data-type>double</data-type>
+      </column>
+      <column id="120" parent="8" name="time">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <key id="121" parent="8" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="122" parent="8" name="ElderConditionToElder">
+        <columns>elder_id</columns>
+        <ref-key>Elder.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="123" parent="9" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="124" parent="9" name="elder_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="125" parent="9" name="relative_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="126" parent="9" name="type">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="127" parent="9" name="togetherImg">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="128" parent="9" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="129" parent="9" name="ElderMonitorToElder">
+        <columns>elder_id</columns>
+        <ref-key>Elder.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="130" parent="9" name="ElderMonitorToRelative">
+        <columns>relative_id</columns>
+        <ref-key>Relative.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="131" parent="10" name="id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="132" parent="10" name="company_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="133" parent="10" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="134" parent="10" name="phone">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="135" parent="10" name="address">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="136" parent="10" name="department">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="137" parent="10" name="position">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="138" parent="10" name="contract_start">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="139" parent="10" name="contract_end">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="140" parent="10" name="status">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="141" parent="10" name="password">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="142" parent="10" name="image">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="143" parent="10" name="superior">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="144" parent="10" name="workExperience">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="145" parent="10" name="workDetail">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="146" parent="10" name="lastUpdateTime">
+        <data-type>datetime</data-type>
+      </column>
+      <key id="147" parent="10" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="148" parent="10" name="EmployeeToCompany">
+        <columns>company_id</columns>
+        <ref-key>Company.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="149" parent="11" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="150" parent="11" name="employee_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="151" parent="11" name="time">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="152" parent="11" name="status">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="153" parent="11" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="154" parent="12" name="id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="155" parent="12" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="156" parent="12" name="phone">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="157" parent="12" name="email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="158" parent="12" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="159" parent="12" name="image">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="160" parent="12" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="161" parent="13" name="id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="162" parent="13" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="163" parent="13" name="phone">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="164" parent="13" name="address">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="165" parent="13" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="166" parent="13" name="image">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="167" parent="13" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="168" parent="14" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="169" parent="14" name="from">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="170" parent="14" name="to">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="171" parent="14" name="content">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="172" parent="14" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="173" parent="14" name="fromEmployee">
+        <columns>from</columns>
+        <ref-key>Employee.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="174" parent="14" name="toEmployee">
+        <columns>to</columns>
+        <ref-key>Employee.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="175" parent="15" name="id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="176" parent="15" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="177" parent="15" name="phone">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="178" parent="15" name="address">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="179" parent="15" name="email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="180" parent="15" name="company_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="181" parent="15" name="elder_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="182" parent="15" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="183" parent="15" name="image">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="184" parent="15" name="status">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="185" parent="15" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="186" parent="15" name="VolunteerToCompany">
+        <columns>company_id</columns>
+        <ref-key>Company.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="187" parent="15" name="VolunteerToElder">
+        <columns>elder_id</columns>
+        <ref-key>Elder.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="188" parent="16" name="message_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(32)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="189" parent="16" name="loc_log">
+        <comment>经度</comment>
+        <data-type>double(15,6)</data-type>
+      </column>
+      <column id="190" parent="16" name="loc_lat">
+        <comment>纬度</comment>
+        <data-type>double(15,6)</data-type>
+      </column>
+      <column id="191" parent="16" name="address">
+        <data-type>mediumtext</data-type>
+      </column>
+      <column id="192" parent="16" name="receive_time">
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="193" parent="16" name="receive_from">
+        <data-type>varchar(64)</data-type>
+      </column>
+      <key id="194" parent="16" name="PRIMARY">
+        <columns>message_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="195" parent="17" name="conversationID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="196" parent="17" name="joinedDate">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="197" parent="17" name="leftDate">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="198" parent="17" name="bareJID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="199" parent="17" name="jidResource">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="200" parent="17" name="nickname">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="201" parent="18" name="conversationID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="202" parent="18" name="room">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="203" parent="18" name="isExternal">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="204" parent="18" name="startDate">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="205" parent="18" name="lastActivity">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="206" parent="18" name="messageCount">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="207" parent="18" name="PRIMARY">
+        <columns>conversationID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="208" parent="19" name="subdomain">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="209" parent="19" name="wildcard">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="210" parent="19" name="secret">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="211" parent="19" name="permission">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <key id="212" parent="19" name="PRIMARY">
+        <columns>subdomain</columns>
+        <primary>1</primary>
+      </key>
+      <column id="213" parent="20" name="groupName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="214" parent="20" name="description">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="215" parent="20" name="PRIMARY">
+        <columns>groupName</columns>
+        <primary>1</primary>
+      </key>
+      <column id="216" parent="21" name="groupName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="217" parent="21" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="218" parent="21" name="propValue">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <key id="219" parent="21" name="PRIMARY">
+        <columns>groupName
+name</columns>
+        <primary>1</primary>
+      </key>
+      <column id="220" parent="22" name="groupName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="221" parent="22" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="222" parent="22" name="administrator">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <key id="223" parent="22" name="PRIMARY">
+        <columns>groupName
+username
+administrator</columns>
+        <primary>1</primary>
+      </key>
+      <column id="224" parent="23" name="idType">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="225" parent="23" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <key id="226" parent="23" name="PRIMARY">
+        <columns>idType</columns>
+        <primary>1</primary>
+      </key>
+      <column id="227" parent="24" name="conversationID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="228" parent="24" name="fromJID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="229" parent="24" name="fromJIDResource">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="230" parent="24" name="toJID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="231" parent="24" name="toJIDResource">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="232" parent="24" name="sentDate">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="233" parent="24" name="body">
+        <data-type>text</data-type>
+      </column>
+      <column id="234" parent="25" name="roomID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="235" parent="25" name="jid">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="236" parent="25" name="affiliation">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="237" parent="25" name="relation">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="238" parent="25" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="239" parent="25" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="240" parent="26" name="roomID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="241" parent="26" name="sender">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="242" parent="26" name="nickname">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="243" parent="26" name="logTime">
+        <mandatory>1</mandatory>
+        <data-type>char(15)</data-type>
+      </column>
+      <column id="244" parent="26" name="subject">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="245" parent="26" name="body">
+        <data-type>text</data-type>
+      </column>
+      <column id="246" parent="27" name="roomID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="247" parent="27" name="jid">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="248" parent="27" name="nickname">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="249" parent="27" name="firstName">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="250" parent="27" name="lastName">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="251" parent="27" name="url">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="252" parent="27" name="email">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="253" parent="27" name="faqentry">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="254" parent="27" name="relation">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="255" parent="27" name="ofMucMembercol">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="256" parent="27" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="257" parent="27" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="258" parent="28" name="serviceID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="259" parent="28" name="roomID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="260" parent="28" name="creationDate">
+        <mandatory>1</mandatory>
+        <data-type>char(15)</data-type>
+      </column>
+      <column id="261" parent="28" name="modificationDate">
+        <mandatory>1</mandatory>
+        <data-type>char(15)</data-type>
+      </column>
+      <column id="262" parent="28" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="263" parent="28" name="naturalName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="264" parent="28" name="description">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="265" parent="28" name="lockedDate">
+        <mandatory>1</mandatory>
+        <data-type>char(15)</data-type>
+      </column>
+      <column id="266" parent="28" name="emptyDate">
+        <data-type>char(15)</data-type>
+      </column>
+      <column id="267" parent="28" name="canChangeSubject">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="268" parent="28" name="maxUsers">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="269" parent="28" name="publicRoom">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="270" parent="28" name="moderated">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="271" parent="28" name="membersOnly">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="272" parent="28" name="canInvite">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="273" parent="28" name="roomPassword">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="274" parent="28" name="canDiscoverJID">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="275" parent="28" name="logEnabled">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="276" parent="28" name="subject">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="277" parent="28" name="rolesToBroadcast">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="278" parent="28" name="useReservedNick">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="279" parent="28" name="canChangeNick">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="280" parent="28" name="canRegister">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="281" parent="28" name="isOCareRoom">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="282" parent="28" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="283" parent="28" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="284" parent="29" name="roomID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="285" parent="29" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="286" parent="29" name="propValue">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <key id="287" parent="29" name="PRIMARY">
+        <columns>roomID
+name</columns>
+        <primary>1</primary>
+      </key>
+      <column id="288" parent="30" name="serviceID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="289" parent="30" name="subdomain">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="290" parent="30" name="description">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="291" parent="30" name="isHidden">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <key id="292" parent="30" name="PRIMARY">
+        <columns>subdomain</columns>
+        <primary>1</primary>
+      </key>
+      <column id="293" parent="31" name="serviceID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="294" parent="31" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="295" parent="31" name="propValue">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <key id="296" parent="31" name="PRIMARY">
+        <columns>serviceID
+name</columns>
+        <primary>1</primary>
+      </key>
+      <column id="297" parent="32" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="298" parent="32" name="messageID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="299" parent="32" name="creationDate">
+        <mandatory>1</mandatory>
+        <data-type>char(15)</data-type>
+      </column>
+      <column id="300" parent="32" name="messageSize">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="301" parent="32" name="stanza">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <key id="302" parent="32" name="PRIMARY">
+        <columns>username
+messageID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="303" parent="33" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="304" parent="33" name="offlinePresence">
+        <data-type>text</data-type>
+      </column>
+      <column id="305" parent="33" name="offlineDate">
+        <mandatory>1</mandatory>
+        <data-type>char(15)</data-type>
+      </column>
+      <key id="306" parent="33" name="PRIMARY">
+        <columns>username</columns>
+        <primary>1</primary>
+      </key>
+      <column id="307" parent="34" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="308" parent="34" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="309" parent="34" name="isDefault">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="310" parent="34" name="list">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <key id="311" parent="34" name="PRIMARY">
+        <columns>username
+name</columns>
+        <primary>1</primary>
+      </key>
+      <column id="312" parent="35" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="313" parent="35" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="314" parent="35" name="namespace">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="315" parent="35" name="privateData">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <key id="316" parent="35" name="PRIMARY">
+        <columns>username
+name
+namespace</columns>
+        <primary>1</primary>
+      </key>
+      <column id="317" parent="36" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="318" parent="36" name="propValue">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <key id="319" parent="36" name="PRIMARY">
+        <columns>name</columns>
+        <primary>1</primary>
+      </key>
+      <column id="320" parent="37" name="serviceID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="321" parent="37" name="nodeID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="322" parent="37" name="jid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="323" parent="37" name="affiliation">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <key id="324" parent="37" name="PRIMARY">
+        <columns>serviceID
+nodeID
+jid</columns>
+        <primary>1</primary>
+      </key>
+      <column id="325" parent="38" name="serviceID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="326" parent="38" name="leaf">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="327" parent="38" name="deliverPayloads">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="328" parent="38" name="maxPayloadSize">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="329" parent="38" name="persistItems">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="330" parent="38" name="maxItems">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="331" parent="38" name="notifyConfigChanges">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="332" parent="38" name="notifyDelete">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="333" parent="38" name="notifyRetract">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="334" parent="38" name="presenceBased">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="335" parent="38" name="sendItemSubscribe">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="336" parent="38" name="publisherModel">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="337" parent="38" name="subscriptionEnabled">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="338" parent="38" name="accessModel">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="339" parent="38" name="language">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="340" parent="38" name="replyPolicy">
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="341" parent="38" name="associationPolicy">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="342" parent="38" name="maxLeafNodes">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="343" parent="38" name="PRIMARY">
+        <columns>serviceID
+leaf</columns>
+        <primary>1</primary>
+      </key>
+      <column id="344" parent="39" name="serviceID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="345" parent="39" name="nodeID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="346" parent="39" name="id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="347" parent="39" name="jid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="348" parent="39" name="creationDate">
+        <mandatory>1</mandatory>
+        <data-type>char(15)</data-type>
+      </column>
+      <column id="349" parent="39" name="payload">
+        <data-type>mediumtext</data-type>
+      </column>
+      <key id="350" parent="39" name="PRIMARY">
+        <columns>serviceID
+nodeID
+id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="351" parent="40" name="serviceID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="352" parent="40" name="nodeID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="353" parent="40" name="leaf">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="354" parent="40" name="creationDate">
+        <mandatory>1</mandatory>
+        <data-type>char(15)</data-type>
+      </column>
+      <column id="355" parent="40" name="modificationDate">
+        <mandatory>1</mandatory>
+        <data-type>char(15)</data-type>
+      </column>
+      <column id="356" parent="40" name="parent">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="357" parent="40" name="deliverPayloads">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="358" parent="40" name="maxPayloadSize">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="359" parent="40" name="persistItems">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="360" parent="40" name="maxItems">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="361" parent="40" name="notifyConfigChanges">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="362" parent="40" name="notifyDelete">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="363" parent="40" name="notifyRetract">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="364" parent="40" name="presenceBased">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="365" parent="40" name="sendItemSubscribe">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="366" parent="40" name="publisherModel">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="367" parent="40" name="subscriptionEnabled">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="368" parent="40" name="configSubscription">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="369" parent="40" name="accessModel">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="370" parent="40" name="payloadType">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="371" parent="40" name="bodyXSLT">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="372" parent="40" name="dataformXSLT">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="373" parent="40" name="creator">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="374" parent="40" name="description">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="375" parent="40" name="language">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="376" parent="40" name="name">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="377" parent="40" name="replyPolicy">
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="378" parent="40" name="associationPolicy">
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="379" parent="40" name="maxLeafNodes">
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="380" parent="40" name="PRIMARY">
+        <columns>serviceID
+nodeID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="381" parent="41" name="serviceID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="382" parent="41" name="nodeID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="383" parent="41" name="rosterGroup">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="384" parent="42" name="serviceID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="385" parent="42" name="nodeID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="386" parent="42" name="jid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="387" parent="42" name="associationType">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <key id="388" parent="42" name="PRIMARY">
+        <columns>serviceID
+nodeID
+jid</columns>
+        <primary>1</primary>
+      </key>
+      <column id="389" parent="43" name="serviceID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="390" parent="43" name="nodeID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="391" parent="43" name="id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="392" parent="43" name="jid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="393" parent="43" name="owner">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="394" parent="43" name="state">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="395" parent="43" name="deliver">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="396" parent="43" name="digest">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="397" parent="43" name="digest_frequency">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="398" parent="43" name="expire">
+        <data-type>char(15)</data-type>
+      </column>
+      <column id="399" parent="43" name="includeBody">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="400" parent="43" name="showValues">
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="401" parent="43" name="subscriptionType">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="402" parent="43" name="subscriptionDepth">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="403" parent="43" name="keyword">
+        <data-type>varchar(200)</data-type>
+      </column>
+      <key id="404" parent="43" name="PRIMARY">
+        <columns>serviceID
+nodeID
+id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="405" parent="44" name="id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="406" parent="44" name="updatedDate">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="407" parent="44" name="bytes">
+        <data-type>mediumblob</data-type>
+      </column>
+      <key id="408" parent="44" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="409" parent="45" name="xmppDomain">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="410" parent="45" name="remotePort">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="411" parent="45" name="permission">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <key id="412" parent="45" name="PRIMARY">
+        <columns>xmppDomain</columns>
+        <primary>1</primary>
+      </key>
+      <column id="413" parent="46" name="rosterID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="414" parent="46" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="415" parent="46" name="jid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(1024)</data-type>
+      </column>
+      <column id="416" parent="46" name="sub">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="417" parent="46" name="ask">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="418" parent="46" name="recv">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="419" parent="46" name="nick">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="420" parent="46" name="PRIMARY">
+        <columns>rosterID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="421" parent="47" name="rosterID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="422" parent="47" name="rank">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="423" parent="47" name="groupName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="424" parent="47" name="PRIMARY">
+        <columns>rosterID
+rank</columns>
+        <primary>1</primary>
+      </key>
+      <column id="425" parent="48" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="426" parent="48" name="principal">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <key id="427" parent="48" name="PRIMARY">
+        <columns>username
+principal</columns>
+        <primary>1</primary>
+      </key>
+      <column id="428" parent="49" name="msgID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="429" parent="49" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="430" parent="49" name="entryStamp">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="431" parent="49" name="summary">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="432" parent="49" name="node">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="433" parent="49" name="details">
+        <data-type>text</data-type>
+      </column>
+      <key id="434" parent="49" name="PRIMARY">
+        <columns>msgID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="435" parent="50" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="436" parent="50" name="plainPassword">
+        <data-type>varchar(32)</data-type>
+      </column>
+      <column id="437" parent="50" name="encryptedPassword">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="438" parent="50" name="name">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="439" parent="50" name="email">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="440" parent="50" name="creationDate">
+        <mandatory>1</mandatory>
+        <data-type>char(15)</data-type>
+      </column>
+      <column id="441" parent="50" name="modificationDate">
+        <mandatory>1</mandatory>
+        <data-type>char(15)</data-type>
+      </column>
+      <key id="442" parent="50" name="PRIMARY">
+        <columns>username</columns>
+        <primary>1</primary>
+      </key>
+      <column id="443" parent="51" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="444" parent="51" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="445" parent="51" name="startTime">
+        <data-type>char(15)</data-type>
+      </column>
+      <column id="446" parent="51" name="endTime">
+        <data-type>char(15)</data-type>
+      </column>
+      <key id="447" parent="51" name="PRIMARY">
+        <columns>username
+name</columns>
+        <primary>1</primary>
+      </key>
+      <column id="448" parent="52" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="449" parent="52" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="450" parent="52" name="propValue">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <key id="451" parent="52" name="PRIMARY">
+        <columns>username
+name</columns>
+        <primary>1</primary>
+      </key>
+      <column id="452" parent="53" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="453" parent="53" name="vcard">
+        <mandatory>1</mandatory>
+        <data-type>mediumtext</data-type>
+      </column>
+      <key id="454" parent="53" name="PRIMARY">
+        <columns>username</columns>
+        <primary>1</primary>
+      </key>
+      <column id="455" parent="54" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="456" parent="54" name="version">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="457" parent="54" name="PRIMARY">
+        <columns>name</columns>
+        <primary>1</primary>
+      </key>
+      <column id="458" parent="55" name="receive_from">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="459" parent="55" name="distance">
+        <data-type>double(15,6)</data-type>
+      </column>
+      <column id="460" parent="55" name="log">
+        <data-type>double(15,6)</data-type>
+      </column>
+      <column id="461" parent="55" name="lat">
+        <data-type>double(15,6)</data-type>
+      </column>
+    </database-model>
   </data-source>
 </component>

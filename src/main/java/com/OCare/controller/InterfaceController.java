@@ -944,6 +944,8 @@ public class InterfaceController {
 
             ArrayList<Relative> tempMonitos = verifyService.getMonitorsByElderId(contract.getElder_id());
 
+
+
             for (int i=0; i<2; i++){
                 if (tempMonitos.size()!=0 && tempMonitos.size() > i){
                     String tempStr1 = "keeper" + Integer.toString(i+1) +"_name";
