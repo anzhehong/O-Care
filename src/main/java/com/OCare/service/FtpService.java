@@ -1,5 +1,6 @@
 package com.OCare.service;
 
+
 import java.io.File;
 
 /**
@@ -9,4 +10,5 @@ public interface FtpService {
     String uploadFile(File file);
     File getFileById(String id);
     String uploadFileById(File file,String id);
+    String CreateDir(String dir);
 }

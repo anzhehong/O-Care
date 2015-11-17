@@ -1,10 +1,13 @@
 package com.OCare.service;
 
 import it.sauronsoftware.ftp4j.FTPClient;
+import it.sauronsoftware.ftp4j.FTPException;
+import it.sauronsoftware.ftp4j.FTPIllegalReplyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by fordevelopment on 15/11/11.
@@ -39,7 +42,7 @@ public class FtpServiceImp implements FtpService {
     public File getFileById(String id) {
         return null;
     }
-
+    //by qian
     @Override
     public String uploadFileById(File file, String id) {
         try {
@@ -52,8 +55,11 @@ public class FtpServiceImp implements FtpService {
             // 打印地址信息
             System.out.println(client);
             client.changeDirectory("employee");
-            client.createDirectory(id);
+//            if(client.currentDirectory().equals(isDirExist(client,id))) {
+//                client.createDirectory(id);
+//            }
             client.changeDirectory(id);
+
             client.upload(file);
 
 
@@ -64,4 +70,34 @@ public class FtpServiceImp implements FtpService {
         }
         return "success";
     }
+    //by qian
+    @Override
+    public String CreateDir(String dir) {
+
+        String root;
+        try {
+            // 创建客户端
+            FTPClient ftpClient = new FTPClient();
+            // 不指定端口，则使用默认端口21
+            ftpClient.connect("202.120.163.167", 21);
+            // 用户登录
+            ftpClient.login("ocare", "ocare");
+            // 打印地址信息
+            ftpClient.changeDirectory("employee");
+            ftpClient.createDirectory(dir);
+            root=ftpClient.currentDirectory();
+        } catch (IOException e) {
+            return "error";
+        } catch (FTPIllegalReplyException e) {
+            return "error";
+        } catch (FTPException e) {
+            return "error";
+        }
+
+        System.out.println(root);
+        return root;
+    }
+
+
+
 }
