@@ -7,6 +7,7 @@ import javafx.util.Pair;
  */
 public interface AccountService {
     public Pair<String, Object> logon(String phoneNum, String password);
+    public Pair<String, Object> adminlogon(String phoneNum, String password);
     public String verifyPhoneNum(String id, String phoneNum);
     public String changePassword(String id, String password);
 

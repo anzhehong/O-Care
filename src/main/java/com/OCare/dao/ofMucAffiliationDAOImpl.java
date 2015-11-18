@@ -22,4 +22,13 @@ public class ofMucAffiliationDAOImpl extends IGeneralDAOImpl<ofMucAffiliation> i
         query.setString("m", "%"+phoneNum+"%");
         return query.list();
     }
+
+    @Override
+    public List<ofMucAffiliation> getAffiliationByPhoneNumandRoomid(String phoneNum, int id) {
+        String hql = "FROM ofMucAffiliation WHERE roomID = :n AND jid LIKE :m";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setInteger("n",  id);
+        query.setString("m","%" + phoneNum + "%");
+        return query.list();
+    }
 }

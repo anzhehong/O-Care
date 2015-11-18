@@ -154,5 +154,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
+    <orderEntry type="library" name="ftp4j-1.7.2" level="project" />
+    <orderEntry type="library" name="poi-3.11-20141221" level="project" />
   </component>
 </module>

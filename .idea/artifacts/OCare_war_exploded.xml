@@ -43,6 +43,8 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" />
           <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
+          <element id="library" level="project" name="ftp4j-1.7.2" />
+          <element id="library" level="project" name="poi-3.11-20141221" />
         </element>
       </element>
       <element id="directory" name="META-INF">
