@@ -9,5 +9,6 @@ import java.util.List;
  */
 public interface ofMucRoomDAO extends IGeneralDAO<ofMucRoom> {
 
+    public List<ofMucRoom> getRoomByName(String name);
     public List<ofMucRoom> getRoomsById(int id);
 }

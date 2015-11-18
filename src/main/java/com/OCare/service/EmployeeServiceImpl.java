@@ -222,6 +222,21 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
 
+   
+
+    @Override
+    public String deleteEmployeeByphoneNum(String phoneNum) {
+        Employee newEmployee = employeeDAO.queryByPhoneNum(phoneNum);
+        if (newEmployee != null)
+        {
+            employeeDAO.delete(newEmployee);
+            return "success";
+        }else {
+            return "not exists";
+        }
+    }
+
+
     @Override
     public boolean changeEmployeeInfoById(String id, String newName, String newPhone, String newAddress,
                                           String newDepartment, String newPosition, int newStatus,
@@ -251,6 +266,28 @@ public class EmployeeServiceImpl implements EmployeeService {
             theEmployee.setSuperior(newSuperiot);
             theEmployee.setWorkDetail(newWorkDetail);
             theEmployee.setWorkExperience(newWorkExperience);
+            theEmployee.setLastUpdateTime(new Date());
+            employeeDAO.update(theEmployee);
+            flag = true;
+        }
+
+
+        return flag;
+    }
+
+    @Override
+    public boolean changeEmployeeInfoById(String id, String newDepartment, String newPosition, String newSuperiot, String newWorkDetail) {
+        boolean flag;
+        Employee theEmployee =  employeeDAO.queryById(id);
+        if (theEmployee == null || id == null || newDepartment == null || newPosition == null ||  newSuperiot == null || newWorkDetail == null)
+        {
+            flag = false;
+        }else {
+            theEmployee.setDepartment(newDepartment);
+            theEmployee.setPosition(newPosition);
+            theEmployee.setSuperior(newSuperiot);
+            theEmployee.setWorkDetail(newWorkDetail);
+
             theEmployee.setLastUpdateTime(new Date());
             employeeDAO.update(theEmployee);
             flag = true;
