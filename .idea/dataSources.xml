@@ -13,6 +13,7 @@
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
       </driver-properties>
+      <libraries />
     </data-source>
     <data-source source="LOCAL" name="openfire" uuid="dc2e0995-209e-4f0d-a947-522d69ac0176">
       <driver-ref>mysql</driver-ref>
@@ -26,6 +27,7 @@
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
       </driver-properties>
+      <libraries />
     </data-source>
   </component>
 </project>
