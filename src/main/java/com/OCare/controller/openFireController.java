@@ -113,7 +113,7 @@ public class openFireController {
         }
 
         ofMucRoom mucroom=(ofMucRoom)oroom;
-        String roomId=String.valueOf(mucroom.getRoomID());
+        String roomId=String.valueOf(mucroom.getRoomId());
         //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+roomId);
         /*************************根据roomName找到roomId*********************************/
 
@@ -248,7 +248,7 @@ public class openFireController {
         }
 
         ofMucRoom mucroom=(ofMucRoom)oRoom;
-        int roomId=mucroom.getRoomID();
+        int roomId=mucroom.getRoomId();
         //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+roomId);
 
 
