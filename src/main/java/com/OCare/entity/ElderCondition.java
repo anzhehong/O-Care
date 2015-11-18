@@ -1,5 +1,7 @@
 package com.OCare.entity;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -109,7 +111,7 @@ public class ElderCondition {
     }
 
     @ManyToOne
-    @PrimaryKeyJoinColumn(name = "elder_id", referencedColumnName = "id")
+    @JoinColumn(name = "elder_id" , referencedColumnName = "id",insertable = false,updatable = false)
     public Elder getElderByElderId() {
         return elderByElderId;
     }

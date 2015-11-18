@@ -15,7 +15,6 @@ public class Contract {
     private Date end_time;
     private int status;
     private String folder_name;
-    private Company companyByCompanyId;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -118,13 +117,5 @@ public class Contract {
         return result;
     }
 
-    @ManyToOne
-    @PrimaryKeyJoinColumn(name = "company_id", referencedColumnName = "id")
-    public Company getCompanyByCompanyId() {
-        return companyByCompanyId;
-    }
 
-    public void setCompanyByCompanyId(Company companyByCompanyId) {
-        this.companyByCompanyId = companyByCompanyId;
-    }
 }

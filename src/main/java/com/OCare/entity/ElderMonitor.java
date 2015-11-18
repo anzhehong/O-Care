@@ -1,5 +1,7 @@
 package com.OCare.entity;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 import javax.persistence.*;
 
 /**
@@ -92,7 +94,8 @@ public class ElderMonitor {
     }
 
     @ManyToOne
-    @PrimaryKeyJoinColumn(name = "elder_id", referencedColumnName = "id")
+    @JsonBackReference
+    @JoinColumn(name = "elder_id", referencedColumnName = "id",insertable = false,updatable = false)
     public Elder getElderByElderId() {
         return elderByElderId;
     }
@@ -102,7 +105,8 @@ public class ElderMonitor {
     }
 
     @ManyToOne
-    @PrimaryKeyJoinColumn(name = "relative_id", referencedColumnName = "id")
+    @JsonBackReference
+    @JoinColumn(name = "relative_id", referencedColumnName = "id",insertable = false,updatable = false)
     public Relative getRelativeByRelativeId() {
         return relativeByRelativeId;
     }

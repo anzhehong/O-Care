@@ -1,5 +1,7 @@
 package com.OCare.entity;
 
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -118,6 +120,7 @@ public class Elder {
     }
 
     @OneToMany(mappedBy = "elderByElderId")
+    @JsonManagedReference
     public Collection<ElderMonitor> getElderMonitorsById() {
         return elderMonitorsById;
     }
