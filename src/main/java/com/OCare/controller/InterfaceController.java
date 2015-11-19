@@ -4,9 +4,7 @@ import com.OCare.entity.*;
 import com.OCare.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -47,7 +45,7 @@ public class InterfaceController {
     public Map<String, Object> logon(String phoneNum, String password){
         Map<String, Object> result = new HashMap<String, Object>();
 
-        if(phoneNum == null || password == null || phoneNum == "" || password == ""){
+        if( phoneNum == "" || password == ""){
             result.put("error", true);
             result.put("errorMsg", "PhoneNum or password is empty");
             return result;
@@ -176,23 +174,29 @@ public class InterfaceController {
      * @return
      * Error: false, account detail
      */
-    @RequestMapping(value = "/register/legalperson")
+    @RequestMapping(value = "/register/legalperson",method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> legalPersonRegister(String lpId, String lpName, String lpPhone,
                                                    String lpEmail, String lpPassword, String lpImage){
         Map<String, Object> result = new HashMap<String, Object>();
         //身份证或者手机号已经注册
+        if(lpId == ""|| lpName == "" || lpPhone == "" || lpEmail == "" || lpPassword == ""){
+            result.put("error",true);
+            result.put("errorMsg","Something is empty!");
+            return result;
+        }
         if (!isIdOrPhoneNumExist(lpId,lpPhone))
         {
             result.put("error",true);
             result.put("errorMsg","Id or phoneNum exists");
             return result;
         }
+         LegalPerson legalPerson = registerService.registerForALegalPerson(lpId, lpName, lpPhone, lpEmail, lpPassword, lpImage);
+            result.put("error", false);
+            result.put("account", legalPerson);
+            return result;
         //身份证或者手机号未被注册
-        LegalPerson legalPerson = registerService.registerForALegalPerson(lpId, lpName, lpPhone, lpEmail, lpPassword, lpImage);
-        result.put("error", false);
-        result.put("account", legalPerson);
-        return result;
+
     }
 
     /**
@@ -551,13 +555,13 @@ public class InterfaceController {
         功能：注册公司机构
         注意：注册机构分为两个步骤，先有法人代表才能注册公司
      */
-    @RequestMapping("/company/register")
+    @RequestMapping(value = "/company/register", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> companyRegister(String companyName, String companyLegalPersonId,
-                                               String companyPhone, String companyAddress)
+    public Map<String, Object> companyRegister(@RequestParam("companyName")String companyName, @RequestParam("companyLegalPersonId")String companyLegalPersonId,
+                                               @RequestParam("companyPhone")String companyPhone, @RequestParam("companyAddress")String companyAddress)
     {
         Map<String, Object> result = new HashMap<String, Object>();
-        if (companyName == null || companyAddress == null || companyPhone == null || companyLegalPersonId == null)
+        if (companyName == "" || companyAddress == "" || companyPhone == "" || companyLegalPersonId == null)
         {
             result.put("error",true);
             result.put("errorMsg","Something is empty!");
@@ -569,6 +573,7 @@ public class InterfaceController {
             result.put("error",false);
             result.put("account",companyToRegister);
         }
+
         return result;
     }
 

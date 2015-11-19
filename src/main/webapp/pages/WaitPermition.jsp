@@ -16,7 +16,7 @@
       </div>
       <div class="textbox">
         <h2>申请成功！</h2>
-        <h4>请注意查收短信通知</h4>
+        <h4>请耐心等待审核结果</h4>
         <a href="/OCare/pages/Register.jsp" > &lt;&lt;返回修改注册信息</a>
       </div>
 

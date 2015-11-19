@@ -57,14 +57,11 @@
       <i class="book icon "></i>
       机构信息管理
     </div>
-    <a class="item">
-      &nbsp;&nbsp;&nbsp;&nbsp;已注册机构
+    <a class="item" href="/OCare/agent/list">
+      &nbsp;&nbsp;&nbsp;&nbsp;机构列表
     </a>
-    <a class="item">
-      &nbsp;&nbsp;&nbsp;&nbsp;添加新机构
-    </a>
-    <a class="item">
-      &nbsp;&nbsp;&nbsp;&nbsp;申请审核
+    <a class="item" href="/OCare/agent/verify">
+      &nbsp;&nbsp;&nbsp;&nbsp;机构申请审核
     </a>
 
     <div class="header item">

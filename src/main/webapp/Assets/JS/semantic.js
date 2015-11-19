@@ -5976,7 +5976,7 @@ $.fn.modal.settings = {
 
   onShow      : function(){},
   onHide      : function(){},
-  onApprove   : function(){ return true; },
+  onApprove   : function(){ return false; },
   onDeny      : function(){ return true; },
 
   selector    : {

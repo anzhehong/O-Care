@@ -1,13 +1,14 @@
 <%@page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head lang="en">
     <title>HomePage</title>
     <link rel="stylesheet" href="/OCare/Assets/CSS/index.css">
     <link rel="stylesheet" href="/OCare/Assets/CSS/semantic.css" media="screen">
     <link rel="stylesheet" href="/OCare/Assets/CSS/icon.css" media="screen">
-    <script src="/OCare/Assets/JS/jquery-2.1.4.js"></script>
-    <script src="/OCare/Assets/JS/jquery.address.js"></script>
-    <script src="/OCare/Assets/JS/semantic.js"></script>
+
+
 </head>
 <body class="home">
 <div class="headers" >
@@ -134,9 +135,9 @@
         <i class="user icon"></i>用户登陆
     </div>
     <div class="content" style="line-height: 40px;padding:2em 0rem;display: inline-block;">
-        <form class="ui form" method="post" action="/OCare/pages/Map.jsp" target="_self">
+        <form class="ui sign-in form" method="post">
             <div style="padding:0rem 1rem">
-                <label>用户名/手机号/邮箱:</label></br>
+                <label>手机号:</label></br>
                 <div class="ui input" style="display: initial;">
                     <input id="username" name="username" type="text" >
                 </div></br>
@@ -152,82 +153,21 @@
                     </div>
                 </a>
                 忘记密码?
-                <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC">
+                <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
                     登陆
                     <i class="checkmark icon"></i>
                 </div>
             </div>
-            <div class="ui error message" style="width: 90%;margin-left: 20px;"></div>
+            <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
+            <div id="login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
         </form>
     </div>
 </div>
 
-<script type="text/JavaScript">
-    var aFunction = function()
-    {
-        //modal settings
-        //Note that if settings is incorrect, the modal may freeze, and won't output any console error or such
-        $('.modal').modal({
-            detachable: true,
-            //By default, if click outside of modal, modal will close
-            //Set closable to false to prevent this
-            closable: false,
-            transition: 'fade up',
-            //Callback function for the submit button, which has the class of "ok"
-            onApprove : function() {
-                //Submits the semantic ui form
-                //And pass the handling responsibilities to the form handlers, e.g. on form validation success
-                $('.ui.form').submit();
-                //Return false as to not close modal dialog
-                return false;
-            }
-        });
-        $(".login").on("click", function(){
-            //Resets form input fields
-            $('.ui.form').trigger("reset");
-            //Resets form error messages
-            $('.ui.form .field.error').removeClass( "error" );
-            $('.ui.form.error').removeClass( "error" );
-            $('.modal').modal('show');
-        });
-    }
-    $(document).ready( aFunction );
-</script>
-<script>
-    var formValidationRules =
-    {
-        username: {
-            identifier : 'username',
-            rules: [
-                {
-                    type   : 'empty',
-                    prompt : '请输入用户名/手机号/邮箱'
-                }
-            ]
-        },
-        password: {
-            identifier : 'password',
-            //Below line sets it so that it only validates when input is entered, and won't validate on blank input
-            optional   : true,
-            rules: [
-                {
-                    type   : 'empty',
-                    prompt : '请输入密码'
-                }
-            ]
-        }
-    }
-
-    var formSettings =
-    {
-        onSuccess : function()
-        {
-            $('.modal').modal('hide');
-        }
-    }
-
-    $('.ui.form').form(formValidationRules, formSettings);
-</script>
+<script src="/OCare/Assets/JS/jquery-2.1.4.js"></script>
+<script src="/OCare/Assets/JS/jquery.address.js"></script>
+<script src="/OCare/Assets/JS/semantic.js"></script>
+<script src="/OCare/Assets/JS/login.js"></script>
 
 </body>
 </html>
