@@ -12,6 +12,6 @@ import com.OCare.service.SMSSerivceImp;
 public class TestSMS {
     public static void main(String[] args) {
         SMSSerivceImp ss = new SMSSerivceImp();
-        ss.sendVerifyCodeToPhone("13162528836");
+        ss.sendVerifyCodeToPhone("18918031709");
     }
 }

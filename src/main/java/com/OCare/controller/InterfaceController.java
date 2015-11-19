@@ -13,10 +13,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import javax.management.MBeanServer;
+import javax.servlet.ServletRequestWrapper;
+import javax.servlet.http.HttpSession;
+
 import java.util.*;
 
 /**
@@ -44,7 +50,11 @@ public class InterfaceController {
     @Autowired
     private ElderConditionService elderConditionService;
     @Autowired
+
     private FtpService ftpService;
+
+    private CompanyService companyService;
+
 
     /**
      * @param phoneNum：Phone number
@@ -80,6 +90,42 @@ public class InterfaceController {
             }
         }
     }
+
+    //admin的logon函数
+    @RequestMapping(value = "/adminlogon")
+    @ResponseBody
+    public Map<String, Object> adminlogon(String phoneNum, String password){
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        if(phoneNum == null || password == null || phoneNum == "" || password == ""){
+            result.put("error", true);
+            result.put("errorMsg", "PhoneNum or password is empty");
+            return result;
+        }else{
+            String status = accountService.adminlogon(phoneNum, password).getKey();
+            if(status == "Invalid Account"){
+                result.put("error", true);
+                result.put("errorMsg", "Invalid Account");
+                return result;
+            }else if (status == "Incorrect password"){
+                result.put("error", true);
+                result.put("errorMsg", "Incorrect password");
+                return result;
+            }else{
+                //HttpSession session = request.getSession();
+
+                ServletRequestWrapper session = null;
+                session.setAttribute("sessionId",phoneNum );
+                session.setAttribute("sessionType",status );
+                result.put("error", false);
+                result.put("accountType", status);
+                result.put("account", accountService.logon(phoneNum, password).getValue());
+                return result;
+            }
+        }
+    }
+
+
 
     /**
      * @param elderId: Elder CitizenId
@@ -540,6 +586,7 @@ public class InterfaceController {
         return result;
     }
 
+    //超级管理员拿到所有数据
     @RequestMapping("/getAllElders")
     @ResponseBody
     public Map<String, Object> getAllElders()
@@ -556,6 +603,25 @@ public class InterfaceController {
         }
         return result;
     }
+
+   //某个区域负责人
+    /*
+    @RequestMapping("/getEldersLocated")
+    @ResponseBody
+    public Map<String, Object> getAllElders()
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        ArrayList<Elder> allElders = elderService.getAllElders();
+        if (allElders.size() == 0)
+        {
+            result.put("error",true);
+            result.put("errorMsg","没有老人的数据");
+        }else {
+            result.put("error",false);
+            result.put("result",allElders);
+        }
+        return result;
+    }*/
 
 
     /*
@@ -1206,6 +1272,33 @@ public class InterfaceController {
     }
 
 
+    //根据法人的status和id获取他的所有company
+    @RequestMapping(value = "/getCompanyByLegalPersonId")
+    @ResponseBody
+    public Map<String, Object> getCompanyByLegalPersonId(String status, String id) {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        if (status == null || id == null || status == "" || id == "") {
+            result.put("error", true);
+            result.put("errorMsg", "PhoneNum or password is empty");
+            return result;
+        } else if (status != "LegalPerson") {
+            result.put("error", true);
+            result.put("errorMsg", "YOU NOT LEGALPERSON");
+        } else {
+            List<Company> companyList = companyService.getByLegalPerson(id);
+            if(companyList.isEmpty()){
+                result.put("error", true);
+                result.put("errorMsg", "NO COMPANY BELONG TO THIS LEGALPERSON");
+            }
+            else {
+                result.put("error",false);
+                result.put("companyList", companyList);
+            }
+        }
+        return result;
+    }
+
 
     @RequestMapping("contract/upload")
     @ResponseBody
@@ -1237,6 +1330,7 @@ public class InterfaceController {
         // 重定向
         return "success";
     }
+
 
 
 
