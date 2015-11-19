@@ -184,7 +184,7 @@ public class VerifyServiceImp implements VerifyService {
         List<ElderMonitor> elderMonitors = elderMonitorDAO.getMonitorsByElderId(elderid);
 
         //no monitor
-        if(elderMonitors == null || elderMonitors.size() == 0){
+        if(elderMonitors == null){
                 System.out.println("nothinghere111");
             return null;
         }else{

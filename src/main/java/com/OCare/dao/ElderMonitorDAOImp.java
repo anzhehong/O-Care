@@ -63,8 +63,10 @@ public class ElderMonitorDAOImp extends IGeneralDAOImpl<ElderMonitor> implements
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setString("n",elderId);
         query.setInteger("m", 1);
-        if(query.list().isEmpty())
+        if(query.list().isEmpty()) {
             System.out.println("nothinghere");
+            System.out.println(elderId);
+        }
 
         return query.list();
     }

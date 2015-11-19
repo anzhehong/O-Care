@@ -105,7 +105,6 @@ public class ElderMonitor {
     }
 
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "relative_id", referencedColumnName = "id",insertable = false,updatable = false)
     public Relative getRelativeByRelativeId() {
         return relativeByRelativeId;

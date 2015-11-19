@@ -28,10 +28,30 @@ public class AlarmHistoryController {
      */
     @RequestMapping("/get/set")
     @ResponseBody
-    public List<AlarmHistory> listAlarmHistoryBySet(int limit,int offset) {
+    public Map<String,Object> listAlarmHistoryBySet(int limit,int offset) {
+
+        Map<String, Object> result1 = new HashMap<String, Object>();
+
+
+
         offset=offset+1;
         List<AlarmHistory> result= (List<AlarmHistory>) alarmHistoryService.getAlarmHistory(limit,offset);
+        List<AlarmHistory> list = new ArrayList<AlarmHistory>();
 
-        return result;
+
+        int set=limit*(offset-1);
+        if((set+limit)<=result.size()) {
+            list = result.subList(set, set + limit);
+        }else if(set<=result.size())
+        {
+            list = result.subList(set, result.size());
+        }
+
+
+        result1.put("total",result.size());
+        result1.put("rows",result);
+
+
+        return result1;
     }
 }

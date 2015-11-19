@@ -16,10 +16,10 @@
 
 
     <div class="ui top attached tabular menu">
-        <a class="active item" data-tab="first">地图</a>
+        <a class="active item" data-tab="first" id="mapinfo">地图</a>
         <a class="item" data-tab="second">警报信息</a>
     </div>
-    <div class="ui bottom attached active tab segment" data-tab="first">
+    <div class="ui bottom attached active tab segment" data-tab="first" >
 
 
         <div class="search">
@@ -80,7 +80,7 @@
                             valign: 'middle'
                         }, {
                         title: '警报id',
-                        field: 'id',
+                        field: 'generateid',
                         rowspan: 2,
                         align: 'center',
                         valign: 'middle',
@@ -234,7 +234,10 @@
 
         window.operateEvents = {
             'click .like': function (e, value, row, index) {
-                alert('You click like action, row: ' + JSON.stringify(row));
+
+                $('#mapinfo').click();
+                map.centerAndZoom(new BMap.Point(row.who_loc_log,row.who_loc_lat),15);
+//                alert('You click like action, row: ' + JSON.stringify(row));
             },
             'click .remove': function (e, value, row, index) {
 
@@ -476,7 +479,7 @@
 
 
     var data1;
-    var mark = [];
+    var mark;
 
     function addAction(data){
 
@@ -495,15 +498,17 @@
             var m = new BMap.Marker(p);
             //将标注物加入地图
             map.addOverlay(m);
+
+
             //设置老人有紧急情况时的状态表示
             if (data.status == 1) {
                 m.setAnimation(BMAP_ANIMATION_BOUNCE);
             }
             var s = "";
-            for(var i = 0;i < data.elder.elderMonitors.length;i++)
+            for(var i = 0;i < data.elderByElderId.elderMonitorsById.length;i++)
             {
 
-                s = s + "<p style='margin:0;line-height:1.5;font-size:13px'>老人监护人:<span>"+data.elder.elderMonitors[i].relative.name+"</span>&nbsp监护人联系电话:<span>"+data.elder.elderMonitors[i].relative.phone+"</span></p>";
+                s = s + "<p style='margin:0;line-height:1.5;font-size:13px'>老人监护人:<span>"+data.elderByElderId.elderMonitorsById[i].relativeByRelativeId.name+"</span>&nbsp监护人联系电话:<span>"+data.elderByElderId.elderMonitorsById[i].relativeByRelativeId.phone+"</span></p>";
             }
 
             data1=s;
