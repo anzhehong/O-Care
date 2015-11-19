@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="ftp4j-1.7.21">
+  <library name="ftp4j-1.7.2">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Downloads/ftp4j-1.7.2/ftp4j-1.7.2.jar!/" />
+      <root url="jar://D:/jar/ftp4j-1.7.2/ftp4j-1.7.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

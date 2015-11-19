@@ -4,6 +4,7 @@ import com.OCare.entity.Contract;
 import com.OCare.entity.ElderCondition;
 import com.OCare.service.ContractService;
 import com.OCare.service.FtpService;
+import com.OCare.service.XMLFtpService;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.usermodel.Range;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import ytx.org.apache.http.impl.io.IdentityInputStream;
 
@@ -36,7 +38,7 @@ public class ContractInterfaceController {
     @Autowired
     private ContractService contractService;
     @Autowired
-    private FtpService ftpService;
+    private XMLFtpService XMLFtpService;
 
     @ResponseBody
     @RequestMapping("/contract/all")
@@ -160,16 +162,22 @@ public class ContractInterfaceController {
     @RequestMapping("/contract/xmlTodoc")
     public Map<String, Object> xmlTodoc(String fileName) {
         Map<String, Object> result = new HashMap<String, Object>();
-        String downloadResult = ftpService.downloadFile(fileName);
+        String downloadResult = XMLFtpService.downloadFile(fileName);
         result.put("downloadResult",downloadResult);
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-            Document document = builder.parse("xmlTodoc/"+fileName + ".xml");
+            //Document document = builder.parse("xmlTodoc/"+fileName + ".xml");
 
-            //读取完之后删除文件
             File xmlfile = new File("xmlTodoc/"+fileName + ".xml");
+
+            InputStream is = new FileInputStream(xmlfile);
+            InputStreamReader reader = new InputStreamReader(is,"utf-8");
+            InputSource source = new InputSource(reader);
+
+            Document document = builder.parse(source);
+            //读取完之后删除文件
             if (xmlfile.exists()) xmlfile.delete();
 
             Element root = document.getDocumentElement();
@@ -370,7 +378,7 @@ public class ContractInterfaceController {
             in.close();
             os.close();
 
-            String uploadResult = ftpService.uploadDocFile(fileName);
+            String uploadResult = XMLFtpService.uploadDocFile(fileName);
             result.put("uploadResult",uploadResult);
 
             //上传完之后删除掉本地生成的doc文件
