@@ -69,6 +69,7 @@
             提交
         </div>
         <div class="ui error message" style="width: 80%;margin-left: 100px;"></div>
+        <div id="apply_errorMsg" style="  margin-top: -20px;text-align: left;border-radius: 5px;font-style: inherit;font-size: 15px;color: rgb(169, 82, 82);width: 77.21%;margin-left: 100px;padding: 4px 5px;margin-bottom: -2em;background-color: rgb(241, 215, 215);padding-left: 30px;padding-bottom: 20px;display:none"></div>
     </form>
 </div>
 
@@ -111,26 +112,30 @@
   $('.ui.checkbox')
           .checkbox()
   ;
-  $('.agent-submit').click(function(e){
+  $('.agent-submit').on('submit',function(e){
     e.preventDefault();
             $.ajax({
               url: 'http://localhost:8080/OCare/app/company/register',
               type: 'get',
-              cache: false,
               async: false,
               contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
               processData: false,
               data: 'companyName='+$('#agent_name').val()+'&companyLegalPersonId='+$('#legalperson_id').val()+'&companyPhone='+$('#company_phone').val()+'&companyAddress='+$('#company_address').val(),
-              dataType: 'JSONP',
+              dataType: 'JSON',
               success: function(data) {
                 if(data.error == true){
-                  alert(data.errorMsg);
+                    document.getElementById("apply_errorMsg").style.display="";
+                    document.getElementById('apply_errorMsg').innerText = data.errorMsg;
                 }else{
+                  document.getElementById("apply_errorMsg").style.display="none";
                   document.forms[0].action = "/OCare/pages/WaitPermition.jsp";
                   document.forms[0].submit();
                 }
+              },
+              error: function(data){
+                  alert("submit failed!");
               }
             })
-          }
+          })
 </script>
 <%@include file="templates/footer.jsp"%>

@@ -25,7 +25,8 @@ var aFunction = function()
 }
 $(document).ready( aFunction );
 
-$('.sign-in').click(function(){
+$('.sign-in').on('submit', function(e){
+    e.preventDefault();
     $.ajax({
         url:'http://localhost:8080/OCare/app/logon',
         type:'post',
@@ -37,20 +38,19 @@ $('.sign-in').click(function(){
         datatype:'JSONP',
         success:function(data){
             if(data.error == true){
+                document.getElementById("login_errorMsg").style.display="";
                 document.getElementById('login_errorMsg').innerText = data.errorMsg;
             }else if(data.accountType == "LegalPerson"){
+                document.getElementById("login_errorMsg").style.display="none";
                 document.forms[0].action = "/OCare/pages/agentManagement.jsp";
                 document.forms[0].submit();
-            }else if(data.accountType == "admin"){
-                document.forms[0].action = "/OCare/pages/homepage.jsp";
-                document.forms[0].submit();
-                }
+            }
         },
         error:function(data){
             alert("login failed")
         }
     });
-});
+})
 
 var formValidationRules =
 {
