@@ -62,4 +62,5 @@ public interface RegisterService {
     public ArrayList<Relative> getAllRelatives();
     public ArrayList<Volunteer> getAllVolunteers();
     public ArrayList<LegalPerson> getAllLegalPerson();
+    public ArrayList<ofUser> getAllUser();
 }

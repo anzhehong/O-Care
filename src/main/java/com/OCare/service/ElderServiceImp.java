@@ -33,6 +33,18 @@ public class ElderServiceImp implements ElderService {
         return elder;
     }
 
+
+    @Override
+    public Elder getElderByRelativePhone(String phone) {
+
+        Elder elder=elderDAO.getElderByRelativePhone(phone) ;
+        if(elder==null)
+        {
+            return null;
+        }
+        return elder;
+    }
+
     @Override
     public ArrayList<Relative> getAllMonitorsByElderId(String elderId) {
         if (!isElderExist(elderId))
@@ -44,6 +56,12 @@ public class ElderServiceImp implements ElderService {
     @Override
     public ArrayList<Elder> getAllEldersByElderName(String elderName) {
         ArrayList<Elder> elders = (ArrayList<Elder>) elderDAO.getAllEldersByName(elderName);
+        return elders;
+    }
+
+    @Override
+    public ArrayList<Elder> getAllEldersLocated(int companyId) {
+        ArrayList<Elder> elders = (ArrayList<Elder>) elderDAO.getAllEldersByCompanyId(companyId);
         return elders;
     }
 

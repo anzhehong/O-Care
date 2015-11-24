@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -172,10 +173,16 @@ public class ContractInterfaceController {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-            Document document = builder.parse("xmlTodoc/"+fileName + ".xml");
+            //Document document = builder.parse("xmlTodoc/"+fileName + ".xml");
 
-            //读取完之后删除文件
             File xmlfile = new File("xmlTodoc/"+fileName + ".xml");
+
+            InputStream is = new FileInputStream(xmlfile);
+            InputStreamReader reader = new InputStreamReader(is,"utf-8");
+            InputSource source = new InputSource(reader);
+
+            Document document = builder.parse(source);
+            //读取完之后删除文件
             if (xmlfile.exists()) xmlfile.delete();
 
             Element root = document.getDocumentElement();
