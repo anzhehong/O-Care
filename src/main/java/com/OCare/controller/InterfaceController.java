@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.management.MBeanServer;
 import javax.servlet.ServletRequestWrapper;
@@ -39,6 +40,8 @@ public class InterfaceController {
     private ElderConditionService elderConditionService;
     @Autowired
     private CompanyService companyService;
+    @Autowired
+    private openFireService openfireService;
 
     /**
      * @param phoneNum：Phone number
@@ -49,7 +52,7 @@ public class InterfaceController {
      */
     @RequestMapping(value = "/logon")
     @ResponseBody
-    public Map<String, Object> logon(String phoneNum, String password){
+    public Map<String, Object> logon(String phoneNum, String password,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
 
         if(phoneNum == null || password == null || phoneNum == "" || password == ""){
@@ -67,9 +70,8 @@ public class InterfaceController {
                 result.put("errorMsg", "Incorrect password");
                 return result;
             }else{
-                ServletRequestWrapper session = null;
-                session.setAttribute("sessionId",phoneNum );
-                session.setAttribute("sessionType",status );
+                httpSession.setAttribute("sessionId",phoneNum);
+                httpSession.setAttribute("sessionType",status);
                 result.put("error", false);
                 result.put("accountType", status);
                 result.put("account", accountService.logon(phoneNum, password).getValue());
@@ -78,10 +80,17 @@ public class InterfaceController {
         }
     }
 
+    /*@RequestMapping(value = "/logouttest")
+    @ResponseBody
+    public String logout(HttpSession httpSession){
+        String status=(String) httpSession.getAttribute("sessionType");
+        return status;
+    }*/
+
     //admin的logon函数
     @RequestMapping(value = "/adminlogon")
     @ResponseBody
-    public Map<String, Object> adminlogon(String phoneNum, String password){
+    public Map<String, Object> adminlogon(String phoneNum, String password,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
 
         if(phoneNum == null || password == null || phoneNum == "" || password == ""){
@@ -99,11 +108,8 @@ public class InterfaceController {
                 result.put("errorMsg", "Incorrect password");
                 return result;
             }else{
-                //HttpSession session = request.getSession();
-
-                ServletRequestWrapper session = null;
-                session.setAttribute("sessionId",phoneNum );
-                session.setAttribute("sessionType",status );
+                httpSession.setAttribute("sessionId",phoneNum );
+                httpSession.setAttribute("sessionType",status );
                 result.put("error", false);
                 result.put("accountType", status);
                 result.put("account", accountService.logon(phoneNum, password).getValue());
@@ -848,7 +854,7 @@ public class InterfaceController {
     }
 
 
-    //某人查找他监护或帮助的所有老人数据   未完成
+    //某人查找他监护或帮助的所有老人数据
     @RequestMapping("/getEldersByRelativePhone")
     @ResponseBody
     public Map<String, Object> getEldersByRelativePhone(String phoneNum)
@@ -862,17 +868,40 @@ public class InterfaceController {
             allElders.add(elderA);
         }
 
-        //然后(帮助)，根据该人电话找到他所在的所有房间，再得到这些房间所有信息
-
-        if (allElders.size() == 0)
+        //然后(帮助)，根据该人电话找到他所在的所有房间，如果这个房间是养老间则取出老人信息
+         List<ofMucMember> mucMembers=openfireService.getRoomIdbyPhone(phoneNum);
+        if(mucMembers.isEmpty())
         {
-            result.put("error",true);
-            result.put("errorMsg","没有老人的数据");
-        }else {
+            if (allElders.size() == 0)
+            {
+                result.put("error",true);
+                result.put("errorMsg","没有老人的数据");
+            }else {
+                result.put("error",false);
+                result.put("result",allElders);
+            }
+            return result;
+        }
+        else{
+                for(int i=0;i<mucMembers.size();i++)
+                {
+                    List<ofMucRoom> mucRooms=openfireService.getRoomByid(mucMembers.get(i).getRoomID());
+                    for(int j=0;j<mucRooms.size();j++){
+                        //判断是否为养老间？
+                        Elder elderB=elderService.getElderByRelativePhone(mucRooms.get(j).getName());
+                        if(elderB!=null) {
+                            allElders.add(elderB);
+                        }
+                    }
+
+                }
             result.put("error",false);
             result.put("result",allElders);
+            return result;
         }
-        return result;
+
+
+
     }
 
     /*

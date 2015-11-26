@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.constraints.Null;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -164,5 +165,24 @@ public class openFireServiceImpl implements openFireService {
 
 
         return ofMucMembers;
+    }
+
+    @Override
+    public List<ofMucMember> getRoomIdbyPhone(String phone) {
+        List<ofMucMember> mucMember=(List<ofMucMember>)memberDAO.getMemberByPhone(phone);
+        if(mucMember.isEmpty()){
+            return null;
+        }
+        else return mucMember;
+    }
+
+    @Override
+    public List<ofMucRoom> getRoomByid(int id) {
+        List<ofMucRoom> mucRooms=roomDAO.getRoomsById(id);
+        if(mucRooms.isEmpty())
+        {
+            return  null;
+        }
+        else return mucRooms;
     }
 }

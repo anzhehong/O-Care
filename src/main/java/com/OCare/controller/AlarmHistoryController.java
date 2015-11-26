@@ -28,9 +28,18 @@ public class AlarmHistoryController {
      */
     @RequestMapping("/get/set")
     @ResponseBody
-    public List<AlarmHistory> listAlarmHistoryBySet(int limit,int offset) {
-        List<AlarmHistory> result= (List<AlarmHistory>) alarmHistoryService.getAlarmHistory(limit,offset);
+    public  Map<String, Object> listAlarmHistoryBySet(int limit,int offset) {
+        Map<String, Object> result = new HashMap<String, Object>();
+        if(offset<1)
+        {
+            result.put("error", true);
+            result.put("errorMsg", "ＩＮＰＵＴ　ＥＲＲＯＲ");
+            return result;
+        }
+        List<AlarmHistory> re= (List<AlarmHistory>) alarmHistoryService.getAlarmHistory(limit,offset);
 
+        result.put("error", false);
+        result.put("re", re);
         return result;
     }
 }
