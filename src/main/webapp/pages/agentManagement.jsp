@@ -18,7 +18,7 @@
           <thead>
             <th>机构ID</th><th>机构名称</th><th>机构地址</th>
           </thead>
-          <tbody>
+          <tbody id="company_list">
 
           </tbody>
         </table>
@@ -41,8 +41,13 @@
                         id:'20151126'
                     },
                     success:function(data){
+                        var list = data.companyList[0].id;
+                        console.log(list);
+                        for (var i = 0; i < data.companyList.length;i++){
+                            $("<tr> <td>data.companyList[i].id</td> <td>data.companyList[i].name</td> <td>data.companyList[i].address</td> </tr>").appendTo("#company_list");
+                        }
+
                         alert(data.errorMsg);
-                        console.log(data);
                     },
                     error:function(data){
                         alert("can not get the data");
