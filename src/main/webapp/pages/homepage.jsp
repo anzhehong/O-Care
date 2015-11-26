@@ -21,31 +21,6 @@
         </tr>
         </thead>
         <tbody>
-        <%--<tr>--%>
-            <%--<td>小明</td>--%>
-            <%--<td><i class="question icon"></i>待审核</td>--%>
-            <%--<td><i class="icon search"></i>查看</td>--%>
-            <%--<td>无</td>--%>
-        <%--</tr>--%>
-        <%--<tr class="positive">--%>
-            <%--<td>张三</td>--%>
-            <%--<td><i class="icon checkmark"></i> 已通过</td>--%>
-            <%--<td><i class="icon search"></i>查看</td>--%>
-            <%--<td>无</td>--%>
-        <%--</tr>--%>
-        <%--<tr>--%>
-            <%--<td>李四</td>--%>
-            <%--<td><i class="question icon"></i>待审核</td>--%>
-            <%--<td><i class="icon search"></i>查看</td>--%>
-            <%--<td>需电话联系</td>--%>
-        <%--</tr>--%>
-        <%--<tr class="negative">--%>
-            <%--<td>王五</td>--%>
-            <%--<td><i class="icon Ban Circle"></i>已拒绝</td>--%>
-            <%--<td><i class="icon search"></i>查看</td>--%>
-            <%--<td>图片不合格</td>--%>
-        <%--</tr>--%>
-
         <c:forEach items="${list}" var="var">
             <%--//2表示监护类型为普通亲戚；1表示监护类型为监护人；3表示在申请监护人;--%>
             <%--//4表示申请监护人被拒绝;5代表邻居关系;--%>

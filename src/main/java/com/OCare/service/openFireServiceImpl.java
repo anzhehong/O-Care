@@ -118,7 +118,19 @@ public class openFireServiceImpl implements openFireService {
         List<ofMucMember> members = memberDAO.getMemberByRoomIdAndPhoneNum( Integer.parseInt(roomId), phoneNum);
 
         if(members == null || members.size() == 0){
-            return MEMBER_NOT_EXIST;
+            List<ofMucAffiliation> memAff=affiliationDAO.getAffiliationByPhoneNumandRoomid(phoneNum,Integer.parseInt(roomId));
+            if(memAff.isEmpty()) {
+                return MEMBER_NOT_EXIST;
+            }
+            else
+            {
+                ofMucAffiliation aff=memAff.get(0);
+                if(aff.getAffiliation()!=10)
+                { return MEMBER_NOT_EXIST;}
+                else
+                    return  aff;
+
+            }
         }
 
         //只返回第一条记录！！！！

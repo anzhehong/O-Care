@@ -10,4 +10,5 @@ import java.util.List;
 public interface ofMucAffiliationDAO extends IGeneralDAO<ofMucAffiliation> {
 
     public List<ofMucAffiliation> getAffiliationByPhoneNum(String phoneNum);
+    public List<ofMucAffiliation> getAffiliationByPhoneNumandRoomid(String phoneNum,int id);
 }

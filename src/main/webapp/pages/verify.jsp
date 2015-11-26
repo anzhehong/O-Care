@@ -10,7 +10,6 @@
 <%@include file="templates/header.jsp"%>
 <%@include file="templates/sidebar.jsp"%>
 
-<html>
 <head>
   <link rel="stylesheet" href="/OCare/Assets/CSS/verify.css">
     <title>监护人申请审核</title>
@@ -65,6 +64,5 @@
   </div>
 </div>
 </body>
-</html>
 
 <%@include file="templates/footer.jsp"%>

@@ -1,6 +1,8 @@
-/**
- * Created by admin on 2015/11/19.
- */
+$('#context1 .menu .item')
+    .tab({
+        context: $('#context1')
+    })
+;
 
 var aFunction = function()
 {
@@ -52,6 +54,33 @@ $('.sign-in').on('submit', function(e){
     });
 })
 
+$('.admin-sign-in').on('submit', function(e){
+    e.preventDefault();
+    $.ajax({
+        url:'http://localhost:8080/OCare/app/adminlogon',
+        type:'post',
+        async: false,
+        data:{
+            phoneNum:$('#adminname').val(),
+            password:$('#adminpassword').val()
+        },
+        datatype:'JSONP',
+        success:function(data){
+            if(data.error == true){
+                document.getElementById("admin_login_errorMsg").style.display="";
+                document.getElementById('admin_login_errorMsg').innerText = data.errorMsg;
+            }else if(data.accountType == "Admin"){
+                document.getElementById("admin_login_errorMsg").style.display="none";
+                document.forms[0].action = "/OCare/pages/homepage.jsp";
+                document.forms[0].submit();
+            }
+        },
+        error:function(data){
+            alert("login failed")
+        }
+    });
+})
+
 var formValidationRules =
 {
     username: {
@@ -63,8 +92,28 @@ var formValidationRules =
             }
         ]
     },
+    adminname: {
+        identifier : 'adminname',
+        rules: [
+            {
+                type   : 'empty',
+                prompt : '请输入手机号'
+            }
+        ]
+    },
     password: {
         identifier : 'password',
+        //Below line sets it so that it only validates when input is entered, and won't validate on blank input
+        optional   : true,
+        rules: [
+            {
+                type   : 'empty',
+                prompt : '请输入密码'
+            }
+        ]
+    },
+    adminpassword: {
+        identifier : 'adminpassword',
         //Below line sets it so that it only validates when input is entered, and won't validate on blank input
         optional   : true,
         rules: [

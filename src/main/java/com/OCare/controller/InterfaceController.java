@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.management.MBeanServer;
+import javax.servlet.ServletRequestWrapper;
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 /**
@@ -32,6 +35,8 @@ public class InterfaceController {
     private ContractService contractService;
     @Autowired
     private ElderConditionService elderConditionService;
+    @Autowired
+    private CompanyService companyService;
 
     /**
      * @param phoneNum：Phone number
@@ -67,6 +72,41 @@ public class InterfaceController {
             }
         }
     }
+
+    //admin的logon函数
+    @RequestMapping(value = "/adminlogon")
+    @ResponseBody
+    public Map<String, Object> adminlogon(String phoneNum, String password){
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        if(phoneNum == null || password == null || phoneNum == "" || password == ""){
+            result.put("error", true);
+            result.put("errorMsg", "PhoneNum or password is empty");
+            return result;
+        }else{
+            String status = accountService.adminlogon(phoneNum, password).getKey();
+            if(status == "Invalid Account"){
+                result.put("error", true);
+                result.put("errorMsg", "Invalid Account");
+                return result;
+            }else if (status == "Incorrect password"){
+                result.put("error", true);
+                result.put("errorMsg", "Incorrect password");
+                return result;
+            }else{
+//                HttpSession session = request.getSession();
+//                ServletRequestWrapper session = null;
+//                session.setAttribute("sessionId",phoneNum );
+//                session.setAttribute("sessionType",status );
+                result.put("error", false);
+                result.put("accountType", status);
+                result.put("account", accountService.logon(phoneNum, password).getValue());
+                return result;
+            }
+        }
+    }
+
+
 
     /**
      * @param elderId: Elder CitizenId
@@ -533,6 +573,7 @@ public class InterfaceController {
         return result;
     }
 
+    //超级管理员拿到所有数据
     @RequestMapping("/getAllElders")
     @ResponseBody
     public Map<String, Object> getAllElders()
@@ -549,6 +590,25 @@ public class InterfaceController {
         }
         return result;
     }
+
+   //某个区域负责人
+    /*
+    @RequestMapping("/getEldersLocated")
+    @ResponseBody
+    public Map<String, Object> getAllElders()
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        ArrayList<Elder> allElders = elderService.getAllElders();
+        if (allElders.size() == 0)
+        {
+            result.put("error",true);
+            result.put("errorMsg","没有老人的数据");
+        }else {
+            result.put("error",false);
+            result.put("result",allElders);
+        }
+        return result;
+    }*/
 
 
     /*
@@ -578,10 +638,36 @@ public class InterfaceController {
     }
 
     /*
-        功能：通过身份证号删除员工
+        功能：通过phoneNum删除员工
         参数：身份证
      */
     @RequestMapping("/employee/delete")
+    @ResponseBody
+    public Map<String, Object> deleteEmployeeByphoneNum(String id)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        if (id == null || id == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","Input phoneNum is null");
+        }else {
+            String flag = employeeService.deleteEmployeeByphoneNum(id);
+            if (flag == "success")
+                result.put("error",false);
+            else {
+                result.put("error",true);
+                result.put("errorMsg","Can not find such employee!");
+            }
+        }
+        return result;
+    }
+
+
+    /*
+        功能：通过id删除员工
+        参数：id
+     */
+    @RequestMapping("/employee/deleteByID")
     @ResponseBody
     public Map<String, Object> deleteEmployeeById(String id)
     {
@@ -589,7 +675,7 @@ public class InterfaceController {
         if (id == null || id == "")
         {
             result.put("error",true);
-            result.put("errorMsg","Input phoneNum is null");
+            result.put("errorMsg","Input ID is null");
         }else {
             String flag = employeeService.deleteEmployeeById(id);
             if (flag == "success")
@@ -624,6 +710,33 @@ public class InterfaceController {
         }
         return result;
     }
+
+    /*
+       功能：更新员工信息2
+    */
+    @RequestMapping("/employee/updateById2")
+    @ResponseBody
+    public Map<String, Object> updateEmployeeInfoById2(String id,String newDepartment, String newPosition,String newSuperiot,String newWorkDetail)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        if (id == null || newDepartment == null || newPosition == null ||  newSuperiot == null || newWorkDetail == null||id == "" || newDepartment == "" || newPosition == "" ||  newSuperiot == "" || newWorkDetail == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","Input is null!");
+        }
+        boolean flag = employeeService.changeEmployeeInfoById(id,newDepartment,newPosition,newSuperiot,newWorkDetail);
+        if (flag == false)
+        {
+            result.put("error",true);
+            result.put("errorMsg","Can not find such employee!");
+        }else {
+            result.put("error",false);
+        }
+        return result;
+    }
+
+
+
 
     /*
         功能：显示老人有效合同的状况
@@ -1145,5 +1258,32 @@ public class InterfaceController {
     }
 
 
+    //根据法人的status和id获取他的所有company
+    @RequestMapping(value = "/getCompanyByLegalPersonId")
+    @ResponseBody
+    public Map<String, Object> getCompanyByLegalPersonId(String status, String id) {
+        Map<String, Object> result = new HashMap<String, Object>();
 
+        if (status == null || id == null || status == "" || id == "") {
+            result.put("error", true);
+            result.put("errorMsg", "PhoneNum or password is empty");
+            return result;
+        } else if (!status.equals("LegalPerson")) {
+            result.put("error", true);
+            result.put("errorMsg", "sorry! you are not a legalperson,please login again!");
+        } else {
+            List<Company> companyList = companyService.getByLegalPerson(id);
+            if(companyList.isEmpty()){
+                result.put("error", true);
+                result.put("errorMsg", "you got no company applied yet");
+            }
+            else {
+                result.put("error",false);
+                result.put("errorMsg", "get list successfully");
+                result.put("companyList", companyList);
+            }
+        }
+
+       return result;
+    }
 }

@@ -17,7 +17,8 @@ $('.ui.checkbox')
     .checkbox()
 ;
 var code =0;
-$('.verify-code').click(function(){
+$('.verify-code').click(function(e){
+    e.preventDefault();
     $.ajax({
         url:'http://localhost:8080/OCare/app/code',
         cache: false,
@@ -33,11 +34,13 @@ $('.verify-code').click(function(){
     })
 });
 
-$('.leagal-submit').click(function(){
+$('.leagal-submit').on('click',function(e){
+    e.preventDefault();
     $.ajax({
         url: 'http://localhost:8080/OCare/app/register/legalperson',
         type: 'get',
         cache: false,
+        async: false,
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         processData: false,
         data: 'lpId='+$('#legalperson_id').val()+'&lpName='+$('#legalperson_name').val()+'&lpPhone='+$('#legalperson_tel').val()+'&lpEmail='+$('#legalperson_email').val()+'&lpPassword='+$('#legalperson_password').val()+'&lpImage='+$('#id_image').val(),
@@ -52,13 +55,14 @@ $('.leagal-submit').click(function(){
             }
             else{
                 alert("submitted!");
-                window.location.href = "/OCare/pages/index.jsp";
+                document.forms[0].action = "/OCare/pages/index.jsp";
+                document.forms[0].submit();
                 }
             },
         error:function(data){
             alert("submit failed!");
         }
     });
-});
+})
 
 

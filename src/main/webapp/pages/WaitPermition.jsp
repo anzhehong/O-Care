@@ -17,7 +17,7 @@
       <div class="textbox">
         <h2>申请成功！</h2>
         <h4>请耐心等待审核结果</h4>
-        <a href="/OCare/pages/Register.jsp" > &lt;&lt;返回修改申请信息</a>
+        <a href="/OCare/pages/agentManagement.jsp" > &lt;&lt;返回公司列表</a>
       </div>
 
     </div>

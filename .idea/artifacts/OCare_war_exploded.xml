@@ -44,6 +44,8 @@
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" />
           <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.4" />
+          <element id="library" level="project" name="poi-3.11-20141221" />
+          <element id="library" level="project" name="ftp4j-1.7.21" />
         </element>
       </element>
       <element id="directory" name="META-INF">

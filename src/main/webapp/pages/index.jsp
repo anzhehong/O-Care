@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="/OCare/Assets/CSS/index.css">
     <link rel="stylesheet" href="/OCare/Assets/CSS/semantic.css" media="screen">
     <link rel="stylesheet" href="/OCare/Assets/CSS/icon.css" media="screen">
-
-
+    <script src="/OCare/Assets/JS/jquery-2.1.4.js"></script>
+    <script src="/OCare/Assets/JS/semantic.js"></script>
 </head>
+<script src="/OCare/Assets/JS/jquery.address.js"></script>
 <body class="home">
 <div class="headers" >
     <div class="header-container">
@@ -132,42 +133,81 @@
 <div class="ui small modal" style="width:30%; margin-left: -15%">
     <i class="close icon"></i>
     <div class="header" style="background-color: #78D6CC;padding:1.1rem 2rem">
-        <i class="user icon"></i>用户登陆
+        <i class="user icon"></i>登陆
     </div>
-    <div class="content" style="line-height: 40px;padding:2em 0rem;display: inline-block;">
-        <form class="ui sign-in form" method="post">
-            <div style="padding:0rem 1rem">
-                <label>手机号:</label></br>
-                <div class="ui input" style="display: initial;">
-                    <input id="username" name="username" type="text" >
-                </div></br>
-                <label>密码</label></br>
-                <div class="ui input" style="display: initial;">
-                    <input id="password" name="password" type="password" >
-                </div>
-            </div>
-            <div class="actions">
-                <a href="/OCare/pages/Register.jsp" style="color: white;">
-                    <div class="ui black button" style="float: left;background-color: #FF7770;margin-left: -10px;">
-                        注册
+
+    <div class="content" id="context1" style="line-height: 40px;padding:2em 0rem;display: inline-block;">
+        <div class="ui top attached tabular menu">
+            <a class="active item " data-tab="normal">
+                用户登陆
+            </a>
+            <a class="item" data-tab="admin">
+                管理员登陆
+            </a>
+        </div>
+        <div class="ui bottom attached active tab segment" data-tab="normal">
+            <form class="ui sign-in form" method="post">
+                <div style="padding:0rem 1rem">
+                    <label>手机号:</label></br>
+                    <div class="ui input" style="display: initial;">
+                        <input id="username" name="username" type="text" >
+                    </div></br>
+                    <label>密码</label></br>
+                    <div class="ui input" style="display: initial;">
+                        <input id="password" name="password" type="password" >
                     </div>
-                </a>
-                忘记密码?
-                <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
-                    登陆
-                    <i class="checkmark icon"></i>
                 </div>
-            </div>
-            <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
-            <div id="login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
-        </form>
+                <div class="actions">
+                    <a href="/OCare/pages/Register.jsp" style="color: white;">
+                        <div class="ui black button" style="float: left;background-color: #FF7770;margin-left: -10px;">
+                            注册
+                        </div>
+                    </a>
+                    忘记密码?
+                    <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
+                        登陆
+                        <i class="checkmark icon"></i>
+                    </div>
+                </div>
+                <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
+                <div id="login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
+            </form>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="admin">
+            <form class="ui admin-sign-in form" method="post">
+                <div style="padding:0rem 1rem">
+                    <label>手机号:</label></br>
+                    <div class="ui input" style="display: initial;">
+                        <input id="adminname" name="adminname" type="text" >
+                    </div></br>
+                    <label>密码</label></br>
+                    <div class="ui input" style="display: initial;">
+                        <input id="adminpassword" name="adminpassword" type="password" >
+                    </div>
+                </div>
+                <div class="actions">
+                    忘记密码?
+                    <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
+                        登陆
+                        <i class="checkmark icon"></i>
+                    </div>
+                </div>
+                <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
+                <div id="admin_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
+            </form>
+        </div>
     </div>
 </div>
-
-<script src="/OCare/Assets/JS/jquery-2.1.4.js"></script>
-<script src="/OCare/Assets/JS/jquery.address.js"></script>
-<script src="/OCare/Assets/JS/semantic.js"></script>
+<script>
+    /**
+     * Created by admin on 2015/11/19.
+     */
+$('.menu.item')
+        .tab();
+</script>
 <script src="/OCare/Assets/JS/login.js"></script>
+
+
 
 </body>
 </html>

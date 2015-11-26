@@ -42,7 +42,19 @@ public class CompanyController {
     @RequestMapping(value="/name/{name}", method = RequestMethod.GET)
     public String getCompanyByName(@PathVariable String name, Model model){
         model.addAttribute("companies", companyService.getByName(name));
-        return "company";
+        return "VerifyCompany";
+    }
+
+    /**
+     * 功能：能过id查找公司
+     * @param id：公司的id（不支持模糊查找）
+     * @param model：返回值集合
+     * @return null
+     */
+    @RequestMapping(value="/id/{id}", method = RequestMethod.GET)
+    public String getCompanyById(@PathVariable String id, Model model){
+        model.addAttribute("company", companyService.getCompanyById(Integer.parseInt(id)));
+        return "VerifyCompany";
     }
 
     /**
@@ -66,7 +78,7 @@ public class CompanyController {
     @RequestMapping("/list")
     public String listUnapproveCompanies(Model model){
         model.addAttribute("list", companyService.unapproveCompanies());
-        return "company";
+        return "agentApplyList";
     }
 
     /**
@@ -77,7 +89,7 @@ public class CompanyController {
     @RequestMapping(value = "/agree/{id}", method = RequestMethod.GET)
     public String agreeApply(@PathVariable String id){
         companyService.changeStatus(Integer.parseInt(id), 102);
-        return "company";
+        return "agentApplyList";
     }
 
     /**
@@ -88,7 +100,7 @@ public class CompanyController {
     @RequestMapping(value = "/reject/{id}", method = RequestMethod.GET)
     public String rejectApply(@PathVariable String id){
         companyService.changeStatus(Integer.parseInt(id), 103);
-        return "company";
+        return "agentApplyList";
     }
 
 }

@@ -60,7 +60,7 @@
     <a class="item" href="/OCare/agent/list">
       &nbsp;&nbsp;&nbsp;&nbsp;机构列表
     </a>
-    <a class="item" href="/OCare/agent/verify">
+    <a class="item" href="/OCare/company/list">
       &nbsp;&nbsp;&nbsp;&nbsp;机构申请审核
     </a>
 

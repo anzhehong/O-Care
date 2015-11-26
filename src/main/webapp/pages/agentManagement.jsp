@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@page contentType="text/html; charset=utf-8" language="java" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="templates/header.jsp"%>
 <link rel="stylesheet" href="/OCare/Assets/CSS/agentManagement.css">
 <div>
@@ -18,16 +19,7 @@
             <th>机构ID</th><th>机构名称</th><th>机构地址</th>
           </thead>
           <tbody>
-            <tr onclick="enterHomepage(accountType)">
-              <td>101200211</td><td>黄渡敬老院</td><td>安亭镇&nbsp;&nbsp;&nbsp;新黄路24号 </td>
-            </tr>
-            <tr>
-              <td>101123123</td><td>方泰敬老院</td><td>安亭镇&nbsp;&nbsp;&nbsp;方中路160号</td>
-            </tr>
-            <tr>
-              <td>101123123</td><td>方泰敬老院</td><td>安亭镇&nbsp;&nbsp;&nbsp;方中路160号</td>
-            </tr>
-          <!--在此加入动态数据-->
+
           </tbody>
         </table>
 
@@ -37,18 +29,31 @@
       </div>
 
     </div>
-  <div>
-    <!--  <button> -->
-  </div>
-</div>
-<div class="footer" style="position: absolute">
-  @ copyright Tongji University
 </div>
 <script>
-  function enterHomepage(AccountType){
-    //undefined
-  }
+    $( document ).ready(function get_list(){
+                $.ajax({
+                    url:'http://localhost:8080/OCare/app/getCompanyByLegalPersonId',
+                    type:'POST',
+                    async: false,
+                    data:{
+                        status:'LegalPerson',
+                        id:'20151126'
+                    },
+                    success:function(data){
+                        alert(data.errorMsg);
+                        console.log(data);
+                    },
+                    error:function(data){
+                        alert("can not get the data");
+                    }
+                })
+            })
 </script>
+
+<div class="footer" style="position: absolute;">
+    @ copyright Tongji University
+</div>
 
 </body>
 </html>
