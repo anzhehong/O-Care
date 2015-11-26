@@ -1,6 +1,9 @@
 package com.OCare.service;
 
+import com.OCare.entity.ofMucMember;
 import com.OCare.entity.ofMucRoom;
+
+import java.util.List;
 
 /**
  * Created by mark on 10/27/15.
@@ -21,4 +24,9 @@ public interface openFireService {
         功能：拿到成员或者管理员所在房间内的所有成员的电话号码
      */
     public Object getPeopleByPhoneNumAndRoomId(String phoneNum, int roomId);
+
+    //根据电话查看所在房间
+    public List<ofMucMember> getRoomIdbyPhone(String phone);
+    //根据RoomId查到ofMucRoom
+    public List<ofMucRoom> getRoomByid(int id);
 }

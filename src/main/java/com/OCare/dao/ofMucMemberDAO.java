@@ -13,4 +13,5 @@ public interface ofMucMemberDAO extends IGeneralDAO<ofMucMember> {
     //public ofMucMember getRoomidByjid(String jid);
     public List<ofMucMember> getAllMembersByRoomId(int roomId);
     public List<ofMucMember> getMemberByRoomIdAndPhoneNum(int roomId, String phoneNum);
+    public List<ofMucMember> getMemberByPhone(String phone);
 }

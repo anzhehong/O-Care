@@ -19,6 +19,10 @@ public interface ElderService {
      */
     public Elder getElderById(String elderId);
 
+
+
+    public Elder getElderByRelativePhone(String phone) ;
+
     /*
         功能：通过老人Id拿到所有监护人的list
         参数：身份证号码Id
@@ -37,6 +41,9 @@ public interface ElderService {
         返回值：所有老人
      */
     public ArrayList<Elder> getAllEldersByElderName(String elderName);
+
+    //根据company_id得到该公司所有老人
+    public ArrayList<Elder> getAllEldersLocated(int companyId);
     
     public ArrayList<Elder> getAllElders();
 

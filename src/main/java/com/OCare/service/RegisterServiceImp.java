@@ -27,6 +27,8 @@ public class RegisterServiceImp implements RegisterService {
     private LegalPersonDAO legalPersonDAO;
     @Autowired
     private CompanyDAO companyDAO;
+    @Autowired
+    private ofUserDao userDao;
 
     public Elder registerForAnElder(String elderId, int companyId, String elderName, String elderPhone, String elderAddress, String elderPassword, String elderImage) {
         Elder newElder = new Elder();
@@ -139,6 +141,10 @@ public class RegisterServiceImp implements RegisterService {
     public ArrayList<LegalPerson> getAllLegalPerson() {
         return (ArrayList<LegalPerson>) legalPersonDAO.queryAll();
     }
+
+    @Override
+    public ArrayList<ofUser> getAllUser() {
+        return (ArrayList<ofUser>) userDao.queryAll();}
 
     @Override
     public ArrayList<Volunteer> getAllVolunteers() {

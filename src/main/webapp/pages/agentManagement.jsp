@@ -14,12 +14,11 @@
     <div class="mainbox">
         <h2>请选择您要进入的机构</h2>
 
-        <table class="ui stripe table">
+        <table class="ui stripe table" >
           <thead>
             <th>机构ID</th><th>机构名称</th><th>机构地址</th>
           </thead>
           <tbody id="company_list">
-
           </tbody>
         </table>
 
@@ -43,10 +42,16 @@
                     success:function(data){
                         var list = data.companyList[0].id;
                         console.log(list);
+                        var table = document.getElementById("company_list");
                         for (var i = 0; i < data.companyList.length;i++){
-                            $("<tr> <td>data.companyList[i].id</td> <td>data.companyList[i].name</td> <td>data.companyList[i].address</td> </tr>").appendTo("#company_list");
+                            var row = table.insertRow(0);
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
+                            cell1.innerHTML = data.companyList[0].id;
+                            cell2.innerHTML = data.companyList[0].name;
+                            cell3.innerHTML = data.companyList[0].address;
                         }
-
                         alert(data.errorMsg);
                     },
                     error:function(data){
