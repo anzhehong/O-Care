@@ -48,9 +48,9 @@
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
                             var cell3 = row.insertCell(2);
-                            cell1.innerHTML = data.companyList[0].id;
-                            cell2.innerHTML = data.companyList[0].name;
-                            cell3.innerHTML = data.companyList[0].address;
+                            cell1.innerHTML = data.companyList[i].id;
+                            cell2.innerHTML = data.companyList[i].name;
+                            cell3.innerHTML = data.companyList[i].address;
                         }
                         alert(data.errorMsg);
                     },
