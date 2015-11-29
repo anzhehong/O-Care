@@ -3,5 +3,6 @@
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="file://$PROJECT_DIR$/src/main/java/com/OCare/service/FtpService.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/OCare/service/FtpServiceImp.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/META-INF/lib/poi-3.13-20150929.jar" charset="UTF-8" />
   </component>
 </project>

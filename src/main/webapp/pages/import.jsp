@@ -13,7 +13,7 @@
 <div class="ui container Entry">
     <div class="ui three column grid">
         <div class="column">
-            <form action="/OCare/app/contract/upload"
+            <form action="/OCare/hr/upload"
                   method="post"
                   class="dropzone"
                   id="my-awesome-dropzone"

@@ -12,9 +12,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -1110,7 +1108,11 @@ public class InterfaceController {
 
 
             ftpService.uploadFile(convFile);
-
+            try {
+                FileInputStream fis=new FileInputStream(convFile);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
 
             System.out.println("success");
 

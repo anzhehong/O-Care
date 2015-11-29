@@ -18,6 +18,11 @@ public interface EmployeeService {
                                    String address, String start, String end, String image, String password,
                                    String position, String department, String superior, String workExperience,
                                    String workDetail);
+    public Employee createEmployee(String employeeId, int companyId, String name, String phone,
+                                   String address, String department, String position, String start,
+                                   String end,int status, String password,String image,
+                                   String superior, String workExperience,
+                                   String workDetail,String last);
     public Employee getEmployeeById(String id);
     public List<Employee> getEmployeesByName(String name);
     public List<Employee> getEmployeesByDepartment(String department);

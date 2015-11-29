@@ -134,8 +134,8 @@
                         <div class="ui button">工作证打印</div>
                     </div>
                 </div>
-                <%--</br>--%>
-                <%--</br>--%>
+                </br>
+                </br>
 
 
                 <button class="ui fluid button" style="background-color: transparent;border: 0px;" >
@@ -178,6 +178,7 @@
                 </div>
 
                 <div id="warp" class="two fields">
+                    <label>身份证照片</label>
                     <div class="field">
                         <input type="file" id="up_img_WU_FILE_0" name="file"/>
                         <img id="imgShow_WU_FILE_0" width="200" height="180" />
@@ -187,6 +188,7 @@
                         <input type="file" id="up_img_WU_FILE_1" name="file1"/>
                         <img id="imgShow_WU_FILE_1" width="200" height="180" />
                     </div>
+                    <label>合同照片</label>
                     <div class="field">
                         <input type="file" id="up_img_WU_FILE_2" name="file2"/>
                         <img id="imgShow_WU_FILE_2" width="200" height="180" />
@@ -196,6 +198,7 @@
                         <input type="file" id="up_img_WU_FILE_3" name="file3"/>
                         <img id="imgShow_WU_FILE_3" width="200" height="180" />
                     </div>
+                    <label>个人照片</label>
                     <div class="field">
                         <input type="file" id="up_img_WU_FILE_4" name="file4"/>
                         <img id="imgShow_WU_FILE_4" width="200" height="180" />

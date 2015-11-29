@@ -108,6 +108,36 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeDAO.insert(employee);
         return employee;
     }
+
+    @Override
+    public Employee createEmployee(String employeeId, int companyId, String name, String phone, String address, String department, String position, String start, String end, int status, String password, String image, String superior, String workExperience, String workDetail, String last) {
+        Employee employee = new Employee();
+        employee.setId(employeeId);
+        employee.setCompany_id(companyId);
+        employee.setName(name);
+        employee.setPhone(phone);
+        employee.setAddress(address);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            employee.setContract_start(format.parse(start));
+            employee.setContract_end(format.parse(end));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        employee.setDepartment(department);
+        employee.setPosition(position);
+        employee.setPassword(password);
+        employee.setImage(image);
+        employee.setSuperior(superior);
+        employee.setWorkDetail(workDetail);
+        employee.setWorkExperience(workExperience);
+        employee.setStatus(status);//正常
+        employee.setLastUpdateTime(new Date());
+
+        employeeDAO.insert(employee);
+        return employee;
+    }
+
     @Override
     public String deleteEmployeeById(String id){
         Employee employee=employeeDAO.queryById(id);
@@ -222,7 +252,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
 
-   
+
 
     @Override
     public String deleteEmployeeByphoneNum(String phoneNum) {
