@@ -51,6 +51,11 @@ public class CompanyServiceImp implements CompanyService {
     }
 
     @Override
+    public List<Company> getAllCompany() {
+        return companyDAO.queryAll();
+    }
+
+    @Override
     public Company getCompanyById(int id) {
         return companyDAO.getById(id);
     }

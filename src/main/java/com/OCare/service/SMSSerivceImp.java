@@ -65,7 +65,7 @@ public class SMSSerivceImp implements SMSService {
         System.out.println("zhuyila");
         System.out.println(codeToVerifyCode);
 
-        result = restAPI.sendTemplateSMS("18918031709", "1", new String[]{Integer.toString(codeToVerifyCode), "5"});
+        result = restAPI.sendTemplateSMS(phoneToSendCode, "1", new String[]{Integer.toString(codeToVerifyCode), "5"});
 
         System.out.println("SDKTestGetSubAccounts result=" + result);
         if("000000".equals(result.get("statusCode"))){
