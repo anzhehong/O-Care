@@ -13,10 +13,10 @@
   <div>
     <div class="mainbox">
         <h2>请选择您要进入的机构</h2>
-
+        <input type="text" id="get_status" style="display:none"/>
         <table class="ui stripe table" >
           <thead>
-            <th>机构ID</th><th>机构名称</th><th>机构地址</th>
+            <th>机构ID</th><th>机构名称</th><th id="address">机构地址</th>
           </thead>
           <tbody id="company_list">
           </tbody>
@@ -30,29 +30,31 @@
     </div>
 </div>
 <script>
+
     $( document ).ready(function get_list(){
                 $.ajax({
                     url:'http://localhost:8080/OCare/app/getCompanyByLegalPersonId',
                     type:'POST',
                     async: false,
-                    data:{
-                        status:'LegalPerson',
-                        id:'20151126'
-                    },
+                    data: 'status='+$('#get_status').val()+'id='+$('#se_id').val(),
                     success:function(data){
-                        var list = data.companyList[0].id;
-                        console.log(list);
-                        var table = document.getElementById("company_list");
-                        for (var i = 0; i < data.companyList.length;i++){
-                            var row = table.insertRow(0);
-                            var cell1 = row.insertCell(0);
-                            var cell2 = row.insertCell(1);
-                            var cell3 = row.insertCell(2);
-                            cell1.innerHTML = data.companyList[i].id;
-                            cell2.innerHTML = data.companyList[i].name;
-                            cell3.innerHTML = data.companyList[i].address;
+                        if(data.error == false){
+                            var table = document.getElementById("company_list");
+                            for (var i = 0; i < data.companyList.length;i++){
+                                var row = table.insertRow(0);
+                                row.id = "tr_"+i;
+                                row.href="/OCare/pages/homepage.jsp";
+                                var cell1 = row.insertCell(0);
+                                var cell2 = row.insertCell(1);
+                                var cell3 = row.insertCell(2);
+                                cell1.innerHTML = data.companyList[i].id;
+                                cell2.innerHTML = data.companyList[i].name;
+                                cell3.innerHTML = data.companyList[i].address;
+                            }
+                        }else{
+                            alert(data.errorMsg);
                         }
-                        alert(data.errorMsg);
+
                     },
                     error:function(data){
                         alert("can not get the data");

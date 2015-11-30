@@ -36,7 +36,7 @@
   <div class="container">
     <img src="/OCare/Assets/Images/Ocare-logo.png">
     <div class="greeting">
-      您好! <strong>admin</strong><a>注销</a>
+      您好! <strong id="se_id"><%= session.getAttribute("sessionId") %></strong><a>注销</a>
     </div>
     <div class="nav" >
       <ul>
