@@ -52,7 +52,7 @@ public class InterfaceController {
      */
     @RequestMapping(value = "/logon")
     @ResponseBody
-    public Map<String, Object> logon(String phoneNum, String password,HttpSession httpSession){
+    public Map<String, Object> logon(String phoneNum, String password,int role,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
 
         if(phoneNum == null || password == null || phoneNum == "" || password == ""){
@@ -60,7 +60,7 @@ public class InterfaceController {
             result.put("errorMsg", "PhoneNum or password is empty");
             return result;
         }else{
-            String status = accountService.logon(phoneNum, password).getKey();
+            String status = accountService.logon(phoneNum, password,role).getKey();
             if(status == "Invalid Account"){
                 result.put("error", true);
                 result.put("errorMsg", "Invalid Account");
@@ -74,7 +74,7 @@ public class InterfaceController {
                 httpSession.setAttribute("sessionType",status);
                 result.put("error", false);
                 result.put("accountType", status);
-                result.put("account", accountService.logon(phoneNum, password).getValue());
+                result.put("account", accountService.logon(phoneNum, password,role).getValue());
                 return result;
             }
         }
@@ -112,7 +112,7 @@ public class InterfaceController {
                 httpSession.setAttribute("sessionType",status );
                 result.put("error", false);
                 result.put("accountType", status);
-                result.put("account", accountService.logon(phoneNum, password).getValue());
+                result.put("account", accountService.adminlogon(phoneNum,password).getValue());
                 return result;
             }
         }
@@ -1553,9 +1553,10 @@ public class InterfaceController {
     //根据法人的status和id获取他的所有company
     @RequestMapping(value = "/getCompanyByLegalPersonId")
     @ResponseBody
-    public Map<String, Object> getCompanyByLegalPersonId(String status, String id) {
+    public Map<String, Object> getCompanyByLegalPersonId(String id,HttpSession httpSession) {
         Map<String, Object> result = new HashMap<String, Object>();
 
+        String status=(String)httpSession.getAttribute("sessionType");
         if (status == null || id == null || status == "" || id == "") {
             result.put("error", true);
             result.put("errorMsg", "PhoneNum or password is empty");

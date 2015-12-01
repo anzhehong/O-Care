@@ -30,12 +30,25 @@ public class AccountServiceImp implements AccountService {
     private ofUserDao userDao;
 
     @Override
-    public Pair<String, Object> logon(String phoneNum, String password) {
+    public Pair<String, Object> logon(String phoneNum, String password,int role) {
         String md5Password = JavaMD5Util.MD5(password);
-        Elder elder = elderDAO.queryByPhoneNum(phoneNum);
-        Relative relative = relativeDAO.queryByPhoneNum(phoneNum);
-        Volunteer volunteer = volunteerDAO.queryByPhoneNum(phoneNum);
-        LegalPerson legalPerson = legalPersonDAO.queryByPhoneNum(phoneNum);
+
+        Elder elder = null;
+        Relative relative = null;
+        Volunteer volunteer = null;
+        LegalPerson legalPerson = null;
+        if(role==1) {
+            elder = elderDAO.queryByPhoneNum(phoneNum);
+        }else if(role==2) {
+            relative = relativeDAO.queryByPhoneNum(phoneNum);
+        }else if(role==3) {
+            volunteer = volunteerDAO.queryByPhoneNum(phoneNum);
+        }else if(role==4) {
+            legalPerson = legalPersonDAO.queryByPhoneNum(phoneNum);
+        }else{
+            Pair<String, Object> pair = new Pair<String, Object>("Invalid Role", null);
+            return pair;
+        }
         if(elder != null){
             if (elder.getPassword().equals(md5Password)){
                 Pair<String, Object> pair = new Pair<String, Object>("Elder", elder);

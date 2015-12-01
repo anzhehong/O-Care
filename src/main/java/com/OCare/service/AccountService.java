@@ -6,7 +6,7 @@ import javafx.util.Pair;
  * Created by mark on 8/2/15.
  */
 public interface AccountService {
-    public Pair<String, Object> logon(String phoneNum, String password);
+    public Pair<String, Object> logon(String phoneNum, String password,int role);
     public Pair<String, Object> adminlogon(String phoneNum, String password);
     public String verifyPhoneNum(String id, String phoneNum);
     public String changePassword(String id, String password);
