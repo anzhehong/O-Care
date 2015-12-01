@@ -26,6 +26,8 @@ public class AccountServiceImp implements AccountService {
     private AdminDao adminDao;
     @Autowired
     private EmployeeDAO employeeDao;
+    @Autowired
+    private ofUserDao userDao;
 
     @Override
     public Pair<String, Object> logon(String phoneNum, String password) {
@@ -153,21 +155,26 @@ public class AccountServiceImp implements AccountService {
         }
     }
 
+
     @Override
     public String lostPasswordHandle(String id, int role, String password) {
         String md5Password = JavaMD5Util.MD5(password);
         if(role==1){
             Elder elder = elderDAO.queryById(id);
             Relative relative = relativeDAO.queryById(id);
+            ofUser user=userDao.queryById(id);
             if(elder != null||relative != null) {
                 if (elder != null) {
                     elder.setPassword(md5Password);
+                    user.setEncryptedPassword(md5Password);
                     elderDAO.update(elder);
-
+                    userDao.update(user);
                 }
                 if (relative != null) {
                     relative.setPassword(md5Password);
+                    user.setEncryptedPassword(md5Password);
                     relativeDAO.update(relative);
+                    userDao.update(user);
                 }
                 return "change success";
             }
@@ -216,78 +223,85 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public String personInforModifyHandle(String id,int role, Object object) {
+    public String personInforModifyHandle(String id,int role,String change,int type ) {
         if(role==0)
         {
-            Elder new_elder=(Elder)object;
             Elder elder = elderDAO.queryById(id);
+            ofUser user=userDao.queryById(id);
             if(elder==null)
             {
                 return "Invalid Account";
             }
-            if(!new_elder.getPhone().equals(null)){
-                elder.setPhone(new_elder.getPhone());
+            if(type==0){
+                elder.setPhone(change);
             }
-            if(!new_elder.getPassword().equals(null)){
-                elder.setPassword(new_elder.getPassword());
+            if(type==1){
+                String md5Password = JavaMD5Util.MD5(change);
+                elder.setPassword(md5Password);
+                user.setEncryptedPassword(md5Password);
             }
-            if(!new_elder.getImage().equals(null)){
-                elder.setImage(new_elder.getImage());
+            if(type==2){
+                elder.setImage(change);
             }
             elderDAO.update(elder);
+            userDao.update(user);
             return "change success";
 
         }
         else if(role==1)
         {
-            Relative new_relative=(Relative)object;
             Relative relative = relativeDAO.queryById(id);
+            ofUser user=userDao.queryById(id);
             if(relative==null)
             {
                 return "Invalid Account";
             }
-            if(!new_relative.getPhone().equals(null)){
-                relative.setPhone(new_relative.getPhone());
+            if(type==0){
+                relative.setPhone(change);
             }
-            if(!new_relative.getPassword().equals(null)){
-                relative.setPassword(new_relative.getPassword());
+            if(type==1){
+                String md5Password = JavaMD5Util.MD5(change);
+                relative.setPassword(md5Password);
+                user.setEncryptedPassword(md5Password);
             }
-            if(!new_relative.getImage().equals(null)){
-                relative.setImage(new_relative.getImage());
+            if(type==2){
+                relative.setImage(change);
             }
             relativeDAO.update(relative);
+            userDao.update(user);
             return "change success";}
         else if(role==2)
         {
-            LegalPerson new_legalPerson=(LegalPerson) object;
+
             LegalPerson legalPerson = legalPersonDAO.queryById(id);
             if(legalPerson==null)
             {
                 return "Invalid Account";
             }
-            if(!new_legalPerson.getPhone().equals(null)){
-                legalPerson.setPhone(new_legalPerson.getPhone());
+            if(type==0){
+                legalPerson.setPhone(change);
             }
-            if(!new_legalPerson.getPassword().equals(null)){
-                legalPerson.setPassword(new_legalPerson.getPassword());
+            if(type==1){
+                String md5Password = JavaMD5Util.MD5(change);
+                legalPerson.setPassword(md5Password);
             }
-            if(!new_legalPerson.getImage().equals(null)){
-                legalPerson.setImage(new_legalPerson.getImage());
+            if(type==1){
+                legalPerson.setImage(change);
             }
             legalPersonDAO.update(legalPerson);
             return "change success";
         }
         else if(role==3)
         {
-            Admin new_admin=(Admin) object;
             Admin admin=adminDao.queryById(id);
             if(admin==null)
             {
                 return "Invalid Account";
             }
 
-            if(!new_admin.getPassword().equals(null)){
-                admin.setPassword(new_admin.getPassword());
+            if(type==1){
+                String md5Password = JavaMD5Util.MD5(change);
+                admin.setPassword(md5Password);
             }
 
             adminDao.update(admin);
@@ -295,20 +309,20 @@ public class AccountServiceImp implements AccountService {
         }
         else if(role==4)
         {
-            Employee new_employee=(Employee) object;
             Employee employee=employeeDao.queryById(id);
             if(employee==null)
             {
                 return "Invalid Account";
             }
-            if(!new_employee.getPhone().equals(null)){
-                employee.setPhone(new_employee.getPhone());
+            if(type==0){
+                employee.setPhone(change);
             }
-            if(!new_employee.getPassword().equals(null)){
-                employee.setPassword(new_employee.getPassword());
+            if(type==1){
+                String md5Password = JavaMD5Util.MD5(change);
+                employee.setPassword(md5Password);
             }
-            if(!new_employee.getImage().equals(null)){
-                employee.setImage(new_employee.getImage());
+            if(type==2){
+                employee.setImage(change);
             }
             employeeDao.update(employee);
             return "change success";

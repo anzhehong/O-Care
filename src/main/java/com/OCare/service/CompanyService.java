@@ -13,5 +13,6 @@ public interface CompanyService {
     public List<Company> unapproveCompanies();
     public List<Company> getByName(String name);
     public List<Company> getByLegalPerson(String legalPerson);
+    public List<Company> getAllCompany();
     public Company getCompanyById(int id);
 }

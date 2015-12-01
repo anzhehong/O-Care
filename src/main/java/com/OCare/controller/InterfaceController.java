@@ -169,6 +169,45 @@ public class InterfaceController {
         return result;
     }
 
+    public int isIdOrPhoneNumExist_elder(String id, String phoneNum) {
+        //boolean flag = true;
+        ArrayList<Elder> elders = registerService.getAllElders();
+        ArrayList<ofUser> users =registerService.getAllUser();
+        //ArrayList<Relative> relatives = registerService.getAllRelatives();
+        //ArrayList<Volunteer> volunteers = registerService.getAllVolunteers();
+        // ArrayList<LegalPerson> legalPersons = registerService.getAllLegalPerson();
+
+        Iterator<Elder> elderIterator = elders.iterator();
+        Iterator<ofUser> userIterator=users.iterator();
+        //Iterator<Relative> relativeIterator = relatives.iterator();
+        //Iterator<Volunteer> volunteerIterator = volunteers.iterator();
+        //Iterator<LegalPerson> legalPersonIterator = legalPersons.iterator();
+
+        while (elderIterator.hasNext())
+        {
+            Elder elder = elderIterator.next();
+            if (elder.getId().equals(id))
+            {
+                return 2;
+            }
+            if (elder.getPhone().equals(phoneNum))
+            {
+                return 3;
+            }
+        }
+        while (userIterator.hasNext())
+        {
+            ofUser user = userIterator.next();
+            if (user.getUsername().equals(phoneNum))
+            {
+                return 1;
+            }
+        }
+
+
+        return 0;
+    }
+
     /**
      * @param relativeId: relative citizen_id
      * @param relativeName: relative name
@@ -215,6 +254,43 @@ public class InterfaceController {
         result.put("error", false);
         result.put("account", relative);
         return result;
+    }
+
+    public int isIdOrPhoneNumExist_relative(String id, String phoneNum) {
+        //boolean flag = true;
+        //ArrayList<Elder> elders = registerService.getAllElders();
+        ArrayList<ofUser> users =registerService.getAllUser();
+        ArrayList<Relative> relatives = registerService.getAllRelatives();
+        //ArrayList<Volunteer> volunteers = registerService.getAllVolunteers();
+        // ArrayList<LegalPerson> legalPersons = registerService.getAllLegalPerson();
+
+        //Iterator<Elder> elderIterator = elders.iterator();
+        Iterator<ofUser> userIterator=users.iterator();
+        Iterator<Relative> relativeIterator = relatives.iterator();
+        //Iterator<Volunteer> volunteerIterator = volunteers.iterator();
+        //Iterator<LegalPerson> legalPersonIterator = legalPersons.iterator();
+
+        while (relativeIterator.hasNext())
+        {
+            Relative relative = relativeIterator.next();
+            if (relative.getId().equals(id))
+            {
+                return 2;
+            }
+            if (relative.getPhone().equals(phoneNum))
+            {
+                return 3;
+            }
+        }
+        while (userIterator.hasNext())
+        {
+            ofUser user = userIterator.next();
+            if (user.getUsername().equals(phoneNum))
+            {
+                return 1;
+            }
+        }
+        return 0;
     }
 
     /**
@@ -268,6 +344,45 @@ public class InterfaceController {
         return result;
     }
 
+    public int isIdOrPhoneNumExist_volunteer(String id, String phoneNum) {
+        //boolean flag = true;
+        //ArrayList<Elder> elders = registerService.getAllElders();
+        ArrayList<ofUser> users =registerService.getAllUser();
+        //ArrayList<Relative> relatives = registerService.getAllRelatives();
+        ArrayList<Volunteer> volunteers = registerService.getAllVolunteers();
+        // ArrayList<LegalPerson> legalPersons = registerService.getAllLegalPerson();
+
+        //Iterator<Elder> elderIterator = elders.iterator();
+        Iterator<ofUser> userIterator=users.iterator();
+        //Iterator<Relative> relativeIterator = relatives.iterator();
+        Iterator<Volunteer> volunteerIterator = volunteers.iterator();
+        //Iterator<LegalPerson> legalPersonIterator = legalPersons.iterator();
+
+        while (volunteerIterator.hasNext())
+        {
+            Volunteer volunteer = volunteerIterator.next();
+            if (volunteer.getId().equals(id))
+            {
+                return 2;
+            }
+            if (volunteer.getPhone().equals(phoneNum))
+            {
+                return 3;
+            }
+        }
+        while (userIterator.hasNext())
+        {
+            ofUser user = userIterator.next();
+            if (user.getUsername().equals(phoneNum))
+            {
+                return 1;
+            }
+        }
+
+
+        return 0;
+    }
+
     /**
      * @param lpId: legal person citizenId
      * @param lpName: legal person name
@@ -295,6 +410,7 @@ public class InterfaceController {
             result.put("errorMsg","openfire phone exists");
             return result;
         }
+
         if (isIdOrPhoneNumExist_legalperson(lpId,lpPhone)==2)
         {
             result.put("error",true);
@@ -320,129 +436,16 @@ public class InterfaceController {
         return result;
     }
 
-
-    public int isIdOrPhoneNumExist_elder(String id, String phoneNum) {
-        //boolean flag = true;
-        ArrayList<Elder> elders = registerService.getAllElders();
-        ArrayList<ofUser> users =registerService.getAllUser();
-        //ArrayList<Relative> relatives = registerService.getAllRelatives();
-        //ArrayList<Volunteer> volunteers = registerService.getAllVolunteers();
-        // ArrayList<LegalPerson> legalPersons = registerService.getAllLegalPerson();
-
-        Iterator<Elder> elderIterator = elders.iterator();
-        Iterator<ofUser> userIterator=users.iterator();
-        //Iterator<Relative> relativeIterator = relatives.iterator();
-        //Iterator<Volunteer> volunteerIterator = volunteers.iterator();
-        //Iterator<LegalPerson> legalPersonIterator = legalPersons.iterator();
-
-        while (elderIterator.hasNext())
-        {
-            Elder elder = elderIterator.next();
-            if (elder.getId().equals(id))
-            {
-                return 1;
-            }
-            if (elder.getPhone().equals(phoneNum))
-            {
-                return 2;
-            }
-        }
-        while (userIterator.hasNext())
-        {
-            ofUser user = userIterator.next();
-            if (user.getUsername().equals(phoneNum))
-            {
-                return 3;
-            }
-        }
-
-
-        return 255;
-    }
-    public int isIdOrPhoneNumExist_relative(String id, String phoneNum) {
-        //boolean flag = true;
-        //ArrayList<Elder> elders = registerService.getAllElders();
-        ArrayList<ofUser> users =registerService.getAllUser();
-        ArrayList<Relative> relatives = registerService.getAllRelatives();
-        //ArrayList<Volunteer> volunteers = registerService.getAllVolunteers();
-        // ArrayList<LegalPerson> legalPersons = registerService.getAllLegalPerson();
-
-        //Iterator<Elder> elderIterator = elders.iterator();
-        Iterator<ofUser> userIterator=users.iterator();
-        Iterator<Relative> relativeIterator = relatives.iterator();
-        //Iterator<Volunteer> volunteerIterator = volunteers.iterator();
-        //Iterator<LegalPerson> legalPersonIterator = legalPersons.iterator();
-
-        while (relativeIterator.hasNext())
-        {
-            Relative relative = relativeIterator.next();
-            if (relative.getId().equals(id))
-            {
-                return 1;
-            }
-            if (relative.getPhone().equals(phoneNum))
-            {
-                return 2;
-            }
-        }
-        while (userIterator.hasNext())
-        {
-            ofUser user = userIterator.next();
-            if (user.getUsername().equals(phoneNum))
-            {
-                return 3;
-            }
-        }
-        return 255;
-    }
-    public int isIdOrPhoneNumExist_volunteer(String id, String phoneNum) {
-        //boolean flag = true;
-        //ArrayList<Elder> elders = registerService.getAllElders();
-        ArrayList<ofUser> users =registerService.getAllUser();
-        //ArrayList<Relative> relatives = registerService.getAllRelatives();
-        ArrayList<Volunteer> volunteers = registerService.getAllVolunteers();
-        // ArrayList<LegalPerson> legalPersons = registerService.getAllLegalPerson();
-
-        //Iterator<Elder> elderIterator = elders.iterator();
-        Iterator<ofUser> userIterator=users.iterator();
-        //Iterator<Relative> relativeIterator = relatives.iterator();
-        Iterator<Volunteer> volunteerIterator = volunteers.iterator();
-        //Iterator<LegalPerson> legalPersonIterator = legalPersons.iterator();
-
-        while (volunteerIterator.hasNext())
-        {
-            Volunteer volunteer = volunteerIterator.next();
-            if (volunteer.getId().equals(id))
-            {
-                return 1;
-            }
-            if (volunteer.getPhone().equals(phoneNum))
-            {
-                return 2;
-            }
-        }
-        while (userIterator.hasNext())
-        {
-            ofUser user = userIterator.next();
-            if (user.getUsername().equals(phoneNum))
-            {
-                return 3;
-            }
-        }
-
-
-        return 255;
-    }
     public int isIdOrPhoneNumExist_legalperson(String id, String phoneNum) {
         //boolean flag = true;
         //ArrayList<Elder> elders = registerService.getAllElders();
-        ArrayList<ofUser> users =registerService.getAllUser();
+        //ArrayList<ofUser> users =registerService.getAllUser();
         //ArrayList<Relative> relatives = registerService.getAllRelatives();
         //ArrayList<Volunteer> volunteers = registerService.getAllVolunteers();
         ArrayList<LegalPerson> legalPersons = registerService.getAllLegalPerson();
 
        // Iterator<Elder> elderIterator = elders.iterator();
-        Iterator<ofUser> userIterator=users.iterator();
+        //Iterator<ofUser> userIterator=users.iterator();
         //Iterator<Relative> relativeIterator = relatives.iterator();
         //Iterator<Volunteer> volunteerIterator = volunteers.iterator();
         Iterator<LegalPerson> legalPersonIterator = legalPersons.iterator();
@@ -452,24 +455,15 @@ public class InterfaceController {
             LegalPerson legalPerson = legalPersonIterator.next();
             if (legalPerson.getId().equals(id))
             {
-                return 1;
-            }
-            if (legalPerson.getPhone().equals(phoneNum))
-            {
                 return 2;
             }
-        }
-        while (userIterator.hasNext())
-        {
-            ofUser user = userIterator.next();
-            if (user.getUsername().equals(phoneNum))
+            if (legalPerson.getPhone().equals(phoneNum))
             {
                 return 3;
             }
         }
 
-
-        return 255;
+        return 0;
     }
 
 
@@ -578,12 +572,12 @@ public class InterfaceController {
    //修改个人信息
     @RequestMapping(value = "/personInforModifyHandle")
     @ResponseBody
-    public Map<String, Object> personInforModifyHandle(String id, int role,Object object){
+    public Map<String, Object> personInforModifyHandle(String id, int role,String change,int type){
         Map<String, Object> result = new HashMap<String, Object>();
 
         if(role==0||role==1||role==2||role==3||role==4)
         {
-            String status=accountService.personInforModifyHandle(id, role, object);
+            String status=accountService.personInforModifyHandle(id, role, change,type);
             if(status == "Invalid Account"){
                 result.put("error", true);
                 result.put("errorMsg", "Invalid Account");
@@ -601,15 +595,27 @@ public class InterfaceController {
         }
     }
 
-
-    //丢失密码以后改密
-    @RequestMapping(value = "/lostPasswordHandle")
+    //丢失密码，用手机验证码找回密码
+    @RequestMapping(value = "/lostPasswordHandle1")
     @ResponseBody
-    public Map<String, Object> lostPasswordHandle(String id, int code,int role,String password){
+    public void lostPasswordHandle1(String phone,HttpSession httpSession){
+        SMSSerivceImp ss = new SMSSerivceImp();
+        int code=ss.sendVerifyCodeToPhone(phone);
+        String sessionCode="code";
+        httpSession.setAttribute(sessionCode,code);
+
+    }
+
+
+    //获取验证码以后改密
+    @RequestMapping(value = "/lostPasswordHandle2")
+    @ResponseBody
+    public Map<String, Object> lostPasswordHandle2(String id, int code,int role,String password,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
         //???????????????????????如何取到验证码
-        //int a=1234;
-        if(!(code==1234)){
+        String phoneCode="code";
+        int a=(Integer) httpSession.getAttribute(phoneCode);
+        if(!(code==a)){
             result.put("error", true);
             result.put("errorMsg", "Invalid CODE");
             return result;

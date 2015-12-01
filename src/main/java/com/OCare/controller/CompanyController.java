@@ -1,5 +1,6 @@
 package com.OCare.controller;
 
+import com.OCare.entity.Company;
 import com.OCare.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -79,6 +85,25 @@ public class CompanyController {
     public String listUnapproveCompanies(Model model){
         model.addAttribute("list", companyService.unapproveCompanies());
         return "agentApplyList";
+    }
+
+
+    /**
+     * 功能：列出所有的公司
+     */
+    @RequestMapping("/companyList")
+    public Map<String, Object> listAllCompanies(HttpSession httpSession){
+        Map<String, Object> result = new HashMap<String, Object>();
+        String status=(String)httpSession.getAttribute("sessionType");
+        if(status.equals("admin")) {
+            List<Company> companyList=companyService.getAllCompany();
+            result.put("error", false);
+            result.put("companyList", companyList);
+            return result;
+        }
+        result.put("error", true);
+        result.put("errorMsg", "NO authority");
+        return result;
     }
 
     /**
