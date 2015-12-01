@@ -36,14 +36,17 @@
                     url:'http://localhost:8080/OCare/app/getCompanyByLegalPersonId',
                     type:'POST',
                     async: false,
-                    data: 'status='+$('#get_status').val()+'id='+$('#se_id').val(),
+                    data: {
+                            status: 'LegalPerson',
+                            id: '20151126'
+                    },
                     success:function(data){
                         if(data.error == false){
                             var table = document.getElementById("company_list");
                             for (var i = 0; i < data.companyList.length;i++){
                                 var row = table.insertRow(0);
                                 row.id = "tr_"+i;
-                                row.href="/OCare/pages/homepage.jsp";
+                                console.log(row.id);
                                 var cell1 = row.insertCell(0);
                                 var cell2 = row.insertCell(1);
                                 var cell3 = row.insertCell(2);

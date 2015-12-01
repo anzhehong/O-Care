@@ -130,31 +130,43 @@
 </div>
 <!-----------登陆对话框--------->
 <!----------------------------->
-<div class="ui small modal" style="width:30%; margin-left: -15%">
+<div class="ui small modal" style="width:40%; margin-left: -20%">
     <i class="close icon"></i>
     <div class="header" style="background-color: #78D6CC;padding:1.1rem 2rem">
         <i class="user icon"></i>登陆
     </div>
 
     <div class="content" id="context1" style="line-height: 40px;padding:2em 0rem;display: inline-block;">
-        <div class="ui top attached tabular menu">
-            <a class="active item " data-tab="normal">
-                用户登陆
+        <div class="ui top attached tabular menu" style="margin-left: 30px;">
+            <a class="active item " data-tab="LegalPerson">
+                法人
+            </a>
+            <a class="item" data-tab="Employee">
+                员工
+            </a>
+            <a class="item" data-tab="Elder">
+                老人
+            </a>
+            <a class="item" data-tab="Monitor">
+                监护人
+            </a>
+            <a class="item" data-tab="Volenteer">
+                志愿者
             </a>
             <a class="item" data-tab="admin">
-                管理员登陆
+                Admin
             </a>
         </div>
-        <div class="ui bottom attached active tab segment" data-tab="normal">
-            <form class="ui sign-in form" method="post">
+        <div class="ui bottom attached active tab segment" data-tab="LegalPerson">
+            <form class="ui LegalPerson-sign-in form" method="post">
                 <div style="padding:0rem 1rem">
                     <label>手机号:</label></br>
                     <div class="ui input" style="display: initial;">
-                        <input id="username" name="username" type="text" >
+                        <input id="LegalPerson_username" name="username" type="text" >
                     </div></br>
                     <label>密码</label></br>
                     <div class="ui input" style="display: initial;">
-                        <input id="password" name="password" type="password" >
+                        <input id="LegalPerson_password" name="password" type="password" >
                     </div>
                 </div>
                 <div class="actions">
@@ -170,9 +182,126 @@
                     </div>
                 </div>
                 <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
-                <div id="login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
+                <div id="LegalPerson_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
             </form>
         </div>
+        <!------------------------------------------------------------------------------------>
+        <div class="ui bottom attached active tab segment" data-tab="Employee">
+            <form class="ui Employee-sign-in form" method="post">
+                <div style="padding:0rem 1rem">
+                    <label>手机号:</label></br>
+                    <div class="ui input" style="display: initial;">
+                        <input id="Employee_username" name="username" type="text" >
+                    </div></br>
+                    <label>密码</label></br>
+                    <div class="ui input" style="display: initial;">
+                        <input id="Employee_password" name="password" type="password" >
+                    </div>
+                </div>
+                <div class="actions">
+                    <a href="/OCare/pages/Register.jsp" style="color: white;">
+                        <div class="ui black button" style="float: left;background-color: #FF7770;margin-left: -10px;">
+                            注册
+                        </div>
+                    </a>
+                    忘记密码?
+                    <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
+                        登陆
+                        <i class="checkmark icon"></i>
+                    </div>
+                </div>
+                <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
+                <div id="Employee_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
+            </form>
+        </div>
+        <!------------------------------------------------------------------------------------>
+        <div class="ui bottom attached active tab segment" data-tab="Elder">
+            <form class="ui Elder-sign-in form" method="post">
+                <div style="padding:0rem 1rem">
+                    <label>手机号:</label></br>
+                    <div class="ui input" style="display: initial;">
+                        <input id="Elder_username" name="username" type="text" >
+                    </div></br>
+                    <label>密码</label></br>
+                    <div class="ui input" style="display: initial;">
+                        <input id="Elder_password" name="password" type="password" >
+                    </div>
+                </div>
+                <div class="actions">
+                    <a href="/OCare/pages/Register.jsp" style="color: white;">
+                        <div class="ui black button" style="float: left;background-color: #FF7770;margin-left: -10px;">
+                            注册
+                        </div>
+                    </a>
+                    忘记密码?
+                    <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
+                        登陆
+                        <i class="checkmark icon"></i>
+                    </div>
+                </div>
+                <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
+                <div id="Elder_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
+            </form>
+        </div>
+        <!------------------------------------------------------------------------------------>
+        <div class="ui bottom attached active tab segment" data-tab="Monitor">
+            <form class="ui Monitor-sign-in form" method="post">
+                <div style="padding:0rem 1rem">
+                    <label>手机号:</label></br>
+                    <div class="ui input" style="display: initial;">
+                        <input id="Monitor_username" name="username" type="text" >
+                    </div></br>
+                    <label>密码</label></br>
+                    <div class="ui input" style="display: initial;">
+                        <input id="Monitor_password" name="password" type="password" >
+                    </div>
+                </div>
+                <div class="actions">
+                    <a href="/OCare/pages/Register.jsp" style="color: white;">
+                        <div class="ui black button" style="float: left;background-color: #FF7770;margin-left: -10px;">
+                            注册
+                        </div>
+                    </a>
+                    忘记密码?
+                    <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
+                        登陆
+                        <i class="checkmark icon"></i>
+                    </div>
+                </div>
+                <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
+                <div id="Monitor_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
+            </form>
+        </div>
+        <!------------------------------------------------------------------------------------>
+        <div class="ui bottom attached active tab segment" data-tab="Volenteer">
+            <form class="ui Volenteer-sign-in form" method="post">
+                <div style="padding:0rem 1rem">
+                    <label>手机号:</label></br>
+                    <div class="ui input" style="display: initial;">
+                        <input id="Volenteer_username" name="username" type="text" >
+                    </div></br>
+                    <label>密码</label></br>
+                    <div class="ui input" style="display: initial;">
+                        <input id="Volenteer_password" name="password" type="password" >
+                    </div>
+                </div>
+                <div class="actions">
+                    <a href="/OCare/pages/Register.jsp" style="color: white;">
+                        <div class="ui black button" style="float: left;background-color: #FF7770;margin-left: -10px;">
+                            注册
+                        </div>
+                    </a>
+                    忘记密码?
+                    <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
+                        登陆
+                        <i class="checkmark icon"></i>
+                    </div>
+                </div>
+                <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
+                <div id="Volenteer_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
+            </form>
+        </div>
+        <!------------------------------------------------------------------------------------>
         <div class="ui bottom attached tab segment" data-tab="admin">
             <form class="ui admin-sign-in form" method="post">
                 <div style="padding:0rem 1rem">
