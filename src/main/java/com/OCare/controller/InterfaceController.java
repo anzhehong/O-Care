@@ -118,6 +118,13 @@ public class InterfaceController {
         }
     }
 
+    //logout函数
+    @RequestMapping(value = "/logout")
+    @ResponseBody
+    public void logout(HttpSession httpSession){
+        httpSession.invalidate();
+    }
+
 
 
     /**
@@ -502,13 +509,16 @@ public class InterfaceController {
      */
     @RequestMapping(value = "/code")
     @ResponseBody
-    public Map<String, Object> createCode(String phoneNum){
+    public Map<String, Object> createCode(String phoneNum,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
         int code = smsService.sendVerifyCodeToPhone(phoneNum);
+        httpSession.setAttribute("sessionCode",code);
         result.put("error", false);
         result.put("code", code);
         return result;
     }
+
+
 
     /**
      * @param id: citizenId
@@ -560,21 +570,32 @@ public class InterfaceController {
 
     }
 
-   //修改个人信息
-    @RequestMapping(value = "/personInforModifyHandle")
+   //修改个人信息;手机号
+    @RequestMapping(value = "/personInforModifyHandle1")
     @ResponseBody
-    public Map<String, Object> personInforModifyHandle(String id, int role,String change,int type){
+    public Map<String, Object> personInforModifyHandle1(String phoneNum,int code,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
+
+        String id=(String)httpSession.getAttribute("sessionId");
+        int role=(Integer)httpSession.getAttribute("sessionType");
+        //首先验证要绑定的手机
+        int a=(Integer) httpSession.getAttribute("sessionCode");
+        if(!(code==a)){
+            result.put("error", true);
+            result.put("errorMsg", "Invalid CODE");
+            return result;
+        }
 
         if(role==0||role==1||role==2||role==3||role==4)
         {
-            String status=accountService.personInforModifyHandle(id, role, change,type);
+            String status=accountService.personInforModifyHandle(id, role, phoneNum,0).getKey();
             if(status == "Invalid Account"){
                 result.put("error", true);
                 result.put("errorMsg", "Invalid Account");
                 return result;
             }else{
                 result.put("error", false);
+                result.put("object",accountService.personInforModifyHandle(id, role, phoneNum,0).getValue() );
                 return result;
             }
         }
@@ -586,26 +607,86 @@ public class InterfaceController {
         }
     }
 
-    //丢失密码，用手机验证码找回密码
-    @RequestMapping(value = "/lostPasswordHandle1")
+    //修改个人信息;密码
+    @RequestMapping(value = "/personInforModifyHandle2")
     @ResponseBody
-    public void lostPasswordHandle1(String phone,HttpSession httpSession){
-        SMSSerivceImp ss = new SMSSerivceImp();
-        int code=ss.sendVerifyCodeToPhone(phone);
-        String sessionCode="code";
-        httpSession.setAttribute(sessionCode,code);
+    public Map<String, Object> personInforModifyHandle2(String newPassword,String password,HttpSession httpSession){
+        Map<String, Object> result = new HashMap<String, Object>();
 
+        String phoneNum=(String)httpSession.getAttribute("sessionId");
+        int role=(Integer)httpSession.getAttribute("sessionType");
+        String passwordstatus = accountService.logon(phoneNum, password,role).getKey();
+        if(passwordstatus == "Invalid Account"){
+            result.put("error", true);
+            result.put("errorMsg", "Invalid Account");
+            return result;
+        }
+        if (passwordstatus == "Incorrect password"){
+            result.put("error", true);
+            result.put("errorMsg", "Incorrect password");
+            return result;
+        }
+
+        if(role==0||role==1||role==2||role==3||role==4)
+        {
+            String status=accountService.personInforModifyHandle(phoneNum, role, newPassword,1).getKey();
+            if(status == "Invalid Account"){
+                result.put("error", true);
+                result.put("errorMsg", "Invalid Account");
+                return result;
+            }else{
+                result.put("error", false);
+                result.put("object",accountService.personInforModifyHandle(phoneNum, role, newPassword,1).getValue() );
+                return result;
+            }
+        }
+        else
+        {
+            result.put("error", true);
+            result.put("errorMsg", "ROLE NOT EXIST");
+            return result;
+        }
+    }
+
+    //修改个人信息;头像
+    @RequestMapping(value = "/personInforModifyHandle3")
+    @ResponseBody
+    public Map<String, Object> personInforModifyHandle3(String change,HttpSession httpSession){
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        String id=(String)httpSession.getAttribute("sessionId");
+        int role=(Integer)httpSession.getAttribute("sessionType");
+        if(role==0||role==1||role==2||role==3||role==4)
+        {
+            String status=accountService.personInforModifyHandle(id, role, change,2).getKey();
+            if(status == "Invalid Account"){
+                result.put("error", true);
+                result.put("errorMsg", "Invalid Account");
+                return result;
+            }else{
+                result.put("error", false);
+                result.put("object",accountService.personInforModifyHandle(id, role, change,2).getValue());
+                return result;
+            }
+        }
+        else
+        {
+            result.put("error", true);
+            result.put("errorMsg", "ROLE NOT EXIST");
+            return result;
+        }
     }
 
 
+
+
     //获取验证码以后改密
-    @RequestMapping(value = "/lostPasswordHandle2")
+    @RequestMapping(value = "/lostPasswordHandle")
     @ResponseBody
     public Map<String, Object> lostPasswordHandle2(String id, int code,int role,String password,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
-        //???????????????????????如何取到验证码
-        String phoneCode="code";
-        int a=(Integer) httpSession.getAttribute(phoneCode);
+
+        int a=(Integer) httpSession.getAttribute("sessionCode");
         if(!(code==a)){
             result.put("error", true);
             result.put("errorMsg", "Invalid CODE");
@@ -1553,10 +1634,11 @@ public class InterfaceController {
     //根据法人的status和id获取他的所有company
     @RequestMapping(value = "/getCompanyByLegalPersonId")
     @ResponseBody
-    public Map<String, Object> getCompanyByLegalPersonId(String id,HttpSession httpSession) {
+    public Map<String, Object> getCompanyByLegalPersonId(HttpSession httpSession) {
         Map<String, Object> result = new HashMap<String, Object>();
 
         String status=(String)httpSession.getAttribute("sessionType");
+        String id=(String)httpSession.getAttribute("sessionId");
         if (status == null || id == null || status == "" || id == "") {
             result.put("error", true);
             result.put("errorMsg", "PhoneNum or password is empty");

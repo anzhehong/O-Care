@@ -37,13 +37,13 @@ public class AccountServiceImp implements AccountService {
         Relative relative = null;
         Volunteer volunteer = null;
         LegalPerson legalPerson = null;
-        if(role==1) {
+        if(role==0) {
             elder = elderDAO.queryByPhoneNum(phoneNum);
-        }else if(role==2) {
+        }else if(role==1) {
             relative = relativeDAO.queryByPhoneNum(phoneNum);
-        }else if(role==3) {
+        }else if(role==5) {
             volunteer = volunteerDAO.queryByPhoneNum(phoneNum);
-        }else if(role==4) {
+        }else if(role==2) {
             legalPerson = legalPersonDAO.queryByPhoneNum(phoneNum);
         }else{
             Pair<String, Object> pair = new Pair<String, Object>("Invalid Role", null);
@@ -51,7 +51,7 @@ public class AccountServiceImp implements AccountService {
         }
         if(elder != null){
             if (elder.getPassword().equals(md5Password)){
-                Pair<String, Object> pair = new Pair<String, Object>("Elder", elder);
+                Pair<String, Object> pair = new Pair<String, Object>("0", elder);
                 return pair;
             }else{
                 Pair<String, Object> pair = new Pair<String, Object>("Incorrect password", null);
@@ -59,7 +59,7 @@ public class AccountServiceImp implements AccountService {
             }
         }else if(relative != null){
             if(relative.getPassword().equals(md5Password)){
-                Pair<String, Object> pair = new Pair<String, Object>("Relative", relative);
+                Pair<String, Object> pair = new Pair<String, Object>("1", relative);
                 return pair;
             }else{
                 Pair<String, Object> pair = new Pair<String, Object>("Incorrect password", null);
@@ -67,7 +67,7 @@ public class AccountServiceImp implements AccountService {
             }
         }else if (volunteer != null){
             if (volunteer.getPassword().equals(md5Password)){
-                Pair<String, Object> pair = new Pair<String, Object>("Volunteer", volunteer);
+                Pair<String, Object> pair = new Pair<String, Object>("5", volunteer);
                 return pair;
             }else{
                 Pair<String, Object> pair = new Pair<String, Object>("Incorrect password", null);
@@ -75,7 +75,7 @@ public class AccountServiceImp implements AccountService {
             }
         }else if (legalPerson != null){
             if (legalPerson.getPassword().equals(md5Password)){
-                Pair<String, Object> pair = new Pair<String, Object>("LegalPerson", legalPerson);
+                Pair<String, Object> pair = new Pair<String, Object>("2", legalPerson);
                 return pair;
             }else{
                 Pair<String, Object> pair = new Pair<String, Object>("Incorrect password", null);
@@ -236,14 +236,15 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public String personInforModifyHandle(String id,int role,String change,int type ) {
+    public Pair<String, Object> personInforModifyHandle(String id,int role,String change,int type ) {
         if(role==0)
         {
             Elder elder = elderDAO.queryById(id);
             ofUser user=userDao.queryById(id);
             if(elder==null)
             {
-                return "Invalid Account";
+                Pair<String, Object> pair = new Pair<String, Object>("Invalid Account", null);
+                return pair;
             }
             if(type==0){
                 elder.setPhone(change);
@@ -258,7 +259,8 @@ public class AccountServiceImp implements AccountService {
             }
             elderDAO.update(elder);
             userDao.update(user);
-            return "change success";
+            Pair<String, Object> pair = new Pair<String, Object>("change success", elder);
+            return pair;
 
         }
         else if(role==1)
@@ -267,7 +269,8 @@ public class AccountServiceImp implements AccountService {
             ofUser user=userDao.queryById(id);
             if(relative==null)
             {
-                return "Invalid Account";
+                Pair<String, Object> pair = new Pair<String, Object>("Invalid Account", null);
+                return pair;
             }
             if(type==0){
                 relative.setPhone(change);
@@ -282,14 +285,17 @@ public class AccountServiceImp implements AccountService {
             }
             relativeDAO.update(relative);
             userDao.update(user);
-            return "change success";}
+            Pair<String, Object> pair = new Pair<String, Object>("change success", relative);
+            return pair;
+        }
         else if(role==2)
         {
 
             LegalPerson legalPerson = legalPersonDAO.queryById(id);
             if(legalPerson==null)
             {
-                return "Invalid Account";
+                Pair<String, Object> pair = new Pair<String, Object>("Invalid Account", null);
+                return pair;
             }
             if(type==0){
                 legalPerson.setPhone(change);
@@ -302,14 +308,16 @@ public class AccountServiceImp implements AccountService {
                 legalPerson.setImage(change);
             }
             legalPersonDAO.update(legalPerson);
-            return "change success";
+            Pair<String, Object> pair = new Pair<String, Object>("change success", legalPerson);
+            return pair;
         }
         else if(role==3)
         {
             Admin admin=adminDao.queryById(id);
             if(admin==null)
             {
-                return "Invalid Account";
+                Pair<String, Object> pair = new Pair<String, Object>("Invalid Account", null);
+                return pair;
             }
 
             if(type==1){
@@ -318,14 +326,16 @@ public class AccountServiceImp implements AccountService {
             }
 
             adminDao.update(admin);
-            return "change success";
+            Pair<String, Object> pair = new Pair<String, Object>("change success", admin);
+            return pair;
         }
         else if(role==4)
         {
             Employee employee=employeeDao.queryById(id);
             if(employee==null)
             {
-                return "Invalid Account";
+                Pair<String, Object> pair = new Pair<String, Object>("Invalid Account", null);
+                return pair;
             }
             if(type==0){
                 employee.setPhone(change);
@@ -338,11 +348,13 @@ public class AccountServiceImp implements AccountService {
                 employee.setImage(change);
             }
             employeeDao.update(employee);
-            return "change success";
+            Pair<String, Object> pair = new Pair<String, Object>("change success", employee);
+            return pair;
         }
         else
         {
-            return "ROLE NOT EXIST";
+            Pair<String, Object> pair = new Pair<String, Object>("ROLE NOT EXIST", null);
+            return pair;
         }
     }
 
