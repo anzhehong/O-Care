@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/OCare/Assets/CSS/wait.css">
 <div>
   <div>
-    <div class="mainbox">
+    <div class="mainbox" style="height:250px;">
       <div class="imgbox">
         <img src="/OCare/Assets/Images/message.png">
       </div>

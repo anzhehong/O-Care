@@ -457,7 +457,7 @@
             <input name="isAgree" type="checkbox"/>
             <label>我同意相关协议</label>
           </div>
-          <div class="ui fluid positive large submit button" style="margin: 30px 100px;width:80%">
+          <div class="ui fluid positive large submit button" style="margin: 30px 50px;width: 90%;">
             提交
           </div>
           <div class="ui error message" style="width: 80%;margin-left: 100px;"></div>

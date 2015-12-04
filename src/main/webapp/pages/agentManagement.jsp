@@ -46,7 +46,7 @@
                             for (var i = 0; i < data.companyList.length;i++){
                                 var row = table.insertRow(0);
                                 row.id = "tr_"+i;
-                                console.log(row.id);
+                                row.setAttribute('data-index', i);
                                 var cell1 = row.insertCell(0);
                                 var cell2 = row.insertCell(1);
                                 var cell3 = row.insertCell(2);
@@ -63,7 +63,26 @@
                         alert("can not get the data");
                     }
                 })
-            })
+//        事件冒泡处理
+        $(document).on('click', '#company_list tr', function() {
+            var index = this.getAttribute('data-index');
+            $.ajax({
+                url:'whatever',
+                type:'post',
+                data:{
+                    com_id: index
+                },
+                success:function(data){
+                    alert("works")
+                },
+                error:function(data){
+                    alert("sth wrong");
+                    console.log(index);
+                }
+            });
+        });
+    });
+
 </script>
 
 <div class="footer" style="position: absolute;">

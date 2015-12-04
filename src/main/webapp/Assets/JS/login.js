@@ -35,7 +35,8 @@ $('.LegalPerson-sign-in').on('submit', function(e){
         async: false,
         data:{
             phoneNum:$('#LegalPerson_username').val(),
-            password:$('#LegalPerson_password').val()
+            password:$('#LegalPerson_password').val(),
+            role:4
         },
         datatype:'JSONP',
         success:function(data){
