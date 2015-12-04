@@ -39,6 +39,12 @@ public class CompanyController {
         return "company";
     }
 
+    //
+    @RequestMapping("/sessionCompanyId")
+    public void createCompany(int id,HttpSession httpSession){
+        httpSession.setAttribute("sessionCompanyId",id);
+    }
+
     /**
      * 功能：能过名字查找公司
      * @param name：公司的名称（不支持模糊查找）
@@ -62,6 +68,15 @@ public class CompanyController {
         model.addAttribute("company", companyService.getCompanyById(Integer.parseInt(id)));
         return "VerifyCompany";
     }
+
+    //根据公司id查看status
+    @RequestMapping(value="getStatusById")
+    public int getStatusById(int id){
+        Company company=companyService.getCompanyById(id);
+        int status=company.getStatus();
+        return status;
+    }
+
 
     /**
      * 功能：通过法人的身份证号码查找公司
