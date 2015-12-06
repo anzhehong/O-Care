@@ -21,11 +21,13 @@ public class AlarmHistoryServiceImp implements AlarmHistoryService  {
 
 
     @Override
-    public List<AlarmHistory> getAlarmHistory(int limit,int offset) {
+    public List<AlarmHistory> getAlarmHistory() {
 
         List<AlarmHistory> listAll;
         listAll=(List<AlarmHistory>)alarmHistoryDao.queryAll();
 
   return listAll;
 }
+
+
 }

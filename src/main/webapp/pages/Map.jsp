@@ -200,6 +200,13 @@
             });
         });
 
+
+
+
+
+
+
+
         function getIdSelections() {
             return $.map($table.bootstrapTable('getSelections'), function (row) {
                 return row.id

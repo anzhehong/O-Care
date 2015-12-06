@@ -35,7 +35,7 @@ public class AlarmHistoryController {
 
 
         offset=offset+1;
-        List<AlarmHistory> result= (List<AlarmHistory>) alarmHistoryService.getAlarmHistory(limit,offset);
+        List<AlarmHistory> result= (List<AlarmHistory>) alarmHistoryService.getAlarmHistory();
         List<AlarmHistory> list = new ArrayList<AlarmHistory>();
 
 
@@ -46,6 +46,25 @@ public class AlarmHistoryController {
         {
             list = result.subList(set, result.size());
         }
+
+
+        result1.put("total",result.size());
+        result1.put("rows",result);
+
+
+        return result1;
+    }
+
+    @RequestMapping("/get/all")
+    @ResponseBody
+    public Map<String,Object> listAllAlarmHistory() {
+
+        Map<String, Object> result1 = new HashMap<String, Object>();
+
+
+
+
+        List<AlarmHistory> result= (List<AlarmHistory>) alarmHistoryService.getAlarmHistory();
 
 
         result1.put("total",result.size());

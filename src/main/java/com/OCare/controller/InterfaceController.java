@@ -986,7 +986,7 @@ public class InterfaceController {
      */
     @RequestMapping("/contract/listAllEldersContractAndMonitorsYu")
     @ResponseBody
-    public ArrayList<HashMap<String, Object>> listAllEldersContractAndMonitorsYu() {
+    public Map<String,Object> listAllEldersContractAndMonitorsYu() {
         ArrayList<HashMap<String, Object>> relatives = new ArrayList<HashMap<String, Object>>();
         //get all elder contract from contract entity
         ArrayList<Contract> contracts  = (ArrayList<Contract>) contractService.getAllContracts();
@@ -999,7 +999,9 @@ public class InterfaceController {
             //the current elder information
             HashMap<String, Object> tempElderInfo = new HashMap<String, Object>();
 
+
             Elder tempElder = elderService.getElderById(contract.getElder_id());
+
             tempElderInfo.put("contract_id",contract.getId());
             tempElderInfo.put("old_name",tempElder.getName());
             tempElderInfo.put("old_id",contract.getElder_id());
@@ -1026,7 +1028,11 @@ public class InterfaceController {
         }
         System.out.println(contractInfo.toString());
         relatives = contractInfo;
-        return relatives;
+
+        Map<String,Object> result = new HashMap<String, Object>();
+        result.put("total",relatives.size());
+        result.put("rows",relatives);
+        return result;
     }
 
     /*
@@ -1329,6 +1335,18 @@ public class InterfaceController {
 
         // 重定向
         return "success";
+    }
+
+    /*------------------2015.12.1 by Tommy------------------*/
+    @RequestMapping("elderById")
+    @ResponseBody
+    public Elder getElderById(String elderId) {
+
+        Elder result = (Elder)elderService.getElderById(elderId);
+
+        return result;
+
+
     }
 
 
