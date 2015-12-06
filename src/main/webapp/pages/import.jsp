@@ -13,18 +13,52 @@
 <div class="ui container Entry">
     <div class="ui three column grid">
         <div class="column">
-          <div class="ui fluid buttons">
-
+            <form action="/OCare/hr/upload"
+                  method="post"
+                  class="dropzone"
+                  id="my-awesome-dropzone"
+                  enctype="multipart/form-data">
               <div class="ui button">
-              <input id="File1" runat="server" name="UpLoadFile" type="file" />
+              <input id="File1" runat="server" name="file" type="file" />
               </div>
-              <button class="ui blue fluid button">职工信息导入</button>
 
-          </div>
+              <button class="ui fluid button" style="background-color: transparent;border: 0px;" >
+                  <a class="ui huge fluid teal label" onclick="processQueue()"  id="agree">职工信息导入</a>
+              </button>
+            </form>
 
         </div>
     </div>
 </div>
+<script>
+    function processQueue()
+    {
+        myDropzone.processQueue();
+    }
+
+    Dropzone.options.myAwesomeDropzone = {
+        paramName: "file", // The name that will be used to transfer the file
+        maxFilesize: 2, // MB
+        dictRemoveFile:true,
+        autoProcessQueue:false,
+        accept: function(file, done) {
+            if (file.name == "justinbieber.jpg") {
+                done("Naha, you don't.");
+            }
+            else { done(); }
+        }
+    };
+
+    var myDropzone = new Dropzone("#my-awesome-dropzone");
+
+    myDropzone.on("success", function(file,finished) {
+        //TODO
+        swal("上传成功", "success")
+    });
+
+
+</script>
+
 
 <script type="text/javascript">
 

@@ -46,7 +46,9 @@
                     <label>离职原因：</label>
                     <textarea name="reason"></textarea>
                 </div>
-                <button class="negative ui submit button">注销</button>
+                <div>
+                    <a class="ui huge red label" id="remove" onclick="remove_employee()">注销</a>
+                </div>
 
 
                 <div class="ui error message"></div>
@@ -73,8 +75,8 @@
                 dataType:"json",
                 success: function (data) {
                     //alert(data.employee_department);
-                    $("#info").replaceWith('<div id="info">'
-                    + data.employee_id+"  "+data.employee_name+"  " +data.employee_phone+"  "+data.employee_position +"  " +data.employee_superior +"  "+ '</br></div>');
+                    $("#info").replaceWith('<div id="info"><div id="employee_id">'
+                    + data.employee_id+'</div>'+"  "+data.employee_name+"  " +data.employee_phone+"  "+data.employee_position +"  " +data.employee_superior +"  "+ '</br></div>');
 
                     <%--var temp = data.toString();--%>
                     <%--<jsp:setProperty name="userinfo" property="id" param="username"/>--%>
@@ -91,6 +93,33 @@
                 }
             });
         };
+    function remove_employee(){
+        $.ajax({
+
+            type: "get",
+            url:"/OCare/app/employee/delete",
+            data: { id: $("#employee_id").text()},
+            dataType:"json",
+            success: function (data) {
+                alert("注销成功");
+//                $("#info").replaceWith('<div id="info"><div id="employee_id">'
+//                + data.employee_id+'</div>'+"  "+data.employee_name+"  " +data.employee_phone+"  "+data.employee_position +"  " +data.employee_superior +"  "+ '</br></div>');
+
+                <%--var temp = data.toString();--%>
+                <%--<jsp:setProperty name="userinfo" property="id" param="username"/>--%>
+                <%--<jsp:setProperty name="userinfo" property="nickname" param="temp"/>--%>
+                <%--<%--%>
+                <%--session.setAttribute("id",userinfo.getId());--%>
+                <%--session.setAttribute("nickname",userinfo.getNickname());--%>
+                <%--%>--%>
+            }
+            ,
+            error:function(data){
+                alert("注销失败");
+
+            }
+        });
+    };
 </script>
 
 <script type="text/javascript">

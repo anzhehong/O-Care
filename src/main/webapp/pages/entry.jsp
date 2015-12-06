@@ -39,7 +39,7 @@
                 <div class="field">
                     <div class="ui input">
                         <label>电话：</label>
-                        <input type="text" name="phone" id="phone" placeholder="请输入您的电话"  required data-msg-required="请输入电话">
+                        <input type="text" name="phone" id="phone" placeholder="请输入您的电话"  required data-msg-required="请输入电话" data-rule-mobile="true" data-msg-mobile="请输入正确格式">
                     </div>
                     </br>
                 </div>
@@ -47,7 +47,7 @@
                 <div class="field">
                     <div class="ui input">
                         <label>身份证号：</label>
-                        <input type="text" name="identity" id="identity" placeholder="请输入身份证号"  required data-msg-required="请输入身份证号">
+                        <input type="text" name="identity" id="identity" placeholder="请输入身份证号"  required data-msg-required="请输入身份证号" data-rule-idCard="true" data-msg-idCard="请输入正确格式">
                     </div>
                 </div>
 
@@ -70,8 +70,8 @@
                 <%--<option value="AL">胡工班组</option>--%>
                 <%--<option value="AL">人事经理室</option>--%>
                 <%--</select>--%>
-                <%--</br>--%>
-                <%--</br>--%>
+                </br>
+                </br>
                 <div class="field">
                     <label>职位：</label>
 
@@ -85,8 +85,8 @@
                         </div>
                     </div>
                 </div>
-                <%--</br>--%>
-                <%--</br>--%>
+                </br>
+                </br>
                 <div class="field">
                     <label>上级主管：</label>
 
@@ -100,8 +100,8 @@
                         </div>
                     </div>
                 </div>
-                <%--</br>--%>
-                <%--</br>--%>
+                </br>
+                </br>
 
                 <label>合同时间：</label>
 
@@ -110,23 +110,23 @@
 
                     <div class="ui input eight wide column">
 
-                        <input id="start_time" type="text" name="start_time" placeholder="开始时间(2000.1.1)"  required data-msg-required="请输入开始时间">
+                        <input id="start_time" type="text" name="start_time" placeholder="开始时间(2000.1.1)"  required  data-rule-date="true" data-msg-required="请输入开始时间"  data-msg-date="请输入正确时间">
                     </div>
 
                     <div class="ui input eight wide column">
-                        <input id="finish_time" type="text" name="finish_time" placeholder="结束时间(2000.1.2)"  required data-msg-required="请输入结束时间">
+                        <input id="finish_time" type="text" name="finish_time" placeholder="结束时间(2000.1.2)"  required data-rule-date="true" data-msg-required="请输入结束时间" date data-msg-date="请输入正确时间">
                     </div>
                 </div>
                 <%--</br>--%>
                 <div class="field">
                     <div class="ui checkbox">
-                        <input type="checkbox" name="checked" tabindex="0"  >
+                        <input type="checkbox" name="checked" tabindex="0"   required data-msg-required="请勾选">
                         <label>I agree to the Terms and Conditions</label>
                     </div>
                 </div>
                 <%--</br>--%>
                 <%--</br>--%>
-                <div class="field">
+                <div class="field" style="display: none">
 
                     <div class="three ui fluid buttons">
                         <div class="ui button">人事合同预览</div>
@@ -134,8 +134,8 @@
                         <div class="ui button">工作证打印</div>
                     </div>
                 </div>
-                <%--</br>--%>
-                <%--</br>--%>
+                </br>
+                </br>
 
 
                 <button class="ui fluid button" style="background-color: transparent;border: 0px;" >
@@ -145,13 +145,13 @@
 
 
                 <div class="ui message" style="color:#cc0e01;background-color: transparent">
-                    <div class="error error_msg" for="name"></div>
-                    <div class="error error_msg" for="address"></div>
-                    <div class="error error_msg" for="phone"></div>
-                    <div class="error error_msg" for="identity"></div>
-                    <div class="error error_msg" for="start_time"></div>
-                    <div class="error error_msg" for="finish_time"></div>
-                    <div class="error error_msg" for="checked"></div>
+                    <div class="error error_msg" style="color:#cc0e01" for="name"></div>
+                    <div class="error error_msg" style="color:#cc0e01" for="address"></div>
+                    <div class="error error_msg" style="color:#cc0e01" for="phone"></div>
+                    <div class="error error_msg" style="color:#cc0e01" for="identity"></div>
+                    <div class="error error_msg" style="color:#cc0e01" for="start_time"></div>
+                    <div class="error error_msg" style="color:#cc0e01" for="finish_time"></div>
+                    <div class="error error_msg" style="color:#cc0e01" for="checked"></div>
                 </div>
                 <%--<div class="ui error message error_msg" for="phone" >--%>
 
@@ -161,98 +161,93 @@
             </form>
         </div>
         <script type="text/javascript">
-            $(document).ready(function () {
                 $('.ui.dropdown')
                         .dropdown()
                 ;
                 $('.ui.checkbox')
                         .checkbox()
                 ;
-            });
 
 
         </script>
-        <div class="eight wide column" id="pic_info" style="display:none">
-            <form class="ui form">
-                <label>身份证正反面</label>
-
+        <div class="eight wide column" id="pic_info" style="display: none">
+            <form class="ui form" action="/OCare/app/hr/upload" method="post" id="my-awesome-dropzone"
+                  enctype="multipart/form-data">
+                <div>
+                    <input type="text" name="employeeid"  id="created_id"/>
+                </div>
+                <h5>身份证照片</h5>
                 <div id="warp" class="two fields">
+
                     <div class="field">
-                        <input type="file" id="up_img_WU_FILE_0" />
+                        <input type="file" id="up_img_WU_FILE_0" name="file"/>
                         <img id="imgShow_WU_FILE_0" width="200" height="180" />
                     </div>
 
                     <div  class="field">
-                        <input type="file" id="up_img_WU_FILE_1" />
+                        <input type="file" id="up_img_WU_FILE_1" name="file1"/>
                         <img id="imgShow_WU_FILE_1" width="200" height="180" />
                     </div>
+                    <h5>合同照片</h5>
                     <div class="field">
-                        <input type="file" id="up_img_WU_FILE_2" />
+                        <input type="file" id="up_img_WU_FILE_2" name="file2"/>
                         <img id="imgShow_WU_FILE_2" width="200" height="180" />
                     </div>
 
                     <div  class="field">
-                        <input type="file" id="up_img_WU_FILE_3" />
+                        <input type="file" id="up_img_WU_FILE_3" name="file3"/>
                         <img id="imgShow_WU_FILE_3" width="200" height="180" />
                     </div>
+                    <h5>个人照片</h5>
                     <div class="field">
-                        <input type="file" id="up_img_WU_FILE_4" />
+                        <input type="file" id="up_img_WU_FILE_4" name="file4"/>
                         <img id="imgShow_WU_FILE_4" width="200" height="180" />
                     </div>
 
                     <div  class="field">
-                        <input type="file" id="up_img_WU_FILE_5" />
+                        <input type="file" id="up_img_WU_FILE_5" name="file5"/>
                         <img id="imgShow_WU_FILE_5" width="200" height="180" />
                     </div>
 
                 </div>
-                <div class="ui fluid positive large submit button" style="margin-top: 19px">
-                    提交图片资料
-                </div>
+                <button class="ui fluid button" style="background-color: transparent;border: 0px;" >
+                    <a class="ui huge fluid teal label" onclick="processQueue()"  id="agree">提交图片资料</a>
+                </button>
             </form>
 
         </div>
     </div>
 
 
-    <%--<script src="/OCare/Assets/JS/jquery-1.11.2.min.js"></script>--%>
-    <%--<script src="/OCare/Assets/JS/semantic.min.js"></script>--%>
-    <%--<script src="/OCare/Assets/JS/01.js"></script>--%>
-
-    <%--<script>--%>
-        <%--$(function(){--%>
-            <%--$("#save").bind("click", function () {--%>
-                <%--//var $this = $("#c");--%>
-                <%--//  var a =  $("#username").val();--%>
-                <%--// var b =--%>
-
-                <%--$.ajax({--%>
-
-                    <%--type: "get",--%>
-                    <%--url:"/OCare/hr/insert",--%>
-                    <%--data: { name: $("#name").val(),address:$("#address").val(),phone:$("#phone").val(),identity:$("#identity").val(),start_time:$("#start_time").val(),finish_time:$("#finish_time").val()},--%>
-                    <%--dataType:"json",--%>
-                    <%--success: function (data) {--%>
-                       <%--alert("success："+data.created_name);--%>
-                        <%--$("#pic_info").show();--%>
-                        <%--&lt;%&ndash;var temp = data.toString();&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<jsp:setProperty name="userinfo" property="id" param="username"/>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<jsp:setProperty name="userinfo" property="nickname" param="temp"/>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;&lt;%&ndash;%>--%>
-                        <%--&lt;%&ndash;session.setAttribute("id",userinfo.getId());&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;session.setAttribute("nickname",userinfo.getNickname());&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;%>&ndash;%&gt;--%>
-                    <%--}, error: function(){--%>
-                        <%--alert("失败");--%>
-                    <%--}--%>
-                <%--});--%>
-            <%--})})--%>
-    <%--</script>--%>
-
     <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
     <script src="/OCare/Assets/JS/jquery.validate.js"></script>
     <script>
-         function save(){
+        function processQueue()
+        {
+            myDropzone.processQueue();
+        }
+
+        Dropzone.options.myAwesomeDropzone = {
+            paramName:"file",// The name that will be used to transfer the file
+            maxFilesize: 2, // MB
+            dictRemoveFile:true,
+            autoProcessQueue:false,
+            accept: function(file, done) {
+                if (file.name == "justinbieber.jpg") {
+                    done("Naha, you don't.");
+                }
+                else { done(); }
+            }
+        };
+
+        var myDropzone = new Dropzone("#my-awesome-dropzone");
+
+        myDropzone.on("success", function(file,finished) {
+            //TODO
+            swal("上传成功", "success")
+        });
+
+        function save(){
             //jquery.validate
             $("#jsForm").validate({
                 submitHandler: function() {
@@ -265,6 +260,7 @@
                         success: function (data) {
                             alert("success："+data.created_name);
                             $("#pic_info").show();
+                            $("#created_id").replaceWith('<input id="created_id" type="text" name="employeeid"  value="'+data.created_name+'"/>');
                             <%--var temp = data.toString();--%>
                             <%--<jsp:setProperty name="userinfo" property="id" param="username"/>--%>
                             <%--<jsp:setProperty name="userinfo" property="nickname" param="temp"/>--%>
@@ -288,7 +284,7 @@
 
         //配置错误提示的节点，默认为label，这里配置成 span （errorElement:'span'）
         $.validator.setDefaults({
-            errorElement:'.error_msg'
+            errorElement:'label'
         });
 
         //配置通用的默认提示语
@@ -296,6 +292,24 @@
             required: '必填',
             equalTo: "请再次输入相同的值"
         });
+        //电话验证规则
+        jQuery.validator.addMethod("phone", function (value, element) {
+            var phone = /^0\d{2,3}-\d{7,8}$/;
+            return this.optional(element) || (phone.test(value));
+        }, "电话格式如：0371-68787027");
+        //手机验证规则
+        jQuery.validator.addMethod("mobile", function (value, element) {
+            var mobile = /^1[3|4|5|7|8]\d{9}$/;
+            return this.optional(element) || (mobile.test(value));
+        }, "手机格式不对");
+        //身份证
+        jQuery.validator.addMethod("idCard", function (value, element) {
+            var isIDCard1=/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/;//(15位)
+            var isIDCard2=/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;//(18位)
+
+            return this.optional(element) || (isIDCard1.test(value)) || (isIDCard2.test(value));
+        }, "格式不对");
+
     </script>
 
 

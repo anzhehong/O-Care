@@ -2,6 +2,7 @@ package com.OCare.service;
 
 import com.OCare.dao.EmployeeConditionDAO;
 import com.OCare.dao.EmployeeDAO;
+import com.OCare.dao.IGeneralDAO;
 import com.OCare.entity.Employee;
 import com.OCare.entity.EmployeeCondition;
 import com.OCare.entity.JavaMD5Util;
@@ -20,6 +21,8 @@ import java.util.List;
 @Service("EmployeeService")
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
+    @Autowired
+    private IGeneralDAO<Employee>  iGeneralDAO;
 
     @Autowired
     private EmployeeDAO employeeDAO;
@@ -106,6 +109,41 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employee;
     }
 
+    @Override
+    public Employee createEmployee(String employeeId, int companyId, String name, String phone, String address, String department, String position, String start, String end, int status, String password, String image, String superior, String workExperience, String workDetail, String last) {
+        Employee employee = new Employee();
+        employee.setId(employeeId);
+        employee.setCompany_id(companyId);
+        employee.setName(name);
+        employee.setPhone(phone);
+        employee.setAddress(address);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            employee.setContract_start(format.parse(start));
+            employee.setContract_end(format.parse(end));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        employee.setDepartment(department);
+        employee.setPosition(position);
+        employee.setPassword(password);
+        employee.setImage(image);
+        employee.setSuperior(superior);
+        employee.setWorkDetail(workDetail);
+        employee.setWorkExperience(workExperience);
+        employee.setStatus(status);//正常
+        employee.setLastUpdateTime(new Date());
+
+        employeeDAO.insert(employee);
+        return employee;
+    }
+
+    @Override
+    public String deleteEmployeeById(String id){
+        Employee employee=employeeDAO.queryById(id);
+        iGeneralDAO.delete(employee);
+        return "xx";
+    }
     @Override
     public Employee getEmployeeById(String id) {
         return employeeDAO.queryById(id);
@@ -213,9 +251,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
     }
 
+
+
+
     @Override
-    public String deleteEmployeeById(String id) {
-        Employee newEmployee = employeeDAO.queryByPhoneNum(id);
+    public String deleteEmployeeByphoneNum(String phoneNum) {
+        Employee newEmployee = employeeDAO.queryByPhoneNum(phoneNum);
         if (newEmployee != null)
         {
             employeeDAO.delete(newEmployee);
@@ -224,6 +265,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             return "not exists";
         }
     }
+
 
     @Override
     public boolean changeEmployeeInfoById(String id, String newName, String newPhone, String newAddress,
@@ -254,6 +296,28 @@ public class EmployeeServiceImpl implements EmployeeService {
             theEmployee.setSuperior(newSuperiot);
             theEmployee.setWorkDetail(newWorkDetail);
             theEmployee.setWorkExperience(newWorkExperience);
+            theEmployee.setLastUpdateTime(new Date());
+            employeeDAO.update(theEmployee);
+            flag = true;
+        }
+
+
+        return flag;
+    }
+
+    @Override
+    public boolean changeEmployeeInfoById(String id, String newDepartment, String newPosition, String newSuperiot, String newWorkDetail) {
+        boolean flag;
+        Employee theEmployee =  employeeDAO.queryById(id);
+        if (theEmployee == null || id == null || newDepartment == null || newPosition == null ||  newSuperiot == null || newWorkDetail == null)
+        {
+            flag = false;
+        }else {
+            theEmployee.setDepartment(newDepartment);
+            theEmployee.setPosition(newPosition);
+            theEmployee.setSuperior(newSuperiot);
+            theEmployee.setWorkDetail(newWorkDetail);
+
             theEmployee.setLastUpdateTime(new Date());
             employeeDAO.update(theEmployee);
             flag = true;
