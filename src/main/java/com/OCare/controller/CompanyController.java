@@ -1,6 +1,7 @@
 package com.OCare.controller;
 
 import com.OCare.entity.Company;
+import com.OCare.entity.MySessionContext;
 import com.OCare.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -33,16 +35,18 @@ public class CompanyController {
      * @param address 公司的地址
      * @return null
      */
-    @RequestMapping("/create")
+    @RequestMapping(value="/create")
+    @ResponseBody
     public String createCompany(String name, String legalPerson, String phone, String address){
         companyService.createCompany(name, legalPerson, phone, address);
         return "company";
     }
 
     //
-    @RequestMapping("/sessionCompanyId")
-    public void createCompany(int id,HttpSession httpSession){
-        httpSession.setAttribute("sessionCompanyId",id);
+    @RequestMapping(value="/sessionCompanyId")
+    @ResponseBody
+    public void sessionCompany(int id,HttpSession httpSession){
+        httpSession.setAttribute("sessionCompanyId", id);
     }
 
     /**
@@ -95,8 +99,13 @@ public class CompanyController {
      * 功能：列出所有的公司
      */
     @RequestMapping("/companyList")
-    public Map<String, Object> listAllCompanies(HttpSession httpSession){
+    public Map<String, Object> listAllCompanies(String sessionId,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
+        if(sessionId!=""||sessionId!=null) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+        }
+
         String status=(String)httpSession.getAttribute("sessionType");
         if(status.equals("admin")) {
             List<Company> companyList=companyService.getAllCompany();

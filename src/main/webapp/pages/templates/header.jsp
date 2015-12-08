@@ -16,14 +16,28 @@
   <link rel="stylesheet" href="/OCare/Assets/CSS/icon.css" media="screen">
   <script src="/OCare/Assets/JS/jquery-2.1.4.js"></script>
   <script src="/OCare/Assets/JS/jquery.address.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
   <script src="/OCare/Assets/JS/semantic.js"></script>
+    <script src="/OCare/Assets/JS/uploadPreview.js" type="text/javascript"></script>
+    <script src="http://cdn.bootcss.com/angular.js/1.3.0-beta.8/angular.min.js"></script>
+    <script>
+        window.data = [];
+        for (var i = 0; i < 300; i++) {
+            data.push({
+                id: i,
+                name: "item" + i,
+                description: "description" + i,
+            });
+        }
+    </script>
 </head>
 <body>
 <div class="header-globle">
   <div class="container">
     <img src="/OCare/Assets/Images/Ocare-logo.png">
     <div class="greeting">
-      您好! <strong>admin</strong><a>注销</a>
+      您好! <strong id="se_id"><%= session.getAttribute("sessionId") %></strong><a href="/OCare/pages/ModifyInformation.jsp"><i class="user icon" title="个人中心" style="color:#FE4F4F;font-size: 0.8em;"  ></i></a>
+      <a class="logout">注销</a>
     </div>
     <div class="nav" >
       <ul>
@@ -149,3 +163,19 @@
 
   <%--$('.ui.form').form(formValidationRules, formSettings);--%>
 <%--</script>--%>
+<script>
+  $('.logout').click(function(e){
+    e.preventDefault();
+    $.ajax({
+      url:'http://localhost:8080/OCare/app/logout',
+      type:'post',
+      success:function(data){
+          alert("logout successfully!");
+          window.location.href="/OCare/pages/index.jsp";
+      },
+      error:function(data){
+        alert("logout failed")
+      }
+    });
+  })
+</script>

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: douyutong
-  Date: 2015/8/3
-  Time: 0:17
+  User: douyuotong
+  Date: 2015/11/12
+  Time: 20:11
   To change this template use File | Settings | File Templates.
 --%>
 <%@page contentType="text/html; charset=utf-8" language="java" pageEncoding="UTF-8" %>
@@ -10,9 +10,10 @@
 <%@include file="templates/header.jsp"%>
 <%@include file="templates/sidebar.jsp"%>
 
+<html>
 <head>
   <link rel="stylesheet" href="/OCare/Assets/CSS/verify.css">
-    <title>监护人申请审核</title>
+  <title>机构审核</title>
 </head>
 <body>
 <div class="main_content">
@@ -22,15 +23,22 @@
       <div class="ui red horizontal label">申请ID: </div> <c:out value="${request.id}"/>
     </a>
     <a class="item">
-      <div class="ui horizontal label">老人ID:&nbsp;</div><c:out value="${request.elder_id}"/>
+      <div class="ui horizontal label">机构名称:&nbsp;</div><c:out value="${request.elder_id}"/>
     </a>
     <a class="item">
-      <div class="ui horizontal label">申请人ID:</div><c:out value="${request.relative_id}"/>
+      <div class="ui horizontal label">法人姓名:</div><c:out value="${request.relative_id}"/>
     </a>
+    <a class="item">
+      <div class="ui horizontal label">法人身份证号：</div><c:out value="${}"/>
+    </a>
+    <a class="item">
+      <div class="ui horizontal label">法人邮箱：</div>
+    </a>
+
     <a class="item">
       <div class="ui horizontal label">当前状态:</div>
       <c:if test="${request.type==1}">
-        已通过监护人请求
+        已通过机构请求
       </c:if>
       <c:if test="${request.type==2}">
         普通亲戚关系（非监护人）
@@ -64,5 +72,6 @@
   </div>
 </div>
 </body>
+</html>
 
 <%@include file="templates/footer.jsp"%>

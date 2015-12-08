@@ -1,6 +1,7 @@
 package com.OCare.dao;
 
 import com.OCare.entity.Elder;
+import com.OCare.entity.OfPropertyEntity;
 
 import java.util.List;
 
@@ -21,4 +22,6 @@ public interface ElderDAO extends IGeneralDAO<Elder> {
         功能：根据公司拿到所有老人
      */
     public List<Elder> getAllEldersByCompanyId(int companyId);
+
+    public OfPropertyEntity getPropertyValue();
 }

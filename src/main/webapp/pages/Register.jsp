@@ -1,12 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
-  User: admin
+  User: douyutong
   Date: 2015/10/15
   Time: 10:49
   To change this template use File | Settings | File Templates.
 --%>
 <%@page contentType="text/html; charset=utf-8" language="java" pageEncoding="UTF-8" %>
 <%@include file="templates/header.jsp"%>
+<script src="/OCare/Assets/JS/jquery.address.js"></script>
 <div style="width:1250px;margin:30px auto">
   <!--步骤条-->
      <div class="ui ordered steps" style="margin: 10px 410px">
@@ -36,82 +37,78 @@
       </div>
     <!--个人机构选择按钮-->
     <!-------------------------------------------->
-                  <!--机构注册-->
+                  <!--法人注册-->
     <!-------------------------------------------->
     <div class="ui tab segment active" data-tab="first">
-      <form class="ui form" method="post" action="/OCare/pages/WaitPermition.jsp" target="_blank">
-            <table style="margin: 30px 100px;">
-              <tr style="line-height: 80px;">
-                <td>机构名称:</td>
-                <td>
-                  <div class="ui input"><input type="text" id="agent_name" name="agent_name" style="width:300px"></div>
-                </td>
-                <td><button class="ui teal button" style="width: 200px;background-color: #78D6CC;">营业执照上传</button></td>
-                <td><div class="ui input"><input type="text" id="licence_pic" style="width:300px"></div></td>
-              </tr>
-              <tr style="line-height: 80px;">
-                <td>组织结构代码证号：</td>
-                <td>
-                  <div class="ui input"><input type="text" id="angent_code" style="width:300px"></div>
-                </td>
-                <td><button class="ui teal button" style="width: 200px;background-color: #78D6CC;">组织代码证上传</button></td>
-                <td><div class="ui input"><input type="text" id="code_pic" style="width:300px"></div></td>
-              </tr>
-              <tr style="line-height: 80px;">
-                <td>法人姓名：</td>
-                <td>
-                  <div class="ui input"><input type="text" id="legalperson_name" style="width:300px"></div>
-                </td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr style="line-height: 80px;">
-                <td>法人身份证号：</td>
-                <td>
-                  <div class="ui input"><input type="text" id="legalperson_id" style="width:300px"></div>
-                </td>
-                <td><button class="ui teal button" style="width: 200px;background-color: #78D6CC;">身份证上传</button></td>
-                <td><div class="ui input"><input type="text" id="id_pic" style="width:300px"></div></td>
-              </tr>
-              <tr style="line-height: 80px;">
-                <td>法人手机号：</td>
-                <td>
-                  <div class="ui input"><input type="text" id="legalperson_tel" style="width:300px"></div>
-                </td>
-                <td><button class="ui teal button" style="width: 200px;background-color: #78D6CC;">获取验证码</button></td>
-                <td><div class="ui input"><input type="text" id="verification" style="width:300px"></div></td>
-              </tr>
-              <tr style="line-height: 80px;">
-                <td>密码</td>
-                <td>
-                  <div class="ui input"><input type="password" id="password" name="password" style="width:300px"></div>
-                </td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr style="line-height: 80px;">
-                <td>再次输入密码</td>
-                <td>
-                  <div class="ui input">
-                    <input type="password" id="confirm" name="confirmPassword" style="width:300px">
-                  </div>
-                </td>
-              </tr>
-            </table>
+      <form class="ui legal-person form" method="Post" id="legalpersonForm" action="/OCare/app/register/legalperson" enctype="multipart/form-data">
+        <table style="margin: 30px 100px;">
+          <tr style="line-height: 80px;">
+            <td>法人姓名：</td>
+            <td>
+              <div class="ui input"><input type="text" id="legalperson_name" name="legalperson_name" style="width:300px"></div>
+            </td>
+          </tr>
+          <tr style="line-height: 80px;">
+          <td>法人身份证号：</td>
+          <td>
+             <div class="ui input"><input type="text" id="legalperson_id" name="legalperson_id" style="width:300px"></div>
+          </td>
+          <td>
+            <div class="ui teal button" style="width: 200px;background-color: #78D6CC;">
+               身份证证上传
+              <input type="file" style="opacity: 0;margin-top:-23px" id="lp_img" accept="image/jpeg,image/bmp,image/png,image/gif" onchange="id_image.value=this.value" />
+            </div>
+              <input type="file" name="lp_img"/>
 
-             <div class="ui checkbox" style="margin-left: 130px;">
-               <input name="isAgree" type="checkbox"/>
-               <label>我同意相关协议</label>
-             </div>
-               <div class="ui fluid positive large submit button" style="margin: 30px 100px;width:80%">
-                 提交
-               </div>
+          </td>
+          <td>
+            <div class="ui input"><input type="text" id="id_image" style="width:300px"></div>
+          </td>
+          </tr>
+          <tr style="line-height: 80px;">
+           <td>法人手机号：</td>
+           <td>
+             <div class="ui input"><input type="text" id="legalperson_tel"  name="legalperson_tel" style="width:300px"></div>
+           </td>
+           <td>
+           <button class="ui teal button verify-code" style="width: 200px;background-color: #78D6CC;">
+            获取验证码
+           </button>
+           </td>
+          <td>
+          <div class="ui input"><input type="text" id="verification" style="width:300px">
+          </div>
+          </td>
+          </tr>
+          <tr style="line-height: 80px;">
+          <td>法人邮箱：</td>
+          <td>
+            <div class="ui input"><input type="text" id="legalperson_email"  name="legalperson_email" style="width:300px"></div>
+          </td>
+          </tr>
+          <tr style="line-height: 80px;">
+          <td>密码</td>
+          <td>
+             <div class="ui input"><input type="password" id="legalperson_password" name="legalperson_password" style="width:300px"></div>
+          </td>
+          </tr>
+          <tr style="line-height: 80px;">
+            <td>再次输入密码</td>
+            <td>
+              <div class="ui input">
+              <input type="password" id="confirm" name="confirmPassword" style="width:300px">
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div class="ui fluid positive large leagal-submit submit button" style="margin: 30px 100px;width:80%">
+        提交
+        </div>
         <div class="ui error message" style="width: 80%;margin-left: 100px;"></div>
       </form>
-
     </div>
     <!-------------------------------------------->
-                  <!--机构注册结束-->
+                  <!--法人注册结束-->
     <!-------------------------------------------->
 
     <div class="ui tab segment active" data-tab="second">
@@ -462,7 +459,7 @@
             <input name="isAgree" type="checkbox"/>
             <label>我同意相关协议</label>
           </div>
-          <div class="ui fluid positive large submit button" style="margin: 30px 100px;width:80%">
+          <div class="ui fluid positive large submit button" style="margin: 30px 50px;width: 90%;">
             提交
           </div>
           <div class="ui error message" style="width: 80%;margin-left: 100px;"></div>
@@ -478,21 +475,21 @@
   $('.ui.form')
           .form({
             agent_name:{
-              identifier:'agent_name',
+              identifier:'legalperson_name',
               rules:[{
                 type:'empty',
-                prompt:"请输入机构名称"
+                prompt:"请输入法人姓名"
               }]
             },
             name:{
-              identifier:'name',
+              identifier:'legalperson_id',
               rules:[{
                 type:'empty',
-                prompt:"请输入您的姓名"
+                prompt:"请输入身份证号"
               }]
             },
             password: {
-              identifier: 'password',
+              identifier: 'legalperson_password',
               rules: [{
                 type: 'empty',
                 prompt: "请设置您的密码"
@@ -504,7 +501,7 @@
             confirmPassword: {
               identifier: 'confirmPassword',
               rules: [{
-                type: 'match[password]',
+                type: 'match[legalperson_password]',
                 prompt: "密码不符"
               }]
             },
@@ -522,6 +519,13 @@
                 prompt:"请选择您的性别"
               }]
             },
+            email:{
+              identifier:  'legalperson_email',
+              rules:[{
+                type:'email',
+                prompt:"邮箱格式不正确"
+              }]
+            }
   })
 </script>
 <script>

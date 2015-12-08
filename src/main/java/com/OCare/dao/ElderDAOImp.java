@@ -1,6 +1,7 @@
 package com.OCare.dao;
 
 import com.OCare.entity.Elder;
+import com.OCare.entity.OfPropertyEntity;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -76,5 +77,15 @@ public class ElderDAOImp extends IGeneralDAOImpl<Elder> implements ElderDAO{
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setInteger("n",companyId);
         return query.list();
+    }
+
+    @Override
+    public OfPropertyEntity getPropertyValue() {
+        String passwordKey="passwordKey";
+        String hql="from OfPropertyEntity where name= :n";
+        Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("n",passwordKey);
+        List<OfPropertyEntity> list=query.list();
+        return list.get(0);
     }
 }
