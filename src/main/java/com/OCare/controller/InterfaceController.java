@@ -15,12 +15,11 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 import javax.management.MBeanServer;
 import javax.servlet.ServletRequestWrapper;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.util.*;
@@ -1335,6 +1334,49 @@ public class InterfaceController {
 
         // 重定向
         return "success";
+    }
+
+
+    @RequestMapping("contract/download")
+    public void fileDownload(HttpServletRequest request,HttpServletResponse response,String Cid) {
+        // 判断文件是否为空
+
+
+        File file = ftpService.getFileById(Cid);
+
+        String filename = file.getName();// 获取日志文件名称
+        InputStream fis = null;
+        byte[] buffer = null;
+        try {
+            fis = new BufferedInputStream(new FileInputStream(file));
+            buffer = new byte[fis.available()];
+            fis.read(buffer);
+            fis.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        response.reset();
+        // 先去掉文件名称中的空格,然后转换编码格式为utf-8,保证不出现乱码,这个文件名称用于浏览器的下载框中自动显示的文件名
+        try {
+            response.addHeader("Content-Disposition", "attachment;filename=" + new String(filename.replaceAll(" ", "").getBytes("utf-8"),"iso8859-1"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        response.addHeader("Content-Length", "" + file.length());
+        OutputStream os = null;
+        try {
+            os = new BufferedOutputStream(response.getOutputStream());
+            os.write(buffer);// 输出文件
+            os.flush();
+            os.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        response.setContentType("application/octet-stream");
+
     }
 
     /*------------------2015.12.1 by Tommy------------------*/

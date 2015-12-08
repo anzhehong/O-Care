@@ -37,6 +37,25 @@ public class FtpServiceImp implements FtpService {
 
     @Override
     public File getFileById(String id) {
-        return null;
+        File f = new File(id);
+        try {
+            // 创建客户端
+            FTPClient client = new FTPClient();
+            // 不指定端口，则使用默认端口21
+            client.connect("202.120.163.167", 21);
+            // 用户登录
+            client.login("ocare", "ocare");
+            // 打印地址信息
+            System.out.println(client);
+            client.changeDirectory("contracts");
+            client.changeDirectory(id);
+
+            client.download(id + ".doc", f);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return f;
     }
 }
