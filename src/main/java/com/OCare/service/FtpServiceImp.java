@@ -3,6 +3,7 @@ package com.OCare.service;
 import it.sauronsoftware.ftp4j.FTPClient;
 import it.sauronsoftware.ftp4j.FTPException;
 import it.sauronsoftware.ftp4j.FTPIllegalReplyException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,9 +30,6 @@ public class FtpServiceImp implements FtpService {
             System.out.println(client);
             client.changeDirectory("contract");
             client.upload(file);
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,11 +38,30 @@ public class FtpServiceImp implements FtpService {
 
     @Override
     public File getFileById(String id) {
-        return null;
+        File f = new File(id);
+        try {
+            // 创建客户端
+            FTPClient client = new FTPClient();
+            // 不指定端口，则使用默认端口21
+            client.connect("202.120.163.167", 21);
+            // 用户登录
+            client.login("ocare", "ocare");
+            // 打印地址信息
+            System.out.println(client);
+            client.changeDirectory("contracts");
+            client.changeDirectory(id);
+
+            client.download(id + ".doc", f);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return f;
     }
+
     //by qian
     @Override
     public String uploadFileById(File file, String id) {
+
         try {
             // 创建客户端
             FTPClient client = new FTPClient();
@@ -97,7 +114,6 @@ public class FtpServiceImp implements FtpService {
         System.out.println(root);
         return root;
     }
-
 
 
 }

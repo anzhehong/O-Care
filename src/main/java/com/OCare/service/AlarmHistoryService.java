@@ -8,5 +8,5 @@ import java.util.List;
  * Created by Ma on 2015/11/10.
  */
 public interface AlarmHistoryService {
-    public List<AlarmHistory> getAlarmHistory(int limit,int offset);
+    public List<AlarmHistory> getAlarmHistory();
 }

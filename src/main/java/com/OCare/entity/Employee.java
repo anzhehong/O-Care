@@ -1,20 +1,17 @@
 package com.OCare.entity;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * Created by fowafolo on 15/7/26.
+ * Created by fordevelopment on 15/11/18.
  */
 @Entity
-@Table
 public class Employee {
-
-    @Id
     private String id;
-
     private int company_id;
     private String name;
     private String phone;
@@ -23,7 +20,7 @@ public class Employee {
     private String position;
     private Date contract_start;
     private Date contract_end;
-    private int status;
+    private Integer status;
     private String password;
     private String image;
     private String superior;
@@ -31,6 +28,8 @@ public class Employee {
     private String workDetail;
     private Date lastUpdateTime;
 
+    @Id
+    @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 45)
     public String getId() {
         return id;
     }
@@ -39,6 +38,8 @@ public class Employee {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "company_id", nullable = false, insertable = true, updatable = true)
     public int getCompany_id() {
         return company_id;
     }
@@ -47,6 +48,8 @@ public class Employee {
         this.company_id = company_id;
     }
 
+    @Basic
+    @Column(name = "name", nullable = false, insertable = true, updatable = true, length = 45)
     public String getName() {
         return name;
     }
@@ -55,6 +58,8 @@ public class Employee {
         this.name = name;
     }
 
+    @Basic
+    @Column(name = "phone", nullable = false, insertable = true, updatable = true, length = 45)
     public String getPhone() {
         return phone;
     }
@@ -63,6 +68,8 @@ public class Employee {
         this.phone = phone;
     }
 
+    @Basic
+    @Column(name = "address", nullable = false, insertable = true, updatable = true, length = 45)
     public String getAddress() {
         return address;
     }
@@ -71,6 +78,8 @@ public class Employee {
         this.address = address;
     }
 
+    @Basic
+    @Column(name = "department", nullable = true, insertable = true, updatable = true, length = 45)
     public String getDepartment() {
         return department;
     }
@@ -79,6 +88,8 @@ public class Employee {
         this.department = department;
     }
 
+    @Basic
+    @Column(name = "position", nullable = true, insertable = true, updatable = true, length = 45)
     public String getPosition() {
         return position;
     }
@@ -87,6 +98,8 @@ public class Employee {
         this.position = position;
     }
 
+    @Basic
+    @Column(name = "contract_start", nullable = true, insertable = true, updatable = true)
     public Date getContract_start() {
         return contract_start;
     }
@@ -95,6 +108,8 @@ public class Employee {
         this.contract_start = contract_start;
     }
 
+    @Basic
+    @Column(name = "contract_end", nullable = true, insertable = true, updatable = true)
     public Date getContract_end() {
         return contract_end;
     }
@@ -103,14 +118,18 @@ public class Employee {
         this.contract_end = contract_end;
     }
 
-    public int getStatus() {
+    @Basic
+    @Column(name = "status", nullable = true, insertable = true, updatable = true)
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
+    @Basic
+    @Column(name = "password", nullable = true, insertable = true, updatable = true, length = 45)
     public String getPassword() {
         return password;
     }
@@ -119,6 +138,8 @@ public class Employee {
         this.password = password;
     }
 
+    @Basic
+    @Column(name = "image", nullable = true, insertable = true, updatable = true, length = 45)
     public String getImage() {
         return image;
     }
@@ -127,6 +148,8 @@ public class Employee {
         this.image = image;
     }
 
+    @Basic
+    @Column(name = "superior", nullable = true, insertable = true, updatable = true, length = 45)
     public String getSuperior() {
         return superior;
     }
@@ -135,14 +158,8 @@ public class Employee {
         this.superior = superior;
     }
 
-    public String getWorkDetail() {
-        return workDetail;
-    }
-
-    public void setWorkDetail(String workDetail) {
-        this.workDetail = workDetail;
-    }
-
+    @Basic
+    @Column(name = "workExperience", nullable = true, insertable = true, updatable = true, length = 255)
     public String getWorkExperience() {
         return workExperience;
     }
@@ -151,11 +168,75 @@ public class Employee {
         this.workExperience = workExperience;
     }
 
+    @Basic
+    @Column(name = "workDetail", nullable = true, insertable = true, updatable = true, length = 255)
+    public String getWorkDetail() {
+        return workDetail;
+    }
+
+    public void setWorkDetail(String workDetail) {
+        this.workDetail = workDetail;
+    }
+
+    @Basic
+    @Column(name = "lastUpdateTime", nullable = true, insertable = true, updatable = true)
     public Date getLastUpdateTime() {
         return lastUpdateTime;
     }
 
     public void setLastUpdateTime(Date lastUpdateTime) {
         this.lastUpdateTime = lastUpdateTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Employee employee = (Employee) o;
+
+        if (company_id != employee.company_id) return false;
+        if (id != null ? !id.equals(employee.id) : employee.id != null) return false;
+        if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
+        if (phone != null ? !phone.equals(employee.phone) : employee.phone != null) return false;
+        if (address != null ? !address.equals(employee.address) : employee.address != null) return false;
+        if (department != null ? !department.equals(employee.department) : employee.department != null) return false;
+        if (position != null ? !position.equals(employee.position) : employee.position != null) return false;
+        if (contract_start != null ? !contract_start.equals(employee.contract_start) : employee.contract_start != null)
+            return false;
+        if (contract_end != null ? !contract_end.equals(employee.contract_end) : employee.contract_end != null)
+            return false;
+        if (status != null ? !status.equals(employee.status) : employee.status != null) return false;
+        if (password != null ? !password.equals(employee.password) : employee.password != null) return false;
+        if (image != null ? !image.equals(employee.image) : employee.image != null) return false;
+        if (superior != null ? !superior.equals(employee.superior) : employee.superior != null) return false;
+        if (workExperience != null ? !workExperience.equals(employee.workExperience) : employee.workExperience != null)
+            return false;
+        if (workDetail != null ? !workDetail.equals(employee.workDetail) : employee.workDetail != null) return false;
+        if (lastUpdateTime != null ? !lastUpdateTime.equals(employee.lastUpdateTime) : employee.lastUpdateTime != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + company_id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (department != null ? department.hashCode() : 0);
+        result = 31 * result + (position != null ? position.hashCode() : 0);
+        result = 31 * result + (contract_start != null ? contract_start.hashCode() : 0);
+        result = 31 * result + (contract_end != null ? contract_end.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (image != null ? image.hashCode() : 0);
+        result = 31 * result + (superior != null ? superior.hashCode() : 0);
+        result = 31 * result + (workExperience != null ? workExperience.hashCode() : 0);
+        result = 31 * result + (workDetail != null ? workDetail.hashCode() : 0);
+        result = 31 * result + (lastUpdateTime != null ? lastUpdateTime.hashCode() : 0);
+        return result;
     }
 }

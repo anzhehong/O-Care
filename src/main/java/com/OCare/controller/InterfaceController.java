@@ -2,14 +2,27 @@ package com.OCare.controller;
 
 import com.OCare.entity.*;
 import com.OCare.service.*;
+import it.sauronsoftware.ftp4j.FTPClient;
+import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.*;
+
+import javax.management.MBeanServer;
+import javax.servlet.ServletRequestWrapper;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
@@ -39,8 +52,11 @@ public class InterfaceController {
     private ContractService contractService;
     @Autowired
     private ElderConditionService elderConditionService;
+
     @Autowired
     private FtpService ftpService;
+    @Autowired
+    private CompanyService companyService;
 
     /**
      * @param phoneNum：Phone    number
@@ -75,6 +91,42 @@ public class InterfaceController {
             }
         }
     }
+
+    //admin的logon函数
+    @RequestMapping(value = "/adminlogon")
+    @ResponseBody
+    public Map<String, Object> adminlogon(String phoneNum, String password){
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        if(phoneNum == null || password == null || phoneNum == "" || password == ""){
+            result.put("error", true);
+            result.put("errorMsg", "PhoneNum or password is empty");
+            return result;
+        }else{
+            String status = accountService.adminlogon(phoneNum, password).getKey();
+            if(status == "Invalid Account"){
+                result.put("error", true);
+                result.put("errorMsg", "Invalid Account");
+                return result;
+            }else if (status == "Incorrect password"){
+                result.put("error", true);
+                result.put("errorMsg", "Incorrect password");
+                return result;
+            }else{
+                //HttpSession session = request.getSession();
+
+                ServletRequestWrapper session = null;
+                session.setAttribute("sessionId",phoneNum );
+                session.setAttribute("sessionType",status );
+                result.put("error", false);
+                result.put("accountType", status);
+                result.put("account", accountService.logon(phoneNum, password).getValue());
+                return result;
+            }
+        }
+    }
+
+
 
     /**
      * @param elderId:       Elder CitizenId
@@ -491,6 +543,7 @@ public class InterfaceController {
         return result;
     }
 
+    //超级管理员拿到所有数据
     @RequestMapping("/getAllElders")
     @ResponseBody
     public Map<String, Object> getAllElders() {
@@ -505,6 +558,25 @@ public class InterfaceController {
         }
         return result;
     }
+
+   //某个区域负责人
+    /*
+    @RequestMapping("/getEldersLocated")
+    @ResponseBody
+    public Map<String, Object> getAllElders()
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        ArrayList<Elder> allElders = elderService.getAllElders();
+        if (allElders.size() == 0)
+        {
+            result.put("error",true);
+            result.put("errorMsg","没有老人的数据");
+        }else {
+            result.put("error",false);
+            result.put("result",allElders);
+        }
+        return result;
+    }*/
 
 
     /*
@@ -806,7 +878,7 @@ public class InterfaceController {
      */
     @RequestMapping("/contract/listAllEldersContractAndMonitorsYu")
     @ResponseBody
-    public ArrayList<HashMap<String, Object>> listAllEldersContractAndMonitorsYu() {
+    public Map<String,Object> listAllEldersContractAndMonitorsYu() {
         ArrayList<HashMap<String, Object>> relatives = new ArrayList<HashMap<String, Object>>();
         //get all elder contract from contract entity
         ArrayList<Contract> contracts = (ArrayList<Contract>) contractService.getAllContracts();
@@ -819,23 +891,45 @@ public class InterfaceController {
             //the current elder information
             HashMap<String, Object> tempElderInfo = new HashMap<String, Object>();
 
+
             Elder tempElder = elderService.getElderById(contract.getElder_id());
-            tempElderInfo.put("contract_id", contract.getId());
-            tempElderInfo.put("old_name", tempElder.getName());
-            tempElderInfo.put("old_id", contract.getElder_id());
-            tempElderInfo.put("execution", contract.getStatus());
-            tempElderInfo.put("date", contract.getStart_time());
-            tempElderInfo.put("service", "special service");
-            tempElderInfo.put("payment", "payed");
+//<<<<<<< HEAD
+//            tempElderInfo.put("contract_id", contract.getId());
+//            tempElderInfo.put("old_name", tempElder.getName());
+//            tempElderInfo.put("old_id", contract.getElder_id());
+//            tempElderInfo.put("execution", contract.getStatus());
+//            tempElderInfo.put("date", contract.getStart_time());
+//            tempElderInfo.put("service", "special service");
+//            tempElderInfo.put("payment", "payed");
+//
+//            ArrayList<Relative> tempMonitos = verifyService.getMonitorsByElderId(contract.getElder_id());
+//
+//            for (int i = 0; i < 2; i++) {
+//                if (tempMonitos.size() != 0 && tempMonitos.size() > i) {
+//                    String tempStr1 = "keeper" + Integer.toString(i + 1) + "_name";
+//                    tempElderInfo.put(tempStr1, tempMonitos.get(i).getName());
+//                    String tempStr2 = "keeper" + Integer.toString(i + 1) + "_id";
+//                    tempElderInfo.put(tempStr2, verifyService.getMonitorsByElderId(contract.getElder_id()).get(i).getId());
+//=======
+
+            tempElderInfo.put("contract_id",contract.getId());
+            tempElderInfo.put("old_name",tempElder.getName());
+            tempElderInfo.put("old_id",contract.getElder_id());
+            tempElderInfo.put("execution",contract.getStatus());
+            tempElderInfo.put("date",contract.getStart_time());
+            tempElderInfo.put("service","special service");
+            tempElderInfo.put("payment","payed");
 
             ArrayList<Relative> tempMonitos = verifyService.getMonitorsByElderId(contract.getElder_id());
 
-            for (int i = 0; i < 2; i++) {
-                if (tempMonitos.size() != 0 && tempMonitos.size() > i) {
-                    String tempStr1 = "keeper" + Integer.toString(i + 1) + "_name";
-                    tempElderInfo.put(tempStr1, tempMonitos.get(i).getName());
-                    String tempStr2 = "keeper" + Integer.toString(i + 1) + "_id";
-                    tempElderInfo.put(tempStr2, verifyService.getMonitorsByElderId(contract.getElder_id()).get(i).getId());
+
+
+            for (int i=0; i<2; i++){
+                if (tempMonitos.size()!=0 && tempMonitos.size() > i){
+                    String tempStr1 = "keeper" + Integer.toString(i+1) +"_name";
+                    tempElderInfo.put(tempStr1,tempMonitos.get(i).getName());
+                    String tempStr2 = "keeper" + Integer.toString(i+1) +"_id";
+                    tempElderInfo.put(tempStr2,verifyService.getMonitorsByElderId(contract.getElder_id()).get(i).getId());
                 }
             }
             //add to list
@@ -844,7 +938,11 @@ public class InterfaceController {
         }
         System.out.println(contractInfo.toString());
         relatives = contractInfo;
-        return relatives;
+
+        Map<String,Object> result = new HashMap<String, Object>();
+        result.put("total",relatives.size());
+        result.put("rows",relatives);
+        return result;
     }
 
     /*
@@ -1128,6 +1226,7 @@ public class InterfaceController {
     public String fileUpload(HttpServletRequest request, String employeeid) {
         // 判断文件是否为空
 
+
         System.out.println(employeeid);
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
         //判断 request 是否有文件上传,即多部分请求
@@ -1138,6 +1237,7 @@ public class InterfaceController {
             Iterator<String> iter = multiRequest.getFileNames();
            int i=0;
             while (iter.hasNext()) {
+
 
                 //记录上传过程起始时的时间，用来计算上传时间
                 int pre = (int) System.currentTimeMillis();
@@ -1171,4 +1271,122 @@ public class InterfaceController {
 
         }return "HR";
     }
+
+
+    //根据法人的status和id获取他的所有company
+    @RequestMapping(value = "/getCompanyByLegalPersonId")
+    @ResponseBody
+    public Map<String, Object> getCompanyByLegalPersonId(String status, String id) {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        if (status == null || id == null || status == "" || id == "") {
+            result.put("error", true);
+            result.put("errorMsg", "PhoneNum or password is empty");
+            return result;
+        } else if (status != "LegalPerson") {
+            result.put("error", true);
+            result.put("errorMsg", "YOU NOT LEGALPERSON");
+        } else {
+            List<Company> companyList = companyService.getByLegalPerson(id);
+            if(companyList.isEmpty()){
+                result.put("error", true);
+                result.put("errorMsg", "NO COMPANY BELONG TO THIS LEGALPERSON");
+            }
+            else {
+                result.put("error",false);
+                result.put("companyList", companyList);
+            }
+        }
+        return result;
+    }
+
+
+//    @RequestMapping("contract/upload")
+//    @ResponseBody
+//    public String fileUpload(HttpServletRequest request, MultipartFile file) {
+//        // 判断文件是否为空
+//
+//        if(file!=null)
+//        {
+//            File convFile = new File(file.getOriginalFilename());
+//            try {
+//                convFile.createNewFile();
+//                FileOutputStream fos = new FileOutputStream(convFile);
+//                fos.write(file.getBytes());
+//                fos.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//
+//            ftpService.uploadFile(convFile);
+//
+//
+//
+//            System.out.println("success");
+//
+//
+//        }
+//
+//        // 重定向
+//        return "success";
+//    }
+
+
+    @RequestMapping("contract/download")
+    public void fileDownload(HttpServletRequest request,HttpServletResponse response,String Cid) {
+        // 判断文件是否为空
+
+
+        File file = ftpService.getFileById(Cid);
+
+        String filename = file.getName();// 获取日志文件名称
+        InputStream fis = null;
+        byte[] buffer = null;
+        try {
+            fis = new BufferedInputStream(new FileInputStream(file));
+            buffer = new byte[fis.available()];
+            fis.read(buffer);
+            fis.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        response.reset();
+        // 先去掉文件名称中的空格,然后转换编码格式为utf-8,保证不出现乱码,这个文件名称用于浏览器的下载框中自动显示的文件名
+        try {
+            response.addHeader("Content-Disposition", "attachment;filename=" + new String(filename.replaceAll(" ", "").getBytes("utf-8"),"iso8859-1"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        response.addHeader("Content-Length", "" + file.length());
+        OutputStream os = null;
+        try {
+            os = new BufferedOutputStream(response.getOutputStream());
+            os.write(buffer);// 输出文件
+            os.flush();
+            os.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        response.setContentType("application/octet-stream");
+
+    }
+
+    /*------------------2015.12.1 by Tommy------------------*/
+    @RequestMapping("elderById")
+    @ResponseBody
+    public Elder getElderById(String elderId) {
+
+        Elder result = (Elder)elderService.getElderById(elderId);
+
+        return result;
+
+
+    }
+
+
+
 }

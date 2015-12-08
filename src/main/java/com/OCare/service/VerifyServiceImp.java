@@ -36,6 +36,8 @@ public class VerifyServiceImp implements VerifyService {
         //在申请状态ElderMonitor里的type应为4
         newRelation.setType(3);
         //添加到数据库
+
+
         elderMonitorDAO.insert(newRelation);
     }
 
@@ -182,7 +184,8 @@ public class VerifyServiceImp implements VerifyService {
         List<ElderMonitor> elderMonitors = elderMonitorDAO.getMonitorsByElderId(elderid);
 
         //no monitor
-        if(elderMonitors == null || elderMonitors.size() == 0){
+        if(elderMonitors == null){
+                System.out.println("nothinghere111");
             return null;
         }else{
             ArrayList<Relative> relatives = new ArrayList<Relative>();

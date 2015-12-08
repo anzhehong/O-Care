@@ -257,6 +257,10 @@ else {
         // 重定向
         return "import_new";
     }
+    @RequestMapping("/ht/upload")
+    public String htUpload() {
+        return "contractUpload";
+    }
 
     public static String getRandomPass(int pwd_len){
         //35是因为数组是从0开始的，26个字母+10个数字

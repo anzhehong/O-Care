@@ -46,10 +46,10 @@
       <i class="legal icon"></i>
       合同管理
     </div>
-    <a class="item">
+    <a class="item" href="/OCare/ht/table">
       &nbsp;&nbsp;&nbsp;&nbsp;合同列表
     </a>
-    <a class="item">
+    <a class="item" href="/OCare/ht/upload">
       &nbsp;&nbsp;&nbsp;&nbsp;上传合同
     </a>
 

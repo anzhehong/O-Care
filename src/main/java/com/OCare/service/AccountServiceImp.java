@@ -1,9 +1,6 @@
 package com.OCare.service;
 
-import com.OCare.dao.ElderDAO;
-import com.OCare.dao.LegalPersonDAO;
-import com.OCare.dao.RelativeDAO;
-import com.OCare.dao.VolunteerDAO;
+import com.OCare.dao.*;
 import com.OCare.entity.*;
 import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +22,8 @@ public class AccountServiceImp implements AccountService {
     private VolunteerDAO volunteerDAO;
     @Autowired
     private LegalPersonDAO legalPersonDAO;
+    @Autowired
+    private AdminDao adminDao;
 
     @Override
     public Pair<String, Object> logon(String phoneNum, String password) {
@@ -60,6 +59,24 @@ public class AccountServiceImp implements AccountService {
         }else if (legalPerson != null){
             if (legalPerson.getPassword().equals(md5Password)){
                 Pair<String, Object> pair = new Pair<String, Object>("LegalPerson", legalPerson);
+                return pair;
+            }else{
+                Pair<String, Object> pair = new Pair<String, Object>("Incorrect password", null);
+                return pair;
+            }
+        }else{
+            Pair<String, Object> pair = new Pair<String, Object>("Invalid Account", null);
+            return pair;
+        }
+    }
+
+    @Override
+    public Pair<String, Object> adminlogon(String phoneNum, String password) {
+        String md5Password = JavaMD5Util.MD5(password);
+        Admin admin=adminDao.queryByPhoneNum(phoneNum);
+        if(admin != null){
+            if (admin.getPassword().equals(md5Password)){
+                Pair<String, Object> pair = new Pair<String, Object>("Admin", admin);
                 return pair;
             }else{
                 Pair<String, Object> pair = new Pair<String, Object>("Incorrect password", null);

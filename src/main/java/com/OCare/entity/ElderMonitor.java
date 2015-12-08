@@ -1,28 +1,24 @@
 package com.OCare.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.codehaus.jackson.annotate.JsonBackReference;
+
+import javax.persistence.*;
 
 /**
- * Created by fowafolo on 15/7/30.
+ * Created by fordevelopment on 15/11/18.
  */
-
 @Entity
-@Table
 public class ElderMonitor {
-
-    @Id
     private int id;
-
     private String elder_id;
     private String relative_id;
-    //2表示监护类型为普通亲戚；1表示监护类型为监护人；3表示在申请监护人;
-    //4表示申请监护人被拒绝;5代表邻居关系;
-    //7.代表原来有关系现在没关系了
     private int type;
     private String togetherImg;
+    private Elder elderByElderId;
+    private Relative relativeByRelativeId;
 
+    @Id
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;
     }
@@ -31,6 +27,8 @@ public class ElderMonitor {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "elder_id", nullable = false, insertable = true, updatable = true, length = 45)
     public String getElder_id() {
         return elder_id;
     }
@@ -39,6 +37,8 @@ public class ElderMonitor {
         this.elder_id = elder_id;
     }
 
+    @Basic
+    @Column(name = "relative_id", nullable = false, insertable = true, updatable = true, length = 45)
     public String getRelative_id() {
         return relative_id;
     }
@@ -47,6 +47,8 @@ public class ElderMonitor {
         this.relative_id = relative_id;
     }
 
+    @Basic
+    @Column(name = "type", nullable = false, insertable = true, updatable = true)
     public int getType() {
         return type;
     }
@@ -55,11 +57,60 @@ public class ElderMonitor {
         this.type = type;
     }
 
+    @Basic
+    @Column(name = "togetherImg", nullable = false, insertable = true, updatable = true, length = 45)
     public String getTogetherImg() {
         return togetherImg;
     }
 
     public void setTogetherImg(String togetherImg) {
         this.togetherImg = togetherImg;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ElderMonitor that = (ElderMonitor) o;
+
+        if (id != that.id) return false;
+        if (type != that.type) return false;
+        if (elder_id != null ? !elder_id.equals(that.elder_id) : that.elder_id != null) return false;
+        if (relative_id != null ? !relative_id.equals(that.relative_id) : that.relative_id != null) return false;
+        if (togetherImg != null ? !togetherImg.equals(that.togetherImg) : that.togetherImg != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (elder_id != null ? elder_id.hashCode() : 0);
+        result = 31 * result + (relative_id != null ? relative_id.hashCode() : 0);
+        result = 31 * result + type;
+        result = 31 * result + (togetherImg != null ? togetherImg.hashCode() : 0);
+        return result;
+    }
+
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "elder_id", referencedColumnName = "id",insertable = false,updatable = false)
+    public Elder getElderByElderId() {
+        return elderByElderId;
+    }
+
+    public void setElderByElderId(Elder elderByElderId) {
+        this.elderByElderId = elderByElderId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "relative_id", referencedColumnName = "id",insertable = false,updatable = false)
+    public Relative getRelativeByRelativeId() {
+        return relativeByRelativeId;
+    }
+
+    public void setRelativeByRelativeId(Relative relativeByRelativeId) {
+        this.relativeByRelativeId = relativeByRelativeId;
     }
 }

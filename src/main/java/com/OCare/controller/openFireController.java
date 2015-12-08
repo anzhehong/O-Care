@@ -113,7 +113,7 @@ public class openFireController {
         }
 
         ofMucRoom mucroom=(ofMucRoom)oroom;
-        String roomId=String.valueOf(mucroom.getRoomID());
+        String roomId=String.valueOf(mucroom.getRoomId());
         //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+roomId);
         /*************************根据roomName找到roomId*********************************/
 
@@ -165,25 +165,33 @@ public class openFireController {
             }
         }
 
-        if(oAff instanceof Integer) {
-            if ((Integer) oAff == openFireServiceImpl.AFFILIATION_NOT_EXIST) {
-                result.put("error", true);
-                result.put("errorMsg", "AFFILIATION_NOT_EXIST");
-                return result;
-            }
-        }
 
         result.put("error", false);
 
+
+        if(oAff instanceof Integer) {
+            if ((Integer) oAff == openFireServiceImpl.AFFILIATION_NOT_EXIST) {
+                //result.put("error", true);
+                //result.put("errorMsg", "AFFILIATION_NOT_EXIST");
+                //return result;
+                result.put("ofMucAffiliation","member");
+            }
+        }
+        else {
+            result.put("ofMucAffiliation","owner");
+        }
+
+
+
         ofMucRoom room = (ofMucRoom) oRoom;
         ofMucMember member = (ofMucMember) oMember;
-        ofMucAffiliation affiliation=(ofMucAffiliation)oAff;
-        int aff=affiliation.getAffiliation();
+        //ofMucAffiliation affiliation=(ofMucAffiliation)oAff;
+        //int aff=affiliation.getAffiliation();
 
 
         // result.put("room", room);                   //2015.11.10 不需要房间信息
         result.put("member", member);
-        result.put("ofMucAffiliation",aff);
+       // result.put("ofMucAffiliation","owner");
         //************************************得到member和ofMucAffiliation信息**********************************************
 
 
@@ -248,7 +256,7 @@ public class openFireController {
         }
 
         ofMucRoom mucroom=(ofMucRoom)oRoom;
-        int roomId=mucroom.getRoomID();
+        int roomId=mucroom.getRoomId();
         //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+roomId);
 
 
