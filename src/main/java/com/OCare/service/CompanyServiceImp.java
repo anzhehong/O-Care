@@ -45,8 +45,8 @@ public class CompanyServiceImp implements CompanyService {
     }
 
     @Override
-    public List<Company> getByName(String name) {
-        return companyDAO.getByName(name);
+    public Company getByName(String name) {
+        return companyDAO.getByName(name).get(0);
     }
 
     @Override

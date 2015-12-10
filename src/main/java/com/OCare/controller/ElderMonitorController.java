@@ -26,7 +26,7 @@ public class ElderMonitorController {
     @RequestMapping(value="/agree/{id}", method = RequestMethod.GET)
     public String agreeRequest(@PathVariable String id, Model model){
         verifyService.checkMonitorApply(Integer.parseInt(id), 1);
-        model.addAttribute("list", verifyService.getAllUntreatedRequests());
+        //model.addAttribute("list", verifyService.getAllUntreatedRequests());
         model.addAttribute("request",verifyService.getRequestByID(Integer.parseInt(id)));
         return "verify";
     }

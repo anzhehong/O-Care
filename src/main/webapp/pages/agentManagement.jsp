@@ -68,7 +68,7 @@
         $(document).on('click', '#company_list tr', function() {
             var index = this.getAttribute('data-index');
             $.ajax({
-                url:'/OCare/company/sessionCompanyId',
+                url:'/OCare/company/name',
                 type:'get',
                 data:"&id="+index,
                 success:function(data){

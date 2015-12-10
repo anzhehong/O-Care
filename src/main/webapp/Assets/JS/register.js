@@ -27,6 +27,7 @@ $('.verify-code').click(function(e){
         success:function(data){
             alert("verify code has been sent");
             code = data.code;
+            console.log(code);
         },
         error: function(error){
             alert("failed to send the verify code");

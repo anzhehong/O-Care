@@ -57,7 +57,7 @@ public class CompanyController {
      */
     @RequestMapping(value="/name/{name}", method = RequestMethod.GET)
     public String getCompanyByName(@PathVariable String name, Model model){
-        model.addAttribute("request", companyService.getByName(name));
+        model.addAttribute("company", companyService.getByName(name));
         return "agentVerify";
     }
 
@@ -79,7 +79,7 @@ public class CompanyController {
     @RequestMapping("/legalperson")
     public String getCompanyByLegalPerson(String legalPerson, Model model){
         model.addAttribute("companies", companyService.getByLegalPerson(legalPerson));
-        return "company";
+        return "homepage";
     }
 
 
@@ -99,6 +99,7 @@ public class CompanyController {
      * 功能：列出所有的公司
      */
     @RequestMapping("/companyList")
+    @ResponseBody
     public Map<String, Object> listAllCompanies(String sessionId,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
         if(sessionId!=""||sessionId!=null) {
@@ -126,7 +127,7 @@ public class CompanyController {
     @RequestMapping(value = "/agree/{id}", method = RequestMethod.GET)
     public String agreeApply(@PathVariable String id){
         companyService.changeStatus(Integer.parseInt(id), 102);
-        return "company";
+        return "agentApplyList";
     }
 
     /**
@@ -137,7 +138,17 @@ public class CompanyController {
     @RequestMapping(value = "/reject/{id}", method = RequestMethod.GET)
     public String rejectApply(@PathVariable String id){
         companyService.changeStatus(Integer.parseInt(id), 103);
-        return "company";
+        return "hagentApplyList";
+    }
+    /**
+     * 功能：暂定申请
+     * @param id 公司的编号
+     * @return Null
+     */
+    @RequestMapping(value = "/agree/{id}", method = RequestMethod.GET)
+    public String undecided(@PathVariable String id){
+        companyService.changeStatus(Integer.parseInt(id), 102);
+        return "agentApplyList";
     }
 
 }

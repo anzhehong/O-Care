@@ -47,12 +47,6 @@
                 <td>
                     <div class="ui input"><input type="text" id="code_pic" style="width:300px"></div>
                 </td>
-            <tr style="line-height: 80px;">
-                <td>法人身份证号：</td>
-                <td>
-                   <div class="ui input"><input type="text" id="legalperson_id" name="legalperson_id" style="width:300px"></div>
-                </td>
-            </tr>
           <tr style="line-height: 80px;">
             <td>公司电话：</td>
             <td>

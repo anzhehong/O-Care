@@ -20,53 +20,38 @@
   <div class="ui teal ribbon label">申请审核:</div>
   <div class="ui divided selection list">
     <a class="item">
-      <div class="ui red horizontal label">申请ID: </div> <c:out value="${request.id}"/>
+      <div class="ui red horizontal label">申请ID: </div> <c:out value="${company.id}"/>
     </a>
     <a class="item">
-      <div class="ui horizontal label">机构名称:&nbsp;</div><c:out value="${request.elder_id}"/>
+      <div class="ui horizontal label">机构名称:&nbsp;</div><c:out value="${company.name}"/>
     </a>
     <a class="item">
-      <div class="ui horizontal label">法人姓名:</div><c:out value="${request.relative_id}"/>
-    </a>
-    <a class="item">
-      <div class="ui horizontal label">法人身份证号：</div><c:out value="${}"/>
-    </a>
-    <a class="item">
-      <div class="ui horizontal label">法人邮箱：</div>
+      <div class="ui horizontal label">法人身份证号:</div><c:out value="${company.legal_person_id}"/>
     </a>
 
     <a class="item">
       <div class="ui horizontal label">当前状态:</div>
-      <c:if test="${request.type==1}">
-        已通过机构请求
+      <c:if test="${company.status==101}">
+        未审核
       </c:if>
-      <c:if test="${request.type==2}">
-        普通亲戚关系（非监护人）
+      <c:if test="${company.status==102}">
+        通过
       </c:if>
-      <c:if test="${request.type==3}">
-        待审核
-      </c:if>
-      <c:if test="${request.type==4}">
-        已拒绝
-      </c:if>
-      <c:if test="${request.type==5}">
-        邻居关系
-      </c:if>
-      <c:if test="${request.type==7}">
-        曾经有过监护关系
+      <c:if test="${company.status==103}">
+        未通过
       </c:if>
     </a>
   </div>
-  <%--<c:out value="${request.togetherImg}"/>  数据库里没有图片 只能显示以下样图--%>
+  <%--<c:out value="${company.togetherImg}"/>  数据库里没有图片 只能显示以下样图--%>
   <img class="ui rounded large image" src="/OCare/Assets/Images/together -image.jpg" pagespeed_url_hash="481064615" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
   <div class="elderID-relativeID">
-    <a class="ui huge red label" href="<c:url value="/monitor/makeReject/${request.id}"></c:url> " id="reject">
+    <a class="ui huge red label" href="<c:url value="/company/reject/${company.id}"></c:url> " id="reject">
       <i class="icon remove circle"></i>拒绝
     </a>
-    <a class="ui huge label" href="<c:url value="/monitor/makeUndesigned/${request.id}"></c:url> " id="undesided">
+    <a class="ui huge label" href="<c:url value="/company/undecided/${company.id}"></c:url> " id="undesided">
       <i class="icon adjust"></i>暂定
     </a>
-    <a class="ui huge teal label" href="<c:url value="/monitor/makeAgreed/${request.id}"></c:url> " id="agree">
+    <a class="ui huge teal label" href="<c:url value="/company/agree/${company.id}"></c:url> " id="agree">
       <i class="icon add sign"></i>通过
     </a>
   </div>

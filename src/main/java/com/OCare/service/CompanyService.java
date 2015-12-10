@@ -12,7 +12,7 @@ public interface CompanyService {
     public Company createCompany(String name, String legalPerson, String phone, String address);
     public void changeStatus(int companyId, int status);
     public List<Company> unapproveCompanies();
-    public List<Company> getByName(String name);
+    public Company getByName(String name);
     public List<Company> getByLegalPerson(String legalPerson);
     public List<Company> getAllCompany();
     public Company getCompanyById(int id);
