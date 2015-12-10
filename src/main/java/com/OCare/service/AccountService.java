@@ -8,10 +8,10 @@ import javafx.util.Pair;
 public interface AccountService {
     public Pair<String, Object> logon(String phoneNum, String password,int role);
     public Pair<String, Object> adminlogon(String phoneNum, String password);
-    public String verifyPhoneNum(String id, String phoneNum);
+    public String verifyPhoneNum(String id, String phoneNum,int role);
     public String changePassword(String id, String password);
     public Pair<String, Object> personInforModifyHandle(String id,int role,String change,int type );
-    public String lostPasswordHandle(String id, int role,String password);
+    public String lostPasswordHandle(String id, int role,String password,String phoneNum);
 
     /*
         功能：通过某人的电话号查Image

@@ -34,7 +34,7 @@
         <div class="ui input" style="display: inline">
           <input type="text" id="code" placeholder="验证码..."style="margin: 10px 0px;  width: 362px;">
         </div>
-        <button class="ui inverted teal code_button button" id="the_button" onclick="sendphoneNum()" style="display: inline-block;margin: 10px 0;">获取验证码</button>
+        <button class="ui inverted teal code_button button" id="the_button" style="display: inline-block;margin: 10px 0;">获取验证码</button>
         <div class="ui input" style="display: inline">
           <input type="text" id="id" placeholder="身份证号..."style="margin: 10px 0px;  width: 362px;">
         </div>
@@ -44,7 +44,7 @@
         <div class="ui input" style="display: inline">
           <input type="password" id="confirm_password" placeholder="密码确认..."style="margin: 10px 0px;  width: 362px;">
         </div>
-        <div class="ui fluid positive large submit button" style="margin-top: 20px">确定</div>
+        <div class="ui fluid positive large main-submit submit button" style="margin-top: 20px">确定</div>
         <div class="ui error message" style="  width: 100%;margin-left: 0px;"></div>
         <div id="reset_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
       </div>
@@ -58,22 +58,23 @@
   $('.ui.dropdown')
           .dropdown()
   ;
-  $('.code_button').on('click',function(){
+  var code;
+  $('.code_button').on('click', function(e){
+    e.preventDefault();
     $.ajax({
-      url:'http://localhost:8080/OCare/app/lostPasswordHandle1',
-      type:'post',
-      data:{
-        phone: $('#phoneNum').val()
-      },
+      url:'/OCare/app/code',
+      cache: false,
+      async: false,
+      type: 'get',
+      data: 'phoneNum='+$('#phoneNum').val(),
       success:function(data){
-        if(data.error == false){
-          alert("sent")
-        }else{
-          alert(data.errorMsg);
-        }
+        alert("verify code has been sent");
+        code = data.code;
+        console.log(code);
+
       },
-      error:function(data){
-        alert("failed to send the code")
+      error: function(error){
+        alert("failed to send the verify code");
       }
     })
   });
@@ -82,14 +83,16 @@
   $('.main_form').on('submit',function(e){
     e.preventDefault();
     $.ajax({
-      url:'http://localhost:8080/OCare/app/lostPasswordHandle2',
+      url:'/OCare/app/lostPasswordHandle',
       type:'post',
       async:false,
       data:{
         id: $('#id').val(),
         code: $('#code').val(),
-        roleClass:$('#role_choice').val(),
-        password:$('#password').val()
+        role:$('#role_choice').val(),
+        password:$('#password').val(),
+        phoneNum:$('#phoneNum').val(),
+        sessionId: null
       },
       datatype:'JSONP',
       success:function(data){
@@ -97,6 +100,7 @@
           document.getElementById("reset_errorMsg").style.display="";
           document.getElementById('reset_errorMsg').innerText = data.errorMsg;
         }else{
+          alert("You can use new password to logon now!");
           document.getElementById("reset_errorMsg").style.display="none";
           document.forms[0].action = "/OCare/pages/index.jsp";
           document.forms[0].submit();

@@ -47,7 +47,7 @@
           <i class="book icon "></i>
           机构信息管理
         </div>
-        <a class="item" href="/OCare/agent/list">
+        <a class="item company_list">
           &nbsp;&nbsp;&nbsp;&nbsp;机构列表
         </a>
         <a class="item" href="/OCare/company/list">
@@ -71,8 +71,24 @@
 
 <script>
   var type = "<%= session.getAttribute("sessionType") %>";
-  if(type= "LegalPerson"){
+  if(type==1||type==0||type==2||type==3){
     document.getElementById("company").style.display="none";
     document.getElementById("personal").style.display="none";
   }
+  $('.company_list').click(function(){
+      $.ajax({
+          url:'/OCare/company/companyList',
+          type:'GET',
+          data:{
+              sessionId:null
+          },
+          success:function(data){
+              alert("get list successfully!")
+          },
+          error:function(){
+              alert("can not get the list!")
+          }
+
+      })
+  })
 </script>

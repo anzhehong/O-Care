@@ -31,7 +31,7 @@
         <tr class="negative">
           <td>${var.name}</td>
           <td><i class="icon question"></i>待审核</td>
-          <td><a href="/OCare/company/id/${var.id}"><i class="icon search"></i>查看</a></td>
+          <td><a href="/OCare/company/name/${var.name}"><i class="icon search"></i>查看</a></td>
           <td>无</td>
         </tr>
       </c:if>
@@ -39,7 +39,7 @@
         <tr class="positive">
           <td>${var.id}</td>
           <td><i class="icon checkmark"></i>已通过</td>
-          <td><a href="/OCare/company/id/${var.id}"><i class="icon search"></i>查看</a></td>
+          <td><a href="/OCare/company/name/${var.name}"><i class="icon search"></i>查看</a></td>
           <td>无</td>
         </tr>
       </c:if>

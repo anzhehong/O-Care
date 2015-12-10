@@ -89,7 +89,6 @@ public class AccountServiceImp implements AccountService {
 
     @Override
     public Pair<String, Object> adminlogon(String phoneNum, String password) {
-//        String md5Password = JavaMD5Util.MD5(password);
         Admin admin=adminDao.queryByPhoneNum(phoneNum);
         if(admin != null){
             if (admin.getPassword().equals(password)){
@@ -106,37 +105,74 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public String verifyPhoneNum(String id, String phoneNum) {
+    public String verifyPhoneNum(String id, String phoneNum,int role) {
+        if(role==1){
         Elder elder = elderDAO.queryById(id);
         Relative relative = relativeDAO.queryById(id);
-        Volunteer volunteer = volunteerDAO.queryById(id);
-        LegalPerson legalPerson = legalPersonDAO.queryById(id);
         if(elder != null){
             if (elder.getPhone().equals(phoneNum)){
                 return "Elder";
             }else{
-                return "Incorrect phone number";
+                return "Incorrect phone number with ID";
             }
-        }else if(relative != null){
-            if(relative.getPhone().equals(phoneNum)){
-                return "Relative";
-            }else{
-                return "Incorrect phone number";
-            }
-        }else if (volunteer != null){
-            if (volunteer.getPhone().equals(phoneNum)){
-                return "Volunteer";
-            }else{
-                return "Incorrect phone number";
-            }
-        }else if (legalPerson != null){
-            if (legalPerson.getPhone().equals(phoneNum)){
-                return "LegalPerson";
-            }else{
-                return "Incorrect phone number";
-            }
-        }else{
+        }
+            if(relative != null){
+                if (relative.getPhone().equals(phoneNum)){
+                    return "Relative";
+                }else{
+                    return "Incorrect phone number with ID";
+                }
+            } else {
             return "Invalid Account";
+              }
+        }
+
+        else if(role==2) {
+            LegalPerson legalPerson = legalPersonDAO.queryById(id);
+            if (legalPerson != null) {
+                if (legalPerson.getPhone().equals(phoneNum)) {
+                    return "LegalPerson";
+                } else {
+                    return "Incorrect phone number with ID";
+                }
+            } else {
+                return "Invalid Account";
+            }
+        }
+
+        else if(role==3) {
+            Employee employee = employeeDao.queryById(id);
+            if (employee != null) {
+                if(employee.getPhone().equals(phoneNum)){
+                    return "Employee";
+                }
+                else {
+                    return "Incorrect phone number with ID";
+                }
+            } else {
+                return "Invalid Account";
+            }
+        }
+
+        else if(role==4){
+            return "admin";
+        }
+
+        else if(role==5) {
+            Volunteer volunteer = volunteerDAO.queryById(id);
+            if (volunteer != null) {
+                if (volunteer.getPhone().equals(phoneNum)) {
+                    return "Volunteer";
+                } else {
+                    return "Incorrect phone number with ID";
+                }
+            } else {
+                return "Invalid Account";
+            }
+        }
+
+        else{
+            return "NO role";
         }
     }
 
@@ -170,12 +206,16 @@ public class AccountServiceImp implements AccountService {
 
 
     @Override
-    public String lostPasswordHandle(String id, int role, String password) {
+    public String lostPasswordHandle(String id, int role, String password,String phoneNum) {
         String md5Password = JavaMD5Util.MD5(password);
         if(role==1){
+            System.out.println("0000000000000000000000"+id);
             Elder elder = elderDAO.queryById(id);
+            System.out.println("111111111111111111"+id);
             Relative relative = relativeDAO.queryById(id);
-            ofUser user=userDao.queryById(id);
+            System.out.println("22222222222222222"+id);
+            ofUser user=userDao.queryById(phoneNum);
+            System.out.println("0000000000000000"+phoneNum);
             if(elder != null||relative != null) {
                 if (elder != null) {
                     elder.setPassword(md5Password);
@@ -185,7 +225,9 @@ public class AccountServiceImp implements AccountService {
                 }
                 if (relative != null) {
                     relative.setPassword(md5Password);
+                    System.out.println("111111111111111111"+phoneNum);
                     user.setEncryptedPassword(md5Password);
+                    System.out.println("22222222222222222"+phoneNum);
                     relativeDAO.update(relative);
                     userDao.update(user);
                 }
@@ -236,11 +278,12 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public Pair<String, Object> personInforModifyHandle(String id,int role,String change,int type ) {
+    public Pair<String, Object> personInforModifyHandle(String phoneNum,int role,String change,int type ) {
         if(role==0)
         {
+            String id=elderDAO.queryByPhoneNum(phoneNum).getId();
             Elder elder = elderDAO.queryById(id);
-            ofUser user=userDao.queryById(id);
+            ofUser user=userDao.queryById(phoneNum);
             if(elder==null)
             {
                 Pair<String, Object> pair = new Pair<String, Object>("Invalid Account", null);
@@ -265,8 +308,9 @@ public class AccountServiceImp implements AccountService {
         }
         else if(role==1)
         {
+            String id=relativeDAO.queryByPhoneNum(phoneNum).getId();
             Relative relative = relativeDAO.queryById(id);
-            ofUser user=userDao.queryById(id);
+            ofUser user=userDao.queryById(phoneNum);
             if(relative==null)
             {
                 Pair<String, Object> pair = new Pair<String, Object>("Invalid Account", null);
@@ -290,8 +334,7 @@ public class AccountServiceImp implements AccountService {
         }
         else if(role==2)
         {
-
-            LegalPerson legalPerson = legalPersonDAO.queryById(id);
+            LegalPerson legalPerson=legalPersonDAO.queryByPhoneNum(phoneNum);
             if(legalPerson==null)
             {
                 Pair<String, Object> pair = new Pair<String, Object>("Invalid Account", null);
@@ -313,7 +356,7 @@ public class AccountServiceImp implements AccountService {
         }
         else if(role==3)
         {
-            Admin admin=adminDao.queryById(id);
+            Admin admin=adminDao.queryById(phoneNum);
             if(admin==null)
             {
                 Pair<String, Object> pair = new Pair<String, Object>("Invalid Account", null);
@@ -331,6 +374,7 @@ public class AccountServiceImp implements AccountService {
         }
         else if(role==4)
         {
+            String id=employeeDao.queryByPhoneNum(phoneNum).getId();
             Employee employee=employeeDao.queryById(id);
             if(employee==null)
             {
@@ -357,7 +401,6 @@ public class AccountServiceImp implements AccountService {
             return pair;
         }
     }
-
 
 
     @Override

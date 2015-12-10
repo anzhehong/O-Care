@@ -98,14 +98,15 @@ public class RegisterServiceImp implements RegisterService {
     }
 
     @Override
-    public Company registerForCompany(String comName, String comLegalPersonId, String comPhone, String comAddress) {
+    public Company registerForCompany(String comName, String comLegalPersonId, String comPhone, String comAddress,String url1,String url2) {
 
         Company newCompany = new Company();
         newCompany.setName(comName);
         newCompany.setLegal_person_id(comLegalPersonId);
         newCompany.setPhone(comPhone);
         newCompany.setAddress(comAddress);
-
+        newCompany.setUrl1(url1);
+        newCompany.setUrl2(url2);
         /*
         status = 101 代表未审核
         status = 102 代表审核通过
@@ -115,6 +116,7 @@ public class RegisterServiceImp implements RegisterService {
         companyDAO.insert(newCompany);
         return newCompany;
     }
+
 
     @Override
     public boolean isLegalPersonIdExist(String legalPersonId) {

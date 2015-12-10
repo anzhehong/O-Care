@@ -33,20 +33,21 @@
 
     $( document ).ready(function get_list(){
                 $.ajax({
-                    url:'http://localhost:8080/OCare/app/getCompanyByLegalPersonId',
+                    url:'/OCare/app/getCompanyByLegalPersonId',
                     type:'POST',
                     async: false,
-                    data: {
-                            status: 'LegalPerson',
-                            id: '20151126'
+                    data:{
+                        sessionId: null
                     },
                     success:function(data){
                         if(data.error == false){
                             var table = document.getElementById("company_list");
                             for (var i = 0; i < data.companyList.length;i++){
                                 var row = table.insertRow(0);
-                                row.id = "tr_"+i;
-                                row.setAttribute('data-index', i);
+                                var com_id = data.companyList[i].id;
+                                row.id = "tr_" + com_id;
+                                console.log(row.id);
+                                row.setAttribute('data-index', com_id);
                                 var cell1 = row.insertCell(0);
                                 var cell2 = row.insertCell(1);
                                 var cell3 = row.insertCell(2);
@@ -67,13 +68,11 @@
         $(document).on('click', '#company_list tr', function() {
             var index = this.getAttribute('data-index');
             $.ajax({
-                url:'whatever',
-                type:'post',
-                data:{
-                    com_id: index
-                },
+                url:'/OCare/company/sessionCompanyId',
+                type:'get',
+                data:"&id="+index,
                 success:function(data){
-                    alert("works")
+                    window.location.href="/OCare/pages/homepage.jsp"
                 },
                 error:function(data){
                     alert("sth wrong");

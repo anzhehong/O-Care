@@ -40,7 +40,7 @@
                   <!--法人注册-->
     <!-------------------------------------------->
     <div class="ui tab segment active" data-tab="first">
-      <form class="ui legal-person form" method="Post" id="legalpersonForm">
+      <form class="ui legal-person form" method="Post" id="legalpersonForm" action="/OCare/app/register/legalperson" enctype="multipart/form-data">
         <table style="margin: 30px 100px;">
           <tr style="line-height: 80px;">
             <td>法人姓名：</td>
@@ -51,13 +51,15 @@
           <tr style="line-height: 80px;">
           <td>法人身份证号：</td>
           <td>
-             <div class="ui input"><input type="text" id="legalperson_id" style="width:300px"></div>
+             <div class="ui input"><input type="text" id="legalperson_id" name="legalperson_id" style="width:300px"></div>
           </td>
           <td>
             <div class="ui teal button" style="width: 200px;background-color: #78D6CC;">
                身份证证上传
-              <input type="file" style="opacity: 0;margin-top:-23px" accept="image/jpeg,image/bmp,image/png,image/gif" onchange="code_pic.value=this.value" />
+              <input type="file" style="opacity: 0;margin-top:-23px" id="lp_img" accept="image/jpeg,image/bmp,image/png,image/gif" onchange="id_image.value=this.value" />
             </div>
+              <input type="file" name="lp_img"/>
+
           </td>
           <td>
             <div class="ui input"><input type="text" id="id_image" style="width:300px"></div>
@@ -66,7 +68,7 @@
           <tr style="line-height: 80px;">
            <td>法人手机号：</td>
            <td>
-             <div class="ui input"><input type="text" id="legalperson_tel" style="width:300px"></div>
+             <div class="ui input"><input type="text" id="legalperson_tel"  name="legalperson_tel" style="width:300px"></div>
            </td>
            <td>
            <button class="ui teal button verify-code" style="width: 200px;background-color: #78D6CC;">
@@ -81,7 +83,7 @@
           <tr style="line-height: 80px;">
           <td>法人邮箱：</td>
           <td>
-            <div class="ui input"><input type="text" id="legalperson_email" style="width:300px"></div>
+            <div class="ui input"><input type="text" id="legalperson_email"  name="legalperson_email" style="width:300px"></div>
           </td>
           </tr>
           <tr style="line-height: 80px;">

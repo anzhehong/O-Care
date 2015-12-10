@@ -1,6 +1,7 @@
 package com.OCare.service;
 
 import com.OCare.entity.Company;
+import com.OCare.entity.LegalPerson;
 
 import java.util.List;
 
@@ -15,4 +16,5 @@ public interface CompanyService {
     public List<Company> getByLegalPerson(String legalPerson);
     public List<Company> getAllCompany();
     public Company getCompanyById(int id);
+    public LegalPerson getLegaiPersonByPhone(String phone);
 }

@@ -176,17 +176,17 @@
                         </div>
                     </a>
                     忘记密码?
-                    <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
+                    <div class="ui positive right labeled icon ocSubmit button" style="background-color: #78D6CC;  margin-right: -15px;">
                         登陆
                         <i class="checkmark icon"></i>
                     </div>
                 </div>
                 <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
-                <div id="LegalPerson_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
+                <div id="LegalPerson_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90.5%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
             </form>
         </div>
         <!------------------------------------------------------------------------------------>
-        <div class="ui bottom attached active tab segment" data-tab="Employee">
+        <div class="ui bottom attached tab segment" data-tab="Employee">
             <form class="ui Employee-sign-in form" method="post">
                 <div style="padding:0rem 1rem">
                     <label>手机号:</label></br>
@@ -205,17 +205,17 @@
                         </div>
                     </a>
                     忘记密码?
-                    <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
+                    <div class="ui positive right labeled icon ocSubmit button" style="background-color: #78D6CC;  margin-right: -15px;">
                         登陆
                         <i class="checkmark icon"></i>
                     </div>
                 </div>
                 <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
-                <div id="Employee_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
+                <div id="Employee_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90.5%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
             </form>
         </div>
         <!------------------------------------------------------------------------------------>
-        <div class="ui bottom attached active tab segment" data-tab="Elder">
+        <div class="ui bottom attached tab segment" data-tab="Elder">
             <form class="ui Elder-sign-in form" method="post">
                 <div style="padding:0rem 1rem">
                     <label>手机号:</label></br>
@@ -234,17 +234,17 @@
                         </div>
                     </a>
                     忘记密码?
-                    <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
+                    <div class="ui positive right labeled icon ocSubmit button" style="background-color: #78D6CC;  margin-right: -15px;">
                         登陆
                         <i class="checkmark icon"></i>
                     </div>
                 </div>
                 <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
-                <div id="Elder_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
+                <div id="Elder_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90.5%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
             </form>
         </div>
         <!------------------------------------------------------------------------------------>
-        <div class="ui bottom attached active tab segment" data-tab="Monitor">
+        <div class="ui bottom attached tab segment" data-tab="Monitor">
             <form class="ui Monitor-sign-in form" method="post">
                 <div style="padding:0rem 1rem">
                     <label>手机号:</label></br>
@@ -263,17 +263,17 @@
                         </div>
                     </a>
                     忘记密码?
-                    <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
+                    <div class="ui positive right labeled icon ocSubmit button" style="background-color: #78D6CC;  margin-right: -15px;">
                         登陆
                         <i class="checkmark icon"></i>
                     </div>
                 </div>
                 <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
-                <div id="Monitor_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
+                <div id="Monitor_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90.5%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
             </form>
         </div>
         <!------------------------------------------------------------------------------------>
-        <div class="ui bottom attached active tab segment" data-tab="Volenteer">
+        <div class="ui bottom attached tab segment" data-tab="Volenteer">
             <form class="ui Volenteer-sign-in form" method="post">
                 <div style="padding:0rem 1rem">
                     <label>手机号:</label></br>
@@ -292,13 +292,13 @@
                         </div>
                     </a>
                     忘记密码?
-                    <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
+                    <div class="ui positive right labeled icon ocSubmit button" style="background-color: #78D6CC;  margin-right: -15px;">
                         登陆
                         <i class="checkmark icon"></i>
                     </div>
                 </div>
                 <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
-                <div id="Volenteer_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
+                <div id="Volenteer_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90.5%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
             </form>
         </div>
         <!------------------------------------------------------------------------------------>
@@ -315,14 +315,14 @@
                     </div>
                 </div>
                 <div class="actions">
-                    忘记密码?
-                    <div class="ui positive right labeled icon submit button" style="background-color: #78D6CC;  margin-right: -15px;">
+                    <a href="/OCare/pages/lostPassword.jsp">忘记密码?</a>
+                    <div class="ui positive right labeled icon ocSubmit button" style="background-color: #78D6CC;  margin-right: -15px;">
                         登陆
                         <i class="checkmark icon"></i>
                     </div>
                 </div>
                 <div class="ui error message"  style="width:92.2%;margin-left: 20px; margin-bottom:-1em;text-align: center;"></div>
-                <div id="admin_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
+                <div id="admin_login_errorMsg" style="text-align: center;border-radius: 5px;background-color: #F1D7D7;font-style: inherit;font-size: 15px;color: #A95252;width: 90.5%;margin-left: 20px;padding: 4px 5px;margin-bottom: -2em;display:none"></div>
             </form>
         </div>
     </div>

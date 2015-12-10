@@ -49,7 +49,7 @@ public interface RegisterService {
         参数：
         返回值：实例
      */
-    public Company registerForCompany(String comName, String comLegalPersonId, String comPhone, String comAddress);
+    public Company registerForCompany(String comName, String comLegalPersonId, String comPhone, String comAddress, String url1, String url2);
 
     /*
         功能：判断法人代表是否存在

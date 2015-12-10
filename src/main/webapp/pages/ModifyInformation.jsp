@@ -25,18 +25,18 @@
       </a>
     </div>
     <div class="ui bottom attached active tab segment" data-tab="ChangePhoneNum">
-        <form class="ui ChangePhoneNum_form form" style="  margin-top: 30px;">
+        <div class="ui ChangePhoneNum_form form" style="  margin-top: 30px;">
           <label style="margin: 20px 0;">输入新的手机号：</label>
-          <div class="ui input"><input type="text" id="vol_tel" style="margin: 20px 0;"></div>
-          <div class="ui input" style="display: inline"><input type="text" id="vol_verification" style="margin: 20px 0;width:429px; display: inline"></div></td>
-          <button class="ui teal button" style="background-color: #78D6CC;">获取验证码</button>
-          <div class="ui fluid positive large submit button">
+          <div class="ui input"><input type="text" id="new_tel" style="margin: 20px 0;"></div>
+          <div class="ui input" style="display: inline"><input type="text" id="verify_code" style="margin: 20px 0;width:429px; display: inline"></div></td>
+          <button class="ui teal verify-code button"  style="background-color: #78D6CC;">获取验证码</button>
+          <div class="ui fluid positive large  phoneNum_submit button">
           确认修改
           </div>
-        </form>
+        </div>
     </div>
     <div class="ui bottom attached tab segment" data-tab="ChangePassword">
-      <form class="ui ChangePassword_form form" style="margin-top: 30px;">
+      <div class="ui ChangePassword_form form" style="margin-top: 30px;">
         <label style="margin: 20px 0;">输入旧密码：</label>
         <div class="ui input"><input type="password" id="old_password" name="old_password" style="margin: 20px 0;"></div>
 
@@ -46,13 +46,13 @@
         <label style="margin: 20px 0;">再次输入：</label>
         <div class="ui input"><input type="password" id="confirm_new_confirm" name="confirmPassword" style="margin: 20px 0;"></div>
 
-        <div class="ui fluid positive large submit button" >
+        <div class="ui fluid positive large password_submit button" >
         确认修改
         </div>
-      </form>
+      </div>
     </div>
     <div class="ui bottom attached tab segment" data-tab="ChangePicture">
-      <form class="ui ChangePicture_form form">
+      <div class="ui ChangePicture_form form">
         <table>
             <tr>
                 <td rowspan="3" height="301" align="center">
@@ -69,15 +69,15 @@
               </td>
             </tr>
         </table>
-        <div class="ui fluid positive large submit button" >
+        <div class="ui fluid positive large picture_submit button" >
           确认修改
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>
 <div class="footer" style="position: absolute;">
-  @ copyright Tongji University
+  <i class="Copyright icon"></i> copyright Tongji University
 </div>
 <script>
   $('.ui.dropdown')
@@ -221,6 +221,6 @@
     }
     return true;
   }</script>
-
+<script src="/OCare/Assets/JS/Modification.js"></script>
 </body>
 </html>

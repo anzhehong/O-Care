@@ -10,8 +10,11 @@
 <%@include file="templates/header.jsp"%>
 
 <div style="width:1250px;margin:30px auto;border-radius: 10px;background-color: rgb(237, 237, 237);padding: 20px;">
-    <h2 style="text-align: center;margin-bottom: -20px;font-family: monospace;color:darkcyan;" >申请机构</h2>
-    <form class="ui agent-submit form" method="post" id="agentForm" >
+    <h2 style="text-align: center;margin-bottom: -20px;font-family: monospace;color:darkcyan;" >申请机构:</h2>
+    <form class="ui agent-submit form" method="post"
+          id="agentForm"
+          action="/OCare/app/company/register"
+          enctype="multipart/form-data">
         <table style="margin: 30px 100px;">
             <tr style="line-height: 80px;">
                 <td>机构名称：</td>
@@ -22,6 +25,8 @@
                     <div class="ui teal button" style="width: 200px;background-color: #78D6CC;margin-left: 30px;">营业执照上传
                     <input type="file" style="opacity:0;margin-top:-23px" accept="image/jpeg,image/bmp,image/png,image/gif" onchange="licence_pic.value=this.value">
                     </div>
+                    <input type="file" name="pic1">
+
                 </td>
                 <td>
                    <div class="ui input"><input type="text" id="licence_pic" style="width:300px"></div>
@@ -30,13 +35,14 @@
             <tr style="line-height: 80px;">
                 <td>组织结构代码证号：</td>
                 <td>
-                    <div class="ui input"><input type="text" id="agent_code" style="width:300px"></div>
+                    <div class="ui input"><input type="text" id="agent_code" name="agent_code" style="width:300px"></div>
                 </td>
                 <td>
                 <div class="ui teal button" style="width: 200px;background-color: #78D6CC;margin-left: 30px;">
                     组织代码证上传
                     <input type="file" style="opacity: 0;margin-top:-23px" accept="image/jpeg,image/bmp,image/png,image/gif" onchange="code_pic.value=this.value" />
                 </div>
+                    <input type="file" name="pic2">
                 </td>
                 <td>
                     <div class="ui input"><input type="text" id="code_pic" style="width:300px"></div>
@@ -44,19 +50,19 @@
             <tr style="line-height: 80px;">
                 <td>法人身份证号：</td>
                 <td>
-                   <div class="ui input"><input type="text" id="legalperson_id" style="width:300px"></div>
+                   <div class="ui input"><input type="text" id="legalperson_id" name="legalperson_id" style="width:300px"></div>
                 </td>
             </tr>
           <tr style="line-height: 80px;">
             <td>公司电话：</td>
             <td>
-              <div class="ui input"><input type="text" id="company_phone" style="width:300px"></div>
+              <div class="ui input"><input type="text" id="company_phone" name="company_phone" style="width:300px"></div>
             </td>
           </tr>
             <tr style="line-height: 80px;">
                 <td>公司地址：</td>
                 <td>
-                    <div class="ui input"><input type="text" id="company_address" style="width:300px"></div>
+                    <div class="ui input"><input type="text" id="company_address" name="company_address" style="width:300px"></div>
                 </td>
             </tr>
         </table>
@@ -103,7 +109,7 @@
                 type: 'checked',
                 prompt: "您必须先同意相关条例"
               }]
-            },
+            }
           });
 
   $('.ui.radio.checkbox')
@@ -112,30 +118,30 @@
   $('.ui.checkbox')
           .checkbox()
   ;
-  $('.agent-submit').on('submit',function(e){
-    e.preventDefault();
-            $.ajax({
-              url: 'http://localhost:8080/OCare/app/company/register',
-              type: 'get',
-              async: false,
-              contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-              processData: false,
-              data: 'companyName='+$('#agent_name').val()+'&companyLegalPersonId='+$('#legalperson_id').val()+'&companyPhone='+$('#company_phone').val()+'&companyAddress='+$('#company_address').val(),
-              dataType: 'JSON',
-              success: function(data) {
-                if(data.error == true){
-                    document.getElementById("apply_errorMsg").style.display="";
-                    document.getElementById('apply_errorMsg').innerText = data.errorMsg;
-                }else{
-                  document.getElementById("apply_errorMsg").style.display="none";
-                  document.forms[0].action = "/OCare/pages/WaitPermition.jsp";
-                  document.forms[0].submit();
-                }
-              },
-              error: function(data){
-                  alert("submit failed!");
-              }
-            })
-          })
+//  $('.agent-submit').on('submit',function(e){
+//    e.preventDefault();
+//            $.ajax({
+//              url: '/OCare/app/company/register',
+//              type: 'get',
+//              async: false,
+//              contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+//              processData: false,
+//              data: 'companyName='+$('#agent_name').val()+'&companyLegalPersonId='+$('#legalperson_id').val()+'&companyPhone='+$('#company_phone').val()+'&companyAddress='+$('#company_address').val(),
+//              dataType: 'JSON',
+//              success: function(data) {
+//                if(data.error == true){
+//                    document.getElementById("apply_errorMsg").style.display="";
+//                    document.getElementById('apply_errorMsg').innerText = data.errorMsg;
+//                }else{
+//                  document.getElementById("apply_errorMsg").style.display="none";
+//                  document.forms[0].action = "/OCare/pages/WaitPermition.jsp";
+//                  document.forms[0].submit();
+//                }
+//              },
+//              error: function(data){
+//                  alert("submit failed!");
+//              }
+//            })
+//          })
 </script>
 <%@include file="templates/footer.jsp"%>
