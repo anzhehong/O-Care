@@ -126,7 +126,13 @@ public class InterfaceController {
     //logout函数
     @RequestMapping(value = "/logout")
     @ResponseBody
-    public void logout(HttpSession httpSession){
+    public void logout(String sessionId,HttpSession httpSession){
+
+        if(sessionId!=""||sessionId!=null) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+        }
+
         httpSession.invalidate();
     }
 
@@ -666,8 +672,13 @@ public class InterfaceController {
    //修改个人信息;手机号
     @RequestMapping(value = "/personInforModifyHandle1")
     @ResponseBody
-    public Map<String, Object> personInforModifyHandle1(String phoneNum,int code,HttpSession httpSession){
+    public Map<String, Object> personInforModifyHandle1(String phoneNum,int code,String sessionId,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
+
+        if(sessionId!=""||sessionId!=null) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+        }
 
         String id=(String)httpSession.getAttribute("sessionId");
         String _role= (String)httpSession.getAttribute("sessionType");
@@ -706,8 +717,12 @@ public class InterfaceController {
     //修改个人信息;密码
     @RequestMapping(value = "/personInforModifyHandle2")
     @ResponseBody
-    public Map<String, Object> personInforModifyHandle2(String newPassword,String password,HttpSession httpSession){
+    public Map<String, Object> personInforModifyHandle2(String newPassword,String password,String sessionId,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
+        if(sessionId!=""||sessionId!=null) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+        }
 
         String phoneNum=(String)httpSession.getAttribute("sessionId");
         String _role= (String)httpSession.getAttribute("sessionType");
@@ -748,8 +763,12 @@ public class InterfaceController {
     //修改个人信息;头像
     @RequestMapping(value = "/personInforModifyHandle3")
     @ResponseBody
-    public Map<String, Object> personInforModifyHandle3(String change,HttpSession httpSession){
+    public Map<String, Object> personInforModifyHandle3(String change,String sessionId,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
+        if(sessionId!=""||sessionId!=null) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+        }
 
         String id=(String)httpSession.getAttribute("sessionId");
         int role=(Integer)httpSession.getAttribute("sessionType");
@@ -780,10 +799,13 @@ public class InterfaceController {
     //获取验证码以后改密
     @RequestMapping(value = "/lostPasswordHandle")
     @ResponseBody
-    public Map<String, Object> lostPasswordHandle2(String id, int code,int role,String password,HttpSession httpSession){
+    public Map<String, Object> lostPasswordHandle2(String id, int code,int role,String password,String sessionId,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
+        if(sessionId!=""||sessionId!=null) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+        }
 
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaa");
         String phoneNum=(String)httpSession.getAttribute("sessionPN");
         int a=(Integer) httpSession.getAttribute("sessionCode");
 
@@ -1796,8 +1818,12 @@ public class InterfaceController {
     //根据法人的status和id获取他的所有company
     @RequestMapping(value = "/getCompanyByLegalPersonId")
     @ResponseBody
-    public Map<String, Object> getCompanyByLegalPersonId(HttpSession httpSession) {
+    public Map<String, Object> getCompanyByLegalPersonId(String sessionId,HttpSession httpSession) {
         Map<String, Object> result = new HashMap<String, Object>();
+        if(sessionId!=""||sessionId!=null) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+        }
 
         String _status=(String)httpSession.getAttribute("sessionType");
         int status=Integer.parseInt(_status);

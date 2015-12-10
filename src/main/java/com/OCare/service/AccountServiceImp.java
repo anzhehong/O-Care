@@ -209,25 +209,25 @@ public class AccountServiceImp implements AccountService {
     public String lostPasswordHandle(String id, int role, String password,String phoneNum) {
         String md5Password = JavaMD5Util.MD5(password);
         if(role==1){
-            System.out.println("0000000000000000000000"+id);
+           String passwordKey=elderDAO.getPropertyValue().getPropValue();
+
+            Blowfish blowFish = new Blowfish(passwordKey); //根据加密key初始化
+            String openfirePassword = blowFish.encryptString(password); //加密
+
             Elder elder = elderDAO.queryById(id);
-            System.out.println("111111111111111111"+id);
             Relative relative = relativeDAO.queryById(id);
-            System.out.println("22222222222222222"+id);
             ofUser user=userDao.queryById(phoneNum);
-            System.out.println("0000000000000000"+phoneNum);
+
             if(elder != null||relative != null) {
                 if (elder != null) {
                     elder.setPassword(md5Password);
-                    user.setEncryptedPassword(md5Password);
+                    user.setEncryptedPassword(openfirePassword);
                     elderDAO.update(elder);
                     userDao.update(user);
                 }
                 if (relative != null) {
                     relative.setPassword(md5Password);
-                    System.out.println("111111111111111111"+phoneNum);
-                    user.setEncryptedPassword(md5Password);
-                    System.out.println("22222222222222222"+phoneNum);
+                    user.setEncryptedPassword(openfirePassword);
                     relativeDAO.update(relative);
                     userDao.update(user);
                 }
@@ -294,8 +294,12 @@ public class AccountServiceImp implements AccountService {
             }
             if(type==1){
                 String md5Password = JavaMD5Util.MD5(change);
+                String passwordKey=elderDAO.getPropertyValue().getPropValue();
+
+                Blowfish blowFish = new Blowfish(passwordKey); //根据加密key初始化
+                String openfirePassword = blowFish.encryptString(change); //加密
                 elder.setPassword(md5Password);
-                user.setEncryptedPassword(md5Password);
+                user.setEncryptedPassword(openfirePassword);
             }
             if(type==2){
                 elder.setImage(change);
@@ -321,8 +325,12 @@ public class AccountServiceImp implements AccountService {
             }
             if(type==1){
                 String md5Password = JavaMD5Util.MD5(change);
+                String passwordKey=elderDAO.getPropertyValue().getPropValue();
+
+                Blowfish blowFish = new Blowfish(passwordKey); //根据加密key初始化
+                String openfirePassword = blowFish.encryptString(change); //加密
                 relative.setPassword(md5Password);
-                user.setEncryptedPassword(md5Password);
+                user.setEncryptedPassword(openfirePassword);
             }
             if(type==2){
                 relative.setImage(change);

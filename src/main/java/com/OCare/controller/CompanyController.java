@@ -1,6 +1,7 @@
 package com.OCare.controller;
 
 import com.OCare.entity.Company;
+import com.OCare.entity.MySessionContext;
 import com.OCare.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -98,8 +99,13 @@ public class CompanyController {
      * 功能：列出所有的公司
      */
     @RequestMapping("/companyList")
-    public Map<String, Object> listAllCompanies(HttpSession httpSession){
+    public Map<String, Object> listAllCompanies(String sessionId,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
+        if(sessionId!=""||sessionId!=null) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+        }
+
         String status=(String)httpSession.getAttribute("sessionType");
         if(status.equals("admin")) {
             List<Company> companyList=companyService.getAllCompany();
