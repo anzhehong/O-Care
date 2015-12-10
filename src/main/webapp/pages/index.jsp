@@ -44,10 +44,9 @@
 <div class="container">
     <div class="ad" >
         <h2>福联网</h2>
-        <h4>更权威  更全面  更放心  的老人关爱平台</h4>
     </div>
     <div class="bg-image">
-        <img src="/OCare/Assets/Images/old-couple.jpg">
+        <img src="/OCare/Assets/Images/old-couple.png">
     </div>
     <div class="pic-left">
         <img src="/OCare/Assets/Images/work.jpg">
