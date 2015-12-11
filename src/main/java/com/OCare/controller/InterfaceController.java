@@ -7,7 +7,7 @@ import it.sauronsoftware.ftp4j.FTPClient;
 import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-<<<<<<< HEAD
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
-=======
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -42,7 +42,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
->>>>>>> douyutong
+
 import java.util.*;
 
 /**
@@ -70,8 +70,7 @@ public class InterfaceController {
     @Autowired
     private ElderConditionService elderConditionService;
 
-    @Autowired
-    private FtpService ftpService;
+
     @Autowired
     private CompanyService companyService;
     @Autowired
