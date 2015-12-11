@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="MySQL - OCare@202.120.163.167" uuid="a6436f74-d721-495a-8b3f-9042a9876306">
-    <database-info product="MySQL" version="5.1.73" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
-      <extra-name-characters>#@</extra-name-characters>
-      <identifier-quote-string>`</identifier-quote-string>
-    </database-info>
-    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
-  </data-source>
-  <data-source name="openfire" uuid="dc2e0995-209e-4f0d-a947-522d69ac0176">
+  <data-source name="MySQL - openfire@202.120.163.167" uuid="1bf0d124-9ef6-4912-8099-1d2e4384d09d">
     <database-info product="MySQL" version="5.1.73" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
@@ -48,6 +41,8 @@
       <column name="phone" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
       <column name="address" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
       <column name="status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="url1" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="url2" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="CompanyToLegalPerson" columns="legal_person_id" ref-table="LegalPerson" ref-schema="" ref-catalog="openfire" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="ContractToCompany" table="Contract" schema="" catalog="openfire" columns="company_id"/>
@@ -155,7 +150,7 @@
       <column name="phone" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
       <column name="email" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
       <column name="password" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
-      <column name="image" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="image" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="CompanyToLegalPerson" table="Company" schema="" catalog="openfire" columns="legal_person_id"/>
     </table>

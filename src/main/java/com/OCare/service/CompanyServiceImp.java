@@ -1,7 +1,9 @@
 package com.OCare.service;
 
 import com.OCare.dao.CompanyDAO;
+import com.OCare.dao.LegalPersonDAO;
 import com.OCare.entity.Company;
+import com.OCare.entity.LegalPerson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,8 @@ public class CompanyServiceImp implements CompanyService {
 
     @Autowired
     private CompanyDAO companyDAO;
+    @Autowired
+    private LegalPersonDAO legalPersonDAO;
     @Override
     public Company createCompany(String name, String legalPerson, String phone, String address) {
         Company company = new Company();
@@ -41,8 +45,8 @@ public class CompanyServiceImp implements CompanyService {
     }
 
     @Override
-    public List<Company> getByName(String name) {
-        return companyDAO.getByName(name);
+    public Company getByName(String name) {
+        return companyDAO.getByName(name).get(0);
     }
 
     @Override
@@ -51,7 +55,18 @@ public class CompanyServiceImp implements CompanyService {
     }
 
     @Override
+    public List<Company> getAllCompany() {
+        return companyDAO.queryAll();
+    }
+
+    @Override
     public Company getCompanyById(int id) {
         return companyDAO.getById(id);
+    }
+
+    @Override
+    public LegalPerson getLegaiPersonByPhone(String phone) {
+        LegalPerson legalPerson=legalPersonDAO.queryByPhoneNum(phone);
+        return legalPerson;
     }
 }

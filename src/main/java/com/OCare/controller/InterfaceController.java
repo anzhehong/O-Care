@@ -1,11 +1,13 @@
 package com.OCare.controller;
 
+import com.OCare.dao.LegalPersonDAO;
 import com.OCare.entity.*;
 import com.OCare.service.*;
 import it.sauronsoftware.ftp4j.FTPClient;
 import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +28,21 @@ import javax.servlet.http.HttpSession;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
+=======
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+
+import javax.management.MBeanServer;
+import javax.servlet.ServletRequestWrapper;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+>>>>>>> douyutong
 import java.util.*;
 
 /**
@@ -57,7 +74,12 @@ public class InterfaceController {
     private FtpService ftpService;
     @Autowired
     private CompanyService companyService;
-
+    @Autowired
+    private openFireService openfireService;
+    @Autowired
+    private FtpService ftpService;
+    @Autowired
+    private LegalPersonDAO legalPersonDAO;
     /**
      * @param phoneNum：Phone    number
      * @param password：Password
@@ -66,16 +88,20 @@ public class InterfaceController {
      */
     @RequestMapping(value = "/logon")
     @ResponseBody
-    public Map<String, Object> logon(String phoneNum, String password) {
+
+    public Map<String, Object> logon(String phoneNum, String password,int role,HttpSession httpSession){
+
         Map<String, Object> result = new HashMap<String, Object>();
 
         if (phoneNum == null || password == null || phoneNum == "" || password == "") {
             result.put("error", true);
             result.put("errorMsg", "PhoneNum or password is empty");
             return result;
-        } else {
-            String status = accountService.logon(phoneNum, password).getKey();
-            if (status == "Invalid Account") {
+
+        }else{
+            String status = accountService.logon(phoneNum, password,role).getKey();
+            if(status == "Invalid Account"){
+
                 result.put("error", true);
                 result.put("errorMsg", "Invalid Account");
                 return result;
@@ -83,19 +109,30 @@ public class InterfaceController {
                 result.put("error", true);
                 result.put("errorMsg", "Incorrect password");
                 return result;
-            } else {
+
+            }else{
+                httpSession.setAttribute("sessionId",phoneNum);
+                httpSession.setAttribute("sessionType",status);
+
                 result.put("error", false);
                 result.put("accountType", status);
-                result.put("account", accountService.logon(phoneNum, password).getValue());
+                result.put("account", accountService.logon(phoneNum, password,role).getValue());
                 return result;
             }
         }
     }
 
+    /*@RequestMapping(value = "/logouttest")
+    @ResponseBody
+    public String logout(HttpSession httpSession){
+        String status=(String) httpSession.getAttribute("sessionType");
+        return status;
+    }*/
+
     //admin的logon函数
     @RequestMapping(value = "/adminlogon")
     @ResponseBody
-    public Map<String, Object> adminlogon(String phoneNum, String password){
+    public Map<String, Object> adminlogon(String phoneNum, String password,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
 
         if(phoneNum == null || password == null || phoneNum == "" || password == ""){
@@ -113,17 +150,40 @@ public class InterfaceController {
                 result.put("errorMsg", "Incorrect password");
                 return result;
             }else{
-                //HttpSession session = request.getSession();
-
-                ServletRequestWrapper session = null;
-                session.setAttribute("sessionId",phoneNum );
-                session.setAttribute("sessionType",status );
+                httpSession.setAttribute("sessionId",phoneNum );
+                httpSession.setAttribute("sessionType",status );
                 result.put("error", false);
                 result.put("accountType", status);
-                result.put("account", accountService.logon(phoneNum, password).getValue());
+                result.put("account", accountService.adminlogon(phoneNum,password).getValue());
                 return result;
             }
         }
+    }
+
+
+    @RequestMapping(value = "/adminRegister")
+    @ResponseBody
+    public void adminRegister(String user,String password){
+        registerService.register(user,password);
+    }
+
+
+    //logout函数
+    @RequestMapping(value = "/logout")
+    @ResponseBody
+    public void logout(String sessionId,HttpSession httpSession){
+
+
+        if(sessionId==""||sessionId==null) {
+            httpSession.invalidate();
+        }
+        else{
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+            httpSession.invalidate();
+        }
+
+
     }
 
 
@@ -146,17 +206,78 @@ public class InterfaceController {
         Map<String, Object> result = new HashMap<String, Object>();
 
         //身份证或者手机号已经注册
-        if (!isIdOrPhoneNumExist(elderId, elderPhone)) {
-            result.put("error", true);
-            result.put("errorMsg", "Id or phoneNum exists");
+
+        if (isIdOrPhoneNumExist_elder(elderId,elderPhone)==1)
+        {
+            result.put("error",true);
+            result.put("errorMsg","openfire phone exists");
+
             return result;
         }
+        if (isIdOrPhoneNumExist_elder(elderId,elderPhone)==2)
+        {
+            result.put("error",true);
+            result.put("errorMsg","elder id number exists");
+            return result;
+        }
+        if (isIdOrPhoneNumExist_elder(elderId,elderPhone)==3)
+        {
+            result.put("error",true);
+            result.put("errorMsg","elder phone exists");
+            return result;
+        }
+        if (isIdOrPhoneNumExist_elder(elderId,elderPhone)==255)
+        {
+            result.put("error",true);
+            result.put("errorMsg","unknow error");
+            return result;
+        }
+
         //身份证或者手机号未被注册
         Elder elder = registerService.registerForAnElder(elderId, companyId, elderName, elderPhone, elderAddress, elderPassword, elderImage);
-        System.out.println(isIdOrPhoneNumExist(elderId, elderPhone));
+
         result.put("error", false);
         result.put("account", elder);
         return result;
+    }
+
+    public int isIdOrPhoneNumExist_elder(String id, String phoneNum) {
+        //boolean flag = true;
+        ArrayList<Elder> elders = registerService.getAllElders();
+        ArrayList<ofUser> users =registerService.getAllUser();
+        //ArrayList<Relative> relatives = registerService.getAllRelatives();
+        //ArrayList<Volunteer> volunteers = registerService.getAllVolunteers();
+        // ArrayList<LegalPerson> legalPersons = registerService.getAllLegalPerson();
+
+        Iterator<Elder> elderIterator = elders.iterator();
+        Iterator<ofUser> userIterator=users.iterator();
+        //Iterator<Relative> relativeIterator = relatives.iterator();
+        //Iterator<Volunteer> volunteerIterator = volunteers.iterator();
+        //Iterator<LegalPerson> legalPersonIterator = legalPersons.iterator();
+
+        while (elderIterator.hasNext())
+        {
+            Elder elder = elderIterator.next();
+            if (elder.getId().equals(id))
+            {
+                return 2;
+            }
+            if (elder.getPhone().equals(phoneNum))
+            {
+                return 3;
+            }
+        }
+        while (userIterator.hasNext())
+        {
+            ofUser user = userIterator.next();
+            if (user.getUsername().equals(phoneNum))
+            {
+                return 1;
+            }
+        }
+
+
+        return 0;
     }
 
     /**
@@ -175,9 +296,30 @@ public class InterfaceController {
                                                 String relativePassword, String relativeImage) {
         Map<String, Object> result = new HashMap<String, Object>();
         //身份证或者手机号已经注册
-        if (!isIdOrPhoneNumExist(relativeId, relativePhone)) {
-            result.put("error", true);
-            result.put("errorMsg", "Id or phoneNum exists");
+
+        if (isIdOrPhoneNumExist_relative(relativeId,relativePhone)==1)
+        {
+            result.put("error",true);
+            result.put("errorMsg","openfire phone exists");
+            return result;
+        }
+        if (isIdOrPhoneNumExist_relative(relativeId,relativePhone)==2)
+        {
+            result.put("error",true);
+            result.put("errorMsg","relative id number exists");
+            return result;
+        }
+        if (isIdOrPhoneNumExist_relative(relativeId,relativePhone)==3)
+        {
+            result.put("error",true);
+            result.put("errorMsg","relative phone exists");
+            return result;
+        }
+        if (isIdOrPhoneNumExist_relative(relativeId,relativePhone)==255)
+        {
+            result.put("error",true);
+            result.put("errorMsg","unknow error");
+
             return result;
         }
         //身份证或者手机号未被注册
@@ -185,6 +327,43 @@ public class InterfaceController {
         result.put("error", false);
         result.put("account", relative);
         return result;
+    }
+
+    public int isIdOrPhoneNumExist_relative(String id, String phoneNum) {
+        //boolean flag = true;
+        //ArrayList<Elder> elders = registerService.getAllElders();
+        ArrayList<ofUser> users =registerService.getAllUser();
+        ArrayList<Relative> relatives = registerService.getAllRelatives();
+        //ArrayList<Volunteer> volunteers = registerService.getAllVolunteers();
+        // ArrayList<LegalPerson> legalPersons = registerService.getAllLegalPerson();
+
+        //Iterator<Elder> elderIterator = elders.iterator();
+        Iterator<ofUser> userIterator=users.iterator();
+        Iterator<Relative> relativeIterator = relatives.iterator();
+        //Iterator<Volunteer> volunteerIterator = volunteers.iterator();
+        //Iterator<LegalPerson> legalPersonIterator = legalPersons.iterator();
+
+        while (relativeIterator.hasNext())
+        {
+            Relative relative = relativeIterator.next();
+            if (relative.getId().equals(id))
+            {
+                return 2;
+            }
+            if (relative.getPhone().equals(phoneNum))
+            {
+                return 3;
+            }
+        }
+        while (userIterator.hasNext())
+        {
+            ofUser user = userIterator.next();
+            if (user.getUsername().equals(phoneNum))
+            {
+                return 1;
+            }
+        }
+        return 0;
     }
 
     /**
@@ -206,9 +385,30 @@ public class InterfaceController {
         Map<String, Object> result = new HashMap<String, Object>();
 
         //身份证或者手机号已经注册
-        if (!isIdOrPhoneNumExist(volunteerId, volunteerPhone)) {
-            result.put("error", true);
-            result.put("errorMsg", "Id or phoneNum exists");
+
+        if (isIdOrPhoneNumExist_volunteer(volunteerId,volunteerPhone)==1)
+        {
+            result.put("error",true);
+            result.put("errorMsg","openfire phone exists");
+            return result;
+        }
+        if (isIdOrPhoneNumExist_volunteer(volunteerId, volunteerPhone)==2)
+        {
+            result.put("error",true);
+            result.put("errorMsg","volunteer id number exists");
+            return result;
+        }
+        if (isIdOrPhoneNumExist_volunteer(volunteerId, volunteerPhone)==3)
+        {
+            result.put("error",true);
+            result.put("errorMsg","volunteer phone exists");
+            return result;
+        }
+        if (isIdOrPhoneNumExist_volunteer(volunteerId, volunteerPhone)==255)
+        {
+            result.put("error",true);
+            result.put("errorMsg","unknow error");
+
             return result;
         }
         //身份证或者手机号未被注册
@@ -218,32 +418,212 @@ public class InterfaceController {
         return result;
     }
 
-    /**
-     * @param lpId:       legal person citizenId
-     * @param lpName:     legal person name
-     * @param lpPhone:    legal person phone number
-     * @param lpEmail:    legal person email
-     * @param lpPassword: legal person password
-     * @param lpImage:    lega person image
-     * @return Error: false, account detail
-     */
-    @RequestMapping(value = "/register/legalperson")
-    @ResponseBody
-    public Map<String, Object> legalPersonRegister(String lpId, String lpName, String lpPhone,
-                                                   String lpEmail, String lpPassword, String lpImage) {
-        Map<String, Object> result = new HashMap<String, Object>();
-        //身份证或者手机号已经注册
-        if (!isIdOrPhoneNumExist(lpId, lpPhone)) {
-            result.put("error", true);
-            result.put("errorMsg", "Id or phoneNum exists");
-            return result;
+
+    public int isIdOrPhoneNumExist_volunteer(String id, String phoneNum) {
+        //boolean flag = true;
+        //ArrayList<Elder> elders = registerService.getAllElders();
+        ArrayList<ofUser> users =registerService.getAllUser();
+        //ArrayList<Relative> relatives = registerService.getAllRelatives();
+        ArrayList<Volunteer> volunteers = registerService.getAllVolunteers();
+        // ArrayList<LegalPerson> legalPersons = registerService.getAllLegalPerson();
+
+        //Iterator<Elder> elderIterator = elders.iterator();
+        Iterator<ofUser> userIterator=users.iterator();
+        //Iterator<Relative> relativeIterator = relatives.iterator();
+        Iterator<Volunteer> volunteerIterator = volunteers.iterator();
+        //Iterator<LegalPerson> legalPersonIterator = legalPersons.iterator();
+
+        while (volunteerIterator.hasNext())
+        {
+            Volunteer volunteer = volunteerIterator.next();
+            if (volunteer.getId().equals(id))
+            {
+                return 2;
+            }
+            if (volunteer.getPhone().equals(phoneNum))
+            {
+                return 3;
+            }
         }
-        //身份证或者手机号未被注册
-        LegalPerson legalPerson = registerService.registerForALegalPerson(lpId, lpName, lpPhone, lpEmail, lpPassword, lpImage);
-        result.put("error", false);
-        result.put("account", legalPerson);
-        return result;
+        while (userIterator.hasNext())
+        {
+            ofUser user = userIterator.next();
+            if (user.getUsername().equals(phoneNum))
+            {
+                return 1;
+            }
+        }
+
+
+        return 0;
     }
+
+//    /**
+//     * @param lpId: legal person citizenId
+//     * @param lpName: legal person name
+//     * @param lpPhone: legal person phone number
+//     * @param lpEmail: legal person email
+//     * @param lpPassword: legal person password
+//     * @param lpImage: lega person image
+//     * @return
+//     * Error: false, account detail
+//     */
+//    @RequestMapping(value = "/register/legalperson")
+//    @ResponseBody
+//    public Map<String, Object> legalPersonRegister(String lpId, String lpName, String lpPhone,
+//                                                   String lpEmail, String lpPassword, String lpImage){
+//        Map<String, Object> result = new HashMap<String, Object>();
+//        //身份证或者手机号已经注册
+//        if (isIdOrPhoneNumExist_legalperson(lpId,lpPhone)==2)
+//        {
+//            result.put("error",true);
+//            result.put("errorMsg","legalperson id number exists");
+//            return result;
+//        }
+//        if (isIdOrPhoneNumExist_legalperson(lpId,lpPhone)==3)
+//        {
+//            result.put("error",true);
+//            result.put("errorMsg","legalperson phone exists");
+//            return result;
+//        }
+//        if (isIdOrPhoneNumExist_legalperson(lpId,lpPhone)==255)
+//        {
+//            result.put("error",true);
+//            result.put("errorMsg","unknow error");
+//            return result;
+//        }
+//        //身份证或者手机号未被注册
+//        LegalPerson legalPerson = registerService.registerForALegalPerson(lpId, lpName, lpPhone, lpEmail, lpPassword, lpImage);
+//        result.put("error", false);
+//        result.put("account", legalPerson);
+//        return result;
+//    }
+
+
+    @RequestMapping(value = "/register/legalperson", method=RequestMethod.POST)
+
+    public String legalPersonRegister(HttpServletRequest request,Model model){
+
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+        // 获得文件：
+        MultipartFile file = multipartRequest.getFile("lp_img");
+
+        String lpId=request.getParameter("legalperson_id");
+        String lpName=request.getParameter("legalperson_name");
+        String lpPhone=request.getParameter("legalperson_tel");
+        String lpEmail=request.getParameter("legalperson_email");
+        String lpPassword=request.getParameter("legalperson_password");
+
+        //身份证或者手机号已经注册
+
+        if(lpId == ""|| lpName == "" || lpPhone == "" || lpEmail == "" || lpPassword == ""){
+            result.put("error",true);
+            result.put("errorMsg","Something is empty!");
+            model.addAttribute("errMsg", "输入信息有误");
+
+
+            return "Register";}
+
+        if (isIdOrPhoneNumExist_legalperson(lpId,lpPhone)==1)
+        {
+            result.put("error",true);
+            result.put("errorMsg","openfire phone exists");
+            model.addAttribute("errMsg", " phone exists");
+            return "Register";
+
+        }
+        if (isIdOrPhoneNumExist_legalperson(lpId, lpPhone)==2)
+        {
+            result.put("error",true);
+            result.put("errorMsg","legalperson id number exists");
+            model.addAttribute("errMsg", " phone exists");
+            return "Register";
+        }
+        if (isIdOrPhoneNumExist_legalperson(lpId,lpPhone)==3)
+        {
+            result.put("error",true);
+            result.put("errorMsg","legalperson phone exists");
+            model.addAttribute("errMsg", " phone exists");
+            return "Register";
+        }
+
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
+        //判断 request 是否有文件上传,即多部分请求
+        if(!multipartResolver.isMultipart(request)){
+            result.put("error",true);
+            result.put("errorMsg","unknow error");
+            model.addAttribute("errMsg", "图片未上传成功");
+            return "Register";
+        }
+        if (multipartResolver.isMultipart(request)) {
+            //转换成多部分request
+
+            //取得request中的所有文件名
+
+            if (file != null) {
+                File convFile = new File(file.getOriginalFilename());
+
+                try {
+                    convFile.createNewFile();
+                    FileOutputStream fos = new FileOutputStream(convFile);
+                    fos.write(file.getBytes());
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                ftpService.CreateLp(lpId);
+                ftpService.uploadFileForLp(convFile, lpId);
+
+                String xxx="ftp://ocare:ocare@202.120.163.167/legalperson/"+lpId+'/'+convFile.getPath();
+
+                System.out.println("success");
+                LegalPerson legalPerson = registerService.registerForALegalPerson(lpId, lpName, lpPhone, lpEmail, lpPassword, xxx);
+                result.put("error", false);
+                result.put("account", legalPerson);
+
+                return "index";
+            }
+
+            // 重定向
+        }
+
+        return "Register";
+
+    }
+
+    public int isIdOrPhoneNumExist_legalperson(String id, String phoneNum) {
+        //boolean flag = true;
+        //ArrayList<Elder> elders = registerService.getAllElders();
+        //ArrayList<ofUser> users =registerService.getAllUser();
+        //ArrayList<Relative> relatives = registerService.getAllRelatives();
+        //ArrayList<Volunteer> volunteers = registerService.getAllVolunteers();
+        ArrayList<LegalPerson> legalPersons = registerService.getAllLegalPerson();
+
+       // Iterator<Elder> elderIterator = elders.iterator();
+        //Iterator<ofUser> userIterator=users.iterator();
+        //Iterator<Relative> relativeIterator = relatives.iterator();
+        //Iterator<Volunteer> volunteerIterator = volunteers.iterator();
+        Iterator<LegalPerson> legalPersonIterator = legalPersons.iterator();
+
+        while (legalPersonIterator.hasNext())
+        {
+            LegalPerson legalPerson = legalPersonIterator.next();
+            if (legalPerson.getId().equals(id))
+            {
+                return 2;
+            }
+            if (legalPerson.getPhone().equals(phoneNum))
+            {
+                return 3;
+            }
+        }
+
+        return 0;
+    }
+
 
     /**
      * @param relativeId:  relative citizenId
@@ -255,7 +635,27 @@ public class InterfaceController {
     @ResponseBody
     public Map<String, Object> applyMonitor(String relativeId, String elderId, String togetherImg) {
         Map<String, Object> result = new HashMap<String, Object>();
-        verifyService.submitMonitorApply(relativeId, elderId, togetherImg);
+        if(relativeId==null||relativeId==""||elderId==null||elderId==""||togetherImg==null||togetherImg==""){
+            result.put("error", true);
+            result.put("errorMsg","Null Input");
+            return result;
+        }
+        String status=verifyService.submitMonitorApply(relativeId, elderId, togetherImg);
+        if(status.equals("NoRelative")){
+            result.put("error", true);
+            result.put("errorMsg","No Relative");
+            return result;
+        }
+        if(status.equals("Exists")){
+            result.put("error", true);
+            result.put("errorMsg","Relation Exists");
+            return result;
+        }
+        if(status.equals("NoElder")){
+            result.put("error", true);
+            result.put("errorMsg","No Elder");
+            return result;
+        }
         result.put("error", false);
         return result;
     }
@@ -286,13 +686,20 @@ public class InterfaceController {
      */
     @RequestMapping(value = "/code")
     @ResponseBody
-    public Map<String, Object> createCode(String phoneNum) {
+
+    public Map<String, Object> createCode(String phoneNum,HttpSession httpSession){
+
         Map<String, Object> result = new HashMap<String, Object>();
         int code = smsService.sendVerifyCodeToPhone(phoneNum);
+        //int code=1111;
+        httpSession.setAttribute("sessionPN",phoneNum);
+        httpSession.setAttribute("sessionCode",code);
         result.put("error", false);
         result.put("code", code);
         return result;
     }
+
+
 
     /**
      * @param id:       citizenId
@@ -302,10 +709,12 @@ public class InterfaceController {
      */
     @RequestMapping(value = "/verify/phone")
     @ResponseBody
-    public Map<String, Object> verifyPhoneNum(String id, String phoneNum) {
+
+    public Map<String, Object> verifyPhoneNum(String id, String phoneNum,int role){
         Map<String, Object> result = new HashMap<String, Object>();
-        String status = accountService.verifyPhoneNum(id, phoneNum);
-        if (status == "Incorrect phone number") {
+        String status = accountService.verifyPhoneNum(id, phoneNum, role);
+        if(status == "Incorrect phone number") {
+
             result.put("error", true);
             result.put("errorMsg", "Incorrect phone number");
             return result;
@@ -342,45 +751,193 @@ public class InterfaceController {
 
     }
 
-    public boolean isIdOrPhoneNumExist(String id, String phoneNum) {
-        boolean flag = true;
-        ArrayList<Elder> elders = registerService.getAllElders();
-        ArrayList<Relative> relatives = registerService.getAllRelatives();
-        ArrayList<Volunteer> volunteers = registerService.getAllVolunteers();
-        ArrayList<LegalPerson> legalPersons = registerService.getAllLegalPerson();
+   //修改个人信息;手机号
+    @RequestMapping(value = "/personInforModifyHandle1")
+    @ResponseBody
+    public Map<String, Object> personInforModifyHandle1(String phoneNum,int code,String sessionId,HttpSession httpSession){
+        Map<String, Object> result = new HashMap<String, Object>();
 
-        Iterator<Elder> elderIterator = elders.iterator();
-        Iterator<Relative> relativeIterator = relatives.iterator();
-        Iterator<Volunteer> volunteerIterator = volunteers.iterator();
-        Iterator<LegalPerson> legalPersonIterator = legalPersons.iterator();
-
-        while (elderIterator.hasNext()) {
-            Elder elder = elderIterator.next();
-            if (elder.getId().equals(id) || elder.getPhone().equals(phoneNum)) {
-                flag = false;
-            }
-        }
-        while (relativeIterator.hasNext()) {
-            Relative relative = relativeIterator.next();
-            if (relative.getId().equals(id) || relative.getPhone().equals(phoneNum)) {
-                flag = false;
-            }
-        }
-        while (volunteerIterator.hasNext()) {
-            Volunteer volunteer = volunteerIterator.next();
-            if (volunteer.getId().equals(id) || volunteer.getPhone().equals(phoneNum)) {
-                flag = false;
-            }
-        }
-        while (legalPersonIterator.hasNext()) {
-            LegalPerson legalPerson = legalPersonIterator.next();
-            if (legalPerson.getId().equals(id) || legalPerson.getPhone().equals(phoneNum)) {
-                flag = false;
-            }
+        if(!(sessionId==""||sessionId==null)) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
         }
 
-        return flag;
+
+        String id=(String)httpSession.getAttribute("sessionId");
+        String _role= (String)httpSession.getAttribute("sessionType");
+        int role=Integer.parseInt(_role);
+        //首先验证要绑定的手机
+        int a=(Integer) httpSession.getAttribute("sessionCode");
+        //String _code=(String)httpSession.getAttribute("sessionCode");
+        //int a = Integer.parseInt(_code);
+        if(!(code==a)){
+            result.put("error", true);
+            result.put("errorMsg", "Invalid CODE");
+            return result;
+        }
+        if(role==0||role==1||role==2||role==3||role==4)
+        {
+            String status=accountService.personInforModifyHandle(id, role, phoneNum,0).getKey();
+            Object object=accountService.personInforModifyHandle(id, role, phoneNum,0).getValue();
+            if(status == "Invalid Account"){
+                result.put("error", true);
+                result.put("errorMsg", "Invalid Account");
+                return result;
+            }else{
+                result.put("error", false);
+                result.put("object",object);
+                return result;
+            }
+        }
+        else
+        {
+            result.put("error", true);
+            result.put("errorMsg", "ROLE NOT EXIST");
+            return result;
+        }
     }
+
+    //修改个人信息;密码
+    @RequestMapping(value = "/personInforModifyHandle2")
+    @ResponseBody
+    public Map<String, Object> personInforModifyHandle2(String newPassword,String password,String sessionId,HttpSession httpSession){
+        Map<String, Object> result = new HashMap<String, Object>();
+        if(!(sessionId==""||sessionId==null)) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+        }
+
+        String phoneNum=(String)httpSession.getAttribute("sessionId");
+        String _role= (String)httpSession.getAttribute("sessionType");
+        int role=Integer.parseInt(_role);
+        String passwordstatus = accountService.logon(phoneNum, password,role).getKey();
+        if(passwordstatus == "Invalid Account"){
+            result.put("error", true);
+            result.put("errorMsg", "Invalid Account");
+            return result;
+        }
+        if (passwordstatus == "Incorrect password"){
+            result.put("error", true);
+            result.put("errorMsg", "Incorrect password");
+            return result;
+        }
+
+        if(role==0||role==1||role==2||role==3||role==4)
+        {
+            String status=accountService.personInforModifyHandle(phoneNum, role, newPassword,1).getKey();
+            if(status == "Invalid Account"){
+                result.put("error", true);
+                result.put("errorMsg", "Invalid Account");
+                return result;
+            }else{
+                result.put("error", false);
+                result.put("object",accountService.personInforModifyHandle(phoneNum, role, newPassword,1).getValue() );
+                return result;
+            }
+        }
+        else
+        {
+            result.put("error", true);
+            result.put("errorMsg", "ROLE NOT EXIST");
+            return result;
+        }
+    }
+
+    //修改个人信息;头像
+    @RequestMapping(value = "/personInforModifyHandle3")
+    @ResponseBody
+    public Map<String, Object> personInforModifyHandle3(String change,String sessionId,HttpSession httpSession){
+        Map<String, Object> result = new HashMap<String, Object>();
+        if(!(sessionId==""||sessionId==null)) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+        }
+
+        String id=(String)httpSession.getAttribute("sessionId");
+        int role=(Integer)httpSession.getAttribute("sessionType");
+        if(role==0||role==1||role==2||role==3||role==4)
+        {
+            String status=accountService.personInforModifyHandle(id, role, change,2).getKey();
+            if(status == "Invalid Account"){
+                result.put("error", true);
+                result.put("errorMsg", "Invalid Account");
+                return result;
+            }else{
+                result.put("error", false);
+                result.put("object",accountService.personInforModifyHandle(id, role, change,2).getValue());
+                return result;
+
+            }
+        }
+        else
+        {
+            result.put("error", true);
+            result.put("errorMsg", "ROLE NOT EXIST");
+            return result;
+        }
+    }
+
+
+
+
+    //获取验证码以后改密
+    @RequestMapping(value = "/lostPasswordHandle")
+    @ResponseBody
+    public Map<String, Object> lostPasswordHandle2(String id, int code,int role,String password,String sessionId,HttpSession httpSession){
+        Map<String, Object> result = new HashMap<String, Object>();
+        if(!(sessionId==""||sessionId==null)) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+        }
+
+        String phoneNum=(String)httpSession.getAttribute("sessionPN");
+        int a=(Integer) httpSession.getAttribute("sessionCode");
+
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaa");
+        String vStatus = accountService.verifyPhoneNum(id, phoneNum,role);
+        if(vStatus == "Incorrect phone number with ID") {
+            result.put("error", true);
+            result.put("errorMsg", "Incorrect phone number with ID");
+            return result;
+        }
+        if (vStatus == "Invalid Account"){
+            result.put("error", true);
+            result.put("errorMsg", "Invalid Account");
+            return result;
+        }
+        if (vStatus == "NO role"){
+            result.put("error", true);
+            result.put("errorMsg", "NO role");
+            return result;
+        }
+
+        if(!(code==a)){
+            result.put("error", true);
+            result.put("errorMsg", "Invalid CODE");
+            return result;
+        }
+        if(role==1||role==2||role == 3 || role == 4 || role == 5) {
+            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaa");
+            String status=accountService.lostPasswordHandle(id, role, password, phoneNum);
+            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaa");
+            if(status == "Invalid Account"){
+                result.put("error", true);
+                result.put("errorMsg", "Invalid Account");
+                return result;
+            }else{
+                result.put("error", false);
+                return result;
+            }
+        }
+        else
+        {
+            result.put("error", true);
+            result.put("errorMsg", "ROLE NOT EXIST");
+            return result;
+        }
+    }
+
+
 
     /*
         功能：根据phoneNum拿到头像
@@ -481,9 +1038,12 @@ public class InterfaceController {
     @ResponseBody
     public Map<String, Object> getElderInfoById(String elderId) {
         Map<String, Object> result = new HashMap<String, Object>();
-        if (elderId == null || elderId == "") {
-            result.put("error", true);
-            result.put("errorMsg", "Elder Id Input Error!");
+
+        if (elderId == null || elderId == "")
+        {
+            result.put("error",true);
+            result.put("errorMsg","Elder Id Input Error!");
+
         } else {
             Elder elder = elderService.getElderById(elderId);
             if (elder == null) {
@@ -543,7 +1103,7 @@ public class InterfaceController {
         return result;
     }
 
-    //超级管理员拿到所有数据
+    //超级管理员拿到所有老人数据
     @RequestMapping("/getAllElders")
     @ResponseBody
     public Map<String, Object> getAllElders() {
@@ -559,14 +1119,13 @@ public class InterfaceController {
         return result;
     }
 
-   //某个区域负责人
-    /*
+   //某个区域负责人拿到所有老人数据
     @RequestMapping("/getEldersLocated")
     @ResponseBody
-    public Map<String, Object> getAllElders()
+    public Map<String, Object> getAllEldersLocated(int companyId)
     {
         Map<String, Object> result = new HashMap<String, Object>();
-        ArrayList<Elder> allElders = elderService.getAllElders();
+        ArrayList<Elder> allElders = elderService.getAllEldersLocated(companyId);
         if (allElders.size() == 0)
         {
             result.put("error",true);
@@ -576,30 +1135,140 @@ public class InterfaceController {
             result.put("result",allElders);
         }
         return result;
-    }*/
+    }
 
+
+    //某人查找他监护或帮助的所有老人数据
+    @RequestMapping("/getEldersByRelativePhone")
+    @ResponseBody
+    public Map<String, Object> getEldersByRelativePhone(String phoneNum)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        ArrayList<Elder> allElders=new ArrayList<Elder>();
+
+        //首先（监护)，根据该人电话找到他管理的老人房间，得到该房间老人信息
+        Elder elderA=elderService.getElderByRelativePhone(phoneNum);
+        if(elderA!=null) {
+            allElders.add(elderA);
+        }
+
+        //然后(帮助)，根据该人电话找到他所在的所有房间，如果这个房间是养老间则取出老人信息
+         List<ofMucMember> mucMembers=openfireService.getRoomIdbyPhone(phoneNum);
+        if(mucMembers.isEmpty())
+        {
+            if (allElders.size() == 0)
+            {
+                result.put("error",true);
+                result.put("errorMsg","没有老人的数据");
+            }else {
+                result.put("error",false);
+                result.put("result",allElders);
+            }
+            return result;
+        }
+        else{
+                for(int i=0;i<mucMembers.size();i++)
+                {
+                    List<ofMucRoom> mucRooms=openfireService.getRoomByid(mucMembers.get(i).getRoomID());
+                    for(int j=0;j<mucRooms.size();j++){
+                        //判断是否为养老间？
+                        Elder elderB=elderService.getElderByRelativePhone(mucRooms.get(j).getName());
+                        if(elderB!=null) {
+                            allElders.add(elderB);
+                        }
+                    }
+
+                }
+            result.put("error",false);
+            result.put("result",allElders);
+            return result;
+        }
+
+
+
+    }
 
     /*
         功能：注册公司机构
         注意：注册机构分为两个步骤，先有法人代表才能注册公司
      */
-    @RequestMapping("/company/register")
-    @ResponseBody
-    public Map<String, Object> companyRegister(String companyName, String companyLegalPersonId,
-                                               String companyPhone, String companyAddress) {
+
+    @RequestMapping(value = "/company/register", method = RequestMethod.POST)
+
+    public String companyRegister(HttpServletRequest request ,HttpSession httpSession,Model model)
+    {
+
+        String phone= (String) httpSession.getAttribute("sessionId");
+        LegalPerson legalPerson=legalPersonDAO.queryByPhoneNum(phone);
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
+        //判断 request 是否有文件上传,即多部分请求
+        String agent_name=request.getParameter("agent_name");
+        String agent_code=request.getParameter("agent_code");
+        String legalperson_id=legalPerson.getId();
+        String company_phone=request.getParameter("company_phone");
+        String company_address=request.getParameter("company_address");
+        String[] url=new String[2];
+
         Map<String, Object> result = new HashMap<String, Object>();
-        if (companyName == null || companyAddress == null || companyPhone == null || companyLegalPersonId == null) {
-            result.put("error", true);
-            result.put("errorMsg", "Something is empty!");
-        } else if (!registerService.isLegalPersonIdExist(companyLegalPersonId)) {
-            result.put("error", true);
-            result.put("errorMsg", "Legal Person not exsits");
-        } else {
-            Company companyToRegister = registerService.registerForCompany(companyName, companyLegalPersonId, companyPhone, companyAddress);
-            result.put("error", false);
-            result.put("account", companyToRegister);
+        if (agent_name == "" || agent_code == "" ||  company_phone == null || company_address==null)
+        {
+            result.put("error",true);
+            result.put("errorMsg","Something is empty!");
+            model.addAttribute("errMsg","输入信息有误");
+
+            return "applyComany";
+        }else if(legalperson_id == ""||legalperson_id==null){
+            model.addAttribute("errMsg","请先登录");
+
+            return "applyComany";
         }
-        return result;
+        else if(!registerService.isLegalPersonIdExist(legalperson_id)) {
+            result.put("error",true);
+            result.put("errorMsg","Legal Person not exsits");
+            model.addAttribute("errMsg","请先注册");
+
+            return "applyComany";
+        }else {
+
+            if (multipartResolver.isMultipart(request)) {
+                //转换成多部分request
+                MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+                //取得request中的所有文件名
+                Iterator<String> iter = multiRequest.getFileNames();
+                int i=0;
+                while (iter.hasNext()) {
+
+                    //记录上传过程起始时的时间，用来计算上传时间
+                    int pre = (int) System.currentTimeMillis();
+                    //取得上传文件
+                    MultipartFile file = multiRequest.getFile(iter.next());
+                    if (file != null) {
+                        File convFile = new File(file.getOriginalFilename());
+
+                        try {
+                            convFile.createNewFile();
+                            FileOutputStream fos = new FileOutputStream(convFile);
+                            fos.write(file.getBytes());
+                            fos.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        ftpService.CreateCompany(agent_code);
+                        ftpService.uploadFileForCompany(convFile, agent_code);
+                        url[i]=convFile.getPath();
+                        i++;
+                    }
+                }
+            }
+
+            Company companyToRegister =  registerService.registerForCompany(agent_name, legalperson_id, company_phone, company_address,"ftp://ocare:ocare@202.120.163.167/company/"+agent_code+"/"+url[0],"ftp://ocare:ocare@202.120.163.167/company/"+agent_code+"/"+url[1]);
+            result.put("error",false);
+            result.put("account",companyToRegister);
+            return "WaitPermition";
+
+        }
+
     }
 
     /*
@@ -1276,24 +1945,34 @@ public class InterfaceController {
     //根据法人的status和id获取他的所有company
     @RequestMapping(value = "/getCompanyByLegalPersonId")
     @ResponseBody
-    public Map<String, Object> getCompanyByLegalPersonId(String status, String id) {
+    public Map<String, Object> getCompanyByLegalPersonId(String sessionId,HttpSession httpSession) {
         Map<String, Object> result = new HashMap<String, Object>();
 
-        if (status == null || id == null || status == "" || id == "") {
+        if(!(sessionId==""||sessionId==null)) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+        }
+
+        String _status=(String)httpSession.getAttribute("sessionType");
+        int status=Integer.parseInt(_status);
+        String phoneNum=(String)httpSession.getAttribute("sessionId");
+        String id=companyService.getLegaiPersonByPhone(phoneNum).getId();
+        if ( id == null  || id == "") {
             result.put("error", true);
-            result.put("errorMsg", "PhoneNum or password is empty");
+            result.put("errorMsg", "sorry! you should logon first!");
             return result;
-        } else if (status != "LegalPerson") {
+        }else if (status != 2) {
             result.put("error", true);
-            result.put("errorMsg", "YOU NOT LEGALPERSON");
+            result.put("errorMsg", "sorry! you are not a legalperson,please login again!");
         } else {
             List<Company> companyList = companyService.getByLegalPerson(id);
             if(companyList.isEmpty()){
                 result.put("error", true);
-                result.put("errorMsg", "NO COMPANY BELONG TO THIS LEGALPERSON");
+                result.put("errorMsg", "you got no company applied yet");
             }
             else {
                 result.put("error",false);
+                result.put("errorMsg", "get list successfully");
                 result.put("companyList", companyList);
             }
         }

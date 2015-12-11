@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: admin
+  User: douyutong
   Date: 2015/8/3
   Time: 0:17
   To change this template use File | Settings | File Templates.
@@ -10,7 +10,6 @@
 <%@include file="templates/header.jsp"%>
 <%@include file="templates/sidebar.jsp"%>
 
-<html>
 <head>
   <link rel="stylesheet" href="/OCare/Assets/CSS/verify.css">
     <title>监护人申请审核</title>
@@ -65,6 +64,5 @@
   </div>
 </div>
 </body>
-</html>
 
 <%@include file="templates/footer.jsp"%>

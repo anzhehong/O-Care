@@ -27,8 +27,23 @@ public class VerifyServiceImp implements VerifyService {
     @Autowired
     private LegalPersonDAO legalPersonDAO;
 
-    public void submitMonitorApply(String relativeId, String elderId, String togetherImg) {
+    public String submitMonitorApply(String relativeId, String elderId, String togetherImg) {
         ElderMonitor newRelation = new ElderMonitor();
+
+        List<ElderMonitor> elderMonitorList=elderMonitorDAO.queryByRelativeId(relativeId);
+        for(int i=0;i<elderMonitorList.size();i++ ){
+            if(elderMonitorList.get(i).getElder_id().equals(elderId))
+                return "Exists";
+        }
+
+        Relative relative=relativeDAO.queryById(relativeId);
+        if(relative==null){
+            return "NoRelative";
+        }
+        Elder elder=elderDAO.queryById(elderId);
+        if(elder==null){
+            return "NoElder";
+        }
         System.out.println("elderID:"+elderId);
         newRelation.setElder_id(elderId);
         newRelation.setRelative_id(relativeId);
@@ -39,6 +54,7 @@ public class VerifyServiceImp implements VerifyService {
 
 
         elderMonitorDAO.insert(newRelation);
+        return "success";
     }
 
     @Override

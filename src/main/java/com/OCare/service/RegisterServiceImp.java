@@ -27,7 +27,18 @@ public class RegisterServiceImp implements RegisterService {
     private LegalPersonDAO legalPersonDAO;
     @Autowired
     private CompanyDAO companyDAO;
+    @Autowired
+    private ofUserDao userDao;
+    @Autowired
+    private AdminDao adminDao;
 
+    @Override
+    public void register(String user, String password) {
+        Admin admin=new Admin();
+        admin.setId(user);
+        admin.setPassword(JavaMD5Util.MD5(password));
+        adminDao.insert(admin);
+    }
     public Elder registerForAnElder(String elderId, int companyId, String elderName, String elderPhone, String elderAddress, String elderPassword, String elderImage) {
         Elder newElder = new Elder();
         newElder.setAddress(elderAddress);
@@ -96,14 +107,15 @@ public class RegisterServiceImp implements RegisterService {
     }
 
     @Override
-    public Company registerForCompany(String comName, String comLegalPersonId, String comPhone, String comAddress) {
+    public Company registerForCompany(String comName, String comLegalPersonId, String comPhone, String comAddress,String url1,String url2) {
 
         Company newCompany = new Company();
         newCompany.setName(comName);
         newCompany.setLegal_person_id(comLegalPersonId);
         newCompany.setPhone(comPhone);
         newCompany.setAddress(comAddress);
-
+        newCompany.setUrl1(url1);
+        newCompany.setUrl2(url2);
         /*
         status = 101 代表未审核
         status = 102 代表审核通过
@@ -113,6 +125,7 @@ public class RegisterServiceImp implements RegisterService {
         companyDAO.insert(newCompany);
         return newCompany;
     }
+
 
     @Override
     public boolean isLegalPersonIdExist(String legalPersonId) {
@@ -139,6 +152,10 @@ public class RegisterServiceImp implements RegisterService {
     public ArrayList<LegalPerson> getAllLegalPerson() {
         return (ArrayList<LegalPerson>) legalPersonDAO.queryAll();
     }
+
+    @Override
+    public ArrayList<ofUser> getAllUser() {
+        return (ArrayList<ofUser>) userDao.queryAll();}
 
     @Override
     public ArrayList<Volunteer> getAllVolunteers() {

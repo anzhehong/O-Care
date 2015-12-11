@@ -600,6 +600,7 @@
         })
     }
 </script>
+<<<<<<< HEAD
 
 
 
@@ -611,4 +612,10 @@
 <script src="/OCare/dist/sweetalert.min.js"></script>
 
 
+=======
+<script>
+    document.getElementById('map_side').style.backgroundColor= "#ff7770"
+    document.getElementById('map_side').style.color= "white"
+</script>
+>>>>>>> douyutong
 <%@include file="templates/footer.jsp"%>
