@@ -4,6 +4,8 @@ import com.OCare.dao.CompanyDAO;
 import com.OCare.entity.Employee;
 import com.OCare.service.EmployeeService;
 import com.OCare.service.FtpService;
+import com.OCare.service.RelativeService;
+import com.OCare.service.VolunteerService;
 import org.apache.poi.POIXMLDocument;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -33,6 +35,12 @@ public class MainController {
     private EmployeeService employeeService;
 
     @Autowired
+    private VolunteerService volunteerService;
+
+    @Autowired
+    private RelativeService relativeService;
+
+    @Autowired
     private CompanyDAO companyDAO;
 
     @Autowired
@@ -48,6 +56,20 @@ public class MainController {
     {
         model.addAttribute("employee",employeeService.getAllEmployees());
         return "HR";
+    }
+
+    @RequestMapping("/volunteer")
+    public String volunteerList(Model model)
+    {
+        model.addAttribute("volunteers",volunteerService.getAllVolunteers());
+        return "volunteer";
+    }
+
+    @RequestMapping("/relative")
+    public String relativeList(Model model)
+    {
+        model.addAttribute("relatives",relativeService.getAllRelatives());
+        return "relative";
     }
 
     @RequestMapping("/hr/insert")

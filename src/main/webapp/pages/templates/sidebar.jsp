@@ -71,10 +71,10 @@
       <i class="child icon "></i>
       监护人管理
     </div>
-    <a class="item">
+    <a class="item" href="/OCare/relative">
       &nbsp;&nbsp;&nbsp;&nbsp;监护人
     </a>
-    <a class="item">
+    <a class="item" href="/OCare/volunteer">
       &nbsp;&nbsp;&nbsp;&nbsp;志愿者
     </a>
   </div>
