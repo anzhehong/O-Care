@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by fowafolo on 15/8/7.
@@ -19,6 +20,11 @@ public class RelativeServiceImp implements RelativeService {
 
     @Autowired
     private RelativeDAO relativeDAO;
+
+    @Override
+    public List<Relative> getAllRelatives() {
+        return relativeDAO.queryAll();
+    }
 
     @Override
     public Relative getRelativeById(String id) {
