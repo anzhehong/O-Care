@@ -162,4 +162,8 @@
         })
     }
 </script>
+<script>
+    document.getElementById('map_side').style.backgroundColor= "#ff7770"
+    document.getElementById('map_side').style.color= "white"
+</script>
 <%@include file="templates/footer.jsp"%>

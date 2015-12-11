@@ -1,9 +1,11 @@
 package com.OCare.controller;
 
+import com.OCare.dao.LegalPersonDAO;
 import com.OCare.entity.*;
 import com.OCare.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -48,6 +50,8 @@ public class InterfaceController {
     private openFireService openfireService;
     @Autowired
     private FtpService ftpService;
+    @Autowired
+    private LegalPersonDAO legalPersonDAO;
     /**
      * @param phoneNum：Phone number
      * @param password：Password
@@ -123,17 +127,30 @@ public class InterfaceController {
         }
     }
 
+
+    @RequestMapping(value = "/adminRegister")
+    @ResponseBody
+    public void adminRegister(String user,String password){
+        registerService.register(user,password);
+    }
+
+
     //logout函数
     @RequestMapping(value = "/logout")
     @ResponseBody
     public void logout(String sessionId,HttpSession httpSession){
 
-        if(sessionId!=""||sessionId!=null) {
+
+        if(sessionId==""||sessionId==null) {
+            httpSession.invalidate();
+        }
+        else{
             MySessionContext myc = MySessionContext.getInstance();
             httpSession = myc.getSession(sessionId);
+            httpSession.invalidate();
         }
 
-        httpSession.invalidate();
+
     }
 
 
@@ -448,7 +465,7 @@ public class InterfaceController {
 
     @RequestMapping(value = "/register/legalperson", method=RequestMethod.POST)
 
-    public String legalPersonRegister(HttpServletRequest request){
+    public String legalPersonRegister(HttpServletRequest request,Model model){
         Map<String, Object> result = new HashMap<String, Object>();
 
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
@@ -465,24 +482,30 @@ public class InterfaceController {
         if(lpId == ""|| lpName == "" || lpPhone == "" || lpEmail == "" || lpPassword == ""){
             result.put("error",true);
             result.put("errorMsg","Something is empty!");
+            model.addAttribute("errMsg", "输入信息有误");
+
+
             return "Register";}
 
         if (isIdOrPhoneNumExist_legalperson(lpId,lpPhone)==1)
         {
             result.put("error",true);
             result.put("errorMsg","openfire phone exists");
+            model.addAttribute("errMsg", " phone exists");
             return "Register";
         }
         if (isIdOrPhoneNumExist_legalperson(lpId, lpPhone)==2)
         {
             result.put("error",true);
             result.put("errorMsg","legalperson id number exists");
+            model.addAttribute("errMsg", " phone exists");
             return "Register";
         }
         if (isIdOrPhoneNumExist_legalperson(lpId,lpPhone)==3)
         {
             result.put("error",true);
             result.put("errorMsg","legalperson phone exists");
+            model.addAttribute("errMsg", " phone exists");
             return "Register";
         }
 
@@ -491,6 +514,7 @@ public class InterfaceController {
         if(!multipartResolver.isMultipart(request)){
             result.put("error",true);
             result.put("errorMsg","unknow error");
+            model.addAttribute("errMsg", "图片未上传成功");
             return "Register";
         }
         if (multipartResolver.isMultipart(request)) {
@@ -513,23 +537,22 @@ public class InterfaceController {
                 ftpService.CreateLp(lpId);
                 ftpService.uploadFileForLp(convFile, lpId);
 
-                String xxx="ftp://202.120.163.167/legalperson/"+lpId+'/'+convFile.getPath();
+                String xxx="ftp://ocare:ocare@202.120.163.167/legalperson/"+lpId+'/'+convFile.getPath();
 
                 System.out.println("success");
                 LegalPerson legalPerson = registerService.registerForALegalPerson(lpId, lpName, lpPhone, lpEmail, lpPassword, xxx);
                 result.put("error", false);
                 result.put("account", legalPerson);
 
-
+                return "index";
             }
 
             // 重定向
         }
 
-        //身份证或者手机号未被注册
-        return "index";
-    }
+        return "Register";
 
+    }
 
     public int isIdOrPhoneNumExist_legalperson(String id, String phoneNum) {
         //boolean flag = true;
@@ -573,7 +596,27 @@ public class InterfaceController {
     @ResponseBody
     public Map<String, Object> applyMonitor(String relativeId, String elderId, String togetherImg){
         Map<String, Object> result = new HashMap<String, Object>();
-        verifyService.submitMonitorApply(relativeId, elderId, togetherImg);
+        if(relativeId==null||relativeId==""||elderId==null||elderId==""||togetherImg==null||togetherImg==""){
+            result.put("error", true);
+            result.put("errorMsg","Null Input");
+            return result;
+        }
+        String status=verifyService.submitMonitorApply(relativeId, elderId, togetherImg);
+        if(status.equals("NoRelative")){
+            result.put("error", true);
+            result.put("errorMsg","No Relative");
+            return result;
+        }
+        if(status.equals("Exists")){
+            result.put("error", true);
+            result.put("errorMsg","Relation Exists");
+            return result;
+        }
+        if(status.equals("NoElder")){
+            result.put("error", true);
+            result.put("errorMsg","No Elder");
+            return result;
+        }
         result.put("error", false);
         return result;
     }
@@ -675,7 +718,7 @@ public class InterfaceController {
     public Map<String, Object> personInforModifyHandle1(String phoneNum,int code,String sessionId,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
 
-        if(sessionId!=""||sessionId!=null) {
+        if(!(sessionId==""||sessionId==null)) {
             MySessionContext myc = MySessionContext.getInstance();
             httpSession = myc.getSession(sessionId);
         }
@@ -719,7 +762,7 @@ public class InterfaceController {
     @ResponseBody
     public Map<String, Object> personInforModifyHandle2(String newPassword,String password,String sessionId,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
-        if(sessionId!=""||sessionId!=null) {
+        if(!(sessionId==""||sessionId==null)) {
             MySessionContext myc = MySessionContext.getInstance();
             httpSession = myc.getSession(sessionId);
         }
@@ -765,7 +808,7 @@ public class InterfaceController {
     @ResponseBody
     public Map<String, Object> personInforModifyHandle3(String change,String sessionId,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
-        if(sessionId!=""||sessionId!=null) {
+        if(!(sessionId==""||sessionId==null)) {
             MySessionContext myc = MySessionContext.getInstance();
             httpSession = myc.getSession(sessionId);
         }
@@ -801,7 +844,7 @@ public class InterfaceController {
     @ResponseBody
     public Map<String, Object> lostPasswordHandle2(String id, int code,int role,String password,String sessionId,HttpSession httpSession){
         Map<String, Object> result = new HashMap<String, Object>();
-        if(sessionId!=""||sessionId!=null) {
+        if(!(sessionId==""||sessionId==null)) {
             MySessionContext myc = MySessionContext.getInstance();
             httpSession = myc.getSession(sessionId);
         }
@@ -1132,28 +1175,39 @@ public class InterfaceController {
      */
     @RequestMapping(value = "/company/register", method = RequestMethod.POST)
 
-    public String companyRegister(HttpServletRequest request)
+    public String companyRegister(HttpServletRequest request ,HttpSession httpSession,Model model)
     {
 
+        String phone= (String) httpSession.getAttribute("sessionId");
+        LegalPerson legalPerson=legalPersonDAO.queryByPhoneNum(phone);
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
         //判断 request 是否有文件上传,即多部分请求
         String agent_name=request.getParameter("agent_name");
         String agent_code=request.getParameter("agent_code");
-        String legalperson_id=request.getParameter("legalperson_id");
+        String legalperson_id=legalPerson.getId();
         String company_phone=request.getParameter("company_phone");
         String company_address=request.getParameter("company_address");
         String[] url=new String[2];
 
         Map<String, Object> result = new HashMap<String, Object>();
-        if (agent_name == "" || agent_code == "" || legalperson_id == "" || company_phone == null || company_address==null)
+        if (agent_name == "" || agent_code == "" ||  company_phone == null || company_address==null)
         {
             result.put("error",true);
             result.put("errorMsg","Something is empty!");
-            return "error";
-        }else if(!registerService.isLegalPersonIdExist(legalperson_id)) {
+            model.addAttribute("errMsg","输入信息有误");
+
+            return "applyComany";
+        }else if(legalperson_id == ""||legalperson_id==null){
+            model.addAttribute("errMsg","请先登录");
+
+            return "applyComany";
+        }
+        else if(!registerService.isLegalPersonIdExist(legalperson_id)) {
             result.put("error",true);
             result.put("errorMsg","Legal Person not exsits");
-            return "error";
+            model.addAttribute("errMsg","请先注册");
+
+            return "applyComany";
         }else {
 
             if (multipartResolver.isMultipart(request)) {
@@ -1188,12 +1242,14 @@ public class InterfaceController {
                 }
             }
 
-            Company companyToRegister =  registerService.registerForCompany(agent_name, legalperson_id, company_phone, company_address,"ftp://202.120.163.167/company/"+agent_code+"/"+url[0],"ftp://202.120.163.167/company/"+agent_code+"/"+url[1]);
+            Company companyToRegister =  registerService.registerForCompany(agent_name, legalperson_id, company_phone, company_address,"ftp://ocare:ocare@202.120.163.167/company/"+agent_code+"/"+url[0],"ftp://ocare:ocare@202.120.163.167/company/"+agent_code+"/"+url[1]);
             result.put("error",false);
             result.put("account",companyToRegister);
+            return "WaitPermition";
         }
-        return "WaitPermition";
+
     }
+
     /*
         功能：通过phoneNum删除员工
         参数：身份证
@@ -1820,7 +1876,8 @@ public class InterfaceController {
     @ResponseBody
     public Map<String, Object> getCompanyByLegalPersonId(String sessionId,HttpSession httpSession) {
         Map<String, Object> result = new HashMap<String, Object>();
-        if(sessionId!=""||sessionId!=null) {
+
+        if(!(sessionId==""||sessionId==null)) {
             MySessionContext myc = MySessionContext.getInstance();
             httpSession = myc.getSession(sessionId);
         }

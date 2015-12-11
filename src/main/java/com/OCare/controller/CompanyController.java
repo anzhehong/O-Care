@@ -1,6 +1,9 @@
 package com.OCare.controller;
 
+import com.OCare.dao.IGeneralDAO;
+import com.OCare.dao.LegalPersonDAO;
 import com.OCare.entity.Company;
+import com.OCare.entity.LegalPerson;
 import com.OCare.entity.MySessionContext;
 import com.OCare.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,10 @@ public class CompanyController {
 
     @Autowired
     private CompanyService companyService;
+    @Autowired
+    private LegalPersonDAO legalPersonDAO;
+    @Autowired
+    private IGeneralDAO <LegalPerson> iGeneralDAO;
 
     /**
      * 功能：创建一个机构
@@ -55,9 +62,14 @@ public class CompanyController {
      * @param model：返回值集合
      * @return null
      */
+
     @RequestMapping(value="/name/{name}", method = RequestMethod.GET)
     public String getCompanyByName(@PathVariable String name, Model model){
+        Company company=companyService.getByName(name);
+        String lp=company.getLegal_person_id();
+        LegalPerson legalPerson=iGeneralDAO.queryById(lp);
         model.addAttribute("company", companyService.getByName(name));
+        model.addAttribute("lpImg",legalPerson.getImage());
         return "agentVerify";
     }
 
@@ -95,19 +107,43 @@ public class CompanyController {
     }
 
 
+
     /**
      * 功能：列出所有的公司
      */
     @RequestMapping("/companyList")
-    @ResponseBody
-    public Map<String, Object> listAllCompanies(String sessionId,HttpSession httpSession){
-        Map<String, Object> result = new HashMap<String, Object>();
-        if(sessionId!=""||sessionId!=null) {
+    public String listAllCompanies(Model model,String sessionId,HttpSession httpSession){
+        //Map<String, Object> result = new HashMap<String, Object>();
+        if(!(sessionId==""||sessionId==null)) {
             MySessionContext myc = MySessionContext.getInstance();
             httpSession = myc.getSession(sessionId);
         }
 
         String status=(String)httpSession.getAttribute("sessionType");
+        if(status.equals("Admin")) {
+            List<Company> companyList=companyService.getAllCompany();
+            model.addAttribute("list",companyList);
+            return "AllCompany";
+        }else{
+            return "index";
+        }
+
+    }
+
+    /*
+    @RequestMapping("/companyList")
+    @ResponseBody
+    public Map<String, Object> listAllCompanies(String sessionId,HttpSession httpSession){
+        Map<String, Object> result = new HashMap<String, Object>();
+        System.out.println("aaaaaaaaaaaaaa");
+        if(!(sessionId==""||sessionId==null)) {
+            MySessionContext myc = MySessionContext.getInstance();
+            httpSession = myc.getSession(sessionId);
+        }
+        System.out.println("aaaaaaaaaaaaaa");
+        //String status=(String)httpSession.getAttribute("sessionType");
+        System.out.println("aaaaaaaaaaaaaa");
+       String status="admin";
         if(status.equals("admin")) {
             List<Company> companyList=companyService.getAllCompany();
             result.put("error", false);
@@ -117,7 +153,7 @@ public class CompanyController {
         result.put("error", true);
         result.put("errorMsg", "NO authority");
         return result;
-    }
+    }*/
 
     /**
      * 功能：同意申请
@@ -138,17 +174,8 @@ public class CompanyController {
     @RequestMapping(value = "/reject/{id}", method = RequestMethod.GET)
     public String rejectApply(@PathVariable String id){
         companyService.changeStatus(Integer.parseInt(id), 103);
-        return "hagentApplyList";
-    }
-    /**
-     * 功能：暂定申请
-     * @param id 公司的编号
-     * @return Null
-     */
-    @RequestMapping(value = "/agree/{id}", method = RequestMethod.GET)
-    public String undecided(@PathVariable String id){
-        companyService.changeStatus(Integer.parseInt(id), 102);
         return "agentApplyList";
     }
+
 
 }

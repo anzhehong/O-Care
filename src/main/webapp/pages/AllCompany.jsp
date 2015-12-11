@@ -35,10 +35,18 @@
           <td>无</td>
         </tr>
       </c:if>
-      <c:if test="${var.status == 102 || var.status == 103}">
+      <c:if test="${var.status == 102}">
         <tr class="positive">
           <td>${var.id}</td>
           <td><i class="icon checkmark"></i>已通过</td>
+          <td><a href="/OCare/company/name/${var.name}"><i class="icon search"></i>查看</a></td>
+          <td>无</td>
+        </tr>
+      </c:if>
+      <c:if test="${var.status == 103}">
+        <tr class="negative">
+          <td>${var.name}</td>
+          <td><i class="icon question"></i>已拒绝</td>
           <td><a href="/OCare/company/name/${var.name}"><i class="icon search"></i>查看</a></td>
           <td>无</td>
         </tr>
@@ -47,4 +55,8 @@
     </tbody>
   </table>
 </div>
+<script>
+  document.getElementById('company_list').style.backgroundColor= "#ff7770"
+  document.getElementById('company_list').style.color= "white"
+</script>
 <%@include file="templates/footer.jsp"%>

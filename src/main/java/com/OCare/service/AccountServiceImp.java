@@ -89,9 +89,10 @@ public class AccountServiceImp implements AccountService {
 
     @Override
     public Pair<String, Object> adminlogon(String phoneNum, String password) {
+        String md5Password = JavaMD5Util.MD5(password);
         Admin admin=adminDao.queryByPhoneNum(phoneNum);
         if(admin != null){
-            if (admin.getPassword().equals(password)){
+            if (admin.getPassword().equals(md5Password)){
                 Pair<String, Object> pair = new Pair<String, Object>("Admin", admin);
                 return pair;
             }else{

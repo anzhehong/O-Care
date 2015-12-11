@@ -41,11 +41,11 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container" style="background-color: #EDEDED;">
     <div class="ad" >
         <h2>福联网</h2>
     </div>
-    <div class="bg-image">
+    <div class="bg-image" style="margin: 30px auto 0;">
         <img src="/OCare/Assets/Images/old-couple.png">
     </div>
     <div class="pic-left">

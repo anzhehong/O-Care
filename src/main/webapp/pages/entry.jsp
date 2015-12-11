@@ -431,5 +431,8 @@
 <%--//--%>
 <%--//                    })--%>
 <%--//            ;--%>
-
+    <script>
+        document.getElementById('entry_side').style.backgroundColor= "#ff7770"
+        document.getElementById('entry_side').style.color= "white"
+    </script>
 <%@include file="templates/footer.jsp" %>

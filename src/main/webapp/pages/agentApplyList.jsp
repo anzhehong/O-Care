@@ -47,4 +47,8 @@
     </tbody>
   </table>
 </div>
+<script>
+  document.getElementById('apply_list').style.backgroundColor= "#ff7770"
+  document.getElementById('apply_list').style.color= "white"
+</script>
 <%@include file="templates/footer.jsp"%>

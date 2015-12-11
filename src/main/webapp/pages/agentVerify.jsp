@@ -43,7 +43,10 @@
     </a>
   </div>
   <%--<c:out value="${company.togetherImg}"/>  数据库里没有图片 只能显示以下样图--%>
-  <img class="ui rounded large image" src="/OCare/Assets/Images/together -image.jpg" pagespeed_url_hash="481064615" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+  <img class="ui rounded large image" src="${company.url1}" pagespeed_url_hash="481064615" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+  <img class="ui rounded large image" src="${company.url2}" pagespeed_url_hash="481064615" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+  <img class="ui rounded large image" src="${lpImg}" pagespeed_url_hash="481064615" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+
   <div class="elderID-relativeID">
     <a class="ui huge red label" href="<c:url value="/company/reject/${company.id}"></c:url> " id="reject">
       <i class="icon remove circle"></i>拒绝
@@ -58,5 +61,8 @@
 </div>
 </body>
 </html>
-
+<script>
+  document.getElementById('apply_list').style.backgroundColor= "#ff7770"
+  document.getElementById('apply_list').style.color= "white"
+</script>
 <%@include file="templates/footer.jsp"%>

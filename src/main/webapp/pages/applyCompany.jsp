@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: douyutong
@@ -6,9 +7,24 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@page contentType="text/html; charset=utf-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="/OCare/Assets/CSS/agentManagement.css">
 <%@include file="templates/header.jsp"%>
+<c:if test="${errMsg != null}">
 
+    <input type="hidden" value="${errMsg}" id="errMessage"/>
+</c:if>
+
+<script>
+    function test(){
+        var aa = $("#errMessage").val();
+        if(aa!=null){
+            alert(aa);
+        }
+
+    }
+    window.onload = test();
+</script>
 <div style="width:1250px;margin:30px auto;border-radius: 10px;background-color: rgb(237, 237, 237);padding: 20px;">
     <h2 style="text-align: center;margin-bottom: -20px;font-family: monospace;color:darkcyan;" >申请机构:</h2>
     <form class="ui agent-submit form" method="post"
@@ -17,7 +33,7 @@
           enctype="multipart/form-data">
         <table style="margin: 30px 100px;">
             <tr style="line-height: 80px;">
-                <td>机构名称：</td>
+                <td style="width: 200px;">机构名称：</td>
                 <td>
                     <div class="ui input"><input type="text" id="agent_name" name="agent_name" style="width:300px"></div>
                 </td>

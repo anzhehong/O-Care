@@ -26,8 +26,8 @@
     </div>
 </div>
 
-<script type="text/javascript">
-
-
+<script>
+    document.getElementById('import_side').style.backgroundColor= "#ff7770"
+    document.getElementById('import_side').style.color= "white"
 </script>
 <%@include file="templates/footer.jsp"%>

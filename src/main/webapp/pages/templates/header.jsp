@@ -36,8 +36,8 @@
   <div class="container">
     <img src="/OCare/Assets/Images/Ocare-logo.png">
     <div class="greeting">
-      您好! <strong id="se_id"><%= session.getAttribute("sessionId") %></strong><a href="/OCare/pages/ModifyInformation.jsp"><i class="user icon" title="个人中心" style="color:#FE4F4F;font-size: 0.8em;"  ></i></a>
-      <a class="logout">注销</a>
+      您好! <strong id="se_id"><%= session.getAttribute("sessionId") %></strong><a href="/OCare/pages/ModifyInformation.jsp" id="information"><i class="user icon" title="个人中心" style="color:#FE4F4F;font-size: 0.8em;"  ></i></a>
+      <a class="logout" id="logout_button">注销</a>
     </div>
     <div class="nav" >
       <ul>

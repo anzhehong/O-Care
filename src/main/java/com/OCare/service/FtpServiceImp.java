@@ -139,7 +139,7 @@ public class FtpServiceImp implements FtpService {
             // 用户登录
             ftpClient.login("ocare", "ocare");
             // 打印地址信息
-            ftpClient.createDirectory("legalperson");
+            //ftpClient.createDirectory("legalperson");
             ftpClient.changeDirectory("legalperson");
             ftpClient.createDirectory(dir);
             root=ftpClient.currentDirectory();
@@ -166,7 +166,7 @@ public class FtpServiceImp implements FtpService {
             // 用户登录
             ftpClient.login("ocare", "ocare");
             // 打印地址信息
-            ftpClient.createDirectory("company");
+            //ftpClient.createDirectory("company");
             ftpClient.changeDirectory("company");
             ftpClient.createDirectory(dir);
             root=ftpClient.currentDirectory();

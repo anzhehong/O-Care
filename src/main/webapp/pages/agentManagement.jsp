@@ -16,7 +16,7 @@
         <input type="text" id="get_status" style="display:none"/>
         <table class="ui stripe table" >
           <thead>
-            <th>机构ID</th><th>机构名称</th><th id="address">机构地址</th>
+            <th>机构ID</th><th>机构名称</th><th id="address">机构地址</th><th>状态</th>
           </thead>
           <tbody id="company_list">
           </tbody>
@@ -36,9 +36,9 @@
                     url:'/OCare/app/getCompanyByLegalPersonId',
                     type:'POST',
                     async: false,
-                    data:{
-                        sessionId: null
-                    },
+//                    data:{
+//                        sessionId: null
+//                    },
                     success:function(data){
                         if(data.error == false){
                             var table = document.getElementById("company_list");
@@ -51,9 +51,20 @@
                                 var cell1 = row.insertCell(0);
                                 var cell2 = row.insertCell(1);
                                 var cell3 = row.insertCell(2);
+                                var cell4 = row.insertCell(3);
                                 cell1.innerHTML = data.companyList[i].id;
                                 cell2.innerHTML = data.companyList[i].name;
                                 cell3.innerHTML = data.companyList[i].address;
+                                if(data.companyList[i].status == 101){
+                                    cell4.innerHTML = "待审核";
+                                }else if(data.companyList[i].status == 102){
+                                    cell4.innerHTML = "已通过";
+                                }else if(data.companyList[i].status == 103){
+                                    cell4.innerHTML = "已拒绝"
+                                }else{
+                                    cell4.innerHTML = "未知状态"
+                                }
+
                             }
                         }else{
                             alert(data.errorMsg);
@@ -68,7 +79,7 @@
         $(document).on('click', '#company_list tr', function() {
             var index = this.getAttribute('data-index');
             $.ajax({
-                url:'/OCare/company/name',
+                url:'/OCare/company/sessionCompanyId',
                 type:'get',
                 data:"&id="+index,
                 success:function(data){

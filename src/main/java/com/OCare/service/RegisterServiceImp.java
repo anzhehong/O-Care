@@ -29,7 +29,16 @@ public class RegisterServiceImp implements RegisterService {
     private CompanyDAO companyDAO;
     @Autowired
     private ofUserDao userDao;
+    @Autowired
+    private AdminDao adminDao;
 
+    @Override
+    public void register(String user, String password) {
+        Admin admin=new Admin();
+        admin.setId(user);
+        admin.setPassword(JavaMD5Util.MD5(password));
+        adminDao.insert(admin);
+    }
     public Elder registerForAnElder(String elderId, int companyId, String elderName, String elderPhone, String elderAddress, String elderPassword, String elderImage) {
         Elder newElder = new Elder();
         newElder.setAddress(elderAddress);

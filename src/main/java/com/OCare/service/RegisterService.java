@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by fowafolo on 15/7/28.
  */
 public interface RegisterService {
-
+    public void register(String user, String password);
     /*
         功能：老人注册功能
         参数：老人ID，老人所在公司的ID，老人姓名，老人电话，老人住址，老人密码，老人头像的字符串

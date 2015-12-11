@@ -54,5 +54,8 @@
         </tbody>
     </table>
 </div>
-
+<script>
+    document.getElementById('elder_monitor_side').style.backgroundColor= "#ff7770"
+    document.getElementById('elder_monitor_side').style.color= "white"
+</script>
 <%@include file="templates/footer.jsp"%>

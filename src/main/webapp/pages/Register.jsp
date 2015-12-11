@@ -6,7 +6,23 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@page contentType="text/html; charset=utf-8" language="java" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="templates/header.jsp"%>
+<c:if test="${errMsg != null}">
+
+  <input type="hidden" value="${errMsg}" id="errMessage"/>
+</c:if>
+
+<script>
+  function test(){
+    var aa = $("#errMessage").val();
+    if(aa!=null){
+      alert(aa);
+    }
+
+  }
+  window.onload = test();
+</script>
 <script src="/OCare/Assets/JS/jquery.address.js"></script>
 <div style="width:1250px;margin:30px auto">
   <!--步骤条-->
@@ -43,7 +59,7 @@
       <form class="ui legal-person form" method="Post" id="legalpersonForm" action="/OCare/app/register/legalperson" enctype="multipart/form-data">
         <table style="margin: 30px 100px;">
           <tr style="line-height: 80px;">
-            <td>法人姓名：</td>
+            <td style="width: 200px;">法人姓名：</td>
             <td>
               <div class="ui input"><input type="text" id="legalperson_name" name="legalperson_name" style="width:300px"></div>
             </td>
@@ -658,6 +674,11 @@
     return true;
   }</script>
 
+  <script>
+    document.getElementById("information").style.display="none";
+    document.getElementById("logout_button").style.display="none";
+    document.getElementById("se_id").style.display="none";
+  </script>
   <script src="/OCare/Assets/JS/register.js"></script>
 
 <%@include file="templates/footer.jsp"%>
