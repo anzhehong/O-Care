@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - OCare@202.120.163.167" uuid="a6436f74-d721-495a-8b3f-9042a9876306">
-      <secret-storage>master_key</secret-storage>
-      <user-name>root</user-name>
-      <schema-pattern>OCare.*</schema-pattern>
-      <default-schemas>OCare.*</default-schemas>
-    </data-source>
-    <data-source name="openfire" uuid="dc2e0995-209e-4f0d-a947-522d69ac0176">
+    <data-source name="MySQL - openfire@202.120.163.167" uuid="1bf0d124-9ef6-4912-8099-1d2e4384d09d">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
       <schema-pattern>openfire.*</schema-pattern>

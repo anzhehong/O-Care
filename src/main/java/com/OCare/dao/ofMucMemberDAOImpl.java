@@ -44,4 +44,12 @@ public class ofMucMemberDAOImpl extends IGeneralDAOImpl<ofMucMember> implements 
         query.setString("m","%" + phoneNum + "%");
         return query.list();
     }
+
+    @Override
+    public List<ofMucMember> getMemberByPhone(String phone) {
+        String hql = "from ofMucMember where jid LIKE :m";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("m", phone);
+        return query.list();
+    }
 }

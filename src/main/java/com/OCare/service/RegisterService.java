@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by fowafolo on 15/7/28.
  */
 public interface RegisterService {
-
+    public void register(String user, String password);
     /*
         功能：老人注册功能
         参数：老人ID，老人所在公司的ID，老人姓名，老人电话，老人住址，老人密码，老人头像的字符串
@@ -49,7 +49,7 @@ public interface RegisterService {
         参数：
         返回值：实例
      */
-    public Company registerForCompany(String comName, String comLegalPersonId, String comPhone, String comAddress);
+    public Company registerForCompany(String comName, String comLegalPersonId, String comPhone, String comAddress, String url1, String url2);
 
     /*
         功能：判断法人代表是否存在
@@ -62,4 +62,5 @@ public interface RegisterService {
     public ArrayList<Relative> getAllRelatives();
     public ArrayList<Volunteer> getAllVolunteers();
     public ArrayList<LegalPerson> getAllLegalPerson();
+    public ArrayList<ofUser> getAllUser();
 }

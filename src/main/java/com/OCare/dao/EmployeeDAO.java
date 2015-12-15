@@ -10,7 +10,9 @@ import java.util.List;
 public interface EmployeeDAO extends IGeneralDAO<Employee> {
     public Employee queryByPhoneNum(String phoneNum);
 
+
     public Employee queryById(String identity);
+
 
     public List<Employee> findEmployeeByName(String name);
     public List<Employee> findEmployeeByPosition(String position);

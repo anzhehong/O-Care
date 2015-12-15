@@ -19,7 +19,7 @@ public interface VerifyService {
         参数：监护人ID，老人Id，两人合照字符串
         返回值：无
      */
-    public void submitMonitorApply(String relativeId, String elderId,String togetherImg);
+    public String submitMonitorApply(String relativeId, String elderId,String togetherImg);
 
     /*
         功能：管理员审核监护人提出的监护老人的申请

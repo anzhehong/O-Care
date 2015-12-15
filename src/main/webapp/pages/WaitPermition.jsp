@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: admin
+  User: douyutong
   Date: 2015/10/26
   Time: 21:40
   To change this template use File | Settings | File Templates.
@@ -10,14 +10,14 @@
 <link rel="stylesheet" href="/OCare/Assets/CSS/wait.css">
 <div>
   <div>
-    <div class="mainbox">
+    <div class="mainbox" style="height:250px;">
       <div class="imgbox">
         <img src="/OCare/Assets/Images/message.png">
       </div>
       <div class="textbox">
         <h2>申请成功！</h2>
-        <h4>请注意查收短信通知</h4>
-        <a href="/OCare/pages/Register.jsp" > &lt;&lt;返回修改注册信息</a>
+        <h4>请耐心等待审核结果</h4>
+        <a href="/OCare/pages/agentManagement.jsp" > &lt;&lt;返回公司列表</a>
       </div>
 
     </div>

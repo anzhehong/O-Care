@@ -1,5 +1,6 @@
 package com.OCare.controller;
 
+
 import com.OCare.dao.CompanyDAO;
 import com.OCare.entity.Employee;
 import com.OCare.service.EmployeeService;
@@ -14,9 +15,11 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,12 +28,14 @@ import java.io.*;
 import java.util.*;
 
 
+
 /**
  * Created by mark on 7/12/15.
  */
 @Controller
 @RequestMapping("/")
 public class MainController {
+
     @Autowired
     private EmployeeService employeeService;
 
@@ -46,17 +51,17 @@ public class MainController {
     @Autowired
     private FtpService ftpService;
 
+
     @RequestMapping("")
     public String index() {
         return "index";
     }
 
     @RequestMapping("/hr")
-    public String hrHome(Model model)
-    {
-        model.addAttribute("employee",employeeService.getAllEmployees());
+    public String hrHome() {
         return "HR";
     }
+
 
     @RequestMapping("/volunteer")
     public String volunteerList(Model model)
@@ -90,6 +95,7 @@ else {
         }
     }
 
+
     @RequestMapping("/hr/entry")
     public String hrEntry() {
         return "entry";
@@ -106,29 +112,13 @@ else {
     }
 
     @RequestMapping("/hr/table")
-    public String hrTable(Model model)
-    {
-        model.addAttribute("employee",employeeService.getAllEmployees());
+    public String hrTable() {
         return "table";
     }
-    @RequestMapping("/hr/confirm")
-    @ResponseBody
-    public Map<String, Object> getemployeeById(String employeeid) {
-        Employee employee=employeeService.getEmployeeById(employeeid);
-        Map<String, Object> result = new HashMap<String, Object>();
-
-        String xxx= employee.getPhone();
-        String xxx1= employee.getDepartment();
-        result.put("employee_id", employee.getId());
-        result.put("employee_name",employee.getName());
-        result.put("employee_phone",employee.getPhone());
-        result.put("employee_position",employee.getPosition());
-        result.put("employee_department",employee.getDepartment());
-        result.put("employee_superior",employee.getSuperior());
-        return result;
 
 
-    }
+
+
     @RequestMapping("/hr/remove")
     @ResponseBody
     public Map<String, Object> removeemployeeById(String employeeid) {
@@ -308,4 +298,5 @@ else {
 
         return pwd.toString();
     }
+
 }

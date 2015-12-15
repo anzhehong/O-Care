@@ -262,4 +262,8 @@
         ;
     })
 </script>
+<script>
+    document.getElementById('leave_side').style.backgroundColor= "#ff7770"
+    document.getElementById('leave_side').style.color= "white"
+</script>
 <%@include file="templates/footer.jsp" %>

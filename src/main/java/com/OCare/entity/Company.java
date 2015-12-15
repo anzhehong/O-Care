@@ -15,6 +15,33 @@ public class Company {
     private String legal_person_id;
     private String phone;
     private String address;
+
+
+    public String getUrl1() {
+        return url1;
+    }
+
+    public void setUrl1(String url1) {
+        this.url1 = url1;
+    }
+
+    public String getUrl2() {
+        return url2;
+    }
+
+    public void setUrl2(String url2) {
+        this.url2 = url2;
+    }
+
+    private String url1;
+    private String url2;
+
+    /*
+        status = 101 代表未审核
+        status = 102 代表审核通过
+        status = 103 代表审核通过
+     */
+
     private int status;
 
     @Id

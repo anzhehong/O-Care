@@ -1,6 +1,6 @@
 
 <div class="footer">
-  @ copyright Tongji University
+  <i class="Copyright icon"></i> Copyright Tongji University
 </div>
 
 </body>

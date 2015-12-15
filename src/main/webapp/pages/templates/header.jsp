@@ -36,7 +36,8 @@
   <div class="container">
     <img src="/OCare/Assets/Images/Ocare-logo.png">
     <div class="greeting">
-      您好! <strong>admin</strong><a>注销</a>
+      您好! <strong id="se_id"><%= session.getAttribute("sessionId") %></strong><a href="/OCare/pages/ModifyInformation.jsp" id="information"><i class="user icon" title="个人中心" style="color:#FE4F4F;font-size: 0.8em;"  ></i></a>
+      <a class="logout" id="logout_button">注销</a>
     </div>
     <div class="nav" >
       <ul>
@@ -162,3 +163,22 @@
 
   <%--$('.ui.form').form(formValidationRules, formSettings);--%>
 <%--</script>--%>
+<script>
+  $('.logout').click(function(e){
+    e.preventDefault();
+    $.ajax({
+      url:'/OCare/app/logout',
+      type:'post',
+      data:{
+        sessionId:null
+      },
+      success:function(data){
+          alert("logout successfully!");
+          window.location.href="/OCare/pages/index.jsp";
+      },
+      error:function(data){
+        alert("logout failed")
+      }
+    });
+  })
+</script>
