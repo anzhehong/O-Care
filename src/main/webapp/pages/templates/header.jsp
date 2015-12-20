@@ -9,6 +9,9 @@
   <meta name="keywords" content="OCare">
 
   <title>OCare</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="/OCare/Assets/JS/uploadPreview.js" type="text/javascript"></script>
+  <script src="http://cdn.bootcss.com/angular.js/1.3.0-beta.8/angular.min.js"></script>
   <link rel="stylesheet" href="/OCare/Assets/CSS/header.css">
   <link rel="stylesheet" href="/OCare/Assets/CSS/footer.css">
   <link rel="stylesheet" href="/OCare/Assets/CSS/sidebar.css">
@@ -16,10 +19,9 @@
   <link rel="stylesheet" href="/OCare/Assets/CSS/icon.css" media="screen">
   <script src="/OCare/Assets/JS/jquery-2.1.4.js"></script>
   <script src="/OCare/Assets/JS/jquery.address.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
   <script src="/OCare/Assets/JS/semantic.js"></script>
-    <script src="/OCare/Assets/JS/uploadPreview.js" type="text/javascript"></script>
-    <script src="http://cdn.bootcss.com/angular.js/1.3.0-beta.8/angular.min.js"></script>
+
+
     <script>
         window.data = [];
         for (var i = 0; i < 300; i++) {
