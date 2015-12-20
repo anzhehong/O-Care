@@ -50,10 +50,6 @@
       &nbsp;&nbsp;&nbsp;&nbsp;上传合同
     </a>
 
-    <div class="header item">
-      <i class="book icon "></i>
-      机构信息管理
-
     <div id="company">
         <div class="header item">
           <i class="book icon "></i>
@@ -72,20 +68,15 @@
           <i class="child icon "></i>
           个人管理
         </div>
-        <a class="item">
-          &nbsp;&nbsp;&nbsp;&nbsp;监护人
+        <a class="item" href="/OCare/relative">
+            &nbsp;&nbsp;&nbsp;&nbsp;监护人
         </a>
-        <a class="item">
-          &nbsp;&nbsp;&nbsp;&nbsp;志愿者
+        <a class="item" href="/OCare/volunteer">
+            &nbsp;&nbsp;&nbsp;&nbsp;志愿者
         </a>
     </div>
 
-    <a class="item" href="/OCare/relative">
-      &nbsp;&nbsp;&nbsp;&nbsp;监护人
-    </a>
-    <a class="item" href="/OCare/volunteer">
-      &nbsp;&nbsp;&nbsp;&nbsp;志愿者
-    </a>
+
 
   </div>
 </div>
